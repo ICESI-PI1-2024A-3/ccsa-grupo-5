@@ -1,0 +1,25 @@
+# Ignore automatically generated files
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore local configuration files
+settings.py
+
+# Ignore database migration files
+/migrations/
+
+# Ignore virtual environment files (if using one)
+venv/
+env/
+
+# Ignore log and cache files
+/logs/
+/cache/
+
+# Ignore Python dependencies files
+/.venv/
+/.vscode/
+
+# Ignore test and compilation cache files
+/__pycache__/
