@@ -63,10 +63,10 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
-
+- Analizar y verificar todo el cumplimiento de la HU1 en el diagrama de clases
 ### ¿Qué voy a hacer?
-- 
+- Buscar formato adecuado para hacer la estructura básica de mención de los métodos necesarios para cumplir con la HU1
+ 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Algunas dudas que quedan sobre Django
