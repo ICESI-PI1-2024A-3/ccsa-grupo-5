@@ -49,13 +49,14 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Trabajar en la corrección de las historias de usuario.
 
 ### ¿Qué voy a hacer?
-- 
+- Ayudar a Flamini en el login de Django.
+- Investigar como crear diferentes tipos de usuario en Django.
 
 ### ¿Qué impedimentos tengo?
-- 
+- Desconocimiento en temas relacionados con Django.
 
 ---
 
