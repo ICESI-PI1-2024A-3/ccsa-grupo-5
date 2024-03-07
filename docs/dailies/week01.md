@@ -70,3 +70,68 @@
 
 ### ¿Qué impedimentos tengo?
 - Algunas dudas que quedan sobre Django
+
+# Daily Report - Semana 1 - 06/03/2024
+
+## Davide Flamini Cazaran
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+---
+
+## Nicolas Cuellar Molina
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Andrés Felipe Cabezas Guerrero
+
+### ¿Qué hice?
+- Encontrar video tutorial con ejemplo sobre Tablas dinámicas con Django, DataTables.js y Bootstrap 5
+
+### ¿Qué voy a hacer?
+- Empezar a trabajar en Django con elementos faltantes para la entrega del lunes
+
+### ¿Qué impedimentos tengo?
+- Ninguno
+
+---
+
+## Miguel Ángel Martínez Vidal
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Alejandro Torres Soto
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
