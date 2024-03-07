@@ -127,11 +127,11 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Encontré el formato adecuado para hacer la estructura básica de mención de los métodos necesarios para cumplir con la HU1
 
 ### ¿Qué voy a hacer?
-- 
+- Terminar de resolver dudas sobre Django
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
