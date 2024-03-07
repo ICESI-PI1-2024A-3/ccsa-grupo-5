@@ -101,26 +101,26 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- Encontrar video tutorial con ejemplo sobre Tablas dinámicas con Django, DataTables.js y Bootstrap 5
+- Encontrar video tutorial con ejemplo sobre Tablas dinámicas con Django, DataTables.js y Bootstrap 5.
 
 ### ¿Qué voy a hacer?
-- Empezar a trabajar en Django con elementos faltantes para la entrega del lunes
+- Empezar a trabajar en Django con elementos faltantes para la entrega del lunes.
 
 ### ¿Qué impedimentos tengo?
-- Ninguno
+- Ninguno.
 
 ---
 
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Ver videos tutoriales sobre como crear logins y administrar diferentes tipos de usuarios en Django.
 
 ### ¿Qué voy a hacer?
-- 
+- Empezar a implementar lo aprendido.
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno.
 
 ---
 
