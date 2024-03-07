@@ -76,13 +76,13 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- Ver un turorial sobre login y CRUD se Django.
 
 ### ¿Qué voy a hacer?
-- 
+- Enpezar el login del modulo.
 
 ### ¿Qué impedimentos tengo?
-- 
+- Por ahora ninguno, espero no tener en la implementación.
 ---
 
 ## Nicolas Cuellar Molina
