@@ -76,7 +76,7 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- Ver un turorial sobre login y CRUD se Django.
+- Ver un turorial sobre login y CRUD de Django.
 
 ### ¿Qué voy a hacer?
 - Enpezar el login del modulo.
@@ -88,13 +88,13 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- Estuve estudiando Django
 
 ### ¿Qué voy a hacer?
-- 
+- Corregir errores de login
 
 ### ¿Qué impedimentos tengo?
-- 
+- Mal creación de los modelos 
 
 ---
 
