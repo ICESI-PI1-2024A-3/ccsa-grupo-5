@@ -140,13 +140,13 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- El dia de hoy no pude adelantar nada, debido a los trabajos y parciales de las demás materias.
 
 ### ¿Qué voy a hacer?
-- 
+- El login del módulo.
 
 ### ¿Qué impedimentos tengo?
-- 
+- La carga académica y manejo de tiempo.
 ---
 
 ## Nicolas Cuellar Molina
