@@ -178,13 +178,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- No pude realizar avances el día de hoy.
 
 ### ¿Qué voy a hacer?
-- 
+- Intentar reponer el tiempo y trabajar en el login.
 
 ### ¿Qué impedimentos tengo?
-- 
+- Disponibilidad de tiempo debido a la carga académica.
 
 ---
 
