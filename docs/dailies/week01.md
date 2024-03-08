@@ -135,3 +135,66 @@
 ### ¿Qué impedimentos tengo?
 - Ninguno
 
+# Daily Report - Semana 1 - 07/03/2024
+
+## Davide Flamini Cazaran
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+---
+
+## Nicolas Cuellar Molina
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Andrés Felipe Cabezas Guerrero
+
+### ¿Qué hice?
+- Terminé de comprender y realizar un proyecto aparte siguiendo el tutorial de Tablas Dinamicas
+
+### ¿Qué voy a hacer?
+- Reponer el trabajo no realizado el dia de hoy y adelantar lo más posible
+
+### ¿Qué impedimentos tengo?
+- El manejo del tiempo
+
+---
+
+## Miguel Ángel Martínez Vidal
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Alejandro Torres Soto
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
