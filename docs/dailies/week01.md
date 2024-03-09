@@ -229,13 +229,13 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Hacer un esqueleto de la pagina de login
 
 ### ¿Qué voy a hacer?
--
+- Continuar trabajando en elementos faltantes para entrega del lunes
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
