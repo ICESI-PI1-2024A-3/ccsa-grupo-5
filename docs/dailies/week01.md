@@ -152,13 +152,13 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- Nada, estuve de cumpleaños
 
 ### ¿Qué voy a hacer?
-- 
+- Ver video de CRUD en Youtube
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -185,6 +185,70 @@
 
 ### ¿Qué impedimentos tengo?
 - Disponibilidad de tiempo debido a la carga académica.
+
+---
+
+## Alejandro Torres Soto
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+# Daily Report - Semana 1 - 08/03/2024
+
+## Davide Flamini Cazaran
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+---
+
+## Nicolas Cuellar Molina
+
+### ¿Qué hice?
+- Ver video de CRUD en Youtube
+
+### ¿Qué voy a hacer?
+- Terminar de arreglar los modelos
+
+### ¿Qué impedimentos tengo?
+- Falta de tiempo
+
+---
+
+## Andrés Felipe Cabezas Guerrero
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+-
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Miguel Ángel Martínez Vidal
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
 
 ---
 
