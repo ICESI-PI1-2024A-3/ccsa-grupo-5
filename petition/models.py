@@ -1,14 +1,16 @@
+from django.utils import timezone
 from django.db import models
 from login.models import User
 
 # Create your models here.
 
-class Petition(models.Model):
+class AbstractPetition(models.Model):
     states = [
     ('pendiente', 'Pendiente'),
     ('aprobado', 'Aprobado'),
     ('en_proceso', 'En Proceso'),
     ('rechazado', 'Rechazado'),]
+    petitionDate = models.DateField(default=timezone.now)
     startDate = models.DateField()
     endDate = models.DateField()
     state = models.CharField(max_length = 20, choices = states)
@@ -18,15 +20,17 @@ class Petition(models.Model):
     email = models.EmailField()
     phoneNumber = models.CharField(max_length = 15)
     user = models.ForeignKey(User, related_name='petitionUser', on_delete=models.CASCADE)
+    class Meta:
+        abstract = True
     
+class Petition(AbstractPetition):
+    pass
         
 class Observation(models.Model):
     description = models.TextField()
     date = models.DateField()
     time = models.TimeField()
     author = models.CharField(max_length = 50)
-    
-    
     
     petition = models.ForeignKey(Petition, related_name='observations', on_delete=models.CASCADE)
     

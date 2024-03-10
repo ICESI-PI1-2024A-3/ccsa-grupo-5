@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/loginStyles.css' %}">
+</head>
+
+<body>
+
+    {{ form.errors }}
+
+    <form action="/signup" method="POST">
+        {% csrf_token %}
+        <div>
+            <img style="width: 340px; height: 107.58px" src="{% static 'images/icesiLogo.png' %}">
+        </div>
+        <div style="margin-top: 15px">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+            
+            {{ form.password1.label_tag }}
+            {{ form.password1 }}
+            <button type="button" onclick="togglePasswordVisibility('password1')" id="toggleVisibility1">&#9678;</button>
+
+            {{ form.password2.label_tag }}
+            {{ form.password2 }}
+            <button type="button" onclick="togglePasswordVisibility('password2')" id="toggleVisibility2">&#9678;</button>
+
+            {{ form.cedula.label_tag }}
+            {{ form.cedula }}
+            
+            {{ form.email.label_tag }}
+            {{ form.email }}
+
+            {{ form.userType.label_tag }}
+            {{ form.userType }}
+
+            {{ form.first_name.label_tag }}
+            {{ form.first_name }}
+
+            {{ form.last_name.label_tag }}
+            {{ form.last_name }}
+
+            <button type="submit">Ingresar</button>
+        </div>
+    </form>
+
+    <script>
+        function togglePasswordVisibility(fieldId) {
+            var passwordField = document.getElementById(fieldId);
+            var visibilityButton = document.getElementById("toggleVisibility" + fieldId);
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                visibilityButton.innerHTML = "&#9673;";
+            } else {
+                passwordField.type = "password";
+                visibilityButton.innerHTML = "&#9678;";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

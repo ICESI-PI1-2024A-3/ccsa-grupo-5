@@ -1,18 +1,12 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
-# Create your models here.
+from django.contrib.auth.models import AbstractUser, Group, Permission
 
 class User(AbstractUser):
-    UserTypeChoices = [
-        ('admin', 'Admin'),
-        ('processLeader', 'Líder de Procesos'),
-        ('processManager', 'Gestor de Procesos'),
-    ]
-
-    userType = models.CharField(max_length=20, choices=UserTypeChoices, default='processManager')
+    cedula = models.CharField(max_length=15, blank=True, null=True, unique=True)
     
-    groups = models.ManyToManyField('auth.Group', related_name='auth_users')
-    user_permissions = models.ManyToManyField('auth.Permission', related_name='auth_users')
 
     def __str__(self):
-        return f'{self.username} ({self.userType})'
+        return f'{self.first_name} {self.last_name}'
+    
+    groups = models.ManyToManyField(Group, related_name='groups')
+    user_permissions = models.ManyToManyField(Permission, related_name='user_permissions')
