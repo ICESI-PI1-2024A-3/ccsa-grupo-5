@@ -295,13 +295,14 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Corregir pantalla de signup, corregir figma y empezar a trabajar en las
+solicitudes de contratación
 
 ### ¿Qué voy a hacer?
-- 
+- Continuar con la pantalla de creación de solicitudes de contratación
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
