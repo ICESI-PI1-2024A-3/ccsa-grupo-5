@@ -242,13 +242,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Ver videos tutoriales sobre Django
 
 ### ¿Qué voy a hacer?
-- 
+- Aplicar lo aprendido
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -309,13 +309,13 @@ solicitudes de contratación
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Ayudar en el html del signup, trabajé el liveshare de visualstudio junto a mis compañeros
 
 ### ¿Qué voy a hacer?
-- 
+- Corregir errores del html
 
 ### ¿Qué impedimentos tengo?
-- 
+- Mejorar mis habilidades al trabajar con html, css y Django
 
 ---
 
