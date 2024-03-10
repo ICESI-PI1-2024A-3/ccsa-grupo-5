@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from .forms import CreateNewPetition
+from .forms import CreateNewMonitoringPetition, CreateNewOtherPetition
 
 # Create your views here.
 def index(request):
@@ -8,16 +8,23 @@ def index(request):
 
 def selectTypePetition(request):
     return render(request, 'selectTypePetition.html')
-
-def otro(request):
-    return render(request, 'otro.html')
         
-def createMoniroring(request):
+def createMonitoring(request):
     if request.method == 'POST':
-        form = CreateNewPetition(request.POST)
+        form = CreateNewMonitoringPetition(request.POST)
         if form.is_valid():
             form.save()
             return redirect('index')
     else:
-        form = CreateNewPetition()
+        form = CreateNewMonitoringPetition()
     return render(request, 'createMonitoring.html', {'form': form})
+
+def createOther(request):
+    if request.method == 'POST':
+        form = CreateNewOtherPetition(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = CreateNewOtherPetition()
+    return render(request, 'createOther.html', {'form': form})
