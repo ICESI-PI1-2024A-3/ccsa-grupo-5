@@ -282,13 +282,13 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- Corregir las pantallas del Figma, estuvimos trabajando en liveShare de visualStudio para poder cuadrar bien el trabajo.
 
 ### ¿Qué voy a hacer?
-- 
+- Crear la pagina para crear una solicitud
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
