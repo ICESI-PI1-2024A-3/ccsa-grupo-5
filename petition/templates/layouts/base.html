@@ -6,7 +6,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+    {% block head %}
+    {% endblock %}
 </head>
 
 <body>
@@ -14,13 +16,13 @@
     <nav class="navbar container">
         <ul>
             <li>
-                <a href="">Home</a>
+                <a href="{% url 'index' %}">Home</a>
             </li>
             <li>
-                <a href="">Solicitudes</a>
+                <a href="{% url 'selectTypePetition' %}">Solicitudes</a>
             </li>
             <li><a href="">Asignar</a></li>
-            <li><a href="">Crear usuario</a></li>
+            <li><a href="{% url 'signup' %}">Crear usuario</a></li>
         </ul>
     </nav>
 

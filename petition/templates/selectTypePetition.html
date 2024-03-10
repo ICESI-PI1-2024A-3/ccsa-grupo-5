@@ -1,0 +1,20 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h1>Selecciona el tipo de Solicitud</h1>
+
+<div style="display: inline;">
+    <div>
+        <a href="{% url 'createMonitoring' %}"><button>Monitoria</button></a>
+
+    </div>
+    <div>
+        <a href="{% url 'createOtro' %}"><button>Otro</button></a>
+        <h4>Prestación de Servicios ó Practicantes</h4>
+    </div>
+</div>
+
+{% endblock %}
