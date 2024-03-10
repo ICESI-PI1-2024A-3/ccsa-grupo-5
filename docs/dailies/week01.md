@@ -204,13 +204,13 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- Ayudar en el esqueleto de la pagina a Andres Cabezas.
 
 ### ¿Qué voy a hacer?
-- 
+- Trabajar en el login para mejorarlo.
 
 ### ¿Qué impedimentos tengo?
-- 
+- Debo mejorar mis habilidades en Django ya que no tengo fluidez.
 ---
 
 ## Nicolas Cuellar Molina
