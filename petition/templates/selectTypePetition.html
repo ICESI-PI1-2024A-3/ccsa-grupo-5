@@ -2,6 +2,8 @@
 
 {% load static %}
 
+<link rel="stylesheet" href="{% static 'styles/petitionsStyle.css' %}">
+
 {% block content %}
 
 <h1>Selecciona el tipo de Solicitud</h1>
@@ -12,7 +14,7 @@
 
     </div>
     <div>
-        <a href="{% url 'createOther' %}"><button>Other</button></a>
+        <a href="{% url 'createOther' %}"><button>Otro tipo</button></a>
         <h4>Prestación de Servicios ó Practicantes</h4>
     </div>
 </div>

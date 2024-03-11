@@ -8,7 +8,7 @@ urlpatterns = [
     path('createMonitoring', views.createMonitoring, name="createMonitoring"),
     path('selectTypePetition', views.selectTypePetition, name="selectTypePetition"),
     path('createOther', views.createOther, name="createOther"),
-    path('petitions', views.petitions, name="petitions"),
+    path('viewPetition', views.viewPetition, name="viewPetition"),
     path('editPetition/<int:solicitudId>/', views.editPetition, name="editPetition")
 ]
 
