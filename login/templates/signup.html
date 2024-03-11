@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'styles/loginStyles.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
@@ -22,12 +23,14 @@
             {{ form.username }}
             
             {{ form.password1.label_tag }}
-            {{ form.password1 }}
-            <button type="button" onclick="togglePasswordVisibility('password1')" id="toggleVisibility1">&#9678;</button>
+            <div class="password-input">
+                {{ form.password1 }}
+                <i class='bx bx-show-alt' id="togglePassword"></i>
+            </div>
+            
 
             {{ form.password2.label_tag }}
             {{ form.password2 }}
-            <button type="button" onclick="togglePasswordVisibility('password2')" id="toggleVisibility2">&#9678;</button>
 
             {{ form.cedula.label_tag }}
             {{ form.cedula }}
@@ -47,22 +50,8 @@
             <button type="submit">Ingresar</button>
         </div>
     </form>
-
-    <script>
-        function togglePasswordVisibility(fieldId) {
-            var passwordField = document.getElementById(fieldId);
-            var visibilityButton = document.getElementById("toggleVisibility" + fieldId);
-
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                visibilityButton.innerHTML = "&#9673;";
-            } else {
-                passwordField.type = "password";
-                visibilityButton.innerHTML = "&#9678;";
-            }
-        }
-    </script>
-
+    
+    <script src="{% static 'scripts/signup.js' %}"></script>
+    
 </body>
-
 </html>
