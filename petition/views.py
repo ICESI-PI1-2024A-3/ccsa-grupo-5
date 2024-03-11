@@ -36,11 +36,11 @@ def createOther(request):
         form = CreateNewOtherPetition()
     return render(request, 'createOther.html', {'form': form})
 
-def petitions(request):
+def viewPetition(request):
     monitorings = Monitoring.objects.all()
     others = Other.objects.all()
     petitions = list(chain(monitorings, others))
-    return render(request, 'petitions.html', {
+    return render(request, 'viewPetition.html', {
         'petitions': petitions
     })
     
