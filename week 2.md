@@ -3,15 +3,15 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- Trabajar en el agregar imagen del formualrio y ayudar a arreglar algunas vistas.
 
 
 ### ¿Qué voy a hacer?
-- 
+- Acomodar la vista del login y el manejo de errores.
 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Por ahora ninguno.
 
 ---
 
