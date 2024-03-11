@@ -46,3 +46,7 @@ main {
     padding: 16px;
     flex-grow: 1;
 }
+
+title {
+    display: none;
+}

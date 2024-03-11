@@ -11,5 +11,3 @@ class CreateNewOtherPetition(forms.ModelForm):
     class Meta:
         model = Other
         fields = '__all__'
-
-       

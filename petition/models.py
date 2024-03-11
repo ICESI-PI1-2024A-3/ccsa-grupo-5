@@ -49,10 +49,22 @@ class Monitoring(Petition):
     hoursPerWeek = models.PositiveIntegerField()
     totalPaymentAmount = models.DecimalField(max_digits = 10, decimal_places = 2)
     isOneTimePayment = models.BooleanField(default = False)
+    def yesOrNoCenco(self):
+        if self.hasMoneyInCenco:
+            return "Si"
+        else:
+            return "No"
+    def yesOrNoPayment(self):
+        if self.isOneTimePayment:
+            return "Si"
+        else:
+            return "No"
+    
+    def getPetitionType(self):
+        return "Monitoria"
     
     def __str__(self):
         return f"Full Name: {self.fullName}\nStudent Code: {self.studentCode}\nIdentity Document: {self.identityDocument}\nEmail Address: {self.email}\nPhone Number: {self.phoneNumber}\nDAVI Plata: {self.daviPlata}\nProject or Course: {self.projectOrCourse}\nMonitoring Description: {self.monitoringDescription}\nStart Date: {self.startDate}\nEnd Date: {self.endDate}\nHours Per Week: {self.hoursPerWeek}\nTotal Payment Amount: {self.totalPaymentAmount}\nMonitoring Type: {self.monitoringType}\nCenco: {self.cenco}\nHas Money in Cenco: {self.hasMoneyInCenco}\nCenco Responsible: {self.cencoResponsible}\nIs One-Time Payment: {self.isOneTimePayment}"
-    
     
 class Other(Petition):
     petitionType = [('serviceProvision', 'ServiceProvision'), ('practicing', 'Practicing')]
@@ -72,7 +84,14 @@ class Other(Petition):
     arl = models.CharField(max_length=255)
     contractValue = models.DecimalField(max_digits=10, decimal_places=2)
     paymentInfo = models.TextField()
-    rutAttachment = models.FileField(upload_to="rut_attachments/")
+    rutAttachment = models.FileField(upload_to="data/")
+    
+    def getPetitionType(self):
+        if self.personType == 'serviceProvision':
+            return "Prestación de Servicios"
+        else:
+            return "Practicante"
     
     def __str__(self):
         return f"Requester Name: {self.requesterName}\nRequester Faculty: {self.requesterFaculty}\nContractor Full Name: {self.fullName}\nContractor Identity Number: {self.identityDocument}\nContractor Phone Number: {self.phoneNumber}\nContractor Email: {self.email}\nCENCO: {self.cenco}\nMotive: {self.motive}\nStart Date: {self.startDate}\nEnd Date: {self.endDate}\nBank Entity: {self.bankEntity}\nBank Account Type: {self.bankAccountType}\nBank Account Number: {self.bankAccountNumber}\nEPS: {self.eps}\nPension Fund: {self.pensionFund}\nARL: {self.arl}\nRUT Attachment: {self.rutAttachment}\nContract Value: {self.contractValue}\nPayment Info: {self.paymentInfo}"
+    
