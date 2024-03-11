@@ -1,10 +1,12 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Obtén el nombre de la página actual
-    var currentPage = window.location.pathname.split("/").pop();
+document.addEventListener("DOMContentLoaded", function () {
+  var links = document.querySelectorAll(".nav-link");
 
-    // Asigna la clase 'active' al elemento de navegación correspondiente
-    var navElement = document.getElementById("nav-" + currentPage);
-    if (navElement) {
-        navElement.classList.add("active");
-    }
+  links.forEach(function (link) {
+    link.addEventListener("click", function () {
+      links.forEach(function (otherLink) {
+        otherLink.classList.remove("active");
+      });
+      this.classList.add("active");
+    });
+  });
 });

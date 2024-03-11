@@ -55,3 +55,9 @@ main {
     padding: 16px;
     flex-grow: 1;
 }
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link.active {
+    color: blue; /* Cambia este color por el que desees para el enlace activo */
+}
