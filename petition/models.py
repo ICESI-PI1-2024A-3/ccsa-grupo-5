@@ -72,7 +72,7 @@ class Other(Petition):
     arl = models.CharField(max_length=255)
     contractValue = models.DecimalField(max_digits=10, decimal_places=2)
     paymentInfo = models.TextField()
-    rutAttachment = models.FileField(upload_to="rut_attachments/")
+    rutAttachment = models.FileField(upload_to="rut/")
     
     def __str__(self):
         return f"Requester Name: {self.requesterName}\nRequester Faculty: {self.requesterFaculty}\nContractor Full Name: {self.fullName}\nContractor Identity Number: {self.identityDocument}\nContractor Phone Number: {self.phoneNumber}\nContractor Email: {self.email}\nCENCO: {self.cenco}\nMotive: {self.motive}\nStart Date: {self.startDate}\nEnd Date: {self.endDate}\nBank Entity: {self.bankEntity}\nBank Account Type: {self.bankAccountType}\nBank Account Number: {self.bankAccountNumber}\nEPS: {self.eps}\nPension Fund: {self.pensionFund}\nARL: {self.arl}\nRUT Attachment: {self.rutAttachment}\nContract Value: {self.contractValue}\nPayment Info: {self.paymentInfo}"

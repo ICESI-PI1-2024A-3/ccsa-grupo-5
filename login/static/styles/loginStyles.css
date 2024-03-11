@@ -14,10 +14,6 @@ body {
     background-color: #f4f4f4;
 }
 
-.container {
-    display: flex;
-    align-items: center;
-}
 
 form {
     background-color: #fff;

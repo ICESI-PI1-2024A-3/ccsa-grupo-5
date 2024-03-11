@@ -1,16 +1,10 @@
+{% extends 'layouts/base.html' %}
+
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'styles/loginStyles.css' %}">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
+ {% block content %}
 
-<body>
-
+ <link rel="stylesheet" href="{% static 'styles/loginStyles.css' %}">
     {{ form.errors }}
 
     <form action="/signup" method="POST">
@@ -45,11 +39,5 @@
             <button type="submit">Registrarse</button>
         </div>
     </form>
-    
     <script src="{% static 'scripts/signup.js' %}"></script>
-    
-</body>
-
-
-
-</html>
+ {% endblock  %}

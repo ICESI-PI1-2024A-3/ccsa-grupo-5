@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: Arial;
 }
 
 nav img {
@@ -37,10 +37,6 @@ nav a {
     transition: 0.3s;
 }
 
-nav a:hover {
-    color: #f1f1f1;
-}
-
 main {
     margin-left: 250px;
     padding: 16px;
@@ -50,5 +46,5 @@ main {
 .nav-link:hover,
 .nav-link:focus,
 .nav-link.active {
-    color: blue; /* Cambia este color por el que desees para el enlace activo */
+    color: #2000fb; /* Cambia este color por el que desees para el enlace activo */
 }
