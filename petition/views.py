@@ -30,7 +30,7 @@ def createMonitoring(request):
 
 def createOther(request):
     if request.method == 'POST':
-        form = CreateNewOtherPetition(request.POST)
+        form = CreateNewOtherPetition(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('index')
