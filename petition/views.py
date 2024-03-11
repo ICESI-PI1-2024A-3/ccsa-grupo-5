@@ -18,7 +18,7 @@ def selectTypePetition(request):
 @transaction.atomic
 def createMonitoring(request):
     if request.method == 'POST':
-        form = CreateNewMonitoringPetition(request.POST)
+        form = CreateNewMonitoringPetition(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('index')

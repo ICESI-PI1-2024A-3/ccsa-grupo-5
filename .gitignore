@@ -3,9 +3,6 @@
 *.pyo
 *.pyd
 
-# Ignorar archivos de configuración local
-settings.py
-
 # Ignorar archivos de migraciones de la base de datos
 /migrations/
 
