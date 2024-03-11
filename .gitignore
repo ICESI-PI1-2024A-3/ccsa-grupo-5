@@ -20,3 +20,6 @@ env/
 
 # Ignorar archivos de caché de prueba y compilación
 /__pycache__/
+
+#Ignorar la base de datos
+*.sqlite3
