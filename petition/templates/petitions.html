@@ -1,0 +1,31 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<title>Solicitudes</title>
+
+<link rel="stylesheet" href="{% static 'styles/petitions.css' %}">
+
+
+<h1>Solicitudes</h1>
+<div>
+    {% for petition in petitions %}
+    <div class="card">
+        <a href="{% url 'editPetition' petition.id %}">
+            <h4>{{ petition.petitionDate }} - {{ petition.fullName }}</h4>
+        </a>
+        <p>Tipo de contrato: {{ petition.getPetitionType }}</p>
+        <p>Cedula: {{ petition.identityDocument }}</p>
+        <p>Fecha inicio: {{ petition.startDate }}</p>
+        <p>Fecha fin: {{ petition.endDate }}</p>
+    </div>
+    {% endfor %}
+
+
+
+</div>
+
+
+{% endblock %}

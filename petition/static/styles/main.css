@@ -48,3 +48,7 @@ main {
 .nav-link.active {
     color: #2000fb; /* Cambia este color por el que desees para el enlace activo */
 }
+
+title {
+    display: none;
+}

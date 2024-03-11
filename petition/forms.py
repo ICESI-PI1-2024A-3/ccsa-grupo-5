@@ -24,5 +24,4 @@ class CreateNewOtherPetition(forms.ModelForm):
         archivo = self.cleaned_data.get('archivo')
         # Aquí puedes realizar validaciones adicionales si es necesario
         return archivo
-
-       
+        
