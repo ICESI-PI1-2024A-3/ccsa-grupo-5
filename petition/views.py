@@ -1,9 +1,11 @@
 from itertools import chain
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from .forms import CreateNewMonitoringPetition, CreateNewOtherPetition
 from django.db import transaction
 from .models import *
+from django.views.decorators.http import require_http_methods
+
 
 
 
@@ -45,22 +47,32 @@ def viewPetition(request):
     })
     
 
-def editPetition(request, solicitudId):
-    solicitud = None
+def editPetition(request, petitionId):
+    petition = None
     
     # Intenta obtener la solicitud como Other
     try:
-        solicitud = Other.objects.get(pk=solicitudId)
-        return render(request, 'editPetitionO.html', {'solicitud': solicitud})
+        solicitud = Other.objects.get(pk=petitionId)
+        return render(request, 'editPetitionO.html', {'solicitud': petition})
     except Other.DoesNotExist:
         pass
     
     # Si no es una solicitud de Other, intenta obtenerla como Monitoring
     try:
-        solicitud = Monitoring.objects.get(pk=solicitudId)
-        return render(request, 'editPetitionM.html', {'solicitud': solicitud})
+        solicitud = Monitoring.objects.get(pk=petitionId)
+        return render(request, 'editPetitionM.html', {'solicitud': petition})
     except Monitoring.DoesNotExist:
         pass
     
     # Si no se encuentra la solicitud, renderiza una plantilla de error o maneja el caso según sea necesario
     return render(request, 'error.html', {'mensaje': 'La solicitud no se encuentra'})
+
+
+def deletePetition(request, petitionId):
+    petition = get_object_or_404(Petition, pk=petitionId)
+    
+    if request.method == 'POST':
+        petition.delete()
+        return redirect('viewPetition')
+        
+    
