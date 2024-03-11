@@ -84,7 +84,7 @@ class Other(Petition):
     arl = models.CharField(max_length=255)
     contractValue = models.DecimalField(max_digits=10, decimal_places=2)
     paymentInfo = models.TextField()
-    rutAttachment = models.FileField(upload_to="/rut/")
+    rutAttachment = models.FileField(upload_to="rut/")
     
     def getPetitionType(self):
         if self.personType == 'serviceProvision':
