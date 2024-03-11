@@ -5,7 +5,6 @@
 
 
 body {
-
     margin: 0;
     padding: 0;
     display: flex;
@@ -13,6 +12,11 @@ body {
     justify-content: center;
     height: 100vh;
     background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    align-items: center;
 }
 
 form {
@@ -25,10 +29,14 @@ form {
 }
 
 input {
-    width: 100%;
+    width: calc(100% - 30px);
     padding: 10px;
     margin-bottom: 10px;
     box-sizing: border-box;
+}
+
+.password-input {
+    position: relative;
 }
 
 button {
@@ -41,4 +49,14 @@ button {
     cursor: pointer;
     margin-top: 15px;
     margin-bottom: 15px;
+}
+
+.bx {
+    font-size: 28px;
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    right: -6px; 
+    cursor: pointer;
 }
