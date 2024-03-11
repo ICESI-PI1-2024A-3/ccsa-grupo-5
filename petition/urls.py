@@ -11,7 +11,5 @@ urlpatterns = [
     path('viewPetition', views.viewPetition, name="viewPetition"),
     path('editPetition/<int:petitionId>/', views.editPetition, name="editPetition"),
     path('deletePetition/<int:petitionId>', views.deletePetition, name="deletePetition")
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
