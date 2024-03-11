@@ -37,19 +37,6 @@ nav a {
     transition: 0.3s;
 }
 
-nav a:hover {
-    color: #2000fb;
-}
-
-.nav a.selected {
-    color: #2000fb;
-}
-
-.navbar ul li a.active {
-    background-color: blue; /* Color de fondo cuando la opción está seleccionada */
-    color: white; /* Color de texto cuando la opción está seleccionada */
-}
-
 main {
     margin-left: 250px;
     padding: 16px;
@@ -59,5 +46,5 @@ main {
 .nav-link:hover,
 .nav-link:focus,
 .nav-link.active {
-    color: blue; /* Cambia este color por el que desees para el enlace activo */
+    color: #2000fb; /* Cambia este color por el que desees para el enlace activo */
 }
