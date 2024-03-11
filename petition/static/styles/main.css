@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: Arial;
 }
 
 nav img {
@@ -38,7 +38,16 @@ nav a {
 }
 
 nav a:hover {
-    color: #f1f1f1;
+    color: #2000fb;
+}
+
+.nav a.selected {
+    color: #2000fb;
+}
+
+.navbar ul li a.active {
+    background-color: blue; /* Color de fondo cuando la opción está seleccionada */
+    color: white; /* Color de texto cuando la opción está seleccionada */
 }
 
 main {
