@@ -33,14 +33,14 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Implementar el eliminar de una solicitud
 
 
 ### ¿Qué voy a hacer?
-- 
+- Mejorar el diseño de algunas paginas
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
