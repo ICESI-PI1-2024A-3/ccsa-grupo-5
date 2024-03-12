@@ -18,14 +18,14 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- Implementar el editar de una solicitud, donde solo se puede cambiar el estado a Rechazado
 
 
 ### ¿Qué voy a hacer?
-- 
+- Mejorar el diseño de algunas paginas
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 
 ---
