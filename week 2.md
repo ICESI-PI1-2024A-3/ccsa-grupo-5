@@ -60,9 +60,9 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Terminar la Subdivisión de tareas de la HU1 en jira
 ### ¿Qué voy a hacer?
--
+- Empezar a implementar el bosquejo de metodos investigado
 ### ¿Qué impedimentos tengo?
--
+- Ninguno
 ---

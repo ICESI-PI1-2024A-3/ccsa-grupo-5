@@ -191,13 +191,13 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Continuar con la resolucion de dudas sobre Django
 
 ### ¿Qué voy a hacer?
-- 
+- Terminar con la resolucion de dudas sobre Django
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 # Daily Report - Semana 1 - 08/03/2024
 
@@ -255,13 +255,13 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Terminar con la resolucion de dudas sobre Django
 
 ### ¿Qué voy a hacer?
-- 
+- Investigar sobre modelos y primitivas que se puedan aplicar a la solucion del problema
 
 ### ¿Qué impedimentos tengo?
-- 
+- No se donde buscar la informacion adecuada
 
 
 # Daily Report - Semana 1 - 09/03/2024
@@ -322,10 +322,10 @@ solicitudes de contratación
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Investigar sobre modelos y primitivas que se puedan aplicar a la solucion del problema
 
 ### ¿Qué voy a hacer?
-- 
+- Empezar a dividir mi historia de usuario asignada en subtareas
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
