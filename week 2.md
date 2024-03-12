@@ -47,13 +47,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Mejorar el diseño del login.
 
 ### ¿Qué voy a hacer?
-- 
+- Empezar a trabajar en el asignar un usuario a una solicitud.
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
