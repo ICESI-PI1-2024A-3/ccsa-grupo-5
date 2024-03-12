@@ -31,11 +31,12 @@
             <div class="password-input">
                 <label for="{{ form.password1.id_for_label }}">Contraseña:</label>
                 {{ form.password1 }}
-                <i class='bx bx-show-alt'></i>
+                <i class='bx bx-show-alt' id="togglePassword"></i>
             </div>
             
             <label for="{{ form.password2.id_for_label }}">Confirmar contraseña:</label>
             {{ form.password2 }}
+
 
             <button type="submit">Registrarse</button>
         </div>
