@@ -130,3 +130,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Model App 
 AUTH_USER_MODEL = 'login.User'
+
+FAVICON = os.path.join(BASE_DIR, 'favicon.ico')

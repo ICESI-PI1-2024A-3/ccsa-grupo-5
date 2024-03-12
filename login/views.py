@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 import login
 from .forms import UserForm
+from django.contrib import messages
 
 
 # Create your views here.
@@ -18,7 +19,9 @@ def login(request):
         if form.is_valid():
             user = form.get_user()
             auth_login(request, user)
-            return HttpResponse("Inicio de sesión exitoso")
+            return redirect('index') 
+        else:
+            messages.error(request, 'Acceso inválido. Por favor, inténtelo otra vez.')
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
