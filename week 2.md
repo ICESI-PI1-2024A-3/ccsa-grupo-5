@@ -116,13 +116,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Resolver unos conflictos que tuve en mi repositorio local por las migraciones
 
 ### ¿Qué voy a hacer?
-- 
+- Aprender sobre bootstrap para poder hacer y mejorar el estilo del proyecto y empezar a trabajar en la funcionalidad de asignar usuario a una solicitud 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -186,13 +186,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- No pude realizar avances debido a la carga académica
 
 ### ¿Qué voy a hacer?
-- 
+- Lo mencionado en el anterior daily
 
 ### ¿Qué impedimentos tengo?
-- 
+- Desconocimiento sobre el manejo de bootstrap
 
 ---
 
