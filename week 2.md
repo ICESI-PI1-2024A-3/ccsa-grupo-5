@@ -3,7 +3,7 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- Trabajar en el agregar imagen del formualrio y ayudar a arreglar algunas vistas.
+- Trabajar en el agregar imagen del formualario y ayudar a arreglar algunas vistas.
 
 
 ### ¿Qué voy a hacer?
@@ -72,15 +72,15 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- Estudiar css para saber como mejorar la interfaz del modulo.
 
 
 ### ¿Qué voy a hacer?
-- 
+- Mejorar la interfaz del login junto al manejo de errores.
 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Falencias en css.
 
 ---
 
@@ -142,15 +142,15 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- Este dia no pude trabajar, debido a la carga de la universidad.
 
 
 ### ¿Qué voy a hacer?
-- 
+- Mejorar la interfaz del login
 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Por ahora el manejo de tiempo.
 
 ---
 
