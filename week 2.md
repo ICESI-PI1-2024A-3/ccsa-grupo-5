@@ -102,14 +102,14 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Por carga academica no tuve tiempo de realizar nada
 
 
 ### ¿Qué voy a hacer?
-- 
+- Ver videos sobre bootstrap 5 para mejorar el estilo visual del proyecto
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -172,14 +172,14 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Comencé con videos básicos sobre el manjeo de bootstrap 5 e ideas para implementar y mejorar el codigo existente
 
 
 ### ¿Qué voy a hacer?
-- 
+- Intentar empezar a implementar lo aprendido en el diseño
 
 ### ¿Qué impedimentos tengo?
-- 
+- Manejo del tiempo y carga academica 
 
 ---
 
