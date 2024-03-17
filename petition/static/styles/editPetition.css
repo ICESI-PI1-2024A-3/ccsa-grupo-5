@@ -1,0 +1,11 @@
+button {
+    max-width: 50%;
+    min-width: max-content;
+    width: 50%;
+    padding: 10px;
+    background-color: #2000fb;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

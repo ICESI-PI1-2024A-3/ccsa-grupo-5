@@ -4,25 +4,14 @@
 }
 
 body {
+
     margin: 0;
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
     background-color: #f4f4f4;
-    min-height: 100vh;
-}
-
-form {
-    width: 100%;
-    margin: auto;
-}
-
-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
 }
 
 button {
@@ -38,14 +27,22 @@ button {
 title {
     display: none;
 }
-.container {
-    max-width: 400px; 
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+.buttons {
+    height: 100% ;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    text-decoration: none;
 }
 
-h1 {
+.divButton {
+    width: 20%;
+    min-width: max-content;
+    text-align: center;
+
+}
+
+h4{
     text-align: center;
 }
