@@ -212,15 +212,15 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- Diseñar como mejorar el login y registrar los roles.
 
 
 ### ¿Qué voy a hacer?
-- 
+- Mejorar el login
 
 
 ### ¿Qué impedimentos tengo?
-- 
+- El manejo de tiempo, debido a los parciales de la univdersidad.
 
 ---
 
@@ -282,15 +282,15 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- Implementar los roles junto a Torres en el login.
 
 
 ### ¿Qué voy a hacer?
-- 
+- Empezar el tablero de visualización.
 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Mejorar el manejo de Django.
 
 ---
 
