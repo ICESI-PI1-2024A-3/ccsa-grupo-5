@@ -53,19 +53,22 @@ def showPetition(request, petitionId):
     # Intenta obtener la solicitud como Other
     try:
         solicitud = Other.objects.get(pk=petitionId)
-        return render(request, 'viewPetitionO.html', {'solicitud': solicitud})
+        observations = Observation.objects.filter(petition=solicitud)
+        return render(request, 'viewPetitionO.html', {'solicitud': solicitud, 'observations': observations, 'petitionId': petitionId})
     except Other.DoesNotExist:
         pass
     
     # Si no es una solicitud de Other, intenta obtenerla como Monitoring
     try:
         solicitud = Monitoring.objects.get(pk=petitionId)
-        return render(request, 'viewPetitionM.html', {'solicitud': solicitud})
+        observations = Observation.objects.filter(petition=solicitud)
+        return render(request, 'viewPetitionM.html', {'solicitud': solicitud, 'observations': observations, 'petitionId': petitionId})
     except Monitoring.DoesNotExist:
         pass
     
     # Si no se encuentra la solicitud, renderiza una plantilla de error o maneja el caso según sea necesario
     return render(request, 'error.html', {'mensaje': 'La solicitud no se encuentra'})
+
 
 
 def deletePetition(request, petitionId):
@@ -87,3 +90,53 @@ def rejectPetition(request, petitionId):
         elif 'cancelar' in request.POST:  # Verifica si se hizo clic en el botón "Cancelar"
             return redirect('showPetition', petitionId=petitionId)  # Redirigir a la página de detalles de la solicitud
     return render(request, 'rejectPetition.html')
+
+def createObservation(request, petitionId):
+    if request.method == 'POST':
+        form = CreateNewObservation(request.POST)
+        if form.is_valid():
+            form.petition_id = petitionId 
+            form.save()
+            return redirect('index')
+    else:
+        form = CreateNewObservation()
+    return render(request, 'createObservation.html', {'form': form, 'petitionId': petitionId} )
+
+
+def deleteObservation(request, observationId):
+    petition = get_object_or_404(Observation, pk=observationId)
+    
+    if request.method == 'POST':
+        petition.delete()
+        return redirect('viewPetition')
+    
+def editObservation(request, petitionId, observationId):
+    # Obtener la observación a editar
+    observation = get_object_or_404(Observation, pk=observationId)
+    
+    if request.method == 'POST':
+        # Si el formulario se envió con datos, procesar los datos del formulario
+        form = CreateNewObservation(request.POST, instance=observation)
+        if form.is_valid():
+            # Obtener la instancia de la observación pero no guardarla todavía
+            observation = form.save(commit=False)
+            
+            # Asignar la ID de la petición a la observación
+            observation.petition_id = petitionId
+            
+            # Guardar la observación actualizada en la base de datos
+            observation.save()
+    
+            # Redirigir a la página de detalles de la solicitud
+            return redirect('showPetition', petitionId=petitionId)
+    else:
+        # Si es un método GET, renderizar el formulario de edición con los datos de la observación actual
+        form = CreateNewObservation(instance=observation)
+    
+    # Renderizar el formulario de edición
+    return render(request, 'editObservation.html', {'form': form})
+
+
+
+    
+

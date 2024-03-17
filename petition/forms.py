@@ -1,4 +1,4 @@
-from .models import Petition,Other,Monitoring 
+from .models import *
 from django import forms
 
 #class CreateNewPetition(forms.Form):
@@ -32,4 +32,21 @@ class CreateNewOtherPetition(forms.ModelForm):
         archivo = self.cleaned_data.get('archivo')
         # Aquí puedes realizar validaciones adicionales si es necesario
         return archivo
+    
+class CreateNewObservation(forms.ModelForm):
+    petition_id = None  # Atributo adicional para almacenar la ID de la petición
+
+    class Meta:
+        model = Observation
+        exclude = ['date', 'time', 'petition']
+
+    def save(self, commit=True):
+        observation = super(CreateNewObservation, self).save(commit=False)
+        observation.date = timezone.now().date()  # Establecer la fecha actual
+        observation.time = timezone.now().time()  # Establecer la hora actual
+        observation.petition_id = self.petition_id  # Asignar la ID de la petición
+        if commit:
+            observation.save()
+        return observation
+        
         

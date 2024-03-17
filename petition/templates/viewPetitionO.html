@@ -5,6 +5,7 @@
 {% block head %}
 <title>Detalles de solicitud</title>
 <link rel="stylesheet" href="{% static 'styles/editPetition.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 {% endblock %}
 
 
@@ -44,4 +45,49 @@
     <a href="{% url 'rejectPetition' solicitud.id %}"><button>Editar</button></a>
 {% endif %}
 
+    <p></p>
+    <a href="{% url 'createObservation' petitionId%}"><button>Crear Observaciones</button></a>
+    <p></p>
+
+    <button id="toggleObservationsBtn">Mostrar Observaciones</button>
+    <div class="divButton">
+        <!-- Contenedor de observaciones (inicialmente oculto) -->
+        <div id="observationsContainer" style="display: none;">
+            <div class="dropdown">
+                <div id="observationsDropdown" class="dropdown-content">
+                    {% for observation in observations %}
+                        <div class="card">
+                            <p>Descripción: {{ observation.description }}</p>
+                            <p>Fecha: {{ observation.date }}</p>
+                            <p>Hora: {{ observation.time }}</p>
+                            <p>Autor: {{ observation.author }}</p>
+                            <p></p>
+                        </div>
+                        <div class="buttons" >
+                            <div class="divButton">
+                                <form id="deleteForm{{ observation.id }}" action="{% url "deleteObservation" observation.id%}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="button" class="delete-icon" data-observation-id="{{ observation.id }}" onclick="confirmDelete({{ observation.id }})">
+                                        <i class="fas fa-trash-alt"></i> Eliminar
+                                    </button> 
+                                </form>
+                            </div>
+                        <div class="divButton">
+                            {% csrf_token %}
+                            <a href="{% url 'editObservation' petitionId observation.id %}" id="editForm{{ observation.id}}"><button type="button" class="edit-icon" onclick="editObservation( {{petition.id}} {{ observation.id }})">
+                                <i class="fas fa-edit"></i> Editar
+                            </button>
+                            </a>
+                        </div>
+                        </div>
+                
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script src="{% static 'scripts/deleteElement.js' %}"></script>
+<script src="{% static 'scripts/viewObservation.js' %}"></script>
 {% endblock %}
