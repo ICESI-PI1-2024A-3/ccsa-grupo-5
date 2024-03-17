@@ -227,14 +227,15 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- Corregir errores en la logica del boton cancelar de las solicitudes
+- Algunos cambios pequeños en los diseños
 
 
 ### ¿Qué voy a hacer?
-- 
+- Agregar mas informacion relevante a la vista general de las solicitudes
 
 ### ¿Qué impedimentos tengo?
-- 
+- El usuario no deberia ser obligatorio cuando se crea una solicitud
 
 
 ---
@@ -297,14 +298,16 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- Agrege más datos importantes a la vista de solicitudes
+- Ya se puede rechazar correctamente una solicitud
+- Ya se puede crear una solicitud sin haber seleccionado un asesor encargado
 
 
 ### ¿Qué voy a hacer?
-- 
+- Implementar el requerimiento de asignar un asesor a una solicitud, ambos creados previamente
 
 ### ¿Qué impedimentos tengo?
-- 
+- Se interfiere mucho con mi trabajo no tener los roles ya creados
 
 
 ---
