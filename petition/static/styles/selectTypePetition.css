@@ -37,10 +37,11 @@ title {
 }
 
 .divButton {
-    width: 20%;
-    min-width: max-content;
-    text-align: center;
-
+    height: 100% ;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    text-decoration: none;
 }
 
 h4{

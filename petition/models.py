@@ -38,7 +38,6 @@ class Observation(models.Model):
     date = models.DateField()
     time = models.TimeField()
     author = models.CharField(max_length = 50)
-    
     petition = models.ForeignKey(Petition, related_name='observations', on_delete=models.CASCADE)
     
 
