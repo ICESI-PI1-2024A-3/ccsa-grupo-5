@@ -1,38 +1,46 @@
 * {
-    display: block;
-    font-family: Arial;
-}
-
-
-body {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+body {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     height: 100vh;
     background-color: #f4f4f4;
 }
 
-
-form {
-    background-color: #fff;
+.container {
+    max-width: 400px;
+    width: 100%;
     padding: 20px;
+    background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: auto;
-    max-width: 400px;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 20px; 
+    width: 340px;
+    height: 107.58px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
 }
 
 input {
-    width: calc(100% - 30px);
+    width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 10px;
-    box-sizing: border-box;
-}
-
-.password-input {
-    position: relative;
 }
 
 button {
@@ -49,12 +57,24 @@ button {
     width: 30%;
 }
 
+.password-input {
+    position: relative;
+}
+
 .bx {
     font-size: 28px;
     position: absolute;
-    top: 50%;
-    right: 5px;
-    transform: translateY(-25%);
-    right: -6px;
+    top: 55%;
+    right: 24px; 
+    transform: translateY(-50%);
     cursor: pointer;
+}
+
+.error-message {
+    background-color: #ffdddd; /* Color de fondo del recuadro de error */
+    color: #000; /* Color del texto del mensaje de error (negro) */
+    padding: 10px; /* Espaciado interno del recuadro de error */
+    border-radius: 5px; /* Borde redondeado del recuadro de error */
+    margin-top: 10px; /* Espaciado superior del recuadro de error */
+    margin-bottom: 100px; /* Espaciado inferior del recuadro de error */
 }

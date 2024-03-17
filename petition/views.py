@@ -1,9 +1,11 @@
 from itertools import chain
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from .forms import *
 from django.db import transaction
 from .models import *
+from django.views.decorators.http import require_http_methods
+
 
 
 
@@ -28,7 +30,7 @@ def createMonitoring(request):
 
 def createOther(request):
     if request.method == 'POST':
-        form = CreateNewOtherPetition(request.POST)
+        form = CreateNewOtherPetition(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('index')
@@ -65,6 +67,15 @@ def showPetition(request, petitionId):
     # Si no se encuentra la solicitud, renderiza una plantilla de error o maneja el caso según sea necesario
     return render(request, 'error.html', {'mensaje': 'La solicitud no se encuentra'})
 
+
+def deletePetition(request, petitionId):
+    petition = get_object_or_404(Petition, pk=petitionId)
+    
+    if request.method == 'POST':
+        petition.delete()
+        return redirect('viewPetition')
+        
+    
 def rejectPetition(request, petitionId):
     
     petition = Petition.objects.get(pk=petitionId)

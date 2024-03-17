@@ -10,9 +10,7 @@ urlpatterns = [
     path('createOther', views.createOther, name="createOther"),
     path('viewPetition', views.viewPetition, name="viewPetition"),
     path('rejectPetition/<int:petitionId>/', views.rejectPetition, name="rejectPetition"),
-    path('showPetition/<int:petitionId>/', views.showPetition, name="showPetition")
-    
-]
+    path('showPetition/<int:petitionId>/', views.showPetition, name="showPetition"),
+    path('deletePetition/<int:petitionId>', views.deletePetition, name="deletePetition")
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

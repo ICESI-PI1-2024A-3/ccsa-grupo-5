@@ -7,8 +7,10 @@
 <title>Solicitudes</title>
 
 <link rel="stylesheet" href="{% static 'styles/viewPetition.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
 
+{% csrf_token %}
 <h1>Solicitudes</h1>
 <div>
     {% for petition in petitions %}
@@ -22,12 +24,16 @@
         <p>Fecha inicio: {{ petition.startDate }}</p>
         <p>Fecha fin: {{ petition.endDate }}</p>
         <p>Gestor encargado: <b>{{ petition.getUser }}</b></p>
+        <form id="deleteForm{{ petition.id }}" action="{% url "deletePetition" petition.id%}" method="POST">
+            {% csrf_token %}
+            <button type="button" class="delete-icon" data-petition-id="{{ petition.id }}" onclick="confirmDelete({{ petition.id }})">
+                <i class="fas fa-trash-alt"></i> Eliminar
+            </button> 
+        </form>
+        
     </div>
     {% endfor %}
 
-
-
 </div>
-
-
+<script src="{% static 'scripts/deletePetition.js' %}"></script>
 {% endblock %}
