@@ -38,12 +38,19 @@
 <p>Valor del Contrato: {{ solicitud.contractValue }}</p>
 <p>Información de Pago: {{ solicitud.paymentInfo }}</p>
 
-<div><p>Gestor encargado: <b>{{ solicitud.getUser }}</b></p></div>
+<div>
+    <p>Gestor encargado: <b>{{ solicitud.getUser }}</b></p>
+</div>
 <!-- Agrega más detalles específicos de Other si es necesario -->
-
-{% if solicitud.state != 'rechazado' and solicitud.state != 'aprobado' %}
+<div class="buttons">
+    {% if solicitud.state != 'rechazado' and solicitud.state != 'aprobado' %}
     <a href="{% url 'rejectPetition' solicitud.id %}"><button>Editar</button></a>
-{% endif %}
+    {% endif %}
+    <p></p>
+    {% if solicitud.getUser == 'Sin Asignar' %}
+    <a href="{% url 'assignPetition' solicitud.id %}"><button>Asignar</button></a>
+    {% endif %}
+</div>
 
     <p></p>
     <a href="{% url 'createObservation' petitionId%}"><button>Crear Observaciones</button></a>

@@ -15,5 +15,6 @@ urlpatterns = [
     path('createObservation/<int:petitionId>', views.createObservation , name="createObservation"),
     path('deleteObservation/<int:observationId>', views.deleteObservation, name="deleteObservation"),
     path('editObservation/<int:petitionId>/<int:observationId>', views.editObservation, name="editObservation"),
+    path('assignUserToPetition/<int:petitionId>', views.assignUserToPetition, name="assignPetition")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
