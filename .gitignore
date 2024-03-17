@@ -22,3 +22,4 @@ env/
 /__pycache__/
 
 #Ignorar la base de datos
+*.sqlite3
