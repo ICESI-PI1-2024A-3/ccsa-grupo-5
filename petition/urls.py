@@ -11,6 +11,7 @@ urlpatterns = [
     path('viewPetition', views.viewPetition, name="viewPetition"),
     path('rejectPetition/<int:petitionId>/', views.rejectPetition, name="rejectPetition"),
     path('showPetition/<int:petitionId>/', views.showPetition, name="showPetition"),
-    path('deletePetition/<int:petitionId>', views.deletePetition, name="deletePetition")
+    path('deletePetition/<int:petitionId>', views.deletePetition, name="deletePetition"),
+    path('assignUserToPetition/<int:petitionId>', views.assignUserToPetition, name="assignPetition")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

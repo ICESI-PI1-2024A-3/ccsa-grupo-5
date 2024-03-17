@@ -87,3 +87,20 @@ def rejectPetition(request, petitionId):
         elif 'cancelar' in request.POST:  # Verifica si se hizo clic en el botón "Cancelar"
             return redirect('showPetition', petitionId=petitionId)  # Redirigir a la página de detalles de la solicitud
     return render(request, 'rejectPetition.html')
+
+
+def assignUserToPetition(request, petitionId):
+    petition = Petition.objects.get(pk=petitionId)
+    if request.method == 'POST':
+        if 'assign' in request.POST:  # Verifica si se hizo clic en el botón "Rechazar"
+            user_id = request.POST['user']
+            user = User.objects.get(pk=user_id)
+            petition.user = user
+            petition.save()
+            return redirect('showPetition', petitionId=petitionId)  # Redirigir a la página de detalles de la solicitud
+        elif 'cancel' in request.POST:  # Verifica si se hizo clic en el botón "Cancelar"
+            return redirect('showPetition', petitionId=petitionId)  # Redirigir a la página de detalles de la solicitud
+        
+    else:
+        users = User.objects.all()  # Obtén todos los usuarios registrados
+        return render(request, 'assignUserToPetition.html', {'petition': petition, 'users': users})
