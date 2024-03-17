@@ -1,0 +1,41 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block head %}
+<title>Rechazar solicitud</title>
+<link rel="stylesheet" href="{% static 'styles/rejactPetition.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+
+<h1>Asignar Usuario a Solicitud</h1>
+<form method="POST">
+    {% csrf_token %}
+    <label for="user">Seleccionar gestor o lider de procesos que se encargará de administrar la solciitud:</label>
+    <select name="user" id="user">
+        {% for user in users %}
+        <option value="{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</option>
+        {% endfor %}
+    </select>
+    <p></p>
+    
+    <div>
+        <button type="submit" name="cancel" class="rejact">Cancelar</button>
+        <button type="submit" name="assign" class="cancel">Asignar usuario</button>
+        <div class="info-box">
+            <img  style="width: 150px; height: 150px" src="{% static 'images/warning.avif' %}" alt="Interrogación" class="right">
+            <ul>
+                <li><small>Solo se puede asignar un Usuario a una solicitud</small></li>
+                <li><small>El usuario asignado será el único encargado de completar la solicitud</small></li>
+            </ul>
+            
+        </div>
+    </div>
+
+
+</form>
+
+{% endblock %}
