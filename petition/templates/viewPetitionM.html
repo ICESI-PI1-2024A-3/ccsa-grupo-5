@@ -3,13 +3,13 @@
 {% load static %}
 
 {% block head %}
-<title>Crear solicitudddd</title>
+<title>Detalles de solicitud</title>
+<link rel="stylesheet" href="{% static 'styles/editPetition.css' %}">
 {% endblock %}
 
 
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'styles/editPetition.css' %}">
 
 <h1>Detalles de la Solicitud</h1>
 <h3>Tipo de contrato: {{ solicitud.getPetitionType }}</h3>
@@ -22,26 +22,9 @@
 <p>Documento de Identidad: {{ solicitud.identityDocument }}</p>
 <p>Correo Electrónico: {{ solicitud.email }}</p>
 <p>Número de Teléfono: {{ solicitud.phoneNumber }}</p>
-
-{% if solicitud.petitionType %}
-<!-- Detalles específicos de Other -->
-<p>Tipo de Solicitud: {{ solicitud.getPetitionType }}</p>
-<p>Nombre del Solicitante: {{ solicitud.requesterName }}</p>
-<p>Facultad del Solicitante: {{ solicitud.requesterFaculty }}</p>
-<p>Motivo: {{ solicitud.motive }}</p>
-<p>Entidad Bancaria: {{ solicitud.bankEntity }}</p>
-<p>Tipo de Cuenta Bancaria: {{ solicitud.bankAccountType }}</p>
-<p>Número de Cuenta Bancaria: {{ solicitud.bankAccountNumber }}</p>
-<p>EPS: {{ solicitud.eps }}</p>
-<p>Fondo de Pensiones: {{ solicitud.pensionFund }}</p>
-<p>ARL: {{ solicitud.arl }}</p>
-<p>Valor del Contrato: {{ solicitud.contractValue }}</p>
-<p>Información de Pago: {{ solicitud.paymentInfo }}</p>
-<!-- Agrega más detalles específicos de Other si es necesario -->
-{% elif solicitud.monitoringType %}
 <!-- Detalles específicos de Monitoring -->
 <p>Tipo de Monitoreo: {{ solicitud.monitoringType }}</p>
-<p>¿Hay Dinero en Cenco?: {{ solicitud.hasMoneyInCenco }}</p>
+<p>¿Hay Dinero en Cenco?: {{ solicitud.yesOrNoCenco }}</p>
 <p>Responsable del Cenco: {{ solicitud.cencoResponsible }}</p>
 <p>Código del Estudiante: {{ solicitud.studentCode }}</p>
 <p>DAVI Plata: {{ solicitud.daviPlata }}</p>
@@ -49,8 +32,13 @@
 <p>Descripción del Monitoreo: {{ solicitud.monitoringDescription }}</p>
 <p>Horas por Semana: {{ solicitud.hoursPerWeek }}</p>
 <p>Monto Total del Pago: {{ solicitud.totalPaymentAmount }}</p>
-<p>¿Es un Pago Único?: {{ solicitud.isOneTimePayment }}</p>
+<p>¿Es un Pago Único?: {{ solicitud.yesOrNoPayment }}</p>
+
+<div><p>Gestor encargadoo: <b>{{ solicitud.getUser }}</b></p></div>
 <!-- Agrega más detalles específicos de Monitoring si es necesario -->
+
+{% if solicitud.state != 'rechazado' and solicitud.state != 'aprobado' %}
+    <a href="{% url 'rejectPetition' solicitud.id %}"><button>Editar</button></a>
 {% endif %}
 
 {% endblock %}

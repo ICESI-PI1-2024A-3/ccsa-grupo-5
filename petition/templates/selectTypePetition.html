@@ -2,20 +2,22 @@
 
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'styles/petitionsStyle.css' %}">
-
 {% block content %}
+
+<title>Tipo de Solicitud</title>
+
+<link rel="stylesheet" href="{% static 'styles/selectTypePetition.css' %}">
 
 <h1>Selecciona el tipo de Solicitud</h1>
 
-<div style="display: inline;">
-    <div>
+<div class="buttons" >
+    <div class="divButton">
         <a href="{% url 'createMonitoring' %}"><button>Monitoria</button></a>
 
     </div>
-    <div>
+    <div class="divButton">
         <a href="{% url 'createOther' %}"><button>Otro tipo</button></a>
-        <h4>Prestación de Servicios ó Practicantes</h4>
+        <h4>Prestación de Servicios o Practicantes</h4>
     </div>
 </div>
 

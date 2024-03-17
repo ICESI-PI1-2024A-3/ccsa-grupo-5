@@ -1,0 +1,25 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block head %}
+<title>Rechazar solicitud</title>
+<link rel="stylesheet" href="{% static 'styles/rejactPetition.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+
+<div>
+    <h1>¿Estás seguro de rechazar la Solicitud?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button name="cancelar" class="cancel">Cancelar</button>
+        <button type="submit" name="rechazar" class="rejact">Rechazar</button>
+        
+    </form>
+
+</div>
+
+{% endblock %}

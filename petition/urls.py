@@ -9,7 +9,8 @@ urlpatterns = [
     path('selectTypePetition', views.selectTypePetition, name="selectTypePetition"),
     path('createOther', views.createOther, name="createOther"),
     path('viewPetition', views.viewPetition, name="viewPetition"),
-    path('editPetition/<int:petitionId>/', views.editPetition, name="editPetition"),
+    path('rejectPetition/<int:petitionId>/', views.rejectPetition, name="rejectPetition"),
+    path('showPetition/<int:petitionId>/', views.showPetition, name="showPetition"),
     path('deletePetition/<int:petitionId>', views.deletePetition, name="deletePetition")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
