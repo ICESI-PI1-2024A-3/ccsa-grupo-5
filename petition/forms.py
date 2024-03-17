@@ -7,6 +7,10 @@ class CreateNewMonitoringPetition(forms.ModelForm):
         model = Monitoring
         fields = '__all__'
         
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['user'].required = False
+        
 class EditState(forms.ModelForm):
     class Meta:
         model = Petition
@@ -16,6 +20,10 @@ class CreateNewOtherPetition(forms.ModelForm):
     class Meta:
         model = Other
         fields = '__all__'
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['user'].required = False
     
     
 

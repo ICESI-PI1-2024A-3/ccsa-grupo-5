@@ -37,7 +37,7 @@
 <div><p>Gestor encargadoo: <b>{{ solicitud.getUser }}</b></p></div>
 <!-- Agrega más detalles específicos de Monitoring si es necesario -->
 
-{% if solicitud.state != 'rechazado' %}
+{% if solicitud.state != 'rechazado' and solicitud.state != 'aprobado' %}
     <a href="{% url 'rejectPetition' solicitud.id %}"><button>Editar</button></a>
 {% endif %}
 
