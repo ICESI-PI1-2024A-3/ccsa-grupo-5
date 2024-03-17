@@ -13,13 +13,15 @@
 <div>
     {% for petition in petitions %}
     <div class="card">
-        <a href="{% url 'editPetition' petition.id %}">
+        <a href="{% url 'showPetition' petition.id %}">
             <h4>{{ petition.petitionDate }} - {{ petition.fullName }}</h4>
         </a>
         <p>Tipo de contrato: {{ petition.getPetitionType }}</p>
+        <p><b>Estado: {{ petition.state }}</b></p>
         <p>Cedula: {{ petition.identityDocument }}</p>
         <p>Fecha inicio: {{ petition.startDate }}</p>
         <p>Fecha fin: {{ petition.endDate }}</p>
+        <p>Gestor encargado: <b>{{ petition.getUser }}</b></p>
     </div>
     {% endfor %}
 

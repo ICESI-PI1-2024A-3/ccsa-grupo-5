@@ -7,6 +7,11 @@ class CreateNewMonitoringPetition(forms.ModelForm):
         model = Monitoring
         fields = '__all__'
         
+class EditState(forms.ModelForm):
+    class Meta:
+        model = Petition
+        fields = ['state']
+        
 class CreateNewOtherPetition(forms.ModelForm):
     class Meta:
         model = Other

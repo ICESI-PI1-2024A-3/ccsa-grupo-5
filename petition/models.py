@@ -20,6 +20,13 @@ class AbstractPetition(models.Model):
     email = models.EmailField()
     phoneNumber = models.CharField(max_length = 15)
     user = models.ForeignKey(User, related_name='petitionUser', on_delete=models.CASCADE)
+        
+    def getUser(self):
+        if self.user.last_name == "":
+            return "Sin Asignar"
+        else:
+            return self.user.first_name + " " + self.user.last_name
+            
     class Meta:
         abstract = True
     

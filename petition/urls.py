@@ -9,7 +9,9 @@ urlpatterns = [
     path('selectTypePetition', views.selectTypePetition, name="selectTypePetition"),
     path('createOther', views.createOther, name="createOther"),
     path('viewPetition', views.viewPetition, name="viewPetition"),
-    path('editPetition/<int:solicitudId>/', views.editPetition, name="editPetition")
+    path('rejectPetition/<int:petitionId>/', views.rejectPetition, name="rejectPetition"),
+    path('showPetition/<int:petitionId>/', views.showPetition, name="showPetition")
+    
 ]
 
 if settings.DEBUG:

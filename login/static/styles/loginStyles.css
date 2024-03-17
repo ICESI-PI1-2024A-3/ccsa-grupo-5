@@ -36,7 +36,6 @@ input {
 }
 
 button {
-    width: 100%;
     padding: 10px;
     background-color: #2000fb;
     color: #fff;
@@ -45,6 +44,9 @@ button {
     cursor: pointer;
     margin-top: 15px;
     margin-bottom: 15px;
+    min-width: max-content;
+    max-width: 30%;
+    width: 30%;
 }
 
 .bx {
@@ -53,6 +55,6 @@ button {
     top: 50%;
     right: 5px;
     transform: translateY(-25%);
-    right: -6px; 
+    right: -6px;
     cursor: pointer;
 }
