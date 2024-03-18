@@ -13,8 +13,7 @@ body {
 }
 
 .container {
-    max-width: 400px;
-    width: 100%;
+    max-width: 600px;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -23,7 +22,7 @@ body {
 
 .logo {
     display: block;
-    margin: 0 auto 20px; 
+    margin: 0 auto 20px;
     width: 340px;
     height: 107.58px;
 }
@@ -65,16 +64,22 @@ button {
     font-size: 28px;
     position: absolute;
     top: 55%;
-    right: 24px; 
+    right: 24px;
     transform: translateY(-50%);
     cursor: pointer;
 }
 
 .error-message {
-    background-color: #ffdddd; /* Color de fondo del recuadro de error */
-    color: #000; /* Color del texto del mensaje de error (negro) */
-    padding: 10px; /* Espaciado interno del recuadro de error */
-    border-radius: 5px; /* Borde redondeado del recuadro de error */
-    margin-top: 10px; /* Espaciado superior del recuadro de error */
-    margin-bottom: 100px; /* Espaciado inferior del recuadro de error */
+    background-color: #ffdddd;
+    /* Color de fondo del recuadro de error */
+    color: #000;
+    /* Color del texto del mensaje de error (negro) */
+    padding: 10px;
+    /* Espaciado interno del recuadro de error */
+    border-radius: 5px;
+    /* Borde redondeado del recuadro de error */
+    margin-top: 10px;
+    /* Espaciado superior del recuadro de error */
+    margin-bottom: 100px;
+    /* Espaciado inferior del recuadro de error */
 }
