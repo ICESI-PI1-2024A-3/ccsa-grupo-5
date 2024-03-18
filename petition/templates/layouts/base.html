@@ -31,6 +31,8 @@
                 <a href="{% url 'selectTypePetition' %}" class="nav-link {% if 'selectTypePetition' in request.path %}active{% endif %}">Crear Solicitudes</a>
             </li>
             <li><a href="{% url 'viewPetition' %}" class="nav-link {% if 'asignar' in request.path %}active{% endif %}">Visualizar Solicitudes</a></li>
+            <li><a href="{% url 'logoutSesion' %}" class="nav-link {% if 'asignar' in request.path %}active{% endif %}">Cerrar sesion</a></li>
+            
         </ul>
     </nav>
 

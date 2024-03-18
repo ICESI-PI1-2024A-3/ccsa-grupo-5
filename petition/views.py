@@ -5,18 +5,21 @@ from .forms import *
 from django.db import transaction
 from .models import *
 from django.views.decorators.http import require_http_methods
+from django.contrib.auth.decorators import login_required
 
 
 
 
 # Create your views here.
+@login_required
 def index(request):
     return render(request, 'index.html')
-
+@login_required
 def selectTypePetition(request):
     return render(request, 'selectTypePetition.html')
         
-        
+
+@login_required
 @transaction.atomic
 def createMonitoring(request):
     if request.method == 'POST':
@@ -28,6 +31,7 @@ def createMonitoring(request):
         form = CreateNewMonitoringPetition()
     return render(request, 'createMonitoring.html', {'form': form})
 
+@login_required
 def createOther(request):
     if request.method == 'POST':
         form = CreateNewOtherPetition(request.POST, request.FILES)
@@ -38,6 +42,7 @@ def createOther(request):
         form = CreateNewOtherPetition()
     return render(request, 'createOther.html', {'form': form})
 
+@login_required
 def viewPetition(request):
     monitorings = Monitoring.objects.all()
     others = Other.objects.all()
@@ -46,7 +51,7 @@ def viewPetition(request):
         'petitions': petitions
     })
     
-
+@login_required
 def showPetition(request, petitionId):
     solicitud = None
     
@@ -70,7 +75,7 @@ def showPetition(request, petitionId):
     return render(request, 'error.html', {'mensaje': 'La solicitud no se encuentra'})
 
 
-
+@login_required
 def deletePetition(request, petitionId):
     petition = get_object_or_404(Petition, pk=petitionId)
     
@@ -78,7 +83,8 @@ def deletePetition(request, petitionId):
         petition.delete()
         return redirect('viewPetition')
         
-    
+
+@login_required
 def rejectPetition(request, petitionId):
     
     petition = Petition.objects.get(pk=petitionId)
@@ -91,25 +97,28 @@ def rejectPetition(request, petitionId):
             return redirect('showPetition', petitionId=petitionId)  # Redirigir a la página de detalles de la solicitud
     return render(request, 'rejectPetition.html')
 
+@login_required
 def createObservation(request, petitionId):
     if request.method == 'POST':
         form = CreateNewObservation(request.POST)
         if form.is_valid():
             form.petition_id = petitionId 
             form.save()
-            return redirect('index')
+            return redirect('showPetition', petitionId = petitionId )
     else:
         form = CreateNewObservation()
     return render(request, 'createObservation.html', {'form': form, 'petitionId': petitionId} )
 
-
+@login_required
 def deleteObservation(request, observationId):
     petition = get_object_or_404(Observation, pk=observationId)
     
     if request.method == 'POST':
         petition.delete()
         return redirect('viewPetition')
-    
+
+
+@login_required
 def editObservation(request, petitionId, observationId):
     # Obtener la observación a editar
     observation = get_object_or_404(Observation, pk=observationId)
@@ -136,6 +145,7 @@ def editObservation(request, petitionId, observationId):
     # Renderizar el formulario de edición
     return render(request, 'editObservation.html', {'form': form})
 
+@login_required
 def assignUserToPetition(request, petitionId):
     petition = Petition.objects.get(pk=petitionId)
     if request.method == 'POST':
