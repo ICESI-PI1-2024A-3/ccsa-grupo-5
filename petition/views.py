@@ -26,7 +26,7 @@ def createMonitoring(request):
         form = CreateNewMonitoringPetition(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('viewPetition')
     else:
         form = CreateNewMonitoringPetition()
     return render(request, 'createMonitoring.html', {'form': form})
@@ -37,7 +37,7 @@ def createOther(request):
         form = CreateNewOtherPetition(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('viewPetition')
     else:
         form = CreateNewOtherPetition()
     return render(request, 'createOther.html', {'form': form})
