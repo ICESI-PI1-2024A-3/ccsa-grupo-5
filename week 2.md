@@ -257,13 +257,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Trabajé con Andres Cabezas por discord en el crud de observaciones
 
 ### ¿Qué voy a hacer?
-- 
+- Trabajar en la funcionalidad de recuperar contraseña
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -329,13 +329,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Trabajé en la funcionalidad de recuperar y editar contraseña de usuario
 
 ### ¿Qué voy a hacer?
-- 
+- Seguir trabajando en la misma funcionalidad
 
 ### ¿Qué impedimentos tengo?
-- 
+- No envía el correo electrónico
 
 ---
 
