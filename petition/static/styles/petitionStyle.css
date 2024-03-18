@@ -38,8 +38,9 @@ button {
 title {
     display: none;
 }
+
 .container {
-    max-width: 400px; 
+    max-width: 400px;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
