@@ -36,7 +36,7 @@
 <div><p>Gestor encargado: <b>{{ solicitud.getUser }}</b></p></div>
 <!-- Agrega más detalles específicos de Monitoring si es necesario -->
 
-<div class="buttons">
+
     {% if solicitud.state != 'rechazado' and solicitud.state != 'aprobado' %}
     <a href="{% url 'rejectPetition' solicitud.id %}"><button>Rechazar Solicitud</button></a>
     {% endif %}
@@ -44,13 +44,13 @@
     {% if solicitud.getUser == 'Sin Asignar' %}
     <a href="{% url 'assignPetition' solicitud.id %}"><button>Asignar a un Gestor de Procesos</button></a>
     {% endif %}
-</div>
+
 
     <p></p>
     <a href="{% url 'createObservation' petitionId %}"><button>Crear Observacion</button></a>
     <p></p>
-
     <button id="toggleObservationsBtn">Mostrar Observaciones</button>
+
     <div class="divButton">
         <!-- Contenedor de observaciones (inicialmente oculto) -->
         <div id="observationsContainer" style="display: none;">
