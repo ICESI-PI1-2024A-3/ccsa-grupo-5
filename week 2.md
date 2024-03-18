@@ -243,14 +243,14 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Empezar con el crud de las observaciones de una solicitud de contratacion
 
 
 ### ¿Qué voy a hacer?
-- 
+- Terminar el crud de las observaciones de una solicitud de contratacion
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -315,14 +315,14 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Terminé el crud de las observaciones de una solicitud de contratacion
 
 
 ### ¿Qué voy a hacer?
-- 
+- Ahora si empezar a trabajar con la tabla de visualizacion de los contratos
 
 ### ¿Qué impedimentos tengo?
-- 
+- Terminar de comprender bootstrap 5
 
 ---
 
