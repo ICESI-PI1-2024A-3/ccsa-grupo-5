@@ -129,11 +129,11 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Intentar implementar el bosquejo de metodos investigado para implementar las funcionalidades de la HU1
 ### ¿Qué voy a hacer?
-- 
+- Continuar con la implementacion del bosquejo de metodos
 ### ¿Qué impedimentos tengo?
-- 
+- El sistema todavia no dierencia los diferentes tipos de usuarios
 ---
 
 
@@ -199,11 +199,11 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Crear una nueva app donde se modelarán los diferentes tipos de usuarios
 ### ¿Qué voy a hacer?
-- 
+- Continuar con la implementación de las clases de los usuarios
 ### ¿Qué impedimentos tengo?
-- 
+- No se de herencia en Django
 ---
 
 
@@ -270,11 +270,11 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Investigar sobre herencia en Django y empezar a modelar las clases de los usuarios
 ### ¿Qué voy a hacer?
-- 
+- Arreglar el usuario mas generico de los que he creado para que sea el usuario principal del proyecto
 ### ¿Qué impedimentos tengo?
-- 
+- Un error ocacionado por una referencia circular en la base de datos 
 ---
 
 
@@ -342,9 +342,9 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Documentar el codigo he investigar sobre como resolver el error en la base de datos 
 ### ¿Qué voy a hacer?
-- 
+- Continuar con la investigacion y seguir intentando arreglar el problema
 ### ¿Qué impedimentos tengo?
-- 
+- No he encontrado información relacionada con ese error
 ---
