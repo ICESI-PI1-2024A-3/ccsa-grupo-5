@@ -9,6 +9,8 @@ import login
 from .forms import LoginForm, UserForm
 from django.contrib import messages
 from django.contrib.auth import logout
+from django.views.decorators.cache import never_cache
+
 
 
 # Create your views here.
@@ -16,8 +18,9 @@ from django.contrib.auth import logout
 def index(request):
     return render(request, 'index.html')
 
+@never_cache
 def login(request):
-    logoutSesion(request)  
+        
     if request.method == 'POST':
         form = LoginForm(request, data = request.POST )
         if form.is_valid():
@@ -28,7 +31,10 @@ def login(request):
             messages.error(request, 'Acceso inválido. Por favor, inténtelo otra vez.')
     else:
         form = LoginForm()
-    return render(request, 'login.html', {'form': form})
+        
+    isAuthenticated = request.user.is_authenticated
+    return render(request, 'login.html', {'form': form, 'is_authenticated': isAuthenticated})
+
 
 def signup(request):
     if request.method == "GET":
