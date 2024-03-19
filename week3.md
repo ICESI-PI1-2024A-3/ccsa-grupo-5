@@ -47,13 +47,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Terminar de implementar la funcionalidad de recuperar contraseña
 
 ### ¿Qué voy a hacer?
-- 
+- Agregar validaciones a la funcionalidad de recuperar contraseña y mejorar el front
 
 ### ¿Qué impedimentos tengo?
-- 
+- De momento ninguno
 
 ---
 
