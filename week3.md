@@ -60,6 +60,213 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
+- Continuar con la investigacion y seguir intentando arreglar el problema con los usuarios
+### ¿Qué voy a hacer?
+- Continuar con la investigacion y seguir intentando arreglar el problema con los usuarios
+### ¿Qué impedimentos tengo?
+- Sigo sin encontrar información util
+---
+
+# Daily Report - Semana 3 - 19/03/2024
+
+## Davide Flamini Cazaran
+
+### ¿Qué hice?
+- 
+
+
+### ¿Qué voy a hacer?
+- 
+
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Nicolas Cuellar Molina
+
+### ¿Qué hice?
+- 
+
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+
+---
+
+## Andrés Felipe Cabezas Guerrero
+
+### ¿Qué hice?
+- 
+
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Miguel Ángel Martínez Vidal
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Alejandro Torres Soto
+
+### ¿Qué hice?
+- Continuar con la investigacion y seguir intentando arreglar el problema con los usuarios
+### ¿Qué voy a hacer?
+- Revisar los errores con mas integrantes del equipo
+### ¿Qué impedimentos tengo?
+- Ninguno
+---
+
+# Daily Report - Semana 3 - 20/03/2024
+
+## Davide Flamini Cazaran
+
+### ¿Qué hice?
+- 
+
+
+### ¿Qué voy a hacer?
+- 
+
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Nicolas Cuellar Molina
+
+### ¿Qué hice?
+- 
+
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+
+---
+
+## Andrés Felipe Cabezas Guerrero
+
+### ¿Qué hice?
+- 
+
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Miguel Ángel Martínez Vidal
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Alejandro Torres Soto
+
+### ¿Qué hice?
+- Revisar los errores con mas integrantes del equipo y hallar informacion realmente util
+### ¿Qué voy a hacer?
+- Solucionar todos los errores con los usuarios y subir los cambios
+### ¿Qué impedimentos tengo?
+- Ninguno
+---
+
+# Daily Report - Semana 3 - 21/03/2024
+
+## Davide Flamini Cazaran
+
+### ¿Qué hice?
+- 
+
+
+### ¿Qué voy a hacer?
+- 
+
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Nicolas Cuellar Molina
+
+### ¿Qué hice?
+- 
+
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+
+---
+
+## Andrés Felipe Cabezas Guerrero
+
+### ¿Qué hice?
+- 
+
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Miguel Ángel Martínez Vidal
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Alejandro Torres Soto
+
+### ¿Qué hice?
 - 
 ### ¿Qué voy a hacer?
 - 
@@ -67,3 +274,71 @@
 - 
 ---
 
+# Daily Report - Semana 3 - 22/03/2024
+
+## Davide Flamini Cazaran
+
+### ¿Qué hice?
+- 
+
+
+### ¿Qué voy a hacer?
+- 
+
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Nicolas Cuellar Molina
+
+### ¿Qué hice?
+- 
+
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+
+---
+
+## Andrés Felipe Cabezas Guerrero
+
+### ¿Qué hice?
+- 
+
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Miguel Ángel Martínez Vidal
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Alejandro Torres Soto
+
+### ¿Qué hice?
+- 
+### ¿Qué voy a hacer?
+- 
+### ¿Qué impedimentos tengo?
+- 
+---
