@@ -1,6 +1,6 @@
 from django.utils import timezone
 from django.db import models
-from login.models import User
+from login.models import HiringManager
 
 # Create your models here.
 
@@ -19,7 +19,7 @@ class AbstractPetition(models.Model):
     identityDocument = models.CharField(max_length = 20)
     email = models.EmailField()
     phoneNumber = models.CharField(max_length = 15)
-    user = models.ForeignKey(User, related_name='petitionUser', on_delete=models.CASCADE, null = True)
+    user = models.ForeignKey(HiringManager, related_name='petitionUser', on_delete=models.CASCADE, null = True)
     
     def getUser(self):
         if self.user is None:

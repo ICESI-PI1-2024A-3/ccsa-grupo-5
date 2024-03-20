@@ -5,8 +5,12 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 class UserForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'password1', 'password2', 'email', 'username' ]
+        fields = ['name', 'lastName', 'password1', 'password2', 'email']
     
 class LoginForm(AuthenticationForm):
-    class Meta:
-        model = User
+    
+    identification = forms.CharField(max_length=15)  
+    password = forms.CharField(widget=forms.PasswordInput)
+    
+    #class Meta:
+    #    model = User

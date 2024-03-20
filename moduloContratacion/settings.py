@@ -129,7 +129,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Model App 
-AUTH_USER_MODEL = 'login.User'
+AUTH_USER_MODEL = 'login.HiringManager'
 
 FAVICON = os.path.join(BASE_DIR, 'favicon.ico')
 
@@ -139,3 +139,7 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "modulocontratacion@gmail.com"
 EMAIL_HOST_PASSWORD = "bckeiknnfopwlnih"
+
+AUTHENTICATION_BACKENDS = [
+    'login.backends.CustomUserBackend',  
+]
