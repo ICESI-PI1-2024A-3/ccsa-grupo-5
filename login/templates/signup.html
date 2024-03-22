@@ -16,7 +16,7 @@
         <div style="margin-top: 15px">
 
 
-            <label for="{{ form.username.id_for_label }}">Cédula:</label>
+            <label for="{{ form.username.id_for_label }}">Cedula:</label>
             {{ form.username }}
 
             <label for="{{ form.first_name.id_for_label }}">Nombre:</label>
@@ -27,6 +27,9 @@
 
             <label for="{{ form.email.id_for_label }}">Correo electrónico:</label>
             {{ form.email }}
+
+            <label for="{{ form.roles.id_for_label }}">Rol:</label>
+            {{ form.roles }}
 
             <div class="password-input">
                 <label for="{{ form.password1.id_for_label }}">Contraseña:</label>
