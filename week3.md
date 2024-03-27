@@ -33,14 +33,14 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Ayudar a Miguel a implementar en su computador la funcionalidad de recuperar contraseña
 
 
 ### ¿Qué voy a hacer?
-- 
+- Ver que cosas hacen faltas para ir colaborando con ello
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -102,14 +102,14 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Ayudar a Nicolas, Flamini y Miguel con el jira
 
 
 ### ¿Qué voy a hacer?
-- 
+- Investigar y ayudar a Torres con el problema de los usuarios
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -171,14 +171,14 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Nada
 
 
 ### ¿Qué voy a hacer?
-- 
+- Continuar con la investigación de los usuarios
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -240,14 +240,14 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Ayudar a Nicolas, Flamini y Miguel con la implementacion de los roles en el programa
 
 
 ### ¿Qué voy a hacer?
-- 
+- Empezar a implementar las visualización de la tabla de solicitudes
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -309,14 +309,14 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Volver a ver el tutorial de tablas dinamicas porque olvidé todo
 
 
 ### ¿Qué voy a hacer?
-- 
+- Empezar a implementar la tabla de visualizacion
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
