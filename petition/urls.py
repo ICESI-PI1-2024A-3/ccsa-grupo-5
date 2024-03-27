@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, createMonitoring, selectTypePetition, createOther, viewPetition, rejectPetition, showPetition, deletePetition, createObservation, deleteObservation, editObservation, assignUserToPetition
+from .views import index, createMonitoring, selectTypePetition, createOther, viewPetition, rejectPetition, showPetition, deletePetition, createObservation, deleteObservation, editObservation, assignUserToPetition, viewPetitionWithoutUser
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -15,6 +15,6 @@ urlpatterns = [
     path('createObservation/<int:petitionId>', createObservation.createObservation , name="createObservation"),
     path('deleteObservation/<int:observationId>', deleteObservation.deleteObservation, name="deleteObservation"),
     path('editObservation/<int:petitionId>/<int:observationId>', editObservation.editObservation, name="editObservation"),
-    path('assignUserToPetition/<int:petitionId>', assignUserToPetition.assignUserToPetition, name="assignPetition")
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('assignUserToPetition/<int:petitionId>', assignUserToPetition.assignUserToPetition, name="assignPetition"),
+    path('viewPetitionWithoutUser', viewPetitionWithoutUser.viewPetitionWithoutUser, name="viewPetitionWithoutUser")] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

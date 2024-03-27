@@ -2,47 +2,68 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
     <script src="{% static 'scripts/main.js' %}"></script>
-    {% block head %}
-    {% endblock %}
-</head>
+    {% block head %} {% endblock %}
+  </head>
 
-<body>
-
+  <body>
     <nav class="navbar container">
-        <img style="width: 150px; height: 56.58px"
-                src="{% static 'images/icesiLogo.png' %}">
-        <ul>
-            <li>
-                <a href="{% url 'index' %}" class="nav-link {% if request.path == '/' %}active{% endif %}">Home</a>
-            </li>
-            <li>
-                <a href="" class="nav-link {% if 'asignar' in request.path %}active{% endif %}">Asignar</a>
-            </li>
-            <li>
-                <a href="{% url 'signup' %}" class="nav-link {% if 'signup' in request.path %}active{% endif %}">Crear usuario</a>
-            </li>
-            <li>
-                <a href="{% url 'selectTypePetition' %}" class="nav-link {% if 'selectTypePetition' in request.path %}active{% endif %}">Crear Solicitudes</a>
-            </li>
-            <li><a href="{% url 'viewPetition' %}" class="nav-link {% if 'asignar' in request.path %}active{% endif %}">Visualizar Solicitudes</a></li>
-            <li><a href="{% url 'logoutSesion' %}" class="nav-link {% if 'asignar' in request.path %}active{% endif %}">Cerrar sesion</a></li>
-            
-        </ul>
+      <img
+        style="width: 150px; height: 56.58px"
+        src="{% static 'images/icesiLogo.png' %}"
+      />
+      <ul>
+        <li>
+          <a
+            href="{% url 'index' %}"
+            class="nav-link {% if request.path == '/' %}active{% endif %}"
+            >Inicio</a
+          >
+        </li>
+        <li>
+          <a
+            href="{% url 'viewPetitionWithoutUser' %}"
+            class="nav-link {% if 'viewPetitionWithoutUser' in request.path %}active{% endif %}"
+            >Solicitudes sin asignar</a
+          >
+        </li>
+        <li>
+          <a
+            href="{% url 'signup' %}"
+            class="nav-link {% if 'signup' in request.path %}active{% endif %}"
+            >Crear usuario</a
+          >
+        </li>
+        <li>
+          <a
+            href="{% url 'selectTypePetition' %}"
+            class="nav-link {% if 'selectTypePetition' in request.path %}active{% endif %}"
+            >Crear Solicitudes</a
+          >
+        </li>
+        <li>
+          <a
+            href="{% url 'viewPetition' %}"
+            class="nav-link {% if 'asignar' in request.path %}active{% endif %}"
+            >Visualizar Solicitudes</a
+          >
+        </li>
+        <li>
+          <a
+            href="{% url 'logoutSesion' %}"
+            class="nav-link {% if 'logoutSesion' in request.path %}active{% endif %}"
+            >Cerrar sesion</a
+          >
+        </li>
+      </ul>
     </nav>
 
-    <main class="container">
-        {% block content %}
-        {% endblock %}
-    </main>
+    <main class="container">{% block content %} {% endblock %}</main>
 
     <script src="{% static 'scripts/main.js' %}"></script>
-
-</body>
-
+  </body>
 </html>

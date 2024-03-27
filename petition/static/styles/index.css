@@ -1,47 +1,54 @@
-button {
-    max-width: 25%;
-    min-width: max-content;
-    width: 50%;
-    padding: 10px;
-    background-color: #2000fb;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
+/* styles/home.css */
 
 body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    display: flex;
-    align-items: top;
-    justify-content: center;
-    background-color: #f4f4f4;
-    min-height: 100vh;
 }
 
 .container {
-    max-width: 400px;
+    max-width: 1200px;
+    margin: 20px auto;
     padding: 20px;
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.buttons {
-    height: 100%;
-    padding: 10px;
-    display: flex;
-    justify-content: space-around;
+h1 {
+    color: #333;
+}
+
+h2 {
+    color: #555;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    color: #007bff;
     text-decoration: none;
 }
 
-.divButton {
-    width: 30%;
-    min-width: max-content;
+a:hover {
+    text-decoration: underline;
 }
 
-.delete-icon,
-.cancel {
-    background-color: red;
+.nav-link {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 5px;
+}
+
+.active {
+    background-color: #007bff;
+    color: #fff;
 }
