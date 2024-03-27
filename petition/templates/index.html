@@ -1,14 +1,32 @@
 {% extends 'layouts/base.html' %}
-
 {% load static %}
 
-{% block content %}
-
+{% block head %}
+<title>Inicio - Tu Aplicación</title>
 <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+{% endblock %}
 
-<h1>Modulo de contratación</h1>
+{% block content %}
+<div class="container">
+  <h1>Bienvenido a Tu Aplicación</h1>
+  <p>Una aplicación para gestionar solicitudes de contrato de manera eficiente.</p>
 
-<img src="" alt="" width="40%">
+  <h2>Funcionalidades Destacadas</h2>
+  <ul>
+    <li>
+      <a href="{% url 'viewPetitionWithoutUser' %}" class="nav-link {% if 'viewPetitionWithoutUser' in request.path %}active{% endif %}">Solicitudes sin Asignar</a>
+    </li>
+    <li>
+      <a href="{% url 'signup' %}" class="nav-link {% if 'signup' in request.path %}active{% endif %}">Crear usuario</a>
+    </li>
+    <li>
+      <a href="{% url 'selectTypePetition' %}" class="nav-link {% if 'selectTypePetition' in request.path %}active{% endif %}">Crear Solicitudes</a>
+    </li>
+    <li>
+      <a href="{% url 'viewPetition' %}" class="nav-link {% if 'asignar' in request.path %}active{% endif %}">Visualizar Solicitudes</a>
+    </li>
+  </ul>
 
-<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis minus, harum odit porro asperiores beatae exercitationem? Officiis, ex minima, cumque labore placeat suscipit doloribus quibusdam corrupti asperiores dolore debitis quas?</p>
+  <p>Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos.</p>
+</div>
 {% endblock %}

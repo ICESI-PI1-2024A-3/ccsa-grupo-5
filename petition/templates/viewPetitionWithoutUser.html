@@ -1,0 +1,41 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block head %}
+<title>Solicitudes sin asignar</title>
+<link rel="stylesheet" href="{% static 'styles/tablePetitionWithoutUser.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+{% endblock %}
+{% block content %}
+<h1>Solicitudes sin asignar</h1>
+<!-- Agrega la tabla para mostrar las solicitudes sin usuarios asignados -->
+<table class="table table-bordered table-striped">
+  <thead class="thead-dark">
+      <tr>
+          <th scope="col">Tipo de contrato</th>
+          <th scope="col">Fecha de Solicitud</th>
+          <th scope="col">Fecha de Inicio</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Acciones</th> <!-- Agrega una columna para las acciones -->
+          <!-- Agrega más encabezados de columnas según tus necesidades -->
+      </tr>
+  </thead>
+  <tbody>
+      {% for petition in petitions %}
+          {% if petition.getUser == 'Sin Asignar' %}
+              <tr>
+                  <td>{{ petition.getPetitionType }}</td>
+                  <td>{{ petition.petitionDate }}</td>
+                  <td>{{ petition.startDate }}</td>
+                  <td>{{ petition.state }}</td>
+                  <td> <!-- Agrega un botón para asignar usuario -->
+                    <a href="{% url 'assignPetition' petition.id %}"
+                          <button type="submit" class="btn btn-primary" onclick="assignPetition({{petition.id}})" >Asignar Usuario </button>
+                      </form>
+                  </td>
+                  <!-- Agrega más columnas según tus necesidades -->
+              </tr>
+          {% endif %}
+      {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

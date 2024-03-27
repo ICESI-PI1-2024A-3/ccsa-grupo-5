@@ -1,10 +1,10 @@
 from django.urls import path
-from . import views
+from .views import login, signup, logoutSesion
 from django.contrib.auth.forms import UserCreationForm
 
 urlpatterns = [
     #('', views.index, name="index"),
-    path('', views.login, name="login"),
-    path('signup', views.signup, name="signup"),
-    path('logoutSesion', views.logoutSesion, name="logoutSesion")
+    path('', login.login, name="login"),
+    path('signup', signup.signup, name="signup"),
+    path('logoutSesion', logoutSesion.logoutSesion, name="logoutSesion")
 ]
