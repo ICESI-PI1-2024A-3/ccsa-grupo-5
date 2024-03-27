@@ -72,15 +72,15 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- Trabajar en los roles del login
 
 
 ### ¿Qué voy a hacer?
-- 
+- Trabajar en las solicitudes sin asignar
 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Por ahora ninguno
 
 ---
 
@@ -141,11 +141,11 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- Arreglar el Jira.
 
 
 ### ¿Qué voy a hacer?
-- 
+- Trabajar en las solicitudes sin asignar.
 
 
 ### ¿Qué impedimentos tengo?
@@ -210,15 +210,15 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- Trabajar en las solicitudes sin asignar.
 
 
 ### ¿Qué voy a hacer?
-- 
+- Mejorar el front de las vistas.
 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Por ahora ninguno.
 
 ---
 
@@ -279,15 +279,15 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- Ayude a Cabezas a implementar el tablero de las solicitudes.
 
 
 ### ¿Qué voy a hacer?
-- 
+- Ayudar a miembros del equipo que tengan impedimentos.
 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno.
 
 ---
 
