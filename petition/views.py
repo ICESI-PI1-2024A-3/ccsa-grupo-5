@@ -1,5 +1,6 @@
 from itertools import chain
 from django.http import HttpResponse, JsonResponse
+from django.core.serializers import serialize
 from django.shortcuts import get_object_or_404, redirect, render
 from .forms import *
 from django.db import transaction
@@ -46,9 +47,11 @@ def createOther(request):
 def viewPetition(request):
     monitorings = Monitoring.objects.all()
     others = Other.objects.all()
+    
     petitions = list(chain(monitorings, others))
+
     return render(request, 'viewPetition.html', {
-        'petitions': petitions
+           'petitions': petitions
     })
     
 @login_required
