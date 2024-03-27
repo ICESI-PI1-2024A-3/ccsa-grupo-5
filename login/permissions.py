@@ -4,8 +4,8 @@ from django.dispatch import receiver
 
 
 
-@receiver(post_migrate)
-def create_groups(sender, **kwargs):
+
+def create_groups():
         Group.objects.get_or_create(name='Admin')
         Group.objects.get_or_create(name='Lider de Proceso')
         Group.objects.get_or_create(name='Gestor de Contratacion')
