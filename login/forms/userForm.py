@@ -1,4 +1,4 @@
-from .models import User
+from ..models import User
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import Permission
@@ -11,8 +11,3 @@ class UserForm(UserCreationForm):
         model = User
         
         fields = ['first_name', 'last_name', 'password1', 'password2', 'email', 'username']
-        
-    
-class LoginForm(AuthenticationForm):
-    class Meta:
-        model = User

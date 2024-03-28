@@ -2,7 +2,7 @@ from itertools import chain
 from django.http import HttpResponse, JsonResponse
 from django.core.serializers import serialize
 from django.shortcuts import get_object_or_404, redirect, render
-from ..forms import *
+from ..forms import createNewObservation
 from django.db import transaction
 from ..models import *
 from django.views.decorators.http import require_http_methods
@@ -17,10 +17,10 @@ def editObservation(request, petitionId, observationId):
     
     if request.method == 'POST':
         # Si el formulario se envió con datos, procesar los datos del formulario
-        form = CreateNewObservation(request.POST, instance=observation)
+        form = createNewObservation.CreateNewObservation(request.POST, instance=observation)
         if form.is_valid():
             # Obtener la instancia de la observación pero no guardarla todavía
-            observation = form.save(commit=False)
+            observation = form.save(user=request.user,commit=False)
             
             # Asignar la ID de la petición a la observación
             observation.petition_id = petitionId
@@ -32,7 +32,7 @@ def editObservation(request, petitionId, observationId):
             return redirect('showPetition', petitionId=petitionId)
     else:
         # Si es un método GET, renderizar el formulario de edición con los datos de la observación actual
-        form = CreateNewObservation(instance=observation)
+        form = createNewObservation.CreateNewObservation(instance=observation)
     
     # Renderizar el formulario de edición
     return render(request, 'editObservation.html', {'form': form})

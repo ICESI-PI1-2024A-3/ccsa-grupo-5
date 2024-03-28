@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 import login
 from login.permissions import create_groups
-from ..forms import LoginForm, UserForm
+from ..forms import loginForm, userForm
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.views.decorators.cache import never_cache
@@ -22,10 +22,10 @@ from django.contrib.auth.models import User, Group
 def signup(request):
     create_groups()
     if request.method == "GET":
-        form = UserForm()
+        form = userForm.UserForm()
         return render(request, 'signup.html', {'form': form})
     else:
-        form = UserForm(request.POST)
+        form = userForm.UserForm(request.POST)
         if form.is_valid():
             user = form.save()
             roles = form.cleaned_data.get('roles')
