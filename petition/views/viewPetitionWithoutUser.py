@@ -11,8 +11,8 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def viewPetitionWithoutUser(request):
     
-    monitorings = Monitoring.objects.all()
-    others = Other.objects.all()
+    monitorings = Monitoring.objects.filter(user=None)
+    others = Other.objects.filter(user=None)
     
     petitions = list(chain(monitorings, others))
 
