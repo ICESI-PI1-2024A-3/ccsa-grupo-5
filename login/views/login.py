@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 import login
 from login.permissions import create_groups
-from ..forms import LoginForm, UserForm
+from ..forms import loginForm, userForm
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.views.decorators.cache import never_cache
@@ -17,7 +17,7 @@ from django.contrib.auth.models import User, Group
 def login(request):
         
     if request.method == 'POST':
-        form = LoginForm(request, data = request.POST )
+        form = loginForm.LoginForm(request, data = request.POST )
         if form.is_valid():
             user = form.get_user()
             auth_login(request, user)
@@ -25,7 +25,7 @@ def login(request):
         else:
             messages.error(request, 'Acceso inválido. Por favor, inténtelo otra vez.')
     else:
-        form = LoginForm()
+        form = loginForm.LoginForm()
         
     isAuthenticated = request.user.is_authenticated
     return render(request, 'login.html', {'form': form, 'is_authenticated': isAuthenticated})

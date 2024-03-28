@@ -27,10 +27,9 @@
                   <td>{{ petition.petitionDate }}</td>
                   <td>{{ petition.startDate }}</td>
                   <td>{{ petition.state }}</td>
+                  
                   <td> <!-- Agrega un botón para asignar usuario -->
-                    <a href="{% url 'assignPetition' petition.id %}"
-                          <button type="submit" class="btn btn-primary" onclick="assignPetition({{petition.id}})" >Asignar Usuario </button>
-                      </form>
+                    <a href="{% url 'assignPetition' petition.id %}"><p>Asignar Usuario</p></a>
                   </td>
                   <!-- Agrega más columnas según tus necesidades -->
               </tr>

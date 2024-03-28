@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 import login
 from login.permissions import create_groups
-from ..forms import LoginForm, UserForm
+from ..forms import loginForm, userForm
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.views.decorators.cache import never_cache
