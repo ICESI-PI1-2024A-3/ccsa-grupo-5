@@ -1,5 +1,5 @@
 from itertools import chain
-from django.http import HttpResponse, JsonResponse
+from django.http import Http404, HttpResponse, JsonResponse
 from django.core.serializers import serialize
 from django.shortcuts import get_object_or_404, redirect, render
 from ..forms import *
@@ -32,5 +32,7 @@ def showPetition(request, petitionId):
     except Monitoring.DoesNotExist:
         pass
     
-    # Si no se encuentra la solicitud, renderiza una plantilla de error o maneja el caso según sea necesario
-    return render(request, 'error.html', {'mensaje': 'La solicitud no se encuentra'})
+    # Si no se encuentra la solicitud, lanza un error 404
+    raise Http404('La solicitud no se encuentra')
+    
+  
