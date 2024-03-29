@@ -13,7 +13,7 @@
         <a href="{% url 'index' %}">Extender sesión</a>
         
     {% else %}
-        <form action="/" method="POST" class="login-form">
+        <form action="/" method="POST">
             {% csrf_token %}
 
             <label for="username">Cedula:</label>

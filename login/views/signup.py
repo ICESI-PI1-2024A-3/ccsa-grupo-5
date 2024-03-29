@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 import login
-from login.permissions import create_groups
+from login.permissions import createGroups
 from ..forms import loginForm, userForm
 from django.contrib import messages
 from django.contrib.auth import logout
@@ -24,6 +24,8 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             roles = form.cleaned_data.get("roles")
+            # Mostrar alerta de éxito
+            messages.success(request, "Usuario creado satisfactoriamente")
 
             if roles:
                 # Asignar roles y permisos según la selección del formulario
@@ -42,13 +44,22 @@ def signup(request):
                     user.groups.add(group)
                     user.save()
 
-                return HttpResponse("Usuario creado satisfactoriamente")
-            else:
-                # Si no se seleccionó ningún rol, mostrar error o manejar de acuerdo a tu lógica
-                return HttpResponse("Error: Debes seleccionar un rol")
-        else:
             return render(request, "signup.html", {"form": form})
-
-
-def createGroups():
-    create_groups()
+        # Capturar mensajes de error del formulario
+        else:
+            for field, errors in form.errors.items():
+                if field == "first_name":
+                    field = "Nombre"
+                elif field == "last_name":
+                    field = "Apellido"
+                elif field == "email":
+                    field = "Correo electrónico"
+                elif field == "username":
+                    field = "Cedula"
+                elif field == "password1":
+                    field = "Contraseña"
+                elif field == "password2":
+                    field = "Confirmar contraseña"
+                for error in errors:
+                    messages.error(request, f"Error en {field}: {error}")
+            return render(request, "signup.html", {"form": form})

@@ -6,7 +6,9 @@ from django.dispatch import receiver
 
 class User(AbstractUser, PermissionsMixin):
     # Eliminar el campo 'username' si no se desea utilizar
-    username = models.CharField(max_length=15, unique=True)
+    username = models.CharField(
+        max_length=15, unique=True, verbose_name="identificador"
+    )
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
