@@ -15,7 +15,7 @@
 <p>Fecha de Solicitud: {{ solicitud.petitionDate }}</p>
 <p>Fecha de Inicio: {{ solicitud.startDate }}</p>
 <p>Fecha de Fin: {{ solicitud.endDate }}</p>
-<p>Estado: {{ solicitud.state }}</p>
+<p>Estado: {{ solicitud.getState }}</p>
 <p>Cenco: {{ solicitud.cenco }}</p>
 <p>Nombre Completo: {{ solicitud.fullName }}</p>
 <p>Documento de Identidad: {{ solicitud.identityDocument }}</p>
@@ -26,7 +26,7 @@
 <p>¿Hay Dinero en Cenco?: {{ solicitud.yesOrNoCenco }}</p>
 <p>Responsable del Cenco: {{ solicitud.cencoResponsible }}</p>
 <p>Código del Estudiante: {{ solicitud.studentCode }}</p>
-<p>DAVI Plata: {{ solicitud.daviPlata }}</p>
+<p>DaviPlata: {{ solicitud.daviPlata }}</p>
 <p>Proyecto o Curso: {{ solicitud.projectOrCourse }}</p>
 <p>Descripción del Monitoreo: {{ solicitud.monitoringDescription }}</p>
 <p>Horas por Semana: {{ solicitud.hoursPerWeek }}</p>
