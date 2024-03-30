@@ -7,7 +7,6 @@ from django.contrib.auth.models import Permission
 class UserForm(UserCreationForm):
     roles = forms.ChoiceField(
         choices=[
-            ("admin", "Admin"),
             ("leader", "Líder de Proceso"),
             ("manager", "Gestor de Contratación"),
         ]

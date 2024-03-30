@@ -25,6 +25,15 @@ class AbstractPetition(models.Model):
     )
     email = models.EmailField(verbose_name="Correo electrónico")
     phoneNumber = models.CharField(max_length=15, verbose_name="Número de teléfono")
+    
+    userAsigner = models.ForeignKey(
+        User,
+        related_name="userAsigner",
+        on_delete=models.CASCADE,
+        null=True,
+        verbose_name="Usuario Asignador",
+    )
+    
     user = models.ForeignKey(
         User,
         related_name="petitionUser",
@@ -39,13 +48,13 @@ class AbstractPetition(models.Model):
         else:
             return self.user.first_name + " " + self.user.last_name
 
-    getUser.short_description = "Usuario asignado"
+    getUser.short_description = "Gestor asignado"
 
     def __str__(self):
         userInfo = (
-            f" Usuario asignado: {self.user.first_name} {self.user.last_name}"
+            f" Gestor asignado: {self.user.first_name} {self.user.last_name}"
             if self.user
-            else "Usuario: Sin Asignar"
+            else "Gestor: Sin Asignar"
         )
         return f"ID solicitud: {self.id} | {userInfo}"
 
