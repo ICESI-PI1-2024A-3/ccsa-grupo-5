@@ -12,29 +12,30 @@ let dataTableOptions = {
         "sSearch": "Buscar:",
         "oPaginate": {
             "sFirst": "Primero",
-            "sLast":"Último",
-            "sNext":"Siguiente",
+            "sLast": "Último",
+            "sNext": "Siguiente",
             "sPrevious": "Anterior"
-         },
-         "sProcessing":"Procesando...",
-    },   
+        },
+        "sProcessing": "Procesando...",
+    },
     responsive: 'true',
-    dom: 'Bfrtilp',       
-    buttons:[ 
+    dom: 'Bfrtilp',
+    buttons: [
         {
-            extend:    'excelHtml5',
-            text:      '<i class="fas fa-file-excel"></i> ',
+            extend: 'excelHtml5',
+            text: '<i class="fas fa-file-excel"></i> ',
             titleAttr: 'Exportar a Excel',
             className: 'btn btn-success'
         },
+
     ],
     columnDefs: [
-            { className: "centered", targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] },
-            { orderable: false, targets: [12] },
-            { searchable: false, targets: [12] }
-        ],
-        pageLength: 10,
-        destroy: true
+        { className: "centered", targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] },
+        { orderable: false, targets: [12] },
+        { searchable: false, targets: [12] }
+    ],
+    pageLength: 10,
+    destroy: true
 };
 
 const initDataTable = async () => {

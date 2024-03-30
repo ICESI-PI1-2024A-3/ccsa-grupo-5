@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 import login
-from login.permissions import createGroups
 from ..forms import loginForm, userForm
 from django.contrib import messages
 from django.contrib.auth import logout
@@ -16,7 +15,6 @@ from ..permissions import groupRequired
 
 @groupRequired('Admin')
 def signup(request):
-    createGroups()
     if request.method == "GET":
         form = userForm.UserForm()
         return render(request, "signup.html", {"form": form})

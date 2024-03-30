@@ -42,6 +42,18 @@ class AbstractPetition(models.Model):
         verbose_name="Usuario",
     )
 
+    def getState(self):
+        if self.state == "aprobado":
+            return "Aprobado"
+        elif self.state == "pendiente":
+            return "Pendiente"
+        elif self.state == "en_proceso":
+            return "En Proceso"
+        elif self.state == "rechazado":
+            return "Rechazado"
+        else:
+            return "Estado Desconocido"
+
     def getUser(self):
         if self.user is None:
             return "Sin Asignar"
