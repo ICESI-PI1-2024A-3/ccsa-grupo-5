@@ -267,11 +267,11 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Solucionar todos los errores con los usuarios y subir los cambios 
 ### ¿Qué voy a hacer?
-- 
+- Empezar a mejorar el forntend del proyecto
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno 
 ---
 
 # Daily Report - Semana 3 - 22/03/2024
@@ -336,9 +336,9 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Empezar a mejorar el frontend del proyecto 
 ### ¿Qué voy a hacer?
-- 
+- Continuar mejorando el front
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno 
 ---
