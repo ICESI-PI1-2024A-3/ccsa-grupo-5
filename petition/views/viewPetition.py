@@ -11,11 +11,24 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def viewPetition(request):
-    monitorings = Monitoring.objects.all()
-    others = Other.objects.all()
-    
-    petitions = list(chain(monitorings, others))
+       
+       if request.user.getGroup() == 'Admin':
+              monitorings = Monitoring.objects.all()
+              others = Other.objects.all()
+              
+       elif request.user.getGroup() == 'Lider de Proceso':
+              monitorings = Monitoring.objects.filter(userAsigner = request.user)
+              others = Other.objects.filter(userAsigner = request.user)    
+       else:
+              monitorings = Monitoring.objects.filter(user = request.user)
+              others = Other.objects.filter(user = request.user)  
 
-    return render(request, 'viewPetition.html', {
-           'petitions': petitions
-    })
+
+       petitions = None
+
+       if monitorings.exists() or others.exists():
+              petitions = list(chain(monitorings, others))
+
+       return render(request, 'viewPetition.html', {
+              'petitions': petitions
+       })

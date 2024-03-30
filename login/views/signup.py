@@ -11,8 +11,9 @@ from django.contrib import messages
 from django.contrib.auth import logout
 from django.views.decorators.cache import never_cache
 from django.contrib.auth.models import User, Group
+from ..permissions import groupRequired
 
-
+@groupRequired('Admin')
 def signup(request):
     if request.method == "GET":
         form = userForm.UserForm()
