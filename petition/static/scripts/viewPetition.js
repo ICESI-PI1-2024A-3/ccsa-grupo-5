@@ -27,18 +27,6 @@ let dataTableOptions = {
             titleAttr: 'Exportar a Excel',
             className: 'btn btn-success'
         },
-        {
-            extend:    'pdfHtml5',
-            text:      '<i class="fas fa-file-pdf"></i> ',
-            titleAttr: 'Exportar a PDF',
-            className: 'btn btn-danger'
-        },
-        {
-            extend:    'print',
-            text:      '<i class="fa fa-print"></i> ',
-            titleAttr: 'Imprimir',
-            className: 'btn btn-info'
-        },
     ],
     columnDefs: [
             { className: "centered", targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] },

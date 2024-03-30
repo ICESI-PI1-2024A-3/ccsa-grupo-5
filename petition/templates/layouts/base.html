@@ -24,20 +24,16 @@
             >Inicio</a
           >
         </li>
-        <li>
-          <a
-            href="{% url 'viewPetitionWithoutUser' %}"
-            class="nav-link {% if 'viewPetitionWithoutUser' in request.path %}active{% endif %}"
-            >Solicitudes sin asignar</a
-          >
-        </li>
-        <li>
-          <a
-            href="{% url 'signup' %}"
-            class="nav-link {% if 'signup' in request.path %}active{% endif %}"
-            >Crear usuario</a
-          >
-        </li>
+        {% if 'Admin' in request.user.getGroup %}
+          <li>
+            <a
+              href="{% url 'signup' %}"
+              class="nav-link {% if 'signup' in request.path %}active{% endif %}"
+              >Crear usuario</a
+            >
+          </li>
+        {% endif %}
+        {% if 'Lider de Proceso' in request.user.getGroup or 'Admin' in request.user.getGroup %}
         <li>
           <a
             href="{% url 'selectTypePetition' %}"
@@ -45,6 +41,14 @@
             >Crear Solicitudes</a
           >
         </li>
+        <li>
+          <a
+            href="{% url 'viewPetitionWithoutUser' %}"
+            class="nav-link {% if 'viewPetitionWithoutUser' in request.path %}active{% endif %}"
+            >Solicitudes sin asignar</a
+          >
+        </li>
+        {% endif %}
         <li>
           <a
             href="{% url 'viewPetition' %}"

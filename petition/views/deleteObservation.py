@@ -7,11 +7,10 @@ from django.db import transaction
 from ..models import *
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth.decorators import login_required
+from login.permissions import groupRequired
 
 
-
-
-
+@groupRequired('Admin', 'Lider de Proceso')
 @login_required
 def deleteObservation(request, observationId):
     petition = get_object_or_404(Observation, pk=observationId)
