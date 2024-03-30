@@ -2,16 +2,16 @@
 
 {% load static %}
 
- {% block content %}
+{% block content %}
 
- <link rel="stylesheet" href="{% static 'styles/loginStyles.css' %}">
- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    {{ form.errors }}
+<link rel="stylesheet" href="{% static 'styles/loginStyles.css' %}">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 
     <form action="/signup" method="POST">
         {% csrf_token %}
-        <div>
-            <img style="width: 340px; height: 107.58px" src="{% static 'images/icesiLogo.png' %}">
+        <div style="margin: 0 auto; width: 340px;">
+            <img style="width: 100%; height: auto;" src="{% static 'images/icesiLogo.png' %}">
         </div>
         <div style="margin-top: 15px">
 
@@ -43,6 +43,24 @@
 
             <button type="submit">Registrarse</button>
         </div>
+      
+        {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <div class="error-message" style="margin-top: 10px; margin-bottom: 5px;">
+                    {{ message }}
+                </div>
+            {% elif message.tags == 'success' %}
+                <div class="success-message" style="margin-top: 10px; margin-bottom: 5px;">
+                    {{ message }}
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
     </form>
+
+
     <script src="{% static 'scripts/signup.js' %}"></script>
- {% endblock  %}
+
+{% endblock  %}

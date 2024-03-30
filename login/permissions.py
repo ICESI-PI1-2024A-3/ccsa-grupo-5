@@ -3,10 +3,6 @@ from django.db.models.signals import post_migrate
 from django.dispatch import receiver
 from django.contrib.auth.decorators import user_passes_test
 
-
-
-
-
 def create_groups():
         Group.objects.get_or_create(name='Admin')
         Group.objects.get_or_create(name='Lider de Proceso')
