@@ -1,5 +1,7 @@
 from ..models import *
 from django import forms
+from django.contrib.auth.models import Group
+
 
 
 class CreateNewOtherPetition(forms.ModelForm):
@@ -18,6 +20,10 @@ class CreateNewOtherPetition(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["user"].required = False
+        
+        # Filtrar las opciones del campo "user" para mostrar solo los usuarios que pertenecen al grupo "Gestor de Contratacion"
+        gestor_group = Group.objects.get(name='Gestor de Contratacion')
+        self.fields['user'].queryset = gestor_group.user_set.all()
 
     def clean_archivo(self):
         archivo = self.cleaned_data.get("archivo")
