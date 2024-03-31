@@ -21,12 +21,6 @@ from .models import User
 from petition.models import Petition, Observation
 
 
-def create_groups():
-    Group.objects.get_or_create(name="Admin")
-    Group.objects.get_or_create(name="Lider de Proceso")
-    Group.objects.get_or_create(name="Gestor de Contratacion")
-
-
 def groupRequired(*groupNames):
     """
     Decorator for views that checks whether a user is in the required group(s).

@@ -2,12 +2,12 @@ from django.http import HttpResponseNotFound
 from django.utils import timezone
 from django.test import TestCase, Client
 from django.urls import reverse
-from ..models import Monitoring, Other
+from ..models import Monitoring, Other, Observation
 from login.models import User
 from django.contrib.auth.models import Group
 
 
-class testsSelectTypePetition(TestCase):
+class testEditObservationView(TestCase):
     def setUp(self):
         # Crear un usuario para simular la autenticación
         Group.objects.get_or_create(name="Admin")
@@ -16,6 +16,7 @@ class testsSelectTypePetition(TestCase):
         self.user.groups.add(group)
         self.client = Client()
         self.client.force_login(self.user)
+
         # Crear instancias de Monitoring y Other para usar en las pruebas
         self.monitoringWithUser = Monitoring.objects.create(
             startDate=timezone.now().date(),
@@ -90,38 +91,92 @@ class testsSelectTypePetition(TestCase):
             rutAttachment="ruta/del/archivo/rut.pdf",
         )
 
-    def testSelectTypePetitionAuthenticated(self):
-        # Hacer una solicitud GET a la vista con un usuario autenticado
-        response = self.client.get(reverse("selectTypePetition"))
+        self.observation = Observation.objects.create(
+            description="Observación de ejemplo",
+            date="2024-04-01",
+            time="12:00:00",
+            author="",
+            petition=self.monitoringWithUser,
+        )
 
-        # Verificar que la respuesta tenga el código 200 (OK)
+    def testEditObservationAuthenticatedGet(self):
+        response = self.client.get(
+            reverse(
+                "editObservation",
+                kwargs={
+                    "petitionId": self.monitoringWithUser.id,
+                    "observationId": self.observation.id,
+                },
+            )
+        )
         self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "editObservation.html")
 
-    def testSelectTypePetitionUnauthenticated(self):
-        unauthenticatedClient = Client()
-        # Hacer una solicitud GET a la vista sin autenticación
-        response = unauthenticatedClient.get(reverse("selectTypePetition"))
+    def testEditObservationAuthenticatedPostValid(self):
+        response = self.client.post(
+            reverse(
+                "editObservation",
+                kwargs={
+                    "petitionId": self.monitoringWithUser.id,
+                    "observationId": self.observation.id,
+                },
+            ),
+            data={
+                "description": "Observación editada",
+                "date": "2024-04-01",
+                "time": "12:00:00",
+            },
+        )
+        self.assertEqual(response.status_code, 302)  # Redirect after successful POST
+        self.assertEqual(
+            Observation.objects.count(), 1
+        )  # Check if observation count remains the same
 
-        # Verificar que la respuesta tenga el código 302 (Redirección a la página de inicio de sesión)
-        self.assertEqual(response.status_code, 302)
+        # Reload the observation from the database
+        updated_observation = Observation.objects.get(id=self.observation.id)
+        self.assertEqual(updated_observation.description, "Observación editada")
 
-    def testSelectTypePetitionTemplate(self):
-        # Hacer una solicitud GET a la vista con un usuario autenticado
-        response = self.client.get(reverse("selectTypePetition"))
+    def testEditObservationPermission(self):
+        response = self.client.get(
+            reverse(
+                "editObservation",
+                kwargs={
+                    "petitionId": self.monitoringWithUser.id,
+                    "observationId": self.observation.id,
+                },
+            )
+        )
+        self.assertEqual(
+            response.status_code, 200
+        )  # Forbidden without correct permissions
 
-        # Verificar que se está utilizando la plantilla correcta
-        self.assertTemplateUsed(response, "selectTypePetition.html")
+    def testEditObservationAuthenticatedPostInvalid(self):
+        response = self.client.post(
+            reverse(
+                "editObservation",
+                kwargs={
+                    "petitionId": self.monitoringWithUser.id,
+                    "observationId": self.observation.id,
+                },
+            ),
+            data={},
+        )
+        self.assertEqual(
+            response.status_code, 200
+        )  # Stay on the same page after invalid POST
+        self.assertFormError(
+            response, "form", "description", "Este campo es obligatorio."
+        )
 
-    def testSelectTypePetitionContent(self):
-        # Hacer una solicitud GET a la vista con un usuario autenticado
-        response = self.client.get(reverse("selectTypePetition"))
-
-        # Verificar que el contenido de la respuesta contiene un texto específico
-        self.assertContains(response, "Selecciona el tipo de Solicitud")
-
-    def testSelectTypePetitionContent1(self):
-        # Hacer una solicitud GET a la vista con un usuario autenticado
-        response = self.client.get(reverse("selectTypePetition"))
-
-        # Verificar que el contenido de la respuesta contiene un texto específico
-        self.assertContains(response, "Monitoria")
+    def testEditObservationUnauthenticated(self):
+        self.client.logout()
+        response = self.client.get(
+            reverse(
+                "editObservation",
+                kwargs={
+                    "petitionId": self.monitoringWithUser.id,
+                    "observationId": self.observation.id,
+                },
+            )
+        )
+        self.assertEqual(response.status_code, 302)  # Redirect to login page

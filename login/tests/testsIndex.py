@@ -1,12 +1,16 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 from login.models import User
+from django.contrib.auth.models import Group
 
 
-class TestsIndex(TestCase):
+class testsIndex(TestCase):
     def setUp(self):
         # Crear un usuario para simular la autenticación
+        Group.objects.get_or_create(name="Admin")
         self.user = User.objects.create(username="testuser", password="testpassword")
+        group = Group.objects.get(name="Admin")
+        self.user.groups.add(group)
         self.client = Client()
         self.client.force_login(self.user)
 
