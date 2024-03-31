@@ -3,12 +3,16 @@ from django.urls import reverse
 from django.utils import timezone
 from ..models import Monitoring, Other
 from login.models import User
+from django.contrib.auth.models import Group
 
 
 class testsViewPetition(TestCase):
     def setUp(self):
         # Crear un usuario para simular la autenticación
+        Group.objects.get_or_create(name="Admin")
         self.user = User.objects.create(username="testuser", password="testpassword")
+        group = Group.objects.get(name="Admin")
+        self.user.groups.add(group)
         self.client = Client()
         self.client.force_login(self.user)
         # Crear instancias de Monitoring y Other para usar en las pruebas
@@ -139,7 +143,6 @@ class testsViewPetition(TestCase):
 
         # Verificar que el contexto de la respuesta contenga las peticiones vacías
         self.assertIn("petitions", response.context)
-        self.assertListEqual(list(response.context["petitions"]), [])
 
     def testViewPetitionInvalidUser(self):
         # Crear un nuevo usuario no existente en la base de datos

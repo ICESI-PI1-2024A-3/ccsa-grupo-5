@@ -2,12 +2,12 @@ from django.http import HttpResponseNotFound
 from django.utils import timezone
 from django.test import TestCase, Client
 from django.urls import reverse
-from ..models import Monitoring, Other
+from ..models import Monitoring, Other, Observation, Petition
 from login.models import User
 from django.contrib.auth.models import Group
 
 
-class testsSelectTypePetition(TestCase):
+class testDeletePetition(TestCase):
     def setUp(self):
         # Crear un usuario para simular la autenticación
         Group.objects.get_or_create(name="Admin")
@@ -16,6 +16,7 @@ class testsSelectTypePetition(TestCase):
         self.user.groups.add(group)
         self.client = Client()
         self.client.force_login(self.user)
+
         # Crear instancias de Monitoring y Other para usar en las pruebas
         self.monitoringWithUser = Monitoring.objects.create(
             startDate=timezone.now().date(),
@@ -90,38 +91,51 @@ class testsSelectTypePetition(TestCase):
             rutAttachment="ruta/del/archivo/rut.pdf",
         )
 
-    def testSelectTypePetitionAuthenticated(self):
-        # Hacer una solicitud GET a la vista con un usuario autenticado
-        response = self.client.get(reverse("selectTypePetition"))
+        self.observation = Observation.objects.create(
+            description="Observación de ejemplo",
+            date="2024-04-01",
+            time="12:00:00",
+            author="",
+            petition=self.monitoringWithUser,
+        )
 
-        # Verificar que la respuesta tenga el código 200 (OK)
-        self.assertEqual(response.status_code, 200)
-
-    def testSelectTypePetitionUnauthenticated(self):
-        unauthenticatedClient = Client()
-        # Hacer una solicitud GET a la vista sin autenticación
-        response = unauthenticatedClient.get(reverse("selectTypePetition"))
-
-        # Verificar que la respuesta tenga el código 302 (Redirección a la página de inicio de sesión)
+    def testDeletePetitionPostMWithUser(self):
+        response = self.client.post(
+            reverse("deletePetition", args=[self.monitoringWithUser.pk])
+        )
         self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, reverse("viewPetition"))
+        with self.assertRaises(Petition.DoesNotExist):
+            Petition.objects.get(pk=self.monitoringWithUser.pk)
 
-    def testSelectTypePetitionTemplate(self):
-        # Hacer una solicitud GET a la vista con un usuario autenticado
-        response = self.client.get(reverse("selectTypePetition"))
+    def testDeletePetitionPostOWithoutUser(self):
+        response = self.client.post(
+            reverse("deletePetition", args=[self.otherWithoutUser.pk])
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, reverse("viewPetition"))
+        with self.assertRaises(Petition.DoesNotExist):
+            Petition.objects.get(pk=self.otherWithoutUser.pk)
 
-        # Verificar que se está utilizando la plantilla correcta
-        self.assertTemplateUsed(response, "selectTypePetition.html")
+    def testDeletePetitionPostOWithUser(self):
+        response = self.client.post(
+            reverse("deletePetition", args=[self.otherWithUser.pk])
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, reverse("viewPetition"))
+        with self.assertRaises(Petition.DoesNotExist):
+            Petition.objects.get(pk=self.otherWithUser.pk)
 
-    def testSelectTypePetitionContent(self):
-        # Hacer una solicitud GET a la vista con un usuario autenticado
-        response = self.client.get(reverse("selectTypePetition"))
+    def testDeletePetitionPostRedirect(self):
+        # Ensure redirection if not logged in
+        self.client.logout()
+        response = self.client.post(
+            reverse("deletePetition", args=[self.monitoringWithUser.pk])
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertIn(reverse("login"), response.url)
 
-        # Verificar que el contenido de la respuesta contiene un texto específico
-        self.assertContains(response, "Selecciona el tipo de Solicitud")
-
-    def testSelectTypePetitionContent1(self):
-        # Hacer una solicitud GET a la vista con un usuario autenticado
-        response = self.client.get(reverse("selectTypePetition"))
-
-        # Verificar que el contenido de la respuesta contiene un texto específico
-        self.assertContains(response, "Monitoria")
+    def testDeletePetitionPostNotFound(self):
+        # Test deletion of non-existent petition
+        response = self.client.post(reverse("deletePetition", args=[999]))
+        self.assertEqual(response.status_code, 404)
