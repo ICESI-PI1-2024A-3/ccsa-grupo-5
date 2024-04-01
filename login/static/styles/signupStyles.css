@@ -1,33 +1,29 @@
 .cardContainer {
-    max-width: 90%;
+    max-width: 30%; 
     width: 100%;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 20px auto; 
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .form-container {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.logo-container {
-    width: 100%; 
-    display: flex;
-    justify-content: center; 
-    margin-bottom: 20px;
-}
-
-.logo-container img {
-    max-width: 80%; 
-    width: 100%; 
-    height: auto;
+h1 {
+    text-align: center;
+    margin: 0; 
+    color: #2000fb; 
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .input-group {
@@ -51,13 +47,13 @@
 
 .input-group .password-input {
     position: relative;
-    width: 100%; 
+    width: 100%;
 }
 
 #togglePassword {
     position: absolute;
-    right: 5px; 
-    top: 50%; 
+    right: 5px;
+    top: 50%;
     transform: translateY(-50%);
     font-size: 20px;
     color: #999;
@@ -86,6 +82,6 @@
 
 @media screen and (max-width: 768px) {
     .logo-container img {
-        max-width: 60%; 
+        max-width: 60%;
     }
 }
