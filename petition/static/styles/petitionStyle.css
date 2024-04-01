@@ -1,32 +1,20 @@
 .cardContainer {
-    max-width: 500px;
-    width: 100%;
+    max-width: 30%; 
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 20px auto; /* Centra horizontalmente y agrega espacio arriba */
+    margin: 20px auto; 
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.logo-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.logo-container img {
-    max-width: 200px; /* Limita el ancho máximo del logo */
-    width: 100%; /* Asegura que el logo ocupe todo el ancho del contenedor */
-    height: auto;
-}
-
 h1 {
     text-align: center;
-    margin: 0; /* Elimina el margen superior e inferior del título */
+    margin: 0; 
+    color: #2000fb; 
+    font-weight: bold;
 }
 
 form {
@@ -47,12 +35,20 @@ input {
 }
 
 button {
-    width: 100%; 
+    width: 80%; /* Define el ancho del botón para que sea consistente con los inputs */
+    max-width: 200px; /* Limita el ancho máximo del botón */
     padding: 10px;
     background-color: #2000fb;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    margin-top: 10px; 
+    margin-top: 10px; /* Espacio superior entre el último input y el botón */
+}
+
+/* Media query para dispositivos de escritorio */
+@media screen and (min-width: 768px) {
+    .cardContainer {
+        max-width: 500px; /* Restaura el ancho máximo para dispositivos de escritorio */
+    }
 }
