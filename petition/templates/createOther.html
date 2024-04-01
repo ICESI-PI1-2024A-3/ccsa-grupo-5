@@ -1,24 +1,23 @@
 {% extends 'layouts/base.html' %}
-
 {% load static %}
 
-{% block Head %}
-
-<h1>Create Other</h1>
-
-{% endblock  %}
+{% block head %}
+<title>Crear solicitud</title>
+{% endblock %}
 
 {% block content %}
-
 <link rel="stylesheet" href="{% static 'styles/petitionStyle.css' %}">
 
-<h1>Crear Solicitud Monitoria</h1>
+<div class="cardContainer">
+    <div class="logo-container">
+        <img src="{% static 'images/icesiLogo.png' %}">
+    </div>
+    <h1>Crear Solicitud Prestación de Servicios o Practicante</h1>
 
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Guardar</button>
-</form>
-
-
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+</div>
 {% endblock %}

@@ -16,14 +16,13 @@ body {
     display: flex;
     align-items: top;
     justify-content: center;
-    background-color: #f4f4f4;
+    background-color: #f0f3fc !important;
     min-height: 100vh;
 }
 
 .container {
-    max-width: max-content;
     padding: 20px;
-    background-color: #fff;
+    background-color: #f0f3fc;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
