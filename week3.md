@@ -116,13 +116,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Ayudar con el jira
 
 ### ¿Qué voy a hacer?
-- 
+- Investigar sobre como implementar tipos de usuarios
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -185,13 +185,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- No realicé avances
 
 ### ¿Qué voy a hacer?
-- 
+- Seguir con la investigación planeada
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -254,13 +254,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Ayudar con la implementación de los roles
 
 ### ¿Qué voy a hacer?
-- 
+- Mejorar front
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -323,13 +323,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Nada
 
 ### ¿Qué voy a hacer?
-- 
+- Mejorar front
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
