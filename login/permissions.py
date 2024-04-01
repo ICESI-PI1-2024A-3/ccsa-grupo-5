@@ -40,20 +40,24 @@ from petition.models import Petition, Observation
 
 @receiver(post_migrate)
 def assignPermissions(sender, **kwargs):
-    # Obtener ContentType para los modelos relevantes
+    """
+    Signal receiver to assign permissions to groups after migrations.
+    """
+
+    # Get ContentType for relevant models
     userContentType = ContentType.objects.get_for_model(User)
     petitionContentType = ContentType.objects.get_for_model(Petition)
     observationContentType = ContentType.objects.get_for_model(Observation)
 
-    # Obtener o crear los grupos
+    # Get or create groups
     gestorGroup, _ = Group.objects.get_or_create(name="Gestor de Contratacion")
     liderGroup, _ = Group.objects.get_or_create(name="Lider de Proceso")
     admin, _ = Group.objects.get_or_create(name="Admin")
 
-    # Asignar todos los permisos predeterminados a Gestor de Contratacion
+    # Assign all default permissions to Admin
     admin.permissions.set(Permission.objects.all())
 
-    # Crear y asignar permisos a Lider de Proceso
+    # Create and assign permissions to Lider de Proceso
     liderGroup.permissions.add(
         Permission.objects.get_or_create(
             content_type=observationContentType,
@@ -102,7 +106,7 @@ def assignPermissions(sender, **kwargs):
         )[0],
     )
 
-    # Crear y asignar permisos a Gestor de Contratacion
+    # Create and assign permissions to Gestor de Contratacion
     gestorGroup.permissions.add(
         Permission.objects.get_or_create(
             content_type=observationContentType,

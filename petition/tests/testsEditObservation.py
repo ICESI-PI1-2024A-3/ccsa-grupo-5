@@ -55,7 +55,7 @@ class TestEditObservationView(TestCase):
             petition=self.monitoring_with_user,
         )
 
-    def test_edit_observation_authenticated_get(self):
+    def testEditObservationAuthenticatedGet(self):
         """
         Test for authenticated user accessing edit observation view using GET method.
         """
@@ -72,7 +72,7 @@ class TestEditObservationView(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "editObservation.html")
 
-    def test_edit_observation_authenticated_post_valid(self):
+    def testEditObservationAuthenticatedPostValid(self):
         """
         Test for authenticated user submitting valid data to edit observation using POST method.
         """
@@ -97,7 +97,7 @@ class TestEditObservationView(TestCase):
         updated_observation = Observation.objects.get(id=self.observation.id)
         self.assertEqual(updated_observation.description, "Observación editada")
 
-    def test_edit_observation_permission(self):
+    def testEditObservationPermission(self):
         """
         Test for user without correct permissions accessing edit observation view.
         """
@@ -115,11 +115,10 @@ class TestEditObservationView(TestCase):
             response.status_code, 200
         )  # Forbidden without correct permissions
 
-    def test_edit_observation_authenticated_post_invalid(self):
+    def testEditObservationAuthenticatedPostInvalid(self):
         """
         Test for authenticated user submitting invalid data to edit observation using POST method.
         """
-
         response = self.client.post(
             reverse(
                 "editObservation",
@@ -133,11 +132,14 @@ class TestEditObservationView(TestCase):
         self.assertEqual(
             response.status_code, 200
         )  # Stay on the same page after invalid POST
-        self.assertFormError(
-            response, "form", "description", "Este campo es obligatorio."
-        )
+        form = response.context['form']
+        self.assertFalse(form.is_valid())
+        self.assertTrue('description' in form.errors)
+        self.assertEqual(form.errors['description'], ["Este campo es obligatorio."])
 
-    def test_edit_observation_unauthenticated(self):
+        
+
+    def testEditObservationUnauthenticated(self):
         """
         Test for unauthenticated user accessing edit observation view.
         """

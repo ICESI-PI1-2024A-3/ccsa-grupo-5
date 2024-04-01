@@ -19,6 +19,10 @@ class testsCreateMonitoring(TestCase):
         """
         Set up data for each test.
         """
+        # Create groups for permissions
+        gestorGroup, _ = Group.objects.get_or_create(name="Gestor de Contratacion")
+        liderGroup, _ = Group.objects.get_or_create(name="Lider de Proceso")
+        admin, _ = Group.objects.get_or_create(name="Admin")
         # Create a user to simulate authentication
         Group.objects.get_or_create(name="Admin")
         self.user = User.objects.create(username="testuser", password="testpassword")
@@ -129,9 +133,10 @@ class testsCreateMonitoring(TestCase):
         """
         response = self.client.post(reverse("createMonitoring"), {})
         self.assertEqual(response.status_code, 200)
-        self.assertFormError(
-            response, "form", "startDate", "Este campo es obligatorio."
-        )
+        form = response.context['form']
+        self.assertFalse(form.is_valid())
+        self.assertTrue('startDate' in form.errors)
+        self.assertEqual(form.errors['startDate'], ["Este campo es obligatorio."])
 
     def testCreateMonitoringPostRedirect(self):
         """

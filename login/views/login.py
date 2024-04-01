@@ -28,7 +28,7 @@ def login(request):
             auth_login(request, user)
             return redirect("index")
         else:
-            messages.error(request, "Invalid credentials. Please try again.")
+            messages.error(request, "Acceso inválido. Por favor, inténtelo otra vez.")
     else:
         form = loginForm.LoginForm()
 
