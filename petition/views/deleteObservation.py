@@ -14,7 +14,6 @@ from django.contrib.auth.decorators import login_required
 from login.permissions import groupRequired
 
 @login_required
-@groupRequired('Admin', 'Lider de Proceso')
 def deleteObservation(request, observationId):
     """
     Delete an observation.
