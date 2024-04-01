@@ -4,9 +4,16 @@ from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 
 class Command(BaseCommand):
+    """
+    Management command to create a superuser and add them to the Admin group.
+    """
+
     help = 'Create a superuser and add them to the Admin group'
 
     def handle(self, *args, **options):
+        """
+        Handle command execution.
+        """
         User = get_user_model()
         username = input('Enter username: ')
         email = input('Enter email: ')

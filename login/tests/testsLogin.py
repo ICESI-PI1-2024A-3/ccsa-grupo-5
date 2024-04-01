@@ -6,8 +6,14 @@ from django.contrib.messages import get_messages
 
 
 class testsLogin(TestCase):
+    """
+    Test suite for the login view.
+    """
+
     def setUp(self):
-        # Crear un usuario para simular la autenticación
+        """
+        Set up data for each test.
+        """
         Group.objects.get_or_create(name="Admin")
         self.user = User.objects.create(username="testuser", password="testpassword")
         group = Group.objects.get(name="Admin")
@@ -16,18 +22,27 @@ class testsLogin(TestCase):
         self.client.force_login(self.user)
 
     def testLoginViewGet(self):
+        """
+        Test GET request to login view.
+        """
         response = self.client.get(reverse("login"))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "login.html")
         self.assertIn("form", response.context)
 
     def testLoginViewPostValid(self):
+        """
+        Test POST request to login view with valid credentials.
+        """
         response = self.client.post(
             reverse("login"), {"username": "testuser", "password": "testpassword"}
         )
         self.assertEqual(response.status_code, 200)
 
     def testLoginViewPostInvalid(self):
+        """
+        Test POST request to login view with invalid credentials.
+        """
         response = self.client.post(
             reverse("login"), {"username": "invalid", "password": "invalid"}
         )
@@ -40,10 +55,16 @@ class testsLogin(TestCase):
         )
 
     def testLoginViewAuthenticated(self):
+        """
+        Test authenticated access to login view.
+        """
         self.client.logout()
         response = self.client.get(reverse("login"))
         self.assertEqual(response.status_code, 200)
 
     def testLoginViewLogout(self):
+        """
+        Test logout redirection.
+        """
         response = self.client.get(reverse("logoutSesion"))
         self.assertRedirects(response, reverse("login"))

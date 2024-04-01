@@ -51,13 +51,13 @@
 
 .input-group .password-input {
     position: relative;
-    width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+    width: 100%; 
 }
 
 #togglePassword {
     position: absolute;
-    right: 5px; /* Ajusta la posición del ícono a la derecha */
-    top: 50%; /* Lo posiciona verticalmente en el centro */
+    right: 5px; 
+    top: 50%; 
     transform: translateY(-50%);
     font-size: 20px;
     color: #999;

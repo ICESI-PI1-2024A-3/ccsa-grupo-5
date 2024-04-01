@@ -3,8 +3,10 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import Permission
 
-
 class UserForm(UserCreationForm):
+    """
+    Form for user creation with additional fields.
+    """
     roles = forms.ChoiceField(
         choices=[
             ("leader", "Líder de Proceso"),
@@ -13,6 +15,9 @@ class UserForm(UserCreationForm):
     )
 
     class Meta:
+        """
+        Metadata class specifying the model and fields for the form.
+        """
         model = User
         fields = [
             "first_name",

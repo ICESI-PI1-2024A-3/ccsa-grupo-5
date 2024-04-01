@@ -24,7 +24,7 @@
 <p>Documento de Identidad: {{ solicitud.identityDocument }}</p>
 <p>Correo Electrónico: {{ solicitud.email }}</p>
 <p>Número de Teléfono: {{ solicitud.phoneNumber }}</p>
-<!-- Detalles específicos de Other -->
+<!-- Other Specific Details -->
 <p>Tipo de Solicitud: {{ solicitud.getPetitionType }}</p>
 <p>Nombre del Solicitante: {{ solicitud.requesterName }}</p>
 <p>Facultad del Solicitante: {{ solicitud.requesterFaculty }}</p>
@@ -41,7 +41,7 @@
 <div>
     <p>Gestor encargado: <b>{{ solicitud.getUser }}</b></p>
 </div>
-<!-- Agrega más detalles específicos de Other si es necesario -->
+
 
   
 
@@ -60,7 +60,7 @@
     <button id="toggleObservationsBtn">Mostrar Observaciones</button>
 
     <div class="divButton">
-        <!-- Contenedor de observaciones (inicialmente oculto) -->
+
         <div id="observationsContainer" style="display: none;">
             <div class="dropdown">
                 <div id="observationsDropdown" class="dropdown-content">

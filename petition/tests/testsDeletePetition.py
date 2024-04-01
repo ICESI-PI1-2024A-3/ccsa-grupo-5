@@ -1,15 +1,22 @@
-from django.http import HttpResponseNotFound
-from django.utils import timezone
 from django.test import TestCase, Client
 from django.urls import reverse
 from ..models import Monitoring, Other, Observation, Petition
 from login.models import User
+from django.utils import timezone
 from django.contrib.auth.models import Group
 
 
-class testDeletePetition(TestCase):
+class TestDeletePetition(TestCase):
+    """
+    Test suite for delete petition view.
+    """
+
     def setUp(self):
-        # Crear un usuario para simular la autenticación
+        """
+        Set up data for each test.
+        """
+
+        # Create a user to simulate authentication
         Group.objects.get_or_create(name="Admin")
         self.user = User.objects.create(username="testuser", password="testpassword")
         group = Group.objects.get(name="Admin")
@@ -17,7 +24,7 @@ class testDeletePetition(TestCase):
         self.client = Client()
         self.client.force_login(self.user)
 
-        # Crear instancias de Monitoring y Other para usar en las pruebas
+        # Create instances of Monitoring and Other for use in tests
         self.monitoringWithUser = Monitoring.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=30),
@@ -65,7 +72,7 @@ class testDeletePetition(TestCase):
             rutAttachment="ruta/del/archivo/rut.pdf",
         )
 
-        # Solicitud sin usuario
+        # Petition without user
         self.otherWithoutUser = Other.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=40),
@@ -100,6 +107,10 @@ class testDeletePetition(TestCase):
         )
 
     def testDeletePetitionPostMWithUser(self):
+        """
+        Test for deleting a Monitoring petition with a user associated.
+        """
+
         response = self.client.post(
             reverse("deletePetition", args=[self.monitoringWithUser.pk])
         )
@@ -109,6 +120,10 @@ class testDeletePetition(TestCase):
             Petition.objects.get(pk=self.monitoringWithUser.pk)
 
     def testDeletePetitionPostOWithoutUser(self):
+        """
+        Test for deleting an Other petition without a user associated.
+        """
+
         response = self.client.post(
             reverse("deletePetition", args=[self.otherWithoutUser.pk])
         )
@@ -118,6 +133,10 @@ class testDeletePetition(TestCase):
             Petition.objects.get(pk=self.otherWithoutUser.pk)
 
     def testDeletePetitionPostOWithUser(self):
+        """
+        Test for deleting an Other petition with a user associated.
+        """
+
         response = self.client.post(
             reverse("deletePetition", args=[self.otherWithUser.pk])
         )
@@ -127,6 +146,10 @@ class testDeletePetition(TestCase):
             Petition.objects.get(pk=self.otherWithUser.pk)
 
     def testDeletePetitionPostRedirect(self):
+        """
+        Test redirection if not logged in.
+        """
+
         # Ensure redirection if not logged in
         self.client.logout()
         response = self.client.post(
@@ -136,6 +159,9 @@ class testDeletePetition(TestCase):
         self.assertIn(reverse("login"), response.url)
 
     def testDeletePetitionPostNotFound(self):
-        # Test deletion of non-existent petition
+        """
+        Test for deletion of a non-existent petition.
+        """
+
         response = self.client.post(reverse("deletePetition", args=[999]))
         self.assertEqual(response.status_code, 404)
