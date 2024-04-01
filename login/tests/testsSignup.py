@@ -7,8 +7,14 @@ from django.contrib.messages import get_messages
 
 
 class testSignup(TestCase):
+    """
+    Test suite for the signup view.
+    """
+
     def setUp(self):
-        # Crear un usuario para simular la autenticación
+        """
+        Set up data for each test.
+        """
         self.signupUrl = reverse("signup")
         Group.objects.get_or_create(name="Admin")
         self.user = User.objects.create_user(
@@ -24,10 +30,16 @@ class testSignup(TestCase):
         self.client.force_login(self.user)
 
     def testSignupFormInvalid(self):
+        """
+        Test invalid user creation form.
+        """
         form = UserForm(data={})
         self.assertFalse(form.is_valid())
 
     def testSignupViewPost(self):
+        """
+        Test POST request to signup view.
+        """
         response = self.client.post(
             self.signupUrl,
             {
@@ -44,11 +56,17 @@ class testSignup(TestCase):
         self.assertTemplateUsed(response, "signup.html")
 
     def testSignupViewGet(self):
+        """
+        Test GET request to signup view.
+        """
         response = self.client.get(self.signupUrl)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "signup.html")
 
     def testUserCreation(self):
+        """
+        Test user creation.
+        """
         self.client.post(
             self.signupUrl,
             {

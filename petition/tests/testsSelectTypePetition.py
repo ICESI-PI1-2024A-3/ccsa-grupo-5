@@ -7,16 +7,25 @@ from login.models import User
 from django.contrib.auth.models import Group
 
 
-class testsSelectTypePetition(TestCase):
+class TestsSelectTypePetition(TestCase):
+    """
+    Test suite for selectTypePetition view.
+    """
+
     def setUp(self):
-        # Crear un usuario para simular la autenticación
+        """
+        Set up data for each test.
+        """
+
+        # Create a user to simulate authentication
         Group.objects.get_or_create(name="Admin")
         self.user = User.objects.create(username="testuser", password="testpassword")
         group = Group.objects.get(name="Admin")
         self.user.groups.add(group)
         self.client = Client()
         self.client.force_login(self.user)
-        # Crear instancias de Monitoring y Other para usar en las pruebas
+
+        # Create instances of Monitoring and Other for testing
         self.monitoringWithUser = Monitoring.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=30),
@@ -64,7 +73,7 @@ class testsSelectTypePetition(TestCase):
             rutAttachment="ruta/del/archivo/rut.pdf",
         )
 
-        # Solicitud sin usuario
+        # Petition without user
         self.otherWithoutUser = Other.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=40),
@@ -91,37 +100,59 @@ class testsSelectTypePetition(TestCase):
         )
 
     def testSelectTypePetitionAuthenticated(self):
-        # Hacer una solicitud GET a la vista con un usuario autenticado
+        """
+        Test view for selectTypePetition when authenticated.
+        """
+
+        # Make a GET request to the view with an authenticated user
         response = self.client.get(reverse("selectTypePetition"))
 
-        # Verificar que la respuesta tenga el código 200 (OK)
+        # Check if the response status code is 200 (OK)
         self.assertEqual(response.status_code, 200)
 
     def testSelectTypePetitionUnauthenticated(self):
+        """
+        Test view for selectTypePetition when unauthenticated.
+        """
+
+        # Create a new client without authentication
         unauthenticatedClient = Client()
-        # Hacer una solicitud GET a la vista sin autenticación
+
+        # Make a GET request to the view without authentication
         response = unauthenticatedClient.get(reverse("selectTypePetition"))
 
-        # Verificar que la respuesta tenga el código 302 (Redirección a la página de inicio de sesión)
+        # Check if the response status code is 302 (Redirect to login page)
         self.assertEqual(response.status_code, 302)
 
     def testSelectTypePetitionTemplate(self):
-        # Hacer una solicitud GET a la vista con un usuario autenticado
+        """
+        Test view for selectTypePetition template.
+        """
+
+        # Make a GET request to the view with an authenticated user
         response = self.client.get(reverse("selectTypePetition"))
 
-        # Verificar que se está utilizando la plantilla correcta
+        # Check if the correct template is being used
         self.assertTemplateUsed(response, "selectTypePetition.html")
 
     def testSelectTypePetitionContent(self):
-        # Hacer una solicitud GET a la vista con un usuario autenticado
+        """
+        Test view for selectTypePetition content.
+        """
+
+        # Make a GET request to the view with an authenticated user
         response = self.client.get(reverse("selectTypePetition"))
 
-        # Verificar que el contenido de la respuesta contiene un texto específico
+        # Check if the response content contains a specific text
         self.assertContains(response, "Selecciona el tipo de Solicitud")
 
     def testSelectTypePetitionContent1(self):
-        # Hacer una solicitud GET a la vista con un usuario autenticado
+        """
+        Test view for selectTypePetition content 1.
+        """
+
+        # Make a GET request to the view with an authenticated user
         response = self.client.get(reverse("selectTypePetition"))
 
-        # Verificar que el contenido de la respuesta contiene un texto específico
+        # Check if the response content contains a specific text
         self.assertContains(response, "Monitoria")

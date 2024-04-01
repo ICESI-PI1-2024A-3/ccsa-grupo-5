@@ -6,17 +6,25 @@ from ..models import Monitoring, Other
 from login.models import User
 from django.contrib.auth.models import Group
 
+class TestsShowPetition(TestCase):
+    """
+    Test suite for showPetition views.
+    """
 
-class testsShowPetition(TestCase):
     def setUp(self):
-        # Crear un usuario para simular la autenticación
+        """
+        Set up data for each test.
+        """
+
+        # Create a user to simulate authentication
         Group.objects.get_or_create(name="Admin")
         self.user = User.objects.create(username="testuser", password="testpassword")
         group = Group.objects.get(name="Admin")
         self.user.groups.add(group)
         self.client = Client()
         self.client.force_login(self.user)
-        # Crear instancias de Monitoring y Other para usar en las pruebas
+
+        # Create instances of Monitoring and Other for testing
         self.monitoringWithUser = Monitoring.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=30),
@@ -64,7 +72,7 @@ class testsShowPetition(TestCase):
             rutAttachment="ruta/del/archivo/rut.pdf",
         )
 
-        # Solicitud sin usuario
+        # Petition without user
         self.otherWithoutUser = Other.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=40),
@@ -91,56 +99,76 @@ class testsShowPetition(TestCase):
         )
 
     def testShowPetitionOtherExists(self):
-        # Hacer una solicitud GET a la vista con una solicitud de Other existente
+        """
+        Test view for showing Other petition when it exists.
+        """
+
+        # Make a GET request to the view with an existing Other petition
         response = self.client.get(
             reverse("showPetition", kwargs={"petitionId": self.otherWithUser.pk})
         )
 
-        # Verificar que la respuesta tenga el código 200 (OK)
+        # Check if the response status code is 200 (OK)
         self.assertEqual(response.status_code, 200)
 
-        # Verificar que se está usando la plantilla correcta
+        # Check if the correct template is being used
         self.assertTemplateUsed(response, "viewPetitionO.html")
 
     def testShowPetitionOtherWithoutUserExists(self):
-        # Hacer una solicitud GET a la vista con una solicitud de Other existente
+        """
+        Test view for showing Other petition without user when it exists.
+        """
+
+        # Make a GET request to the view with an existing Other petition
         response = self.client.get(
             reverse("showPetition", kwargs={"petitionId": self.otherWithoutUser.pk})
         )
 
-        # Verificar que la respuesta tenga el código 200 (OK)
+        # Check if the response status code is 200 (OK)
         self.assertEqual(response.status_code, 200)
 
-        # Verificar que se está usando la plantilla correcta
+        # Check if the correct template is being used
         self.assertTemplateUsed(response, "viewPetitionO.html")
 
     def testShowPetitionMonitoringExists(self):
-        # Hacer una solicitud GET a la vista con una solicitud de Monitoring existente
+        """
+        Test view for showing Monitoring petition when it exists.
+        """
+
+        # Make a GET request to the view with an existing Monitoring petition
         response = self.client.get(
             reverse("showPetition", kwargs={"petitionId": self.monitoringWithUser.pk})
         )
 
-        # Verificar que la respuesta tenga el código 200 (OK)
+        # Check if the response status code is 200 (OK)
         self.assertEqual(response.status_code, 200)
 
-        # Verificar que se está usando la plantilla correcta
+        # Check if the correct template is being used
         self.assertTemplateUsed(response, "viewPetitionM.html")
 
     def testShowPetitionNotFound(self):
-        # Hacer una solicitud GET a la vista con un ID de solicitud inexistente
+        """
+        Test view for showing petition when it does not exist.
+        """
+
+        # Make a GET request to the view with a non-existing petition ID
         response = self.client.get(reverse("showPetition", kwargs={"petitionId": 999}))
 
-        # Verificar que la respuesta tenga el código 404 (Not Found) en lugar de 200 (OK)
+        # Check if the response status code is 404 (Not Found) instead of 200 (OK)
         self.assertEqual(response.status_code, 404)
 
     def testShowPetitionWithoutLogin(self):
-        # Crear un nuevo cliente sin autenticación
+        """
+        Test view for showing petition without login.
+        """
+
+        # Create a new client without authentication
         unauthenticatedClient = Client()
 
-        # Hacer una solicitud GET a la vista sin autenticación
+        # Make a GET request to the view without authentication
         response = unauthenticatedClient.get(
             reverse("showPetition", kwargs={"petitionId": self.otherWithoutUser.pk})
         )
 
-        # Verificar que la respuesta tenga el código 302 (Redirección a la página de inicio de sesión)
+        # Check if the response status code is 302 (Redirect to login page)
         self.assertEqual(response.status_code, 302)

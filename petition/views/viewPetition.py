@@ -1,3 +1,7 @@
+"""
+View function to display petitions based on user permissions.
+"""
+
 from itertools import chain
 from django.http import HttpResponse, JsonResponse
 from django.core.serializers import serialize
@@ -8,27 +12,36 @@ from ..models import *
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth.decorators import login_required
 
-
 @login_required
 def viewPetition(request):
-       
-       if request.user.getGroup() == 'Admin':
-              monitorings = Monitoring.objects.all()
-              others = Other.objects.all()
-              
-       elif request.user.getGroup() == 'Lider de Proceso':
-              monitorings = Monitoring.objects.filter(userAsigner = request.user)
-              others = Other.objects.filter(userAsigner = request.user)    
-       else:
-              monitorings = Monitoring.objects.filter(user = request.user)
-              others = Other.objects.filter(user = request.user)  
+    """
+    Render a page displaying petitions based on user permissions.
 
+    Retrieves Monitoring and Other objects based on the user's group
+    and renders a template displaying these petitions.
 
-       petitions = None
+    Args:
+        request: HttpRequest object.
 
-       if monitorings.exists() or others.exists():
-              petitions = list(chain(monitorings, others))
+    Returns:
+        Rendered viewPetition.html template with a table of 'petitions'.
+    """
+    if request.user.getGroup() == 'Admin':
+        monitorings = Monitoring.objects.all()
+        others = Other.objects.all()
+        
+    elif request.user.getGroup() == 'Lider de Proceso':
+        monitorings = Monitoring.objects.filter(userAsigner=request.user)
+        others = Other.objects.filter(userAsigner=request.user)    
+    else:
+        monitorings = Monitoring.objects.filter(user=request.user)
+        others = Other.objects.filter(user=request.user)  
 
-       return render(request, 'viewPetition.html', {
-              'petitions': petitions
-       })
+    petitions = None
+
+    if monitorings.exists() or others.exists():
+        petitions = list(chain(monitorings, others))
+
+    return render(request, 'viewPetition.html', {
+        'petitions': petitions
+    })

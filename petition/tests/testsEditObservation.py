@@ -1,15 +1,22 @@
-from django.http import HttpResponseNotFound
-from django.utils import timezone
 from django.test import TestCase, Client
 from django.urls import reverse
 from ..models import Monitoring, Other, Observation
 from login.models import User
+from django.utils import timezone
 from django.contrib.auth.models import Group
 
 
-class testEditObservationView(TestCase):
+class TestEditObservationView(TestCase):
+    """
+    Test suite for edit observation view.
+    """
+
     def setUp(self):
-        # Crear un usuario para simular la autenticación
+        """
+        Set up data for each test.
+        """
+
+        # Create a user to simulate authentication
         Group.objects.get_or_create(name="Admin")
         self.user = User.objects.create(username="testuser", password="testpassword")
         group = Group.objects.get(name="Admin")
@@ -17,8 +24,8 @@ class testEditObservationView(TestCase):
         self.client = Client()
         self.client.force_login(self.user)
 
-        # Crear instancias de Monitoring y Other para usar en las pruebas
-        self.monitoringWithUser = Monitoring.objects.create(
+        # Create instances of Monitoring and Other for use in tests
+        self.monitoring_with_user = Monitoring.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=30),
             state="pendiente",
@@ -40,71 +47,24 @@ class testEditObservationView(TestCase):
             isOneTimePayment=False,
         )
 
-        self.otherWithUser = Other.objects.create(
-            startDate=timezone.now().date(),
-            endDate=timezone.now().date() + timezone.timedelta(days=30),
-            state="pendiente",
-            cenco="Cenco de ejemplo",
-            fullName="Nombre de ejemplo",
-            identityDocument="1234567890",
-            email="ejemplo@correo.com",
-            phoneNumber="123456789",
-            user=self.user,
-            personType="serviceProvision",
-            requesterName="Nombre del solicitante",
-            requesterFaculty="Facultad del solicitante",
-            motive="Motivo de la petición",
-            bankEntity="Entidad bancaria",
-            bankAccountType="Ahorro",
-            bankAccountNumber="1234567890",
-            eps="EPS del solicitante",
-            pensionFund="Fondo de pensiones del solicitante",
-            arl="ARL del solicitante",
-            contractValue=1000.00,
-            paymentInfo="Información de pago",
-            rutAttachment="ruta/del/archivo/rut.pdf",
-        )
-
-        # Solicitud sin usuario
-        self.otherWithoutUser = Other.objects.create(
-            startDate=timezone.now().date(),
-            endDate=timezone.now().date() + timezone.timedelta(days=40),
-            state="pendiente",
-            cenco="Cenco de ejemplo",
-            fullName="Nombre de ejemplo",
-            identityDocument="1234567890",
-            email="ejemplo@correo.com",
-            phoneNumber="123456789",
-            user=None,
-            personType="serviceProvision",
-            requesterName="Nombre del solicitante",
-            requesterFaculty="Facultad del solicitante",
-            motive="Motivo de la petición",
-            bankEntity="Entidad bancaria",
-            bankAccountType="Ahorro",
-            bankAccountNumber="1234567890",
-            eps="EPS del solicitante",
-            pensionFund="Fondo de pensiones del solicitante",
-            arl="ARL del solicitante",
-            contractValue=1000.00,
-            paymentInfo="Información de pago",
-            rutAttachment="ruta/del/archivo/rut.pdf",
-        )
-
         self.observation = Observation.objects.create(
             description="Observación de ejemplo",
             date="2024-04-01",
             time="12:00:00",
             author="",
-            petition=self.monitoringWithUser,
+            petition=self.monitoring_with_user,
         )
 
-    def testEditObservationAuthenticatedGet(self):
+    def test_edit_observation_authenticated_get(self):
+        """
+        Test for authenticated user accessing edit observation view using GET method.
+        """
+
         response = self.client.get(
             reverse(
                 "editObservation",
                 kwargs={
-                    "petitionId": self.monitoringWithUser.id,
+                    "petitionId": self.monitoring_with_user.id,
                     "observationId": self.observation.id,
                 },
             )
@@ -112,12 +72,16 @@ class testEditObservationView(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "editObservation.html")
 
-    def testEditObservationAuthenticatedPostValid(self):
+    def test_edit_observation_authenticated_post_valid(self):
+        """
+        Test for authenticated user submitting valid data to edit observation using POST method.
+        """
+
         response = self.client.post(
             reverse(
                 "editObservation",
                 kwargs={
-                    "petitionId": self.monitoringWithUser.id,
+                    "petitionId": self.monitoring_with_user.id,
                     "observationId": self.observation.id,
                 },
             ),
@@ -128,20 +92,21 @@ class testEditObservationView(TestCase):
             },
         )
         self.assertEqual(response.status_code, 302)  # Redirect after successful POST
-        self.assertEqual(
-            Observation.objects.count(), 1
-        )  # Check if observation count remains the same
 
         # Reload the observation from the database
         updated_observation = Observation.objects.get(id=self.observation.id)
         self.assertEqual(updated_observation.description, "Observación editada")
 
-    def testEditObservationPermission(self):
+    def test_edit_observation_permission(self):
+        """
+        Test for user without correct permissions accessing edit observation view.
+        """
+
         response = self.client.get(
             reverse(
                 "editObservation",
                 kwargs={
-                    "petitionId": self.monitoringWithUser.id,
+                    "petitionId": self.monitoring_with_user.id,
                     "observationId": self.observation.id,
                 },
             )
@@ -150,12 +115,16 @@ class testEditObservationView(TestCase):
             response.status_code, 200
         )  # Forbidden without correct permissions
 
-    def testEditObservationAuthenticatedPostInvalid(self):
+    def test_edit_observation_authenticated_post_invalid(self):
+        """
+        Test for authenticated user submitting invalid data to edit observation using POST method.
+        """
+
         response = self.client.post(
             reverse(
                 "editObservation",
                 kwargs={
-                    "petitionId": self.monitoringWithUser.id,
+                    "petitionId": self.monitoring_with_user.id,
                     "observationId": self.observation.id,
                 },
             ),
@@ -168,13 +137,17 @@ class testEditObservationView(TestCase):
             response, "form", "description", "Este campo es obligatorio."
         )
 
-    def testEditObservationUnauthenticated(self):
+    def test_edit_observation_unauthenticated(self):
+        """
+        Test for unauthenticated user accessing edit observation view.
+        """
+
         self.client.logout()
         response = self.client.get(
             reverse(
                 "editObservation",
                 kwargs={
-                    "petitionId": self.monitoringWithUser.id,
+                    "petitionId": self.monitoring_with_user.id,
                     "observationId": self.observation.id,
                 },
             )

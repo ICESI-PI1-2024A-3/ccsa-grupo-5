@@ -1,20 +1,24 @@
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import login as auth_login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.http import HttpResponse
-import login
 from ..forms import loginForm, userForm
 from django.contrib import messages
-from django.contrib.auth import logout
 from django.views.decorators.cache import never_cache
-from django.contrib.auth.models import User, Group
 from ..permissions import groupRequired
 
 @groupRequired('Admin')
 def signup(request):
+    """
+    View for signing up new users with different roles.
+
+    Requires 'Admin' group permission.
+
+    GET: Renders signup form.
+    POST: Handles form submission to create new user accounts.
+    """
     if request.method == "GET":
         form = userForm.UserForm()
         return render(request, "signup.html", {"form": form})
@@ -23,11 +27,11 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             roles = form.cleaned_data.get("roles")
-            # Mostrar alerta de éxito
+            # Display success message
             messages.success(request, "Usuario creado satisfactoriamente")
 
             if roles:
-                # Asignar roles y permisos según la selección del formulario
+                # Assign roles and permissions based on form selection
                 if roles == "admin":
                     group = Group.objects.get(name="Admin")
                     user.is_staff = True
@@ -44,7 +48,7 @@ def signup(request):
                     user.save()
 
             return render(request, "signup.html", {"form": form})
-        # Capturar mensajes de error del formulario
+        # Capture form error messages
         else:
             for field, errors in form.errors.items():
                 if field == "first_name":
