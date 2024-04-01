@@ -28,7 +28,7 @@ def signup(request):
             user = form.save()
             roles = form.cleaned_data.get("roles")
             # Display success message
-            messages.success(request, "User created successfully")
+            messages.success(request, "Usuario creado satisfactoriamente")
 
             if roles:
                 # Assign roles and permissions based on form selection
@@ -52,17 +52,17 @@ def signup(request):
         else:
             for field, errors in form.errors.items():
                 if field == "first_name":
-                    field = "First Name"
+                    field = "Nombre"
                 elif field == "last_name":
-                    field = "Last Name"
+                    field = "Apellido"
                 elif field == "email":
-                    field = "Email"
+                    field = "Correo electrónico"
                 elif field == "username":
-                    field = "Username"
+                    field = "Cedula"
                 elif field == "password1":
-                    field = "Password"
+                    field = "Contraseña"
                 elif field == "password2":
-                    field = "Confirm Password"
+                    field = "Confirmar contraseña"
                 for error in errors:
-                    messages.error(request, f"Error in {field}: {error}")
+                    messages.error(request, f"Error en {field}: {error}")
             return render(request, "signup.html", {"form": form})
