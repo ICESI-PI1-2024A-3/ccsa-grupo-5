@@ -18,14 +18,14 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- Ayudé a mi compañero Flamini a solucionar problemas con el extender sesion
 
 
 ### ¿Qué voy a hacer?
-- 
+- Mejorar la visualizión del front
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno 
 
 
 ---
@@ -87,14 +87,14 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- Mejorar los formularios de solicitud de Monitoria
 
 
 ### ¿Qué voy a hacer?
-- 
+- Mejorar los formularios de solicitud de Otro
 
 ### ¿Qué impedimentos tengo?
-- 
+- Disponibilidad de tiempo al estar trabajando 
 
 
 ---
@@ -156,14 +156,14 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- No logré avanzar en nada
 
 
 ### ¿Qué voy a hacer?
-- 
+- Mejorar el fornt del formulario de solicitud
 
 ### ¿Qué impedimentos tengo?
-- 
+- Falta de tiempo
 
 
 ---
@@ -225,14 +225,14 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- Mejorar el formulario de solicitud de Otro
 
 
 ### ¿Qué voy a hacer?
-- 
+- Crear los permisos requeridos para crear solicitudes
 
 ### ¿Qué impedimentos tengo?
-- 
+- No conocer del tema
 
 
 ---
@@ -294,14 +294,14 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- Implementar los permisos de crear una solicitud
 
 
 ### ¿Qué voy a hacer?
-- 
+- Subir las pruebas a Jira y dar por finalizadas mis tareas
 
 ### ¿Qué impedimentos tengo?
-- 
+- Falta de tiempo
 
 
 ---
