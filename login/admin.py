@@ -3,6 +3,9 @@ from .models import User
 
 
 class UserAdmin(admin.ModelAdmin):
+    """
+    Admin configuration for the User model.
+    """
     list_display = (
         "username",
         "email",

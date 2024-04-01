@@ -3,6 +3,9 @@ from django.contrib import admin
 
 
 class monitoringAdmin(admin.ModelAdmin):
+    """
+    Admin configuration for the Monitoring model.
+    """
     list_display = (
         "id",
         "fullName",
@@ -19,6 +22,9 @@ admin.site.register(Monitoring, monitoringAdmin)
 
 
 class otherAdmin(admin.ModelAdmin):
+    """
+    Admin configuration for the Other model.
+    """
     list_display = (
         "id",
         "fullName",
@@ -35,6 +41,9 @@ admin.site.register(Other, otherAdmin)
 
 
 class ObservationAdmin(admin.ModelAdmin):
+    """
+    Admin configuration for the Observation model.
+    """
     list_display = ("id", "description", "date", "time", "author", "petition")
     list_filter = ("date",)
     search_fields = ("description", "author")
