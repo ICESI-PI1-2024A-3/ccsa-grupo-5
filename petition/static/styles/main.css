@@ -1,8 +1,8 @@
 body {
     margin: 0 !important;
     font-family: Arial !important;
+    background-color: #f0f3fc; /* Establecer el color de fondo */
 }
-
 nav img {
     display: block !important;
     margin: 0 auto !important;
@@ -16,6 +16,7 @@ nav img {
     top: 0;
     left: 0;
     padding-top: 20px;
+    background-color: #ffffff;
 }
 
 .navbarContainer ul {
@@ -45,7 +46,8 @@ main {
 .nav-link:hover,
 .nav-link:focus,
 .nav-link.active {
-    color: #2000fb; 
+    color: #2000fb !important; 
+    text-decoration: none; 
 }
 
 title {

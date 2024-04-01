@@ -4,20 +4,30 @@
 
 {% block content %}
 
-<title>Tipo de Solicitud</title>
-
 <link rel="stylesheet" href="{% static 'styles/selectTypePetition.css' %}">
 
-<h1>Selecciona el tipo de Solicitud</h1>
-
-<div class="buttons" >
-    <div class="divButton">
-        <a href="{% url 'createMonitoring' %}"><button>Monitoria</button></a>
-
+<div class="cardContainer">
+    <div class="logo-container">
+        <img src="{% static 'images/icesiLogo.png' %}">
     </div>
-    <div class="divButton">
-        <a href="{% url 'createOther' %}"><button>Otro tipo</button></a>
-        <h4>Prestación de Servicios o Practicantes</h4>
+    <div class="title-container">
+        <div class="icon-text-container">
+            <img src="{% static 'images/addIcon.png' %}" alt="Add Icon" class="add-icon">
+            <h1 class="logo-text">Crear monitoria, seleccione el tipo de monitoria que desea crear</h1>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <div class="divButton">
+            <a href="{% url 'createMonitoring' %}">
+                <button>Monitoria</button>
+            </a>
+        </div>
+        <div class="divButton">
+            <a href="{% url 'createOther' %}">
+                <button>Prestación de Servicios o Practicantes</button>
+            </a>
+        </div>
     </div>
 </div>
 
