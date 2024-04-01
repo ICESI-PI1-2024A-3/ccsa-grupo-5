@@ -7,7 +7,7 @@
 {% endblock %}
 {% block content %}
 <h1>Solicitudes sin asignar</h1>
-<!-- Agrega la tabla para mostrar las solicitudes sin usuarios asignados -->
+
 <table class="table table-bordered table-striped">
   <thead class="thead-dark">
       <tr>
@@ -15,8 +15,8 @@
           <th scope="col">Fecha de Solicitud</th>
           <th scope="col">Fecha de Inicio</th>
           <th scope="col">Estado</th>
-          <th scope="col">Acciones</th> <!-- Agrega una columna para las acciones -->
-          <!-- Agrega más encabezados de columnas según tus necesidades -->
+          <th scope="col">Acciones</th> 
+       
       </tr>
   </thead>
   <tbody>
@@ -28,10 +28,10 @@
                   <td>{{ petition.startDate }}</td>
                   <td>{{ petition.state }}</td>
                   
-                  <td> <!-- Agrega un botón para asignar usuario -->
+                  <td>
                     <a href="{% url 'assignPetition' petition.id %}"><p>Asignar Gestor</p></a>
                   </td>
-                  <!-- Agrega más columnas según tus necesidades -->
+
               </tr>
           {% endif %}
       {% endfor %}

@@ -7,16 +7,25 @@ from login.models import User
 from django.contrib.auth.models import Group
 
 
-class testsRejectPetition(TestCase):
+class TestsRejectPetition(TestCase):
+    """
+    Test suite for rejectPetition view.
+    """
+
     def setUp(self):
-        # Crear un usuario para simular la autenticación
+        """
+        Set up data for each test.
+        """
+
+        # Create a user to simulate authentication
         Group.objects.get_or_create(name="Admin")
         self.user = User.objects.create(username="testuser", password="testpassword")
         group = Group.objects.get(name="Admin")
         self.user.groups.add(group)
         self.client = Client()
         self.client.force_login(self.user)
-        # Crear instancias de Monitoring y Other para usar en las pruebas
+
+        # Create instances of Monitoring and Other for testing
         self.monitoringWithUser = Monitoring.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=30),
@@ -64,7 +73,7 @@ class testsRejectPetition(TestCase):
             rutAttachment="ruta/del/archivo/rut.pdf",
         )
 
-        # Solicitud sin usuario
+        # Petition without user
         self.otherWithoutUser = Other.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=40),
@@ -91,55 +100,75 @@ class testsRejectPetition(TestCase):
         )
 
     def testRejectPetitionRedirectReject(self):
-        # Hacer una solicitud POST a la vista con el botón "Rechazar"
+        """
+        Test view for rejecting a petition and redirecting to showPetition.
+        """
+
+        # Make a POST request to the view with the "Reject" button
         response = self.client.post(
             reverse("rejectPetition", kwargs={"petitionId": self.otherWithUser.pk}),
             data={"rechazar": "Rechazar"},
         )
 
-        # Verificar que la solicitud se redirige correctamente
+        # Check if the request redirects correctly
         self.assertRedirects(
             response,
             reverse("showPetition", kwargs={"petitionId": self.otherWithUser.pk}),
         )
 
     def testRejectPetitionRedirectCancel(self):
-        # Hacer una solicitud POST a la vista con el botón "Cancelar"
+        """
+        Test view for cancelling a petition rejection and redirecting to showPetition.
+        """
+
+        # Make a POST request to the view with the "Cancel" button
         response = self.client.post(
             reverse("rejectPetition", kwargs={"petitionId": self.otherWithUser.pk}),
             data={"cancelar": "Cancelar"},
         )
 
-        # Verificar que la solicitud se redirige correctamente
+        # Check if the request redirects correctly
         self.assertRedirects(
             response,
             reverse("showPetition", kwargs={"petitionId": self.otherWithUser.pk}),
         )
 
     def testRejectPetitionGetMethod(self):
-        # Hacer una solicitud GET a la vista
+        """
+        Test view for accessing the rejectPetition page with GET method.
+        """
+
+        # Make a GET request to the view
         response = self.client.get(
             reverse("rejectPetition", kwargs={"petitionId": self.otherWithUser.pk})
         )
 
-        # Verificar que la respuesta tiene el código 200 (OK)
+        # Check if the response status code is 200 (OK)
         self.assertEqual(response.status_code, 200)
 
-        # Verificar que se está usando la plantilla correcta
+        # Check if the correct template is being used
         self.assertTemplateUsed(response, "rejectPetition.html")
 
     def testRejectPetitionInvalidPetitionId(self):
-        # Hacer una solicitud POST a la vista con un ID de solicitud inválido
+        """
+        Test view for rejecting a petition with an invalid petition ID.
+        """
+
+        # Make a POST request to the view with an invalid petition ID
         response = self.client.post(
             reverse("rejectPetition", kwargs={"petitionId": 999}),
             data={"rechazar": "Rechazar"},
         )
 
-        # Verificar que la solicitud devuelve un código de error 404
+        # Check if the request returns a 404 error code
         self.assertEqual(response.status_code, 404)
 
     def testRejectPetition(self):
-        # Hacer una solicitud POST para rechazar la petición
+        """
+        Test view for rejecting a petition.
+        """
+
+        # Make a POST request to reject the petition
         response = self.client.post(
             reverse(
                 "rejectPetition", kwargs={"petitionId": self.monitoringWithUser.pk}
@@ -147,11 +176,11 @@ class testsRejectPetition(TestCase):
             {"rechazar": "Rechazar"},
         )
 
-        # Verificar que la petición ha sido rechazada
+        # Check if the petition has been rejected
         updatedPetition = Monitoring.objects.get(pk=self.monitoringWithUser.pk)
         self.assertEqual(updatedPetition.state, "rechazado")
 
-        # Verificar que la redirección se realiza correctamente
+        # Check if the redirection is performed correctly
         self.assertRedirects(
             response,
             reverse("showPetition", kwargs={"petitionId": self.monitoringWithUser.pk}),

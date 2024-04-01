@@ -4,9 +4,17 @@ from login.models import User
 from django.contrib.auth.models import Group
 
 
-class testsIndex(TestCase):
+class TestsIndexView(TestCase):
+    """
+    Test suite for index view.
+    """
+
     def setUp(self):
-        # Crear un usuario para simular la autenticación
+        """
+        Set up data for each test.
+        """
+
+        # Create a user to simulate authentication
         Group.objects.get_or_create(name="Admin")
         self.user = User.objects.create(username="testuser", password="testpassword")
         group = Group.objects.get(name="Admin")
@@ -15,52 +23,72 @@ class testsIndex(TestCase):
         self.client.force_login(self.user)
 
     def testIndexViewAuthenticated(self):
-        # Hacer una solicitud GET a la vista con un usuario autenticado
+        """
+        Test index view with an authenticated user.
+        """
+
+        # Make a GET request to the view with an authenticated user
         response = self.client.get(reverse("index"))
 
-        # Verificar que la respuesta tenga el código 200 (OK)
+        # Check if the response status code is 200 (OK)
         self.assertEqual(response.status_code, 200)
 
-        # Verificar que el usuario autenticado está presente en la vista
+        # Check if the authenticated user is present in the view
         self.assertIn("user", response.context)
         self.assertEqual(response.context["user"], self.user)
 
     def testIndexViewUnauthenticated(self):
-        # Crear un nuevo cliente sin autenticación
+        """
+        Test index view with an unauthenticated user.
+        """
+
+        # Create a new client without authentication
         unauthenticatedClient = Client()
 
-        # Hacer una solicitud GET a la vista sin autenticación
+        # Make a GET request to the view without authentication
         response = unauthenticatedClient.get(reverse("index"))
 
-        # Verificar que la respuesta tenga el código 302 (Redirección a la página de inicio de sesión)
+        # Check if the response status code is 302 (Redirect to login page)
         self.assertEqual(response.status_code, 302)
 
     def testIndexViewTemplateUsed(self):
-        # Hacer una solicitud GET a la vista
+        """
+        Test index view template usage.
+        """
+
+        # Make a GET request to the view
         response = self.client.get(reverse("index"))
 
-        # Verificar que se está utilizando el template correcto
+        # Check if the correct template is being used
         self.assertTemplateUsed(response, "index.html")
 
-    def testIndexContains(self):
-        # Hacer una solicitud GET a la vista
+    def testIndexViewContains(self):
+        """
+        Test index view for expected content.
+        """
+
+        # Make a GET request to the view
         response = self.client.get(reverse("index"))
 
-        # Verificar que el contexto de la respuesta contiene información esperada
+        # Check if the response context contains expected information
         self.assertContains(response, "Crear usuario")
         self.assertContains(response, "Crear Solicitudes")
 
-    def testIndexView(self):
-        # Hacer una solicitud GET a la vista usando el cliente de prueba
+    def testIndexViewContent(self):
+        """
+        Test index view content.
+        """
+
+        # Make a GET request to the view using the test client
         response = self.client.get(reverse("index"))
 
-        # Verificar que la respuesta tenga el código 200 (OK)
+        # Check if the response status code is 200 (OK)
         self.assertEqual(response.status_code, 200)
 
-        # Verificar que la plantilla usada es la correcta
+        # Check if the correct template is being used
         self.assertTemplateUsed(response, "index.html")
 
-        # Verificar que el contenido de la respuesta es el esperado
+        # Check if the response content is as expected
         self.assertContains(response, "<h1>Bienvenido a Tu Aplicación</h1>")
         self.assertContains(
             response,

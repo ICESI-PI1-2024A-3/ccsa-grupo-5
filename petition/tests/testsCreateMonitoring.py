@@ -11,8 +11,15 @@ from django.contrib.auth.models import Group
 
 
 class testsCreateMonitoring(TestCase):
+    """
+    Test suite for the create monitoring view.
+    """
+
     def setUp(self):
-        # Crear un usuario para simular la autenticación
+        """
+        Set up data for each test.
+        """
+        # Create a user to simulate authentication
         Group.objects.get_or_create(name="Admin")
         self.user = User.objects.create(username="testuser", password="testpassword")
         group = Group.objects.get(name="Admin")
@@ -21,12 +28,18 @@ class testsCreateMonitoring(TestCase):
         self.client.force_login(self.user)
 
     def testCreateMonitoringGet(self):
+        """
+        Test GET request to create monitoring view.
+        """
         response = self.client.get(reverse("createMonitoring"))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "createMonitoring.html")
         self.assertIsInstance(response.context["form"], CreateNewMonitoringPetition)
 
     def testCreateMonitoringPostWithPermissions(self):
+        """
+        Test POST request to create monitoring view with permissions.
+        """
         response = self.client.post(
             reverse("createMonitoring"),
             {
@@ -78,6 +91,9 @@ class testsCreateMonitoring(TestCase):
         ).exists()
 
     def testCreateMonitoringPostWithoutUser(self):
+        """
+        Test POST request to create monitoring view without user.
+        """
         self.user.groups.clear()  # Remove all groups from user
         response = self.client.post(
             reverse("createMonitoring"),
@@ -108,6 +124,9 @@ class testsCreateMonitoring(TestCase):
         self.assertEqual(response.status_code, 302)  # Forbidden
 
     def testCreateMonitoringPostInvalidForm(self):
+        """
+        Test POST request to create monitoring view with invalid form data.
+        """
         response = self.client.post(reverse("createMonitoring"), {})
         self.assertEqual(response.status_code, 200)
         self.assertFormError(
@@ -115,7 +134,9 @@ class testsCreateMonitoring(TestCase):
         )
 
     def testCreateMonitoringPostRedirect(self):
-        # Ensure redirection if not logged in
+        """
+        Test redirection for POST request to create monitoring view when not logged in.
+        """
         self.client.logout()
         response = self.client.post(reverse("createMonitoring"))
         self.assertEqual(response.status_code, 302)

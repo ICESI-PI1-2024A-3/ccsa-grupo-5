@@ -5,17 +5,25 @@ from ..models import Monitoring, Other
 from login.models import User
 from django.contrib.auth.models import Group
 
-
 class TestsViewWithoutUser(TestCase):
+    """
+    Test suite for views without authenticated users.
+    """
+
     def setUp(self):
-        # Crear un usuario para simular la autenticación
+        """
+        Set up data for each test.
+        """
+
+        # Create a user to simulate authentication
         Group.objects.get_or_create(name="Admin")
         self.user = User.objects.create(username="testuser", password="testpassword")
         group = Group.objects.get(name="Admin")
         self.user.groups.add(group)
         self.client = Client()
         self.client.force_login(self.user)
-        # Crear instancias de Monitoring y Other para usar en las pruebas
+
+        # Create instances of Monitoring and Other for testing
         self.monitoringWithUser = Monitoring.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=30),
@@ -63,7 +71,7 @@ class TestsViewWithoutUser(TestCase):
             rutAttachment="ruta/del/archivo/rut.pdf",
         )
 
-        # Solicitud sin usuario
+        # Petition without user
         self.otherWithoutUser = Other.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=40),
@@ -90,64 +98,84 @@ class TestsViewWithoutUser(TestCase):
         )
 
     def testViewPetitionWithoutUser(self):
-        # Hacer una solicitud GET a la vista usando el cliente de prueba
+        """
+        Test view for petition without user.
+        """
+
+        # Make a GET request to the view using the test client
         response = self.client.get(reverse("viewPetitionWithoutUser"))
 
-        # Verificar que la respuesta tenga el código 200 (OK)
+        # Check if the response status code is 200 (OK)
         self.assertEqual(response.status_code, 200)
 
-        # Verificar que el contexto de la respuesta contenga las peticiones
+        # Check if the response context contains the petitions
         self.assertIn("petitions", response.context)
 
-        # Verificar que las peticiones en el contexto son las esperadas
+        # Check if the petitions in the context are as expected
         expected_petitions = [self.otherWithoutUser]
         actual_petitions = list(response.context["petitions"])
         self.assertEqual(len(expected_petitions), len(actual_petitions))
         self.assertListEqual(expected_petitions, actual_petitions)
 
     def testViewPetitionWithoutUserAuthenticated(self):
-        # Hacer una solicitud GET a la vista con un usuario autenticado
+        """
+        Test view for petition without user with authenticated user.
+        """
+
+        # Make a GET request to the view with an authenticated user
         response = self.client.get(reverse("viewPetitionWithoutUser"))
 
-        # Verificar que la respuesta tenga el código 200 (OK)
+        # Check if the response status code is 200 (OK)
         self.assertEqual(response.status_code, 200)
 
-        # Verificar que el usuario autenticado está presente en la vista
+        # Check if the authenticated user is present in the view
         self.assertIn("user", response.context)
         self.assertEqual(response.context["user"], self.user)
 
     def testViewPetitionWithoutUserUnauthenticated(self):
-        # Crear un nuevo cliente sin autenticación
+        """
+        Test view for petition without user with unauthenticated user.
+        """
+
+        # Create a new client without authentication
         unauthenticatedClient = Client()
 
-        # Hacer una solicitud GET a la vista sin autenticación
+        # Make a GET request to the view without authentication
         response = unauthenticatedClient.get(reverse("viewPetitionWithoutUser"))
 
-        # Verificar que la respuesta tenga el código 302 (Redirección a la página de inicio de sesión)
+        # Check if the response status code is 302 (Redirect to login page)
         self.assertEqual(response.status_code, 302)
 
     def testViewPetitionWithoutUserEmptyQueryset(self):
-        # Eliminar todas las instancias de Monitoring y Other para simular un queryset vacío
+        """
+        Test view for petition without user with empty queryset.
+        """
+
+        # Delete all instances of Monitoring and Other to simulate an empty queryset
         Monitoring.objects.all().delete()
         Other.objects.all().delete()
 
-        # Hacer una solicitud GET a la vista con un usuario autenticado
+        # Make a GET request to the view with an authenticated user
         response = self.client.get(reverse("viewPetitionWithoutUser"))
 
-        # Verificar que la respuesta tenga el código 200 (OK)
+        # Check if the response status code is 200 (OK)
         self.assertEqual(response.status_code, 200)
 
-        # Verificar que el contexto de la respuesta contenga las peticiones vacías
+        # Check if the response context contains the empty petitions
         self.assertIn("petitions", response.context)
         self.assertListEqual(list(response.context["petitions"]), [])
 
     def testViewPetitionWithoutUserInvalidUser(self):
-        # Crear un nuevo usuario no existente en la base de datos
+        """
+        Test view for petition without user with invalid user.
+        """
+
+        # Create a new user not existing in the database
         invalidUser = User(id="1", username="invaliduser", password="invalidpassword")
 
-        # Hacer una solicitud GET a la vista con el usuario no existente
+        # Make a GET request to the view with the non-existing user
         self.client.force_login(invalidUser)
         response = self.client.get(reverse("viewPetitionWithoutUser"))
 
-        # Verificar que la respuesta tenga el código 302 (Redirección a la página de inicio de sesión)
+        # Check if the response status code is 302 (Redirect to login page)
         self.assertEqual(response.status_code, 302)

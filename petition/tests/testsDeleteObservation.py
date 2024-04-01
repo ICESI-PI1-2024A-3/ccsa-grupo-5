@@ -1,15 +1,22 @@
-from django.http import HttpResponseNotFound
-from django.utils import timezone
 from django.test import TestCase, Client
 from django.urls import reverse
-from ..models import Monitoring, Other, Observation, Petition
+from ..models import Monitoring, Other, Observation
 from login.models import User
+from django.utils import timezone
 from django.contrib.auth.models import Group
 
 
-class testDeleteObservation(TestCase):
+class TestDeleteObservation(TestCase):
+    """
+    Test suite for delete observation view.
+    """
+
     def setUp(self):
-        # Crear un usuario para simular la autenticación
+        """
+        Set up data for each test.
+        """
+
+        # Create a user to simulate authentication
         Group.objects.get_or_create(name="Admin")
         self.user = User.objects.create(username="testuser", password="testpassword")
         group = Group.objects.get(name="Admin")
@@ -17,7 +24,7 @@ class testDeleteObservation(TestCase):
         self.client = Client()
         self.client.force_login(self.user)
 
-        # Crear instancias de Monitoring y Other para usar en las pruebas
+        # Create instances of Monitoring and Other for use in tests
         self.monitoringWithUser = Monitoring.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=30),
@@ -65,7 +72,7 @@ class testDeleteObservation(TestCase):
             rutAttachment="ruta/del/archivo/rut.pdf",
         )
 
-        # Solicitud sin usuario
+        # Petition without user
         self.otherWithoutUser = Other.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=40),
@@ -116,6 +123,10 @@ class testDeleteObservation(TestCase):
         )
 
     def testDeleteObservationPostWithPermissionsMonitoring(self):
+        """
+        Test for deleting an observation associated with a monitoring petition.
+        """
+
         response = self.client.post(
             reverse("deleteObservation", args=[self.observationMonitoring.pk])
         )
@@ -125,6 +136,10 @@ class testDeleteObservation(TestCase):
             Observation.objects.get(pk=self.observationMonitoring.pk)
 
     def testDeleteObservationPostWithPermissionsOWithUser(self):
+        """
+        Test for deleting an observation associated with an Other petition with a user.
+        """
+
         response = self.client.post(
             reverse("deleteObservation", args=[self.observationOtherWithUser.pk])
         )
@@ -134,6 +149,10 @@ class testDeleteObservation(TestCase):
             Observation.objects.get(pk=self.observationOtherWithUser.pk)
 
     def testDeleteObservationPostWithPermissionsOWithoutUser(self):
+        """
+        Test for deleting an observation associated with an Other petition without a user.
+        """
+
         response = self.client.post(
             reverse("deleteObservation", args=[self.observationOtherWithoutUser.pk])
         )
@@ -143,6 +162,10 @@ class testDeleteObservation(TestCase):
             Observation.objects.get(pk=self.observationOtherWithoutUser.pk)
 
     def testDeleteObservationPostRedirect(self):
+        """
+        Test redirection if not logged in.
+        """
+
         # Ensure redirection if not logged in
         self.client.logout()
         response = self.client.post(
@@ -152,6 +175,9 @@ class testDeleteObservation(TestCase):
         self.assertIn(reverse("login"), response.url)
 
     def testDeleteObservationPostNotFound(self):
-        # Test deletion of non-existent observation
+        """
+        Test for deletion of a non-existent observation.
+        """
+
         response = self.client.post(reverse("deleteObservation", args=[999]))
         self.assertEqual(response.status_code, 404)
