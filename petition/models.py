@@ -6,6 +6,9 @@ from login.models import User
 
 
 class AbstractPetition(models.Model):
+    """
+    Abstract model representing a petition.
+    """
     states = [
         ("pendiente", "Pendiente"),
         ("aprobado", "Aprobado"),
@@ -43,6 +46,9 @@ class AbstractPetition(models.Model):
     )
 
     def getState(self):
+        """
+        Method to get the state of the petition.
+        """
         if self.state == "aprobado":
             return "Aprobado"
         elif self.state == "pendiente":
@@ -55,6 +61,9 @@ class AbstractPetition(models.Model):
             return "Estado Desconocido"
 
     def getUser(self):
+        """
+        Method to get the user associated with the petition.
+        """
         if self.user is None:
             return "Sin Asignar"
         else:
@@ -63,6 +72,9 @@ class AbstractPetition(models.Model):
     getUser.short_description = "Gestor asignado"
 
     def __str__(self):
+        """
+        String representation of the petition.
+        """
         userInfo = (
             f" Gestor asignado: {self.user.first_name} {self.user.last_name}"
             if self.user
@@ -83,6 +95,9 @@ class Petition(AbstractPetition):
 
 
 class Observation(models.Model):
+    """
+    Model representing an observation.
+    """
     description = models.TextField(verbose_name="Descripción")
     date = models.DateField(verbose_name="Fecha")
     time = models.TimeField(verbose_name="Hora")
@@ -100,6 +115,9 @@ class Observation(models.Model):
 
 
 class Monitoring(Petition):
+    """
+    Model representing a monitoring petition.
+    """
     monitoringTypeChoices = [
         ("academica", "Académica"),
         ("oficina", "Oficina"),
@@ -126,23 +144,35 @@ class Monitoring(Petition):
     )
 
     def yesOrNoCenco(self):
+        """
+        Method to return Yes or No based on hasMoneyInCenco field.
+        """
         if self.hasMoneyInCenco:
             return "Si"
         else:
             return "No"
 
     def yesOrNoPayment(self):
+        """
+        Method to return Yes or No based on isOneTimePayment field.
+        """
         if self.isOneTimePayment:
             return "Si"
         else:
             return "No"
 
     def getPetitionType(self):
+        """
+        Method to get the type of petition.
+        """
         return "Monitoria"
 
     getPetitionType.short_description = "Tipo de solicitud"
 
     def __str__(self):
+        """
+        String representation of the monitoring petition.
+        """
         return f"Nombre Completo: {self.fullName}\nCódigo de Estudiante: {self.studentCode}\nDocumento de Identidad: {self.identityDocument}\nCorreo Electrónico: {self.email}\nNúmero de Teléfono: {self.phoneNumber}\nDAVI Plata: {self.daviPlata}\nProyecto o Curso: {self.projectOrCourse}\nDescripción del Monitoreo: {self.monitoringDescription}\nFecha de Inicio: {self.startDate}\nFecha de Fin: {self.endDate}\nHoras por Semana: {self.hoursPerWeek}\nMonto Total de Pago: {self.totalPaymentAmount}\nTipo de Monitoreo: {self.monitoringType}\nCentro de Costo: {self.cenco}\n¿Tiene Dinero en CENCO?: {self.hasMoneyInCenco}\nResponsable de CENCO: {self.cencoResponsible}\nEs un Pago Único: {self.isOneTimePayment}"
 
     class Meta:
@@ -151,6 +181,9 @@ class Monitoring(Petition):
 
 
 class Other(Petition):
+    """
+    Model representing other types of petitions.
+    """
     petitionType = [
         ("serviceProvision", "Prestación de Servicios"),
         ("practicing", "Practicante"),
@@ -187,6 +220,9 @@ class Other(Petition):
     rutAttachment = models.FileField(upload_to="rut/", verbose_name="Adjunto RUT")
 
     def getPetitionType(self):
+        """
+        Method to get the type of petition.
+        """
         if self.personType == "serviceProvision":
             return "Prestación de Servicios"
         else:
@@ -195,6 +231,9 @@ class Other(Petition):
     getPetitionType.short_description = "Tipo de solicitud"
 
     def __str__(self):
+        """
+        String representation of the Other petition.
+        """
         return f"Requester Name: {self.requesterName}\nRequester Faculty: {self.requesterFaculty}\nContractor Full Name: {self.fullName}\nContractor Identity Number: {self.identityDocument}\nContractor Phone Number: {self.phoneNumber}\nContractor Email: {self.email}\nCENCO: {self.cenco}\nMotive: {self.motive}\nStart Date: {self.startDate}\nEnd Date: {self.endDate}\nBank Entity: {self.bankEntity}\nBank Account Type: {self.bankAccountType}\nBank Account Number: {self.bankAccountNumber}\nEPS: {self.eps}\nPension Fund: {self.pensionFund}\nARL: {self.arl}\nRUT Attachment: {self.rutAttachment}\nContract Value: {self.contractValue}\nPayment Info: {self.paymentInfo}"
 
     class Meta:

@@ -167,7 +167,8 @@ class TestsViewPetition(TestCase):
 
         # Check if the response context contains the empty petitions
         self.assertIn("petitions", response.context)
-        self.assertListEqual(list(response.context["petitions"]), [])
+        self.assertEqual(response.context["petitions"], None)
+
 
     def testViewPetitionInvalidUser(self):
         """

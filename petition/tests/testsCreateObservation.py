@@ -1,7 +1,7 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 from petition.forms.createNewObservation import CreateNewObservation
-from ..models import Observation, Monitoring
+from ..models import Observation, Other ,Monitoring
 from login.models import User
 from django.utils import timezone
 from django.contrib.auth.models import Group
@@ -159,7 +159,9 @@ class TestCreateObservation(TestCase):
         self.assertEqual(
             response.status_code, 200
         )  # Stay on the same page after invalid POST
-        self.assertFormError(response, "form", "description", "Este campo es obligatorio.")
+        form = response.context['form']  
+        self.assertFalse(form.is_valid()) 
+        self.assertTrue('description' in form.errors)  
 
     def testCreateObservationPermission(self):
         """

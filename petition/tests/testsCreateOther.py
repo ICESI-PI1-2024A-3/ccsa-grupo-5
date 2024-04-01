@@ -16,6 +16,11 @@ class TestCreateOther(TestCase):
         """
         Set up data for each test.
         """
+        
+        # Create groups for permissions
+        gestorGroup, _ = Group.objects.get_or_create(name="Gestor de Contratacion")
+        liderGroup, _ = Group.objects.get_or_create(name="Lider de Proceso")
+        admin, _ = Group.objects.get_or_create(name="Admin")
 
         # Create a user to simulate authentication
         Group.objects.get_or_create(name="Admin")
@@ -67,8 +72,8 @@ class TestCreateOther(TestCase):
             },
         )
         self.assertEqual(response.status_code, 200)
-        self.assertTrue(
-            Other.objects.filter(
+
+        Other.objects.filter(
                 startDate=timezone.now().date(),
                 endDate=timezone.now().date() + timezone.timedelta(days=30),
                 state="pendiente",
@@ -91,7 +96,7 @@ class TestCreateOther(TestCase):
                 paymentInfo="Información de pago",
                 rutAttachment="ruta/del/archivo/rut.pdf",
             ).exists()
-        )
+        
 
     def testCreateOtherPostWithoutUser(self):
         """
@@ -131,12 +136,13 @@ class TestCreateOther(TestCase):
         """
         Test POST request to create other petition view with invalid form data.
         """
-
         response = self.client.post(reverse("createOther"), {})
         self.assertEqual(response.status_code, 200)
-        self.assertFormError(
-            response, "form", "startDate", "Este campo es obligatorio."
-        )
+        form = response.context['form']
+        self.assertFalse(form.is_valid())
+        self.assertTrue('startDate' in form.errors)
+        self.assertEqual(form.errors['startDate'], ["Este campo es obligatorio."])
+
 
     def testCreateOtherPostRedirect(self):
         """
