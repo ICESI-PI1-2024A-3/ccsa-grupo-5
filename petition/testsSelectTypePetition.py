@@ -2,7 +2,7 @@ from django.http import HttpResponseNotFound
 from django.utils import timezone
 from django.test import TestCase, Client
 from django.urls import reverse
-from ..models import Monitoring, Other
+from .models import Monitoring, Other
 from login.models import User
 from django.contrib.auth.models import Group
 
@@ -144,7 +144,7 @@ class TestsSelectTypePetition(TestCase):
         response = self.client.get(reverse("selectTypePetition"))
 
         # Check if the response content contains a specific text
-        self.assertContains(response, "Selecciona el tipo de Solicitud")
+        self.assertContains(response, "seleccione el tipo de monitoria")
 
     def testSelectTypePetitionContent1(self):
         """
