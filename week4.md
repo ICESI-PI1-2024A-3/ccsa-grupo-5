@@ -3,7 +3,7 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- Investigación sobre mejoras en el frontend y optimización de consultas.
+- Ayudar a Cabezas con el coverage.
 
 ### ¿Qué voy a hacer?
 - Comenzar la implementación de las mejoras en el frontend y en las consultas.
@@ -16,7 +16,7 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- Revisión de requerimientos del frontend y análisis de consultas.
+- Mejorar las consultas
 
 ### ¿Qué voy a hacer?
 - Comenzar el diseño de las nuevas funcionalidades del frontend y de las consultas optimizadas.
@@ -29,10 +29,10 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- Investigación sobre tecnologías frontend y mejora en las consultas.
+- Arreglar el coverage de las pruebas para poder ejecutarlas todas al mismo tiempo.
 
 ### ¿Qué voy a hacer?
-- Diseñar la arquitectura para las mejoras en el frontend y en las consultas.
+- Ayudar a mejorar el front.
 
 ### ¿Qué impedimentos tengo?
 - Tareas académicas prioritarias.
@@ -42,10 +42,10 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- Análisis de la interfaz actual del frontend y revisión de consultas.
+- Solucionar errores de la barra de navegación.
 
 ### ¿Qué voy a hacer?
-- Crear prototipos para las mejoras del frontend y de las consultas.
+- Seguir mejorando el frontend.
 
 ### ¿Qué impedimentos tengo?
 - Sobrecarga de trabajos académicos.
@@ -55,10 +55,10 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- Investigación sobre buenas prácticas en diseño frontend y análisis de consultas.
+- Investigación sobre buenas prácticas en diseño frontend.
 
 ### ¿Qué voy a hacer?
-- Comenzar la implementación de las nuevas funcionalidades del frontend y de las consultas.
+- Seguir con la investigación y empezar con su implementación
 
 ### ¿Qué impedimentos tengo?
 - Carga académica abrumadora.
@@ -83,7 +83,7 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- Desarrollo de la estructura base del frontend mejorado y de las consultas optimizadas.
+- Solucionar errores en la asignación de solicitudes.
 
 ### ¿Qué voy a hacer?
 - Integrar estilos y funcionalidades en el frontend y en las consultas.
@@ -96,7 +96,7 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- Revisión de avances en Jira y colaboración en el frontend y en las consultas.
+- Nada.
 
 ### ¿Qué voy a hacer?
 - Implementar interacciones complejas en el frontend y en las consultas.
@@ -109,10 +109,10 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- Ajustes en los prototipos del frontend y revisión de consultas.
+- Ajustes en los prototipos del frontend.
 
 ### ¿Qué voy a hacer?
-- Integrar interactividad en el diseño del frontend y optimizar las consultas.
+- Intentar mejorar el frontend de la tabla
 
 ### ¿Qué impedimentos tengo?
 - Sobrecarga de responsabilidades académicas.
@@ -122,10 +122,10 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- Desarrollo de componentes clave del frontend y análisis de consultas.
+- Desarrollo de componentes clave del frontend.
 
 ### ¿Qué voy a hacer?
-- Refinar la experiencia de usuario en el frontend y optimizar las consultas.
+- Refinar la experiencia de usuario en el frontend.
 
 ### ¿Qué impedimentos tengo?
 - Gran cantidad de trabajos universitarios.
@@ -137,20 +137,20 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- Corrección de errores en el frontend y ajustes en las consultas.
+- Corrección de errores en las consultas.
 
 ### ¿Qué voy a hacer?
-- Continuar puliendo la interfaz del frontend y optimizando las consultas.
+- Continuar optimizando las consultas.
 
 ### ¿Qué impedimentos tengo?
-- Presión académica constante.
+- Ninguno.
 
 ---
 
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- Integración de estilos en el frontend y optimización de consultas.
+- Optimización de consultas con mis compañeros.
 
 ### ¿Qué voy a hacer?
 - Añadir funcionalidades avanzadas al frontend y optimizar más las consultas.
@@ -163,36 +163,36 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- Revisión de avances en Jira y colaboración en el frontend y en las consultas.
+- Revisión de tareas en Jira.
 
 ### ¿Qué voy a hacer?
-- Implementar feedback del usuario en el diseño del frontend y optimizar las consultas.
+- Pulir cierto metodos ralcionados con los roles.
 
 ### ¿Qué impedimentos tengo?
-- Actividades académicas que requieren prioridad.
+- Ninguno.
 
 ---
 
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- Integración de elementos interactivos en el frontend y revisión de consultas.
+- Nada.
 
 ### ¿Qué voy a hacer?
-- Optimizar el rendimiento del frontend y las consultas.
+- Seguir trabajando en el frontend.
 
 ### ¿Qué impedimentos tengo?
-- Tareas universitarias que requieren atención inmediata.
+- Ninguno.
 
 ---
 
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- Mejora de la experiencia de usuario en el frontend y análisis de consultas.
+- Nada.
 
 ### ¿Qué voy a hacer?
-- Realizar pruebas de usabilidad en el frontend y optimizar las consultas.
+- Realizar pruebas de usabilidad en el frontend.
 
 ### ¿Qué impedimentos tengo?
 - Sobrecarga de estudios en la universidad.
@@ -204,10 +204,10 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- Optimización de la velocidad de carga en el frontend y en las consultas.
+- Mejorar algunos formularios.
 
 ### ¿Qué voy a hacer?
-- Realizar más pruebas de rendimiento en el frontend y en las consultas.
+- Realizar más pruebas.
 
 ### ¿Qué impedimentos tengo?
 - Carga académica persistente.
@@ -217,10 +217,10 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- Implementación de funcionalidades avanzadas en el frontend y optimización de consultas.
+- No logré avanzar.
 
 ### ¿Qué voy a hacer?
-- Realizar ajustes basados en retroalimentación del equipo en el frontend y en las consultas.
+- Mejorar el tablero de solicitudes.
 
 ### ¿Qué impedimentos tengo?
 - Trabajo universitario intenso.
@@ -230,10 +230,10 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- Pruebas de usabilidad en el frontend y optimización de consultas.
+- Mejorar formularios de solicitudes.
 
 ### ¿Qué voy a hacer?
-- Implementar feedback del usuario en el diseño del frontend y en las consultas.
+- Seguir mejorando los formularios.
 
 ### ¿Qué impedimentos tengo?
 - Actividades académicas que requieren prioridad.
@@ -243,27 +243,23 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- Optimización de la interfaz del frontend para dispositivos móviles y revisión de consultas.
+- Trabajar en algunas errores de la asignación de solicitudes.
 
 ### ¿Qué voy a hacer?
-- Revisión de la accesibilidad del frontend y optimización de consultas.
+- Mejorar frontend.
 
 ### ¿Qué impedimentos tengo?
-- Asignaciones universitarias urgentes.
+- Carga académica.
 
 ---
 
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- Pruebas
-
-
-
- de rendimiento y optimización en el frontend y en las consultas.
+- Ayudar con front.
 
 ### ¿Qué voy a hacer?
-- Finalizar detalles para la implementación en producción en el frontend y en las consultas.
+- Realizar las subtareas.
 
 ### ¿Qué impedimentos tengo?
 - Elevada carga de estudios en la universidad.
@@ -275,23 +271,62 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- Pruebas finales y corrección de errores en el frontend y en las consultas.
+- Terminar con la creación de algunas pruebas.
 
 ### ¿Qué voy a hacer?
-- Preparar la entrega del proyecto frontend y de las consultas.
+- Empezar con las nuevas funcionalidades.
 
 ### ¿Qué impedimentos tengo?
-- Últimas evaluaciones académicas del semestre.
+- Ninguno.
 
 ---
 
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- Revisión final y ajustes en el frontend y en las consultas.
+- Pulir algunos detalles del modelo.
 
 ### ¿Qué voy a hacer?
-- Documentar el proceso de desarrollo del frontend y de las consultas.
+- Documentar código.
 
 ### ¿Qué impedimentos tengo?
 - Carga académica abrumadora.
+
+---
+
+## Andrés Felipe Cabezas Guerrero
+
+### ¿Qué hice?
+- Terminar de mejorar formularios.
+
+### ¿Qué voy a hacer?
+- Trabajar en las nuevas funcionalidades.
+
+### ¿Qué impedimentos tengo?
+- Ninguno.
+
+---
+
+## Miguel Ángel Martínez Vidal
+
+### ¿Qué hice?
+- Mejorar front.
+
+### ¿Qué voy a hacer?
+- Seguir con la mejora del frontend y trabajar en las nuevas funcionalidades.
+
+### ¿Qué impedimentos tengo?
+- Carga académica.
+
+---
+
+## Alejandro Torres Soto
+
+### ¿Qué hice?
+- Consultar como realizar algunas de las nuevas funcionalidades.
+
+### ¿Qué voy a hacer?
+- Realizar las subtareas.
+
+### ¿Qué impedimentos tengo?
+- Ninguno.
