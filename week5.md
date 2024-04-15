@@ -1,0 +1,345 @@
+# Daily Report - Semana 5 - 09/04/2024
+
+## Davide Flamini Cazaran
+
+### ¿Qué hice?
+- Mejorar el front de algunas paginas.
+
+### ¿Qué voy a hacer?
+- Seguir mejorando el front.
+
+### ¿Qué impedimentos tengo?
+- Carga académica intensa.
+
+---
+
+## Nicolas Cuellar Molina
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Andrés Felipe Cabezas Guerrero
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Miguel Ángel Martínez Vidal
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Alejandro Torres Soto
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+# Daily Report - Semana 5 - 09/04/2024
+
+## Davide Flamini Cazaran
+
+### ¿Qué hice?
+- Este dia no pude trabajar.
+
+### ¿Qué voy a hacer?
+- Mejorar el front.
+
+### ¿Qué impedimentos tengo?
+- Priorización de tareas académicas.
+
+---
+
+## Nicolas Cuellar Molina
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Andrés Felipe Cabezas Guerrero
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Miguel Ángel Martínez Vidal
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Alejandro Torres Soto
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Alejandro Torres Soto
+
+### ¿Qué hice?
+- Desarrollo de componentes clave del frontend.
+
+### ¿Qué voy a hacer?
+- Refinar la experiencia de usuario en el frontend.
+
+### ¿Qué impedimentos tengo?
+- Gran cantidad de trabajos universitarios.
+
+---
+
+# Daily Report - Semana 5 - 10/04/2024
+
+## Davide Flamini Cazaran
+
+### ¿Qué hice?
+- Mejorar el front de la pagina index.
+
+### ¿Qué voy a hacer?
+- Investigar como desplegar.
+
+### ¿Qué impedimentos tengo?
+- Por reiterativo que suene la carga academica esta intensa (integradora de discretas III y chat virtual)
+
+---
+
+## Nicolas Cuellar Molina
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Andrés Felipe Cabezas Guerrero
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Miguel Ángel Martínez Vidal
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Alejandro Torres Soto
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+# Daily Report - Semana 5 - 11/04/2024
+
+## Davide Flamini Cazaran
+
+### ¿Qué hice?
+- Investigue como desplegar en Django.
+
+### ¿Qué voy a hacer?
+- Escoger la mejor plataforma para despliegue para el equipo.
+
+### ¿Qué impedimentos tengo?
+- Carga académica persistente.
+
+---
+
+## Nicolas Cuellar Molina
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Andrés Felipe Cabezas Guerrero
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Miguel Ángel Martínez Vidal
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Alejandro Torres Soto
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+# Daily Report - Semana 5 - 12/04/2024
+
+## Davide Flamini Cazaran
+
+### ¿Qué hice?
+- Escogi la plataforma de despliegue
+
+### ¿Qué voy a hacer?
+- Desplegar.
+
+### ¿Qué impedimentos tengo?
+- Ninguno.
+
+---
+
+## Nicolas Cuellar Molina
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Andrés Felipe Cabezas Guerrero
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Miguel Ángel Martínez Vidal
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
+
+---
+
+## Alejandro Torres Soto
+
+### ¿Qué hice?
+- 
+
+### ¿Qué voy a hacer?
+- 
+
+### ¿Qué impedimentos tengo?
+- 
