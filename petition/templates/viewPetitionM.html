@@ -1,0 +1,93 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block head %}
+<title>Detalles de solicitud</title>
+<link rel="stylesheet" href="{% static 'styles/editPetition.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+
+<h1>Detalles de la Solicitud</h1>
+<h3>Tipo de contrato: {{ solicitud.getPetitionType }}</h3>
+<p>Fecha de Solicitud: {{ solicitud.petitionDate }}</p>
+<p>Fecha de Inicio: {{ solicitud.startDate }}</p>
+<p>Fecha de Fin: {{ solicitud.endDate }}</p>
+<p>Estado: {{ solicitud.getState }}</p>
+<p>Cenco: {{ solicitud.cenco }}</p>
+<p>Nombre Completo: {{ solicitud.fullName }}</p>
+<p>Documento de Identidad: {{ solicitud.identityDocument }}</p>
+<p>Correo Electrónico: {{ solicitud.email }}</p>
+<p>Número de Teléfono: {{ solicitud.phoneNumber }}</p>
+<!-- Monitoring Specific Details -->
+<p>Tipo de Monitoreo: {{ solicitud.monitoringType }}</p>
+<p>¿Hay Dinero en Cenco?: {{ solicitud.yesOrNoCenco }}</p>
+<p>Responsable del Cenco: {{ solicitud.cencoResponsible }}</p>
+<p>Código del Estudiante: {{ solicitud.studentCode }}</p>
+<p>DaviPlata: {{ solicitud.daviPlata }}</p>
+<p>Proyecto o Curso: {{ solicitud.projectOrCourse }}</p>
+<p>Descripción del Monitoreo: {{ solicitud.monitoringDescription }}</p>
+<p>Horas por Semana: {{ solicitud.hoursPerWeek }}</p>
+<p>Monto Total del Pago: {{ solicitud.totalPaymentAmount }}</p>
+<p>¿Es un Pago Único?: {{ solicitud.yesOrNoPayment }}</p>
+
+<div><p>Gestor encargado: <b>{{ solicitud.getUser }}</b></p></div>
+
+
+
+    {% if solicitud.state != 'rechazado' and solicitud.state != 'aprobado' %}
+    <a href="{% url 'rejectPetition' solicitud.id %}"><button>Rechazar Solicitud</button></a>
+    {% endif %}
+    <p></p>
+    {% if solicitud.getUser == 'Sin Asignar' %}
+    <a href="{% url 'assignPetition' solicitud.id %}"><button>Asignar a un Gestor de Procesos</button></a>
+    {% endif %}
+
+
+    <p></p>
+    <a href="{% url 'createObservation' petitionId %}"><button>Crear Observacion</button></a>
+    <p></p>
+    <button id="toggleObservationsBtn">Mostrar Observaciones</button>
+
+    <div class="divButton">
+
+        <div id="observationsContainer" style="display: none;">
+            <div class="dropdown">
+                <div id="observationsDropdown" class="dropdown-content">
+                    {% for observation in observations %}
+                        <div class="card">
+                            <p>Descripción: {{ observation.description }}</p>
+                            <p>Fecha: {{ observation.date }}</p>
+                            <p>Hora: {{ observation.time }}</p>
+                            <p>Autor: {{ observation.author }}</p>
+                            <p></p>
+                        </div>
+                        <div class="buttons" >
+                            <div class="divButton">
+                                <form id="deleteForm{{ observation.id }}" action="{% url "deleteObservation" observation.id%}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="button" class="delete-icon" data-observation-id="{{ observation.id }}" onclick="confirmDelete({{ observation.id }})">
+                                        <i class="fas fa-trash-alt"></i> Eliminar
+                                    </button> 
+                                </form>
+                            </div>
+                            <div class="divButton">
+                                {% csrf_token %}
+                                <a href="{% url 'editObservation' petitionId observation.id %}" id="editForm{{ observation.id}}"><button type="button" class="edit-icon" onclick="editObservation( {{petition.id}} {{ observation.id }})">
+                                    <i class="fas fa-edit"></i> Editar
+                                </button>
+                                </a>
+                            </div>
+                            </div>
+                
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<script src="{% static 'scripts/deleteElement.js' %}"></script>
+<script src="{% static 'scripts/viewObservation.js' %}"></script>
+{% endblock %}

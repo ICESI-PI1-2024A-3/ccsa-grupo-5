@@ -1,0 +1,23 @@
+.rejact{
+    max-width: 30%;
+    min-width: max-content;
+    width: 30%;
+    padding: 10px;
+    background-color: red;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cancel{
+    max-width: 30%;
+    min-width: max-content;
+    width: 30%;
+    padding: 10px;
+    background-color: #2000fb;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

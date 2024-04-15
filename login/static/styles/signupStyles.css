@@ -1,0 +1,93 @@
+.cardContainer {
+    max-width: 30%; 
+    width: 100%;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    margin: 0; 
+    color: #2000fb; 
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.input-group {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.input-group label {
+    margin-bottom: 5px;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.input-group .password-input {
+    position: relative;
+    width: 100%;
+}
+
+#togglePassword {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #999;
+    cursor: pointer;
+}
+
+.button {
+    width: 100%;
+    padding: 15px;
+    background-color: #2000fb;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.error-message{
+    background-color: #ffdddd;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.success-message {
+    background-color: #62f15d;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .logo-container img {
+        max-width: 60%;
+    }
+}

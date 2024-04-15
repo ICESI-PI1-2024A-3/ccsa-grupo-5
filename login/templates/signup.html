@@ -1,0 +1,73 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'styles/signupStyles.css' %}">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+<div class="cardContainer">
+    <form action="/signup" method="POST">
+        {% csrf_token %}
+        <h1 class="logo-text">Crear Usuario</h1>
+        <div class="form-container">
+            <div class="input-group">
+                <label for="{{ form.username.id_for_label }}">Cedula:</label>
+                {{ form.username }}
+            </div>
+
+            <div class="input-group">
+                <label for="{{ form.first_name.id_for_label }}">Nombre:</label>
+                {{ form.first_name }}
+            </div>
+
+            <div class="input-group">
+                <label for="{{ form.last_name.id_for_label }}">Apellido:</label>
+                {{ form.last_name }}
+            </div>
+
+            <div class="input-group">
+                <label for="{{ form.email.id_for_label }}">Correo electrónico:</label>
+                {{ form.email }}
+            </div>
+
+            <div class="input-group">
+                <label for="{{ form.roles.id_for_label }}">Rol:</label>
+                {{ form.roles }}
+            </div>
+
+            <div class="input-group">
+                <label for="{{ form.password1.id_for_label }}">Contraseña:</label>
+                <div class="password-input">
+                    {{ form.password1 }}
+                    <i class='bx bx-show-alt' id="togglePassword"></i>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="{{ form.password2.id_for_label }}">Confirmar contraseña:</label>
+                {{ form.password2 }}
+            </div>
+
+            <button type="submit" class="button">Registrarse</button>
+        </div>
+
+        {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <div class="error-message" style="margin-top: 10px; margin-bottom: 5px;">
+                    {{ message }}
+                </div>
+            {% elif message.tags == 'success' %}
+                <div class="success-message" style="margin-top: 10px; margin-bottom: 5px;">
+                    {{ message }}
+                </div>
+            {% endif %}
+        {% endfor %}
+        {% endif %}
+    </form>
+</div>
+
+<script src="{% static 'scripts/signup.js' %}"></script>
+
+{% endblock %}
