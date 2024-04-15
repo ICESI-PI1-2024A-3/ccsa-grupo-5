@@ -2,51 +2,35 @@
 {% load static %}
 
 {% block head %}
-<title>Inicio - Tu Aplicación</title>
-<link rel="stylesheet" href="{% static 'styles/index.css' %}">
+  <title>Inicio - Tu Aplicación</title>
+  <link rel="stylesheet" href="{% static 'styles/index.css' %}">
 {% endblock %}
 
 {% block content %}
-<div class="container">
-  <h1>Bienvenido a Tu Aplicación</h1>
-  <p>Una aplicación para gestionar solicitudes de contrato de manera eficiente.</p>
+  <div class="container">
+    <h1>Bienvenido a Tu Aplicación</h1>
+    <p>Una aplicación para gestionar solicitudes de contrato de manera eficiente.</p>
 
-  <h2>Funcionalidades Destacadas</h2>
-  <ul>
-    {% if 'Admin' in request.user.getGroup %}
-          <li>
-            <a
-              href="{% url 'signup' %}"
-              class="nav-link {% if 'signup' in request.path %}active{% endif %}"
-              >Crear usuario</a
-            >
-          </li>
-        {% endif %}
-        {% if 'Lider de Proceso' in request.user.getGroup or 'Admin' in request.user.getGroup %}
+    <h2>Funcionalidades Destacadas</h2>
+    <ul>
+      {% if 'Admin' in request.user.getGroup %}
         <li>
-          <a
-            href="{% url 'selectTypePetition' %}"
-            class="nav-link {% if 'selectTypePetition' in request.path %}active{% endif %}"
-            >Crear Solicitudes</a
-          >
+          <a href="{% url 'signup' %}" class="nav-link {% if 'signup' in request.path %}active{% endif %}">Crear usuario</a>
+        </li>
+      {% endif %}
+      {% if 'Lider de Proceso' in request.user.getGroup or 'Admin' in request.user.getGroup %}
+        <li>
+          <a href="{% url 'selectTypePetition' %}" class="nav-link {% if 'selectTypePetition' in request.path %}active{% endif %}">Crear Solicitudes</a>
         </li>
         <li>
-          <a
-            href="{% url 'viewPetitionWithoutUser' %}"
-            class="nav-link {% if 'viewPetitionWithoutUser' in request.path %}active{% endif %}"
-            >Solicitudes sin asignar</a
-          >
+          <a href="{% url 'viewPetitionWithoutUser' %}" class="nav-link {% if 'viewPetitionWithoutUser' in request.path %}active{% endif %}">Solicitudes sin asignar</a>
         </li>
-        {% endif %}
-        <li>
-          <a
-            href="{% url 'viewPetition' %}"
-            class="nav-link {% if 'asignar' in request.path %}active{% endif %}"
-            >Visualizar Solicitudes</a
-          >
-        </li>
-  </ul>
+      {% endif %}
+      <li>
+        <a href="{% url 'viewPetition' %}" class="nav-link {% if 'asignar' in request.path %}active{% endif %}">Visualizar Solicitudes</a>
+      </li>
+    </ul>
 
-  <p>Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos.</p>
-</div>
+    <p>Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos.</p>
+  </div>
 {% endblock %}
