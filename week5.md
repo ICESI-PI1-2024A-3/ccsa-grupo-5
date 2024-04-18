@@ -16,13 +16,13 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- Corrigiendo errores de los tests
 
 ### ¿Qué voy a hacer?
-- 
+- No adelantaré debido a la carga académica
 
 ### ¿Qué impedimentos tengo?
-- 
+- Carga académica
 
 ---
 
@@ -83,13 +83,13 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- No adelanté nada
 
 ### ¿Qué voy a hacer?
-- 
+- Probablemente no alcance a avanzar
 
 ### ¿Qué impedimentos tengo?
-- 
+- Carga académica
 
 ---
 
@@ -163,13 +163,13 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- No trabajé
 
 ### ¿Qué voy a hacer?
-- 
+- Empezar a investigar sobre el plan de pruebas
 
 ### ¿Qué impedimentos tengo?
-- 
+- Demasiados trabajos en otras materias
 
 ---
 
@@ -230,13 +230,13 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- Adelantar el plan de pruebas
 
 ### ¿Qué voy a hacer?
-- 
+- Continuar con el plan de pruebas
 
 ### ¿Qué impedimentos tengo?
-- 
+- No entender la matriz
 
 ---
 
@@ -297,13 +297,13 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- No logré avanzae
 
 ### ¿Qué voy a hacer?
-- 
+- Terminar el plan de pruebas
 
 ### ¿Qué impedimentos tengo?
-- 
+- Carga académica
 
 ---
 
