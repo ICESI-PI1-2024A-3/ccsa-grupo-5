@@ -8,30 +8,30 @@ class Command(BaseCommand):
     Management command to create a superuser and add them to the Admin group.
     """
 
-    help = 'Create a superuser and add them to the Admin group'
+    help = 'Crea un superusuario y agrégalo al grupo Admin'
 
     def handle(self, *args, **options):
         """
         Handle command execution.
         """
         User = get_user_model()
-        username = input('Enter username: ')
-        email = input('Enter email: ')
+        username = input('Ingresa el identificador: ')
+        email = input('Ingresa el correo electrónico: ')
         
         while True:
-            password1 = input('Enter password: ')
-            password2 = input('Confirm password: ')
+            password1 = input('Ingresa la contraseña: ')
+            password2 = input('Confirma la contraseña: ')
 
             if password1 == password2:
                 break
             else:
-                self.stdout.write(self.style.ERROR('Passwords do not match. Please try again.'))
+                self.stdout.write(self.style.ERROR('Las contraseñas no coinciden. Por favor, inténtalo de nuevo.'))
 
         try:
             # Create the superuser
             superuser = User.objects.create_superuser(username=username, email=email, password=password1)
         except ValidationError as e:
-            self.stderr.write(self.style.ERROR(f'Error creating superuser: {", ".join(e)}'))
+            self.stderr.write(self.style.ERROR(f'Error creando superusuario: {", ".join(e)}'))
             return
 
         # Add the superuser to the Admin group
@@ -40,4 +40,4 @@ class Command(BaseCommand):
         superuser.groups.add(group)
         superuser.save()
 
-        self.stdout.write(self.style.SUCCESS('Superuser created successfully and added to Admin group'))
+        self.stdout.write(self.style.SUCCESS('Superusuario creado exitosamente y agregado al grupo Admin'))
