@@ -297,13 +297,14 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- Investigar e implentar como hacer el Git Actions
 
 ### ¿Qué voy a hacer?
-- 
+- Terminar el Git Actions
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno, resolvi el problema de la base de datos
+- Creé dos bases de datos, una para los tests y la otra para el despliegue
 
 ---
 
