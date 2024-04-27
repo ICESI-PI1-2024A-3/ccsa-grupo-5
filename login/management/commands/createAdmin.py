@@ -16,6 +16,8 @@ class Command(BaseCommand):
         """
         User = get_user_model()
         username = input('Ingresa el identificador: ')
+        first_name = input('Ingresa el nombre: ')
+        last_name = input('Ingresa el apellido: ')
         email = input('Ingresa el correo electrónico: ')
         
         while True:
@@ -29,7 +31,7 @@ class Command(BaseCommand):
 
         try:
             # Create the superuser
-            superuser = User.objects.create_superuser(username=username, email=email, password=password1)
+            superuser = User.objects.create_superuser(username=username, first_name = first_name, last_name = last_name , email=email, password=password1)
         except ValidationError as e:
             self.stderr.write(self.style.ERROR(f'Error creando superusuario: {", ".join(e)}'))
             return

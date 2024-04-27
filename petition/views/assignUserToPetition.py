@@ -10,6 +10,7 @@ from ..forms import *
 from django.db import transaction
 from ..models import *
 from django.views.decorators.http import require_http_methods
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from login.permissions import groupRequired
 
@@ -47,7 +48,8 @@ def assignUserToPetition(request, petitionId):
             petition.user = user
             petition.userAsigner = User.objects.get(pk=request.user.id)
             petition.save()
-            return redirect('showPetition', petitionId=petitionId)
+            return redirect('showPetition', petitionId=petitionId)            
+                                    
         elif 'cancel' in request.POST:
             return redirect('showPetition', petitionId=petitionId)
     else:

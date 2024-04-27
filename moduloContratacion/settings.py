@@ -35,7 +35,8 @@ SECRET_KEY = 'cdabadc5caf8207c81af4cf9404b6b33'
 if 'test' in sys.argv:
     DEBUG = True
 else:
-    DEBUG = os.environ.get('DEBUG','False').lower() == 'true'
+    #DEBUG = os.environ.get('DEBUG','False').lower() == 'true'
+    DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -92,7 +93,7 @@ WSGI_APPLICATION = "moduloContratacion.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-if 'test' in sys.argv:
+if DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',

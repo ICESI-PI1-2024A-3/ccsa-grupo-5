@@ -44,14 +44,14 @@ referrerpolicy="no-referrer"
     
                     
                 <thead class="thead-dark">
-                    <th>Id</th>
+                    <th>Id Solicitud</th>
                     <th>Tipo </th>
                     <th>Fecha inicio</th>
                     <th>Fecha Fin</th>
                     <th>Estado</th>
                     <th>Cenco</th>
                     <th>Nombre</th>
-                    <th>CC/TI</th>
+                    <th>CC/TI</th>    
                     <th>Correo Electronico</th>
                     <th>Telefono</th>
                     <th>Fecha Solicitud</th>
@@ -77,17 +77,23 @@ referrerpolicy="no-referrer"
                             <div class="buttons">
                                 <div class="divButton">
                                     {% csrf_token %}
+                                    {% if petition.getState == "Pendiente" or petition.getState == "En Proceso" %}
                                     <a href="{% url 'rejectPetition' petition.id %}" ><button type="button" class="edit-icon" onclick="rejectPetition( {{petition.id}})">
                                         <i class="fas fa-ban"></i>
                                     </button>
                                     </a>
+                                    {% endif %}
                                 </div>
                                 <div class="divButton">
                                     <form id="deleteForm{{ petition.id }}" action="{% url "deletePetition" petition.id%}" method="POST">
                                         {% csrf_token %}
-                                        <button type="button" class="delete-icon" data-petition-id="{{ petition.id }}" onclick="confirmDelete({{ petition.id }})"><i class="fas fa-trash-alt"></i></button>
+                                        {% if petition.getState == "Pendiente" or petition.getState == "En Proceso" %}
+                                            <button type="button" class="delete-icon" data-petition-id="{{ petition.id }}" onclick="confirmDelete({{ petition.id }})"><i class="fas fa-trash-alt"></i></button>
+                                        {% endif %}
                                     </form>
-                                </div>            
+                                </div>  
+                                
+                                          
                             </div> 
                         </td>    
                     </tr>

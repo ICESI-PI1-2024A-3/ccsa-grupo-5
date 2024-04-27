@@ -19,7 +19,7 @@
         {% for user in users %}
             {% for group in user.groups.all %}
                 {% if group.name == "Gestor de Contratacion" %}
-                    <option value="{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</option>
+                    <option value="{{ user.id }}">{{user.username}} {{"-"}} {{ user.first_name }} {{ user.last_name }}</option>
                 {% endif %}
             {% endfor %}
         {% endfor %}
@@ -28,7 +28,7 @@
     
     <div>
         <button type="submit" name="cancel" class="rejact">Cancelar</button>
-        <button type="submit" name="assign" class="cancel">Asignar Gestor</button>
+        <button type="submit" name="assign" id="assign-button" class="cancel">Asignar Gestor</button>
         <div class="info-box">
             <ul>
                 <li><small>Solo se puede asignar un gestor a una solicitud</small></li>
@@ -40,5 +40,7 @@
 
 
 </form>
+
+<script src="{% static 'scripts/assignUserToPetition.js' %}"></script>
 
 {% endblock %}
