@@ -1,21 +1,21 @@
-from django.http import HttpResponseNotFound
-from django.utils import timezone
 from django.test import TestCase, Client
 from django.urls import reverse
-from .models import Monitoring, Other, Observation, Petition
+from petition.models import Monitoring, Other, Observation
 from login.models import User
+from django.utils import timezone
 from django.contrib.auth.models import Group
 
 
-class testAssignUser(TestCase):
+class TestDeleteObservation(TestCase):
     """
-    Test suite for the assign user view.
+    Test suite for delete observation view.
     """
 
     def setUp(self):
         """
         Set up data for each test.
         """
+
         # Create a user to simulate authentication
         Group.objects.get_or_create(name="Admin")
         self.user = User.objects.create(username="testuser", password="testpassword")
@@ -24,7 +24,7 @@ class testAssignUser(TestCase):
         self.client = Client()
         self.client.force_login(self.user)
 
-        # Create instances of Monitoring, Other, and Observation for use in tests
+        # Create instances of Monitoring and Other for use in tests
         self.monitoringWithUser = Monitoring.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=30),
@@ -98,7 +98,6 @@ class testAssignUser(TestCase):
             rutAttachment="ruta/del/archivo/rut.pdf",
         )
 
-        # Create observations for monitoring and other petitions
         self.observationMonitoring = Observation.objects.create(
             description="Observación de ejemplo",
             date="2024-04-01",
@@ -123,56 +122,62 @@ class testAssignUser(TestCase):
             petition=self.otherWithUser,
         )
 
-    def testAssignUserToPetitionPostAssign(self):
+    def testDeleteObservationPostWithPermissionsMonitoring(self):
         """
-        Test POST request to assign user to petition.
+        Test for deleting an observation associated with a monitoring petition.
         """
+
         response = self.client.post(
-            reverse("assignPetition", args=[self.otherWithUser.pk]),
-            {"assign": "Assign", "user": self.user.pk},
+            reverse("deleteObservation", args=[self.observationMonitoring.pk])
         )
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(self.otherWithUser.user, self.user)
+        self.assertEqual(response.url, reverse("viewPetition"))
+        with self.assertRaises(Observation.DoesNotExist):
+            Observation.objects.get(pk=self.observationMonitoring.pk)
 
-    def testAssignUserToPetitionPostCancel(self):
+    def testDeleteObservationPostWithPermissionsOWithUser(self):
         """
-        Test POST request to cancel assignment of user to petition.
+        Test for deleting an observation associated with an Other petition with a user.
         """
+
         response = self.client.post(
-            reverse("assignPetition", args=[self.otherWithoutUser.pk]),
-            {"cancel": "Cancel"},
+            reverse("deleteObservation", args=[self.observationOtherWithUser.pk])
         )
         self.assertEqual(response.status_code, 302)
-        self.assertNotEqual(self.otherWithoutUser.user, self.user)
+        self.assertEqual(response.url, reverse("viewPetition"))
+        with self.assertRaises(Observation.DoesNotExist):
+            Observation.objects.get(pk=self.observationOtherWithUser.pk)
 
-    def testAssignUserToPetitionGet(self):
+    def testDeleteObservationPostWithPermissionsOWithoutUser(self):
         """
-        Test GET request to assign user to petition.
+        Test for deleting an observation associated with an Other petition without a user.
         """
-        response = self.client.get(
-            reverse("assignPetition", args=[self.otherWithUser.pk])
+
+        response = self.client.post(
+            reverse("deleteObservation", args=[self.observationOtherWithoutUser.pk])
         )
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "assignUserToPetition.html")
-        self.assertIn("petition", response.context)
-        self.assertIn("users", response.context)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, reverse("viewPetition"))
+        with self.assertRaises(Observation.DoesNotExist):
+            Observation.objects.get(pk=self.observationOtherWithoutUser.pk)
 
-    def testAssignUserToPetitionPostInvalidUser(self):
+    def testDeleteObservationPostRedirect(self):
         """
-        Test POST request to assign invalid user to petition.
+        Test redirection if not logged in.
         """
-        with self.assertRaises(User.DoesNotExist):
-            self.client.post(
-                reverse("assignPetition", args=[self.otherWithUser.pk]),
-                {"assign": "Assign", "user": "544545"},
-            )
 
-    def testAssignUserToPetitionPostInvalidPetition(self):
+        # Ensure redirection if not logged in
+        self.client.logout()
+        response = self.client.post(
+            reverse("deleteObservation", args=[self.observationOtherWithoutUser.pk])
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertIn(reverse("login"), response.url)
+
+    def testDeleteObservationPostNotFound(self):
         """
-        Test POST request to assign user to invalid petition.
+        Test for deletion of a non-existent observation.
         """
-        with self.assertRaises(Petition.DoesNotExist):
-            self.client.post(
-                reverse("assignPetition", args=[999]),
-                {"assign": "Assign", "user": self.user.pk},
-            )
+
+        response = self.client.post(reverse("deleteObservation", args=[999]))
+        self.assertEqual(response.status_code, 404)

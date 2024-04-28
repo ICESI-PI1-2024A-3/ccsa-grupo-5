@@ -1,20 +1,21 @@
+from django.http import HttpResponseNotFound
+from django.utils import timezone
 from django.test import TestCase, Client
 from django.urls import reverse
-from django.utils import timezone
-from .models import Monitoring, Other
+from petition.models import Monitoring, Other, Observation, Petition
 from login.models import User
 from django.contrib.auth.models import Group
 
-class TestsViewWithoutUser(TestCase):
+
+class testAssignUser(TestCase):
     """
-    Test suite for views without authenticated users.
+    Test suite for the assign user view.
     """
 
     def setUp(self):
         """
         Set up data for each test.
         """
-
         # Create a user to simulate authentication
         Group.objects.get_or_create(name="Admin")
         self.user = User.objects.create(username="testuser", password="testpassword")
@@ -23,7 +24,7 @@ class TestsViewWithoutUser(TestCase):
         self.client = Client()
         self.client.force_login(self.user)
 
-        # Create instances of Monitoring and Other for testing
+        # Create instances of Monitoring, Other, and Observation for use in tests
         self.monitoringWithUser = Monitoring.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=30),
@@ -97,85 +98,81 @@ class TestsViewWithoutUser(TestCase):
             rutAttachment="ruta/del/archivo/rut.pdf",
         )
 
-    def testViewPetitionWithoutUser(self):
+        # Create observations for monitoring and other petitions
+        self.observationMonitoring = Observation.objects.create(
+            description="Observación de ejemplo",
+            date="2024-04-01",
+            time="12:00:00",
+            author="",
+            petition=self.monitoringWithUser,
+        )
+
+        self.observationOtherWithoutUser = Observation.objects.create(
+            description="Observación de ejemplo",
+            date="2024-04-01",
+            time="12:00:00",
+            author="",
+            petition=self.otherWithoutUser,
+        )
+
+        self.observationOtherWithUser = Observation.objects.create(
+            description="Observación de ejemplo",
+            date="2024-04-01",
+            time="12:00:00",
+            author="",
+            petition=self.otherWithUser,
+        )
+
+    def testAssignUserToPetitionPostAssign(self):
         """
-        Test view for petition without user.
+        Test POST request to assign user to petition.
         """
-
-        # Make a GET request to the view using the test client
-        response = self.client.get(reverse("viewPetitionWithoutUser"))
-
-        # Check if the response status code is 200 (OK)
-        self.assertEqual(response.status_code, 200)
-
-        # Check if the response context contains the petitions
-        self.assertIn("petitions", response.context)
-
-        # Check if the petitions in the context are as expected
-        expected_petitions = [self.otherWithoutUser]
-        actual_petitions = list(response.context["petitions"])
-        self.assertEqual(len(expected_petitions), len(actual_petitions))
-        self.assertListEqual(expected_petitions, actual_petitions)
-
-    def testViewPetitionWithoutUserAuthenticated(self):
-        """
-        Test view for petition without user with authenticated user.
-        """
-
-        # Make a GET request to the view with an authenticated user
-        response = self.client.get(reverse("viewPetitionWithoutUser"))
-
-        # Check if the response status code is 200 (OK)
-        self.assertEqual(response.status_code, 200)
-
-        # Check if the authenticated user is present in the view
-        self.assertIn("user", response.context)
-        self.assertEqual(response.context["user"], self.user)
-
-    def testViewPetitionWithoutUserUnauthenticated(self):
-        """
-        Test view for petition without user with unauthenticated user.
-        """
-
-        # Create a new client without authentication
-        unauthenticatedClient = Client()
-
-        # Make a GET request to the view without authentication
-        response = unauthenticatedClient.get(reverse("viewPetitionWithoutUser"))
-
-        # Check if the response status code is 302 (Redirect to login page)
+        response = self.client.post(
+            reverse("assignPetition", args=[self.otherWithUser.pk]),
+            {"assign": "Assign", "user": self.user.pk},
+        )
         self.assertEqual(response.status_code, 302)
+        self.assertEqual(self.otherWithUser.user, self.user)
 
-    def testViewPetitionWithoutUserEmptyQueryset(self):
+    def testAssignUserToPetitionPostCancel(self):
         """
-        Test view for petition without user with empty queryset.
+        Test POST request to cancel assignment of user to petition.
         """
-
-        # Delete all instances of Monitoring and Other to simulate an empty queryset
-        Monitoring.objects.all().delete()
-        Other.objects.all().delete()
-
-        # Make a GET request to the view with an authenticated user
-        response = self.client.get(reverse("viewPetitionWithoutUser"))
-
-        # Check if the response status code is 200 (OK)
-        self.assertEqual(response.status_code, 200)
-
-        # Check if the response context contains the empty petitions
-        self.assertIn("petitions", response.context)
-        self.assertListEqual(list(response.context["petitions"]), [])
-
-    def testViewPetitionWithoutUserInvalidUser(self):
-        """
-        Test view for petition without user with invalid user.
-        """
-
-        # Create a new user not existing in the database
-        invalidUser = User(id="1", username="invaliduser", password="invalidpassword")
-
-        # Make a GET request to the view with the non-existing user
-        self.client.force_login(invalidUser)
-        response = self.client.get(reverse("viewPetitionWithoutUser"))
-
-        # Check if the response status code is 302 (Redirect to login page)
+        response = self.client.post(
+            reverse("assignPetition", args=[self.otherWithoutUser.pk]),
+            {"cancel": "Cancel"},
+        )
         self.assertEqual(response.status_code, 302)
+        self.assertNotEqual(self.otherWithoutUser.user, self.user)
+
+    def testAssignUserToPetitionGet(self):
+        """
+        Test GET request to assign user to petition.
+        """
+        response = self.client.get(
+            reverse("assignPetition", args=[self.otherWithUser.pk])
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "assignUserToPetition.html")
+        self.assertIn("petition", response.context)
+        self.assertIn("users", response.context)
+
+    def testAssignUserToPetitionPostInvalidUser(self):
+        """
+        Test POST request to assign invalid user to petition.
+        """
+        with self.assertRaises(User.DoesNotExist):
+            self.client.post(
+                reverse("assignPetition", args=[self.otherWithUser.pk]),
+                {"assign": "Assign", "user": "544545"},
+            )
+
+    def testAssignUserToPetitionPostInvalidPetition(self):
+        """
+        Test POST request to assign user to invalid petition.
+        """
+        with self.assertRaises(Petition.DoesNotExist):
+            self.client.post(
+                reverse("assignPetition", args=[999]),
+                {"assign": "Assign", "user": self.user.pk},
+            )
