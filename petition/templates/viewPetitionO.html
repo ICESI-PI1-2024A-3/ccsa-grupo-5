@@ -14,6 +14,12 @@
 
 
 <h1>Detalles de la Solicitud</h1>
+{% if solicitud.state != 'rechazado' and solicitud.state != 'aprobado' and 'Gestor de Contratacion' in request.user.getGroup%}
+<p></p>
+<a href="{% url 'followUpPetition' petitionId %}"><button>Seguimiento</button></a>
+<p></p>
+{% endif %}
+
 <h3>Tipo de contrato: {{ solicitud.getPetitionType }}</h3>
 <p>Fecha de Solicitud: {{ solicitud.petitionDate }}</p>
 <p>Fecha de Inicio: {{ solicitud.startDate }}</p>
@@ -42,7 +48,17 @@
     <p>Gestor encargado: <b>{{ solicitud.getUser }}</b></p>
 </div>
 
+<h2>Tareas del Gestor</h2>
 
+{% for task in tasks %}
+    <div class="">
+        <p>{{task.yesOrNoComplete}} {{ task.description }}</p>
+        <p></p> 
+    </div>
+                
+{% endfor %}
+
+<p></p>
   
 
     {% if solicitud.state != 'rechazado' and solicitud.state != 'aprobado' %}

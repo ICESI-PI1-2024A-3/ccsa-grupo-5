@@ -4,13 +4,22 @@
 
 {% block head %}
 <title>Detalles de solicitud</title>
+
 <link rel="stylesheet" href="{% static 'styles/editPetition.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
 {% endblock %}
 
 {% block content %}
 
 <h1>Detalles de la Solicitud</h1>
+{% if solicitud.state != 'rechazado' and solicitud.state != 'aprobado' and 'Gestor de Contratacion' in request.user.getGroup%}
+<p></p>
+<a href="{% url 'followUpPetition' petitionId %}"><button>Seguimiento</button></a>
+<p></p>
+{% endif %}
+
+
 <h3>Tipo de contrato: {{ solicitud.getPetitionType }}</h3>
 <p>Fecha de Solicitud: {{ solicitud.petitionDate }}</p>
 <p>Fecha de Inicio: {{ solicitud.startDate }}</p>
@@ -35,6 +44,17 @@
 
 <div><p>Gestor encargado: <b>{{ solicitud.getUser }}</b></p></div>
 
+<h2>Tareas del Gestor</h2>
+
+{% for task in tasks %}
+    <div class="">
+        <p>{{task.yesOrNoComplete}} {{ task.description }}</p>
+        <p></p> 
+    </div>
+                
+{% endfor %}
+
+<p></p>
 
 
     {% if solicitud.state != 'rechazado' and solicitud.state != 'aprobado' %}
@@ -45,7 +65,7 @@
     <a href="{% url 'assignPetition' solicitud.id %}"><button>Asignar a un Gestor de Procesos</button></a>
     {% endif %}
 
-
+    
     <p></p>
     <a href="{% url 'createObservation' petitionId %}"><button>Crear Observacion</button></a>
     <p></p>

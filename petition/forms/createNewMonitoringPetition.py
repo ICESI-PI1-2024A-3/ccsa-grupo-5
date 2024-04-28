@@ -18,7 +18,7 @@ class CreateNewMonitoringPetition(forms.ModelForm):
 
     class Meta:
         model = Monitoring
-        exclude = ["userAsigner"]
+        exclude = ["userAsigner", "percentage"]
 
     def __init__(self, *args, **kwargs):
         """

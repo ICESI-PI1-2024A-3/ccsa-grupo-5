@@ -18,6 +18,7 @@ class AbstractPetition(models.Model):
     petitionDate = models.DateField(
         default=timezone.now, verbose_name="Fecha de solicitud"
     )
+    percentage = models.IntegerField(default=0, verbose_name="Porcentaje")
     startDate = models.DateField(verbose_name="Fecha de inicio")
     endDate = models.DateField(verbose_name="Fecha de fin")
     state = models.CharField(max_length=20, choices=states, verbose_name="Estado")
@@ -44,6 +45,19 @@ class AbstractPetition(models.Model):
         null=True,
         verbose_name="Usuario",
     )
+    
+    def getPercentage(self):
+        petition = Petition.objects.get(pk=self.id)
+        tasks = Task.objects.filter(petition=petition)
+        tasks_count = petition.tasks.count()
+        completed_tasks_count = petition.tasks.filter(isComplete=True).count()
+
+        # Calculate the percentage of tasks completed
+        if tasks_count > 0:
+            completion_percentage = round((completed_tasks_count / tasks_count) * 100)
+        else:
+            completion_percentage = 0
+        return completion_percentage
 
     def getState(self):
         """
@@ -108,10 +122,41 @@ class Observation(models.Model):
         on_delete=models.CASCADE,
         verbose_name="Petición",
     )
-
     class Meta:
         verbose_name = "Observación"
         verbose_name_plural = "Observaciones"
+
+
+class TaskPredeterminate(models.Model):
+    description = models.TextField(verbose_name="Descripción")
+    isComplete = models.BooleanField(
+        default=False, verbose_name=""
+    )
+    admin = models.ForeignKey(User, related_name="taskAdmin", on_delete=models.CASCADE)
+    class Meta:
+        verbose_name = "Tarea Predeterminada"
+        verbose_name_plural = "Tareas Predeterminadas"
+
+class Task(models.Model):
+    description = models.TextField(verbose_name="Descripción")
+    isComplete = models.BooleanField(
+        default=False, verbose_name=""
+    )
+    petition = models.ForeignKey(Petition, related_name="tasks", on_delete=models.CASCADE, verbose_name="Petición")
+    
+    def yesOrNoComplete(self):
+        """
+        Method to return Yes or No based on isComplete field.
+        """
+        if self.isComplete:
+            return "✔️"
+        else:
+            return "❌"
+        
+    class Meta:
+        verbose_name = "Tarea"
+        verbose_name_plural = "Tareas"
+
 
 
 class Monitoring(Petition):
