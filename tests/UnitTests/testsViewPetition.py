@@ -1,15 +1,13 @@
-from django.http import HttpResponseNotFound
-from django.utils import timezone
 from django.test import TestCase, Client
 from django.urls import reverse
-from .models import Monitoring, Other
+from django.utils import timezone
+from petition.models import Monitoring, Other
 from login.models import User
 from django.contrib.auth.models import Group
 
-
-class TestsSelectTypePetition(TestCase):
+class TestsViewPetition(TestCase):
     """
-    Test suite for selectTypePetition view.
+    Test suite for viewPetition views.
     """
 
     def setUp(self):
@@ -99,60 +97,90 @@ class TestsSelectTypePetition(TestCase):
             rutAttachment="ruta/del/archivo/rut.pdf",
         )
 
-    def testSelectTypePetitionAuthenticated(self):
+    def testViewAllPetition(self):
         """
-        Test view for selectTypePetition when authenticated.
+        Test view for all petitions.
         """
 
-        # Make a GET request to the view with an authenticated user
-        response = self.client.get(reverse("selectTypePetition"))
+        # Make a GET request to the view using the test client
+        response = self.client.get(reverse("viewPetition"))
 
         # Check if the response status code is 200 (OK)
         self.assertEqual(response.status_code, 200)
 
-    def testSelectTypePetitionUnauthenticated(self):
+        # Check if the response context contains the petitions
+        self.assertIn("petitions", response.context)
+
+        # Check if the petitions in the context are as expected
+        expected_petitions = [
+            self.monitoringWithUser,
+            self.otherWithUser,
+            self.otherWithoutUser,
+        ]
+        actual_petitions = list(response.context["petitions"])
+        self.assertEqual(len(expected_petitions), len(actual_petitions))
+        self.assertListEqual(expected_petitions, actual_petitions)
+
+    def testViewPetitionWithoutUserAuthenticated(self):
         """
-        Test view for selectTypePetition when unauthenticated.
+        Test view for petition without user with authenticated user.
+        """
+
+        # Make a GET request to the view with an authenticated user
+        response = self.client.get(reverse("viewPetition"))
+
+        # Check if the response status code is 200 (OK)
+        self.assertEqual(response.status_code, 200)
+
+        # Check if the authenticated user is present in the view
+        self.assertIn("user", response.context)
+        self.assertEqual(response.context["user"], self.user)
+
+    def testViewPetitionWithoutUserUnauthenticated(self):
+        """
+        Test view for petition without user with unauthenticated user.
         """
 
         # Create a new client without authentication
         unauthenticatedClient = Client()
 
         # Make a GET request to the view without authentication
-        response = unauthenticatedClient.get(reverse("selectTypePetition"))
+        response = unauthenticatedClient.get(reverse("viewPetition"))
 
         # Check if the response status code is 302 (Redirect to login page)
         self.assertEqual(response.status_code, 302)
 
-    def testSelectTypePetitionTemplate(self):
+    def testViewPetitionWithoutUserEmptyQueryset(self):
         """
-        Test view for selectTypePetition template.
+        Test view for petition without user with empty queryset.
         """
+
+        # Delete all instances of Monitoring and Other to simulate an empty queryset
+        Monitoring.objects.all().delete()
+        Other.objects.all().delete()
 
         # Make a GET request to the view with an authenticated user
-        response = self.client.get(reverse("selectTypePetition"))
+        response = self.client.get(reverse("viewPetition"))
 
-        # Check if the correct template is being used
-        self.assertTemplateUsed(response, "selectTypePetition.html")
+        # Check if the response status code is 200 (OK)
+        self.assertEqual(response.status_code, 200)
 
-    def testSelectTypePetitionContent(self):
+        # Check if the response context contains the empty petitions
+        self.assertIn("petitions", response.context)
+        self.assertEqual(response.context["petitions"], None)
+
+
+    def testViewPetitionInvalidUser(self):
         """
-        Test view for selectTypePetition content.
-        """
-
-        # Make a GET request to the view with an authenticated user
-        response = self.client.get(reverse("selectTypePetition"))
-
-        # Check if the response content contains a specific text
-        self.assertContains(response, "seleccione el tipo de monitoria")
-
-    def testSelectTypePetitionContent1(self):
-        """
-        Test view for selectTypePetition content 1.
+        Test view for petition with invalid user.
         """
 
-        # Make a GET request to the view with an authenticated user
-        response = self.client.get(reverse("selectTypePetition"))
+        # Create a new user not existing in the database
+        invalidUser = User(id="1", username="invaliduser", password="invalidpassword")
 
-        # Check if the response content contains a specific text
-        self.assertContains(response, "Monitoria")
+        # Make a GET request to the view with the non-existing user
+        self.client.force_login(invalidUser)
+        response = self.client.get(reverse("viewPetition"))
+
+        # Check if the response status code is 302 (Redirect to login page)
+        self.assertEqual(response.status_code, 302)

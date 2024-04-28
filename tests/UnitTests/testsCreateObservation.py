@@ -1,15 +1,15 @@
-from django.http import HttpResponseNotFound
-from django.utils import timezone
 from django.test import TestCase, Client
 from django.urls import reverse
-from .models import Monitoring, Other, Petition
+from petition.forms.createNewObservation import CreateNewObservation
+from petition.models import Observation, Other ,Monitoring
 from login.models import User
+from django.utils import timezone
 from django.contrib.auth.models import Group
 
 
-class TestsRejectPetition(TestCase):
+class TestCreateObservation(TestCase):
     """
-    Test suite for rejectPetition view.
+    Test suite for create observation view.
     """
 
     def setUp(self):
@@ -25,7 +25,7 @@ class TestsRejectPetition(TestCase):
         self.client = Client()
         self.client.force_login(self.user)
 
-        # Create instances of Monitoring and Other for testing
+        # Create instances of Monitoring and Other for use in tests
         self.monitoringWithUser = Monitoring.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=30),
@@ -73,7 +73,7 @@ class TestsRejectPetition(TestCase):
             rutAttachment="ruta/del/archivo/rut.pdf",
         )
 
-        # Petition without user
+        # Solicitud sin usuario
         self.otherWithoutUser = Other.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=40),
@@ -99,89 +99,78 @@ class TestsRejectPetition(TestCase):
             rutAttachment="ruta/del/archivo/rut.pdf",
         )
 
-    def testRejectPetitionRedirectReject(self):
-        """
-        Test view for rejecting a petition and redirecting to showPetition.
-        """
-
-        # Make a POST request to the view with the "Reject" button
-        response = self.client.post(
-            reverse("rejectPetition", kwargs={"petitionId": self.otherWithUser.pk}),
-            data={"rechazar": "Rechazar"},
+        self.observation = Observation.objects.create(
+            description="Observación de ejemplo",
+            date="2024-04-01",
+            time="12:00:00",
+            author="",
+            petition=self.monitoringWithUser,
         )
 
-        # Check if the request redirects correctly
-        self.assertRedirects(
-            response,
-            reverse("showPetition", kwargs={"petitionId": self.otherWithUser.pk}),
-        )
-
-    def testRejectPetitionRedirectCancel(self):
+    def testCreateObservationAuthenticated(self):
         """
-        Test view for cancelling a petition rejection and redirecting to showPetition.
+        Test GET request to create observation view when authenticated.
         """
 
-        # Make a POST request to the view with the "Cancel" button
-        response = self.client.post(
-            reverse("rejectPetition", kwargs={"petitionId": self.otherWithUser.pk}),
-            data={"cancelar": "Cancelar"},
-        )
-
-        # Check if the request redirects correctly
-        self.assertRedirects(
-            response,
-            reverse("showPetition", kwargs={"petitionId": self.otherWithUser.pk}),
-        )
-
-    def testRejectPetitionGetMethod(self):
-        """
-        Test view for accessing the rejectPetition page with GET method.
-        """
-
-        # Make a GET request to the view
         response = self.client.get(
-            reverse("rejectPetition", kwargs={"petitionId": self.otherWithUser.pk})
+            reverse("createObservation", kwargs={"petitionId": self.monitoringWithUser.id})
         )
-
-        # Check if the response status code is 200 (OK)
         self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "createObservation.html")
+        self.assertIsInstance(response.context["form"], CreateNewObservation)
+        self.assertEqual(response.context["petitionId"], self.monitoringWithUser.id)
 
-        # Check if the correct template is being used
-        self.assertTemplateUsed(response, "rejectPetition.html")
-
-    def testRejectPetitionInvalidPetitionId(self):
+    def testCreateObservationUnauthenticated(self):
         """
-        Test view for rejecting a petition with an invalid petition ID.
+        Test GET request to create observation view when unauthenticated.
         """
 
-        # Make a POST request to the view with an invalid petition ID
+        self.client.logout()
+        response = self.client.get(
+            reverse("createObservation", kwargs={"petitionId": self.monitoringWithUser.id})
+        )
+        self.assertEqual(response.status_code, 302)  # Redirect to login page
+
+    def testCreateObservationPostValid(self):
+        """
+        Test POST request to create observation view with valid data.
+        """
+
         response = self.client.post(
-            reverse("rejectPetition", kwargs={"petitionId": 999}),
-            data={"rechazar": "Rechazar"},
+            reverse("createObservation", kwargs={"petitionId": self.monitoringWithUser.id}),
+            data={
+                "description": "Nueva observación",
+                "date": "2024-04-01",
+                "time": "12:00:00",
+            },
         )
+        self.assertEqual(response.status_code, 302)  # Redirect after successful POST
+        self.assertEqual(Observation.objects.count(), 2)  # Check if observation was created
 
-        # Check if the request returns a 404 error code
-        self.assertEqual(response.status_code, 404)
-
-    def testRejectPetition(self):
+    def testCreateObservationPostInvalid(self):
         """
-        Test view for rejecting a petition.
+        Test POST request to create observation view with invalid data.
         """
 
-        # Make a POST request to reject the petition
         response = self.client.post(
-            reverse(
-                "rejectPetition", kwargs={"petitionId": self.monitoringWithUser.pk}
-            ),
-            {"rechazar": "Rechazar"},
+            reverse("createObservation", kwargs={"petitionId": self.monitoringWithUser.id}),
+            data={},
         )
+        self.assertEqual(
+            response.status_code, 200
+        )  # Stay on the same page after invalid POST
+        form = response.context['form']  
+        self.assertFalse(form.is_valid()) 
+        self.assertTrue('description' in form.errors)  
 
-        # Check if the petition has been rejected
-        updatedPetition = Monitoring.objects.get(pk=self.monitoringWithUser.pk)
-        self.assertEqual(updatedPetition.state, "rechazado")
+    def testCreateObservationPermission(self):
+        """
+        Test permissions for create observation view.
+        """
 
-        # Check if the redirection is performed correctly
-        self.assertRedirects(
-            response,
-            reverse("showPetition", kwargs={"petitionId": self.monitoringWithUser.pk}),
+        self.user.groups.add(Group.objects.create(name="Lider de Proceso"))
+        response = self.client.get(
+            reverse("createObservation", kwargs={"petitionId": self.monitoringWithUser.id})
         )
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "createObservation.html")

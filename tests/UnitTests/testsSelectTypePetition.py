@@ -1,15 +1,15 @@
+from django.http import HttpResponseNotFound
+from django.utils import timezone
 from django.test import TestCase, Client
 from django.urls import reverse
-from petition.forms.createNewObservation import CreateNewObservation
-from .models import Observation, Other ,Monitoring
+from petition.models import Monitoring, Other
 from login.models import User
-from django.utils import timezone
 from django.contrib.auth.models import Group
 
 
-class TestCreateObservation(TestCase):
+class TestsSelectTypePetition(TestCase):
     """
-    Test suite for create observation view.
+    Test suite for selectTypePetition view.
     """
 
     def setUp(self):
@@ -25,7 +25,7 @@ class TestCreateObservation(TestCase):
         self.client = Client()
         self.client.force_login(self.user)
 
-        # Create instances of Monitoring and Other for use in tests
+        # Create instances of Monitoring and Other for testing
         self.monitoringWithUser = Monitoring.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=30),
@@ -73,7 +73,7 @@ class TestCreateObservation(TestCase):
             rutAttachment="ruta/del/archivo/rut.pdf",
         )
 
-        # Solicitud sin usuario
+        # Petition without user
         self.otherWithoutUser = Other.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=40),
@@ -99,78 +99,60 @@ class TestCreateObservation(TestCase):
             rutAttachment="ruta/del/archivo/rut.pdf",
         )
 
-        self.observation = Observation.objects.create(
-            description="Observación de ejemplo",
-            date="2024-04-01",
-            time="12:00:00",
-            author="",
-            petition=self.monitoringWithUser,
-        )
-
-    def testCreateObservationAuthenticated(self):
+    def testSelectTypePetitionAuthenticated(self):
         """
-        Test GET request to create observation view when authenticated.
+        Test view for selectTypePetition when authenticated.
         """
 
-        response = self.client.get(
-            reverse("createObservation", kwargs={"petitionId": self.monitoringWithUser.id})
-        )
+        # Make a GET request to the view with an authenticated user
+        response = self.client.get(reverse("selectTypePetition"))
+
+        # Check if the response status code is 200 (OK)
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "createObservation.html")
-        self.assertIsInstance(response.context["form"], CreateNewObservation)
-        self.assertEqual(response.context["petitionId"], self.monitoringWithUser.id)
 
-    def testCreateObservationUnauthenticated(self):
+    def testSelectTypePetitionUnauthenticated(self):
         """
-        Test GET request to create observation view when unauthenticated.
+        Test view for selectTypePetition when unauthenticated.
         """
 
-        self.client.logout()
-        response = self.client.get(
-            reverse("createObservation", kwargs={"petitionId": self.monitoringWithUser.id})
-        )
-        self.assertEqual(response.status_code, 302)  # Redirect to login page
+        # Create a new client without authentication
+        unauthenticatedClient = Client()
 
-    def testCreateObservationPostValid(self):
-        """
-        Test POST request to create observation view with valid data.
-        """
+        # Make a GET request to the view without authentication
+        response = unauthenticatedClient.get(reverse("selectTypePetition"))
 
-        response = self.client.post(
-            reverse("createObservation", kwargs={"petitionId": self.monitoringWithUser.id}),
-            data={
-                "description": "Nueva observación",
-                "date": "2024-04-01",
-                "time": "12:00:00",
-            },
-        )
-        self.assertEqual(response.status_code, 302)  # Redirect after successful POST
-        self.assertEqual(Observation.objects.count(), 2)  # Check if observation was created
+        # Check if the response status code is 302 (Redirect to login page)
+        self.assertEqual(response.status_code, 302)
 
-    def testCreateObservationPostInvalid(self):
+    def testSelectTypePetitionTemplate(self):
         """
-        Test POST request to create observation view with invalid data.
+        Test view for selectTypePetition template.
         """
 
-        response = self.client.post(
-            reverse("createObservation", kwargs={"petitionId": self.monitoringWithUser.id}),
-            data={},
-        )
-        self.assertEqual(
-            response.status_code, 200
-        )  # Stay on the same page after invalid POST
-        form = response.context['form']  
-        self.assertFalse(form.is_valid()) 
-        self.assertTrue('description' in form.errors)  
+        # Make a GET request to the view with an authenticated user
+        response = self.client.get(reverse("selectTypePetition"))
 
-    def testCreateObservationPermission(self):
+        # Check if the correct template is being used
+        self.assertTemplateUsed(response, "selectTypePetition.html")
+
+    def testSelectTypePetitionContent(self):
         """
-        Test permissions for create observation view.
+        Test view for selectTypePetition content.
         """
 
-        self.user.groups.add(Group.objects.create(name="Lider de Proceso"))
-        response = self.client.get(
-            reverse("createObservation", kwargs={"petitionId": self.monitoringWithUser.id})
-        )
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "createObservation.html")
+        # Make a GET request to the view with an authenticated user
+        response = self.client.get(reverse("selectTypePetition"))
+
+        # Check if the response content contains a specific text
+        self.assertContains(response, "seleccione el tipo de monitoria")
+
+    def testSelectTypePetitionContent1(self):
+        """
+        Test view for selectTypePetition content 1.
+        """
+
+        # Make a GET request to the view with an authenticated user
+        response = self.client.get(reverse("selectTypePetition"))
+
+        # Check if the response content contains a specific text
+        self.assertContains(response, "Monitoria")

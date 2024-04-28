@@ -1,13 +1,15 @@
+from django.http import HttpResponseNotFound
+from django.utils import timezone
 from django.test import TestCase, Client
 from django.urls import reverse
-from django.utils import timezone
-from .models import Monitoring, Other
+from petition.models import Monitoring, Other, Petition
 from login.models import User
 from django.contrib.auth.models import Group
 
-class TestsViewPetition(TestCase):
+
+class TestsRejectPetition(TestCase):
     """
-    Test suite for viewPetition views.
+    Test suite for rejectPetition view.
     """
 
     def setUp(self):
@@ -97,90 +99,89 @@ class TestsViewPetition(TestCase):
             rutAttachment="ruta/del/archivo/rut.pdf",
         )
 
-    def testViewAllPetition(self):
+    def testRejectPetitionRedirectReject(self):
         """
-        Test view for all petitions.
+        Test view for rejecting a petition and redirecting to showPetition.
         """
 
-        # Make a GET request to the view using the test client
-        response = self.client.get(reverse("viewPetition"))
+        # Make a POST request to the view with the "Reject" button
+        response = self.client.post(
+            reverse("rejectPetition", kwargs={"petitionId": self.otherWithUser.pk}),
+            data={"rechazar": "Rechazar"},
+        )
+
+        # Check if the request redirects correctly
+        self.assertRedirects(
+            response,
+            reverse("showPetition", kwargs={"petitionId": self.otherWithUser.pk}),
+        )
+
+    def testRejectPetitionRedirectCancel(self):
+        """
+        Test view for cancelling a petition rejection and redirecting to showPetition.
+        """
+
+        # Make a POST request to the view with the "Cancel" button
+        response = self.client.post(
+            reverse("rejectPetition", kwargs={"petitionId": self.otherWithUser.pk}),
+            data={"cancelar": "Cancelar"},
+        )
+
+        # Check if the request redirects correctly
+        self.assertRedirects(
+            response,
+            reverse("showPetition", kwargs={"petitionId": self.otherWithUser.pk}),
+        )
+
+    def testRejectPetitionGetMethod(self):
+        """
+        Test view for accessing the rejectPetition page with GET method.
+        """
+
+        # Make a GET request to the view
+        response = self.client.get(
+            reverse("rejectPetition", kwargs={"petitionId": self.otherWithUser.pk})
+        )
 
         # Check if the response status code is 200 (OK)
         self.assertEqual(response.status_code, 200)
 
-        # Check if the response context contains the petitions
-        self.assertIn("petitions", response.context)
+        # Check if the correct template is being used
+        self.assertTemplateUsed(response, "rejectPetition.html")
 
-        # Check if the petitions in the context are as expected
-        expected_petitions = [
-            self.monitoringWithUser,
-            self.otherWithUser,
-            self.otherWithoutUser,
-        ]
-        actual_petitions = list(response.context["petitions"])
-        self.assertEqual(len(expected_petitions), len(actual_petitions))
-        self.assertListEqual(expected_petitions, actual_petitions)
-
-    def testViewPetitionWithoutUserAuthenticated(self):
+    def testRejectPetitionInvalidPetitionId(self):
         """
-        Test view for petition without user with authenticated user.
+        Test view for rejecting a petition with an invalid petition ID.
         """
 
-        # Make a GET request to the view with an authenticated user
-        response = self.client.get(reverse("viewPetition"))
+        # Make a POST request to the view with an invalid petition ID
+        response = self.client.post(
+            reverse("rejectPetition", kwargs={"petitionId": 999}),
+            data={"rechazar": "Rechazar"},
+        )
 
-        # Check if the response status code is 200 (OK)
-        self.assertEqual(response.status_code, 200)
+        # Check if the request returns a 404 error code
+        self.assertEqual(response.status_code, 404)
 
-        # Check if the authenticated user is present in the view
-        self.assertIn("user", response.context)
-        self.assertEqual(response.context["user"], self.user)
-
-    def testViewPetitionWithoutUserUnauthenticated(self):
+    def testRejectPetition(self):
         """
-        Test view for petition without user with unauthenticated user.
-        """
-
-        # Create a new client without authentication
-        unauthenticatedClient = Client()
-
-        # Make a GET request to the view without authentication
-        response = unauthenticatedClient.get(reverse("viewPetition"))
-
-        # Check if the response status code is 302 (Redirect to login page)
-        self.assertEqual(response.status_code, 302)
-
-    def testViewPetitionWithoutUserEmptyQueryset(self):
-        """
-        Test view for petition without user with empty queryset.
+        Test view for rejecting a petition.
         """
 
-        # Delete all instances of Monitoring and Other to simulate an empty queryset
-        Monitoring.objects.all().delete()
-        Other.objects.all().delete()
+        # Make a POST request to reject the petition
+        response = self.client.post(
+            reverse(
+                "rejectPetition", kwargs={"petitionId": self.monitoringWithUser.pk}
+            ),
+            {"rechazar": "Rechazar"},
+        )
 
-        # Make a GET request to the view with an authenticated user
-        response = self.client.get(reverse("viewPetition"))
+        # Check if the petition has been rejected
+        updatedPetition = Monitoring.objects.get(pk=self.monitoringWithUser.pk)
+        self.assertEqual(updatedPetition.state, "rechazado")
 
-        # Check if the response status code is 200 (OK)
-        self.assertEqual(response.status_code, 200)
-
-        # Check if the response context contains the empty petitions
-        self.assertIn("petitions", response.context)
-        self.assertEqual(response.context["petitions"], None)
-
-
-    def testViewPetitionInvalidUser(self):
-        """
-        Test view for petition with invalid user.
-        """
-
-        # Create a new user not existing in the database
-        invalidUser = User(id="1", username="invaliduser", password="invalidpassword")
-
-        # Make a GET request to the view with the non-existing user
-        self.client.force_login(invalidUser)
-        response = self.client.get(reverse("viewPetition"))
-
-        # Check if the response status code is 302 (Redirect to login page)
-        self.assertEqual(response.status_code, 302)
+        # Check if the redirection is performed correctly
+        self.assertRedirects(
+            response,
+            reverse("showPetition", kwargs={"petitionId": self.monitoringWithUser.pk}),
+        )
