@@ -18,7 +18,7 @@ class CreateNewOtherPetition(forms.ModelForm):
 
     class Meta:
         model = Other
-        exclude = ["userAsigner"]
+        exclude = ["userAsigner", "percentage"]
 
     def __init__(self, *args, **kwargs):
         """
