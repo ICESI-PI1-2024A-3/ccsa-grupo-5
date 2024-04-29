@@ -14,7 +14,6 @@ from django.contrib.auth.decorators import login_required
 from login.permissions import groupRequired
 
 @login_required
-@groupRequired('Admin', 'Lider de Proceso')
 def createObservation(request, petitionId):
     """
     Create a new observation.

@@ -47,6 +47,7 @@ def assignUserToPetition(request, petitionId):
             user = User.objects.get(pk=user_id)
             petition.user = user
             petition.userAsigner = User.objects.get(pk=request.user.id)
+            petition.state = "en_proceso"
             petition.save()
             return redirect('showPetition', petitionId=petitionId)            
                                     

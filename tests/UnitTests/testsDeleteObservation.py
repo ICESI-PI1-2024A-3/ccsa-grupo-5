@@ -102,7 +102,7 @@ class TestDeleteObservation(TestCase):
             description="Observación de ejemplo",
             date="2024-04-01",
             time="12:00:00",
-            author="",
+            author=self.user,
             petition=self.monitoringWithUser,
         )
 
@@ -110,7 +110,7 @@ class TestDeleteObservation(TestCase):
             description="Observación de ejemplo",
             date="2024-04-01",
             time="12:00:00",
-            author="",
+            author=self.user,
             petition=self.otherWithoutUser,
         )
 
@@ -118,7 +118,7 @@ class TestDeleteObservation(TestCase):
             description="Observación de ejemplo",
             date="2024-04-01",
             time="12:00:00",
-            author="",
+            author=self.user,
             petition=self.otherWithUser,
         )
 

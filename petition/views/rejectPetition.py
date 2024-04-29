@@ -6,7 +6,7 @@ from itertools import chain
 from django.http import Http404, HttpResponse, JsonResponse
 from django.core.serializers import serialize
 from django.shortcuts import get_object_or_404, redirect, render
-from ..forms import *
+from ..forms import createNewObservation
 from django.db import transaction
 from ..models import *
 from django.views.decorators.http import require_http_methods
@@ -45,7 +45,7 @@ def rejectPetition(request, petitionId):
             # Update petition state to "rechazado" if "rechazar" button is clicked
             petition.state = "rechazado"
             petition.save()
-            return redirect("showPetition", petitionId=petitionId)
+            return redirect('createObservation', petitionId=petitionId)
         elif "cancelar" in request.POST:
             # Redirect to showPetition page if "cancelar" button is clicked
             return redirect("showPetition", petitionId=petitionId)

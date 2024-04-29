@@ -115,7 +115,24 @@ class Observation(models.Model):
     description = models.TextField(verbose_name="Descripción")
     date = models.DateField(verbose_name="Fecha")
     time = models.TimeField(verbose_name="Hora")
-    author = models.CharField(max_length=50, verbose_name="Autor")
+    
+    author = models.ForeignKey(
+        User,
+        related_name="observationUser",
+        on_delete=models.CASCADE,
+        null=True,
+        verbose_name="Usuario",
+    )
+    
+    def getAuthor(self):
+        """
+        Method to get the user associated with the petition.
+        """
+        if self.author is None:
+            return "Sin Asignar"
+        else:
+            return self.author.first_name + " " + self.author.last_name
+    
     petition = models.ForeignKey(
         Petition,
         related_name="observations",

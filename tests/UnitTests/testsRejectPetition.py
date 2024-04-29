@@ -113,7 +113,7 @@ class TestsRejectPetition(TestCase):
         # Check if the request redirects correctly
         self.assertRedirects(
             response,
-            reverse("showPetition", kwargs={"petitionId": self.otherWithUser.pk}),
+            reverse("createObservation", kwargs={"petitionId": self.otherWithUser.pk}),
         )
 
     def testRejectPetitionRedirectCancel(self):
@@ -183,5 +183,5 @@ class TestsRejectPetition(TestCase):
         # Check if the redirection is performed correctly
         self.assertRedirects(
             response,
-            reverse("showPetition", kwargs={"petitionId": self.monitoringWithUser.pk}),
+            reverse("createObservation", kwargs={"petitionId": self.monitoringWithUser.pk}),
         )
