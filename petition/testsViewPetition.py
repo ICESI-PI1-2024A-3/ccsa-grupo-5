@@ -1,7 +1,7 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 from django.utils import timezone
-from ..models import Monitoring, Other
+from .models import Monitoring, Other
 from login.models import User
 from django.contrib.auth.models import Group
 

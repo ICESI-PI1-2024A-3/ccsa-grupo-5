@@ -1,14 +1,13 @@
 from django.test import TestCase, Client
 from django.urls import reverse
-from ..models import Monitoring, Other, Observation, Petition
-from login.models import User
 from django.utils import timezone
+from .models import Monitoring, Other
+from login.models import User
 from django.contrib.auth.models import Group
 
-
-class TestDeletePetition(TestCase):
+class TestsViewWithoutUser(TestCase):
     """
-    Test suite for delete petition view.
+    Test suite for views without authenticated users.
     """
 
     def setUp(self):
@@ -24,7 +23,7 @@ class TestDeletePetition(TestCase):
         self.client = Client()
         self.client.force_login(self.user)
 
-        # Create instances of Monitoring and Other for use in tests
+        # Create instances of Monitoring and Other for testing
         self.monitoringWithUser = Monitoring.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=30),
@@ -98,70 +97,85 @@ class TestDeletePetition(TestCase):
             rutAttachment="ruta/del/archivo/rut.pdf",
         )
 
-        self.observation = Observation.objects.create(
-            description="Observación de ejemplo",
-            date="2024-04-01",
-            time="12:00:00",
-            author="",
-            petition=self.monitoringWithUser,
-        )
-
-    def testDeletePetitionPostMWithUser(self):
+    def testViewPetitionWithoutUser(self):
         """
-        Test for deleting a Monitoring petition with a user associated.
+        Test view for petition without user.
         """
 
-        response = self.client.post(
-            reverse("deletePetition", args=[self.monitoringWithUser.pk])
-        )
+        # Make a GET request to the view using the test client
+        response = self.client.get(reverse("viewPetitionWithoutUser"))
+
+        # Check if the response status code is 200 (OK)
+        self.assertEqual(response.status_code, 200)
+
+        # Check if the response context contains the petitions
+        self.assertIn("petitions", response.context)
+
+        # Check if the petitions in the context are as expected
+        expected_petitions = [self.otherWithoutUser]
+        actual_petitions = list(response.context["petitions"])
+        self.assertEqual(len(expected_petitions), len(actual_petitions))
+        self.assertListEqual(expected_petitions, actual_petitions)
+
+    def testViewPetitionWithoutUserAuthenticated(self):
+        """
+        Test view for petition without user with authenticated user.
+        """
+
+        # Make a GET request to the view with an authenticated user
+        response = self.client.get(reverse("viewPetitionWithoutUser"))
+
+        # Check if the response status code is 200 (OK)
+        self.assertEqual(response.status_code, 200)
+
+        # Check if the authenticated user is present in the view
+        self.assertIn("user", response.context)
+        self.assertEqual(response.context["user"], self.user)
+
+    def testViewPetitionWithoutUserUnauthenticated(self):
+        """
+        Test view for petition without user with unauthenticated user.
+        """
+
+        # Create a new client without authentication
+        unauthenticatedClient = Client()
+
+        # Make a GET request to the view without authentication
+        response = unauthenticatedClient.get(reverse("viewPetitionWithoutUser"))
+
+        # Check if the response status code is 302 (Redirect to login page)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, reverse("viewPetition"))
-        with self.assertRaises(Petition.DoesNotExist):
-            Petition.objects.get(pk=self.monitoringWithUser.pk)
 
-    def testDeletePetitionPostOWithoutUser(self):
+    def testViewPetitionWithoutUserEmptyQueryset(self):
         """
-        Test for deleting an Other petition without a user associated.
+        Test view for petition without user with empty queryset.
         """
 
-        response = self.client.post(
-            reverse("deletePetition", args=[self.otherWithoutUser.pk])
-        )
+        # Delete all instances of Monitoring and Other to simulate an empty queryset
+        Monitoring.objects.all().delete()
+        Other.objects.all().delete()
+
+        # Make a GET request to the view with an authenticated user
+        response = self.client.get(reverse("viewPetitionWithoutUser"))
+
+        # Check if the response status code is 200 (OK)
+        self.assertEqual(response.status_code, 200)
+
+        # Check if the response context contains the empty petitions
+        self.assertIn("petitions", response.context)
+        self.assertListEqual(list(response.context["petitions"]), [])
+
+    def testViewPetitionWithoutUserInvalidUser(self):
+        """
+        Test view for petition without user with invalid user.
+        """
+
+        # Create a new user not existing in the database
+        invalidUser = User(id="1", username="invaliduser", password="invalidpassword")
+
+        # Make a GET request to the view with the non-existing user
+        self.client.force_login(invalidUser)
+        response = self.client.get(reverse("viewPetitionWithoutUser"))
+
+        # Check if the response status code is 302 (Redirect to login page)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, reverse("viewPetition"))
-        with self.assertRaises(Petition.DoesNotExist):
-            Petition.objects.get(pk=self.otherWithoutUser.pk)
-
-    def testDeletePetitionPostOWithUser(self):
-        """
-        Test for deleting an Other petition with a user associated.
-        """
-
-        response = self.client.post(
-            reverse("deletePetition", args=[self.otherWithUser.pk])
-        )
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, reverse("viewPetition"))
-        with self.assertRaises(Petition.DoesNotExist):
-            Petition.objects.get(pk=self.otherWithUser.pk)
-
-    def testDeletePetitionPostRedirect(self):
-        """
-        Test redirection if not logged in.
-        """
-
-        # Ensure redirection if not logged in
-        self.client.logout()
-        response = self.client.post(
-            reverse("deletePetition", args=[self.monitoringWithUser.pk])
-        )
-        self.assertEqual(response.status_code, 302)
-        self.assertIn(reverse("login"), response.url)
-
-    def testDeletePetitionPostNotFound(self):
-        """
-        Test for deletion of a non-existent petition.
-        """
-
-        response = self.client.post(reverse("deletePetition", args=[999]))
-        self.assertEqual(response.status_code, 404)

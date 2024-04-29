@@ -1,14 +1,15 @@
-from django.http import HttpResponseNotFound
-from django.utils import timezone
 from django.test import TestCase, Client
 from django.urls import reverse
-from ..models import Monitoring, Other
+from petition.forms.createNewObservation import CreateNewObservation
+from .models import Observation, Other ,Monitoring
 from login.models import User
+from django.utils import timezone
 from django.contrib.auth.models import Group
 
-class TestsShowPetition(TestCase):
+
+class TestCreateObservation(TestCase):
     """
-    Test suite for showPetition views.
+    Test suite for create observation view.
     """
 
     def setUp(self):
@@ -24,7 +25,7 @@ class TestsShowPetition(TestCase):
         self.client = Client()
         self.client.force_login(self.user)
 
-        # Create instances of Monitoring and Other for testing
+        # Create instances of Monitoring and Other for use in tests
         self.monitoringWithUser = Monitoring.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=30),
@@ -72,7 +73,7 @@ class TestsShowPetition(TestCase):
             rutAttachment="ruta/del/archivo/rut.pdf",
         )
 
-        # Petition without user
+        # Solicitud sin usuario
         self.otherWithoutUser = Other.objects.create(
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=40),
@@ -98,77 +99,78 @@ class TestsShowPetition(TestCase):
             rutAttachment="ruta/del/archivo/rut.pdf",
         )
 
-    def testShowPetitionOtherExists(self):
+        self.observation = Observation.objects.create(
+            description="Observación de ejemplo",
+            date="2024-04-01",
+            time="12:00:00",
+            author="",
+            petition=self.monitoringWithUser,
+        )
+
+    def testCreateObservationAuthenticated(self):
         """
-        Test view for showing Other petition when it exists.
+        Test GET request to create observation view when authenticated.
         """
 
-        # Make a GET request to the view with an existing Other petition
         response = self.client.get(
-            reverse("showPetition", kwargs={"petitionId": self.otherWithUser.pk})
+            reverse("createObservation", kwargs={"petitionId": self.monitoringWithUser.id})
         )
-
-        # Check if the response status code is 200 (OK)
         self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "createObservation.html")
+        self.assertIsInstance(response.context["form"], CreateNewObservation)
+        self.assertEqual(response.context["petitionId"], self.monitoringWithUser.id)
 
-        # Check if the correct template is being used
-        self.assertTemplateUsed(response, "viewPetitionO.html")
-
-    def testShowPetitionOtherWithoutUserExists(self):
+    def testCreateObservationUnauthenticated(self):
         """
-        Test view for showing Other petition without user when it exists.
+        Test GET request to create observation view when unauthenticated.
         """
 
-        # Make a GET request to the view with an existing Other petition
+        self.client.logout()
         response = self.client.get(
-            reverse("showPetition", kwargs={"petitionId": self.otherWithoutUser.pk})
+            reverse("createObservation", kwargs={"petitionId": self.monitoringWithUser.id})
         )
+        self.assertEqual(response.status_code, 302)  # Redirect to login page
 
-        # Check if the response status code is 200 (OK)
-        self.assertEqual(response.status_code, 200)
-
-        # Check if the correct template is being used
-        self.assertTemplateUsed(response, "viewPetitionO.html")
-
-    def testShowPetitionMonitoringExists(self):
+    def testCreateObservationPostValid(self):
         """
-        Test view for showing Monitoring petition when it exists.
+        Test POST request to create observation view with valid data.
         """
 
-        # Make a GET request to the view with an existing Monitoring petition
+        response = self.client.post(
+            reverse("createObservation", kwargs={"petitionId": self.monitoringWithUser.id}),
+            data={
+                "description": "Nueva observación",
+                "date": "2024-04-01",
+                "time": "12:00:00",
+            },
+        )
+        self.assertEqual(response.status_code, 302)  # Redirect after successful POST
+        self.assertEqual(Observation.objects.count(), 2)  # Check if observation was created
+
+    def testCreateObservationPostInvalid(self):
+        """
+        Test POST request to create observation view with invalid data.
+        """
+
+        response = self.client.post(
+            reverse("createObservation", kwargs={"petitionId": self.monitoringWithUser.id}),
+            data={},
+        )
+        self.assertEqual(
+            response.status_code, 200
+        )  # Stay on the same page after invalid POST
+        form = response.context['form']  
+        self.assertFalse(form.is_valid()) 
+        self.assertTrue('description' in form.errors)  
+
+    def testCreateObservationPermission(self):
+        """
+        Test permissions for create observation view.
+        """
+
+        self.user.groups.add(Group.objects.create(name="Lider de Proceso"))
         response = self.client.get(
-            reverse("showPetition", kwargs={"petitionId": self.monitoringWithUser.pk})
+            reverse("createObservation", kwargs={"petitionId": self.monitoringWithUser.id})
         )
-
-        # Check if the response status code is 200 (OK)
         self.assertEqual(response.status_code, 200)
-
-        # Check if the correct template is being used
-        self.assertTemplateUsed(response, "viewPetitionM.html")
-
-    def testShowPetitionNotFound(self):
-        """
-        Test view for showing petition when it does not exist.
-        """
-
-        # Make a GET request to the view with a non-existing petition ID
-        response = self.client.get(reverse("showPetition", kwargs={"petitionId": 999}))
-
-        # Check if the response status code is 404 (Not Found) instead of 200 (OK)
-        self.assertEqual(response.status_code, 404)
-
-    def testShowPetitionWithoutLogin(self):
-        """
-        Test view for showing petition without login.
-        """
-
-        # Create a new client without authentication
-        unauthenticatedClient = Client()
-
-        # Make a GET request to the view without authentication
-        response = unauthenticatedClient.get(
-            reverse("showPetition", kwargs={"petitionId": self.otherWithoutUser.pk})
-        )
-
-        # Check if the response status code is 302 (Redirect to login page)
-        self.assertEqual(response.status_code, 302)
+        self.assertTemplateUsed(response, "createObservation.html")

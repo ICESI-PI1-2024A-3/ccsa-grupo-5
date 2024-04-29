@@ -71,9 +71,15 @@ h1 {
     margin-bottom: 10px;
 }
 
-.error-message,
-.success-message {
+.error-message{
     background-color: #ffdddd;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.success-message {
+    background-color: #62f15d;
     color: #000;
     padding: 10px;
     border-radius: 5px;
