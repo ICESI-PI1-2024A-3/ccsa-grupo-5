@@ -30,9 +30,9 @@ let dataTableOptions = {
 
     ],
     columnDefs: [
-        { className: "centered", targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]},
-        { orderable: false, targets: [9] },
-        { searchable: false, targets: [9] }
+        { className: "centered", targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]},
+        { orderable: false, targets: [10] },
+        { searchable: false, targets: [10] }
     ],
     pageLength: 10,
     destroy: true

@@ -7,18 +7,9 @@ class CreateNewOtherPetition(forms.ModelForm):
     """
     Form for creating a new other petition.
     """
-
-    statesChoices = [
-        ("pendiente", "Pendiente"),
-        ("en_proceso", "En Proceso"),
-    ]
-
-    # Filter options for the 'state' field in the petition form
-    state = forms.ChoiceField(choices=statesChoices, label="Estado")
-
     class Meta:
         model = Other
-        exclude = ["userAsigner", "percentage"]
+        exclude = ["userAsigner", "percentage", "state"]
 
     def __init__(self, *args, **kwargs):
         """
@@ -44,9 +35,11 @@ class CreateNewOtherPetition(forms.ModelForm):
         Save the form instance.
         """
         instance = super().save(commit=False, *args, **kwargs)
+        instance.state = "pendiente"  # Set the state of the petition
         user = self.cleaned_data.get("user")
         if user:
             instance.userAsigner = actualUser
+            instance.state = "en_proceso"  # Set the state of the petition
         if commit:
             instance.save()
         return instance

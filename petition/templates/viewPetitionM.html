@@ -81,26 +81,28 @@
                             <p>Descripción: {{ observation.description }}</p>
                             <p>Fecha: {{ observation.date }}</p>
                             <p>Hora: {{ observation.time }}</p>
-                            <p>Autor: {{ observation.author }}</p>
+                            <p>Autor: {{ observation.getAuthor }}</p>
                             <p></p>
                         </div>
-                        <div class="buttons" >
-                            <div class="divButton">
-                                <form id="deleteForm{{ observation.id }}" action="{% url "deleteObservation" observation.id%}" method="POST">
+                        {% if observation.author.username == request.user.username %}
+                            <div class="buttons" >
+                                <div class="divButton">
+                                    <form id="deleteForm{{ observation.id }}" action="{% url "deleteObservation" observation.id%}" method="POST">
+                                        {% csrf_token %}
+                                        <button type="button" class="delete-icon" data-observation-id="{{ observation.id }}" onclick="confirmDelete({{ observation.id }})">
+                                            <i class="fas fa-trash-alt"></i> Eliminar
+                                        </button> 
+                                    </form>
+                                </div>
+                                <div class="divButton">
                                     {% csrf_token %}
-                                    <button type="button" class="delete-icon" data-observation-id="{{ observation.id }}" onclick="confirmDelete({{ observation.id }})">
-                                        <i class="fas fa-trash-alt"></i> Eliminar
-                                    </button> 
-                                </form>
+                                    <a href="{% url 'editObservation' petitionId observation.id %}" id="editForm{{ observation.id}}"><button type="button" class="edit-icon" onclick="editObservation( {{petition.id}} {{ observation.id }})">
+                                        <i class="fas fa-edit"></i> Editar
+                                    </button>
+                                    </a>
+                                </div>
                             </div>
-                            <div class="divButton">
-                                {% csrf_token %}
-                                <a href="{% url 'editObservation' petitionId observation.id %}" id="editForm{{ observation.id}}"><button type="button" class="edit-icon" onclick="editObservation( {{petition.id}} {{ observation.id }})">
-                                    <i class="fas fa-edit"></i> Editar
-                                </button>
-                                </a>
-                            </div>
-                            </div>
+                        {% endif %}
                 
                     {% endfor %}
                 </div>

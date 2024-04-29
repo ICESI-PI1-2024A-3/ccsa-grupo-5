@@ -8,17 +8,9 @@ class CreateNewMonitoringPetition(forms.ModelForm):
     """
     Form for creating a new monitoring petition.
     """
-    statesChoices = [
-        ("pendiente", "Pendiente"),
-        ("en_proceso", "En Proceso"),
-    ]
-
-    # Filter the options for the 'state' field in the petition form
-    state = forms.ChoiceField(choices=statesChoices, label="Estado")
-
     class Meta:
         model = Monitoring
-        exclude = ["userAsigner", "percentage"]
+        exclude = ["userAsigner", "percentage", "state"]
 
     def __init__(self, *args, **kwargs):
         """
@@ -37,8 +29,11 @@ class CreateNewMonitoringPetition(forms.ModelForm):
         """
         instance = super().save(commit=False, *args, **kwargs)
         user = self.cleaned_data.get("user")
+        instance.state = "pendiente" # Set the state of the petition
         if user:
             instance.userAsigner = actualUser
+            instance.state = "en_proceso"  # Set the state of the petition
         if commit:
+            
             instance.save()
         return instance
