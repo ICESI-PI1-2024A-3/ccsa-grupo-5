@@ -10,10 +10,13 @@
 <h1>Tareas Predeterminadas de las Solicitudes Nuevas</h1>
 
 <li><small>Solamente se verán afectadas las Solicitudes nuevas</small></li>
+<li><small>Cuando se crea una nueva solicitud, tienes la posibilidad de agregar tareas específicas Solamente para ella</small></li>
 
 <p></p>
     <a href="{% url 'createTaskPredeterminate' %}"><button>Crear Nueva Tarea Predeterminada</button></a>
 <p></p>
+
+<hr>
 
 {% for task in tasks %}
     <div class="card">
@@ -38,7 +41,10 @@
         </div>
         </div>
     </div>
-                
+    <hr>
 {% endfor %}
+
+<a href="{% url 'viewPetition' %}"><button>Finalizar</button></a>
+
 <script src="{% static 'scripts/deleteElement.js' %}"></script>
 {% endblock  %}
