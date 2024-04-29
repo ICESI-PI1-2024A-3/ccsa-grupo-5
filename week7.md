@@ -83,13 +83,13 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- No logré avanzar
 
 ### ¿Qué voy a hacer?
-- 
+- Preguntar al cliente la administración de las tareas de cada solicitud
 
 ### ¿Qué impedimentos tengo?
-- 
+- Carga académica
 
 ---
 
@@ -163,13 +163,13 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- Recibir información de mis compañeros de la reunión que tuvieron con la cliente
 
 ### ¿Qué voy a hacer?
-- 
+- Empezar a diseñar la lógica de las tareas de la solicitud
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ningunp
 
 ---
 
@@ -230,13 +230,13 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- Implementar las tareas predeterminadas de las solicitudes que crea el Admin de la aplicación
 
 ### ¿Qué voy a hacer?
-- 
+- Implementar las tareas específicas de cada una de las solicitudes
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -297,13 +297,13 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- Corregir la lógica de las tareas para una mayor usabilidad por parte del Gestor
 
 ### ¿Qué voy a hacer?
-- 
+- Corregir tildes y front
 
 ### ¿Qué impedimentos tengo?
-- 
+- Carga académica
 
 ---
 
