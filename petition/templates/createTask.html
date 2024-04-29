@@ -5,6 +5,10 @@
 {% block content %}
 
 <link rel="stylesheet" href="{% static 'styles/petitionStyle.css' %}">
+<link rel="stylesheet" href="{% static 'styles/editPetition.css' %}">
+<h1>Crear Nueva Tarea</h1>
+<p></p>
+<li style="text-align: center;"><small>Escribe la descripción de la tarea que el Gestor encargado pordrá visualizar</small></li>
 
 <form method="post">
     {% csrf_token %}

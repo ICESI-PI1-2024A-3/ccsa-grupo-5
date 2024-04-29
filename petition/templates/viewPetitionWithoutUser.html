@@ -8,6 +8,15 @@
 {% block content %}
 <h1>Solicitudes sin asignar</h1>
 
+{% if petitions|length == 0 %}
+    <p></p>
+    <p></p>
+    <h3>No hay Solicitudes sin Asignar</h3>
+{% else %}
+
+
+
+
 <table class="table table-bordered table-striped">
   <thead class="thead-dark">
       <tr>
@@ -37,4 +46,5 @@
       {% endfor %}
   </tbody>
 </table>
+{% endif %}
 {% endblock %}
