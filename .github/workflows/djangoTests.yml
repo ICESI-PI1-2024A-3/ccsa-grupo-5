@@ -35,6 +35,16 @@ jobs:
       run: |
         python manage.py migrate
 
-    - name: Run tests
+    - name: Run Unit tests
       run: |
         python manage.py test tests/UnitTests
+
+    - name: Run Server
+      run: |
+        python manage.py runserver &
+
+    - name: Run Selenium tests
+      run: |
+        sleep 10
+        python manage.py test tests/sel
+        
