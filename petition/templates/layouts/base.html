@@ -56,6 +56,15 @@
             >Visualizar Solicitudes</a
           >
         </li>
+        {% if 'Admin' in request.user.getGroup %}
+          <li>
+            <a
+              href="{% url 'viewTaskPredeterminate' %}"
+              class="nav-link {% if 'signup' in request.path %}active{% endif %}"
+              >Crear Tareas de Solicitudes</a
+            >
+          </li>
+        {% endif %}
         <li>
           <a
             href="{% url 'logoutSesion' %}"

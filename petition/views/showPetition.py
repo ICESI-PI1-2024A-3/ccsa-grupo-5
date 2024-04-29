@@ -40,7 +40,8 @@ def showPetition(request, petitionId):
     try:
         solicitud = Other.objects.get(pk=petitionId)
         observations = Observation.objects.filter(petition=solicitud)
-        return render(request, 'viewPetitionO.html', {'solicitud': solicitud, 'observations': observations, 'petitionId': petitionId})
+        tasks = Task.objects.filter(petition=solicitud)
+        return render(request, 'viewPetitionO.html', {'solicitud': solicitud, 'tasks':tasks,'observations': observations, 'petitionId': petitionId})
     except Other.DoesNotExist:
         pass
     
@@ -48,7 +49,8 @@ def showPetition(request, petitionId):
     try:
         solicitud = Monitoring.objects.get(pk=petitionId)
         observations = Observation.objects.filter(petition=solicitud)
-        return render(request, 'viewPetitionM.html', {'solicitud': solicitud, 'observations': observations, 'petitionId': petitionId})
+        tasks = Task.objects.filter(petition=solicitud)
+        return render(request, 'viewPetitionM.html', {'solicitud': solicitud, 'tasks':tasks,'observations': observations, 'petitionId': petitionId})
     except Monitoring.DoesNotExist:
         pass
     

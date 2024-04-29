@@ -36,8 +36,18 @@ def createMonitoring(request):
     if request.method == 'POST':
         form = createNewMonitoringPetition.CreateNewMonitoringPetition(request.POST, request.FILES)
         if form.is_valid():
-            form.save(request.user)
-            return redirect('viewPetition')
+            tes = form.save(request.user)
+            
+            petitionId = tes.id
+            
+            taskPredeterminate = TaskPredeterminate.objects.all()
+            
+            petition = Petition.objects.get(pk=petitionId)
+            
+            for task in taskPredeterminate:
+                Task.objects.create(description=task.description, petition=petition)
+                
+            return redirect('viewTask', petitionId)
     else:
         form = createNewMonitoringPetition.CreateNewMonitoringPetition()
     return render(request, 'createMonitoring.html', {'form': form})
