@@ -30,9 +30,9 @@ let dataTableOptions = {
 
     ],
     columnDefs: [
-        { className: "centered", targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] },
-        { orderable: false, targets: [12] },
-        { searchable: false, targets: [12] }
+        { className: "centered", targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]},
+        { orderable: false, targets: [9] },
+        { searchable: false, targets: [9] }
     ],
     pageLength: 10,
     destroy: true
@@ -40,11 +40,12 @@ let dataTableOptions = {
 
 const initDataTable = async () => {
     if (dataTableIsInitialized) {
+        console.log("Destroying DataTable:", dataTable);
         dataTable.destroy();
     }
 
+    console.log("Initializing DataTable...");
     dataTable = $("#dataTablePetition").DataTable(dataTableOptions);
-
     dataTableIsInitialized = true;
 };
 

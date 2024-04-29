@@ -44,35 +44,36 @@ referrerpolicy="no-referrer"
     
                     
                 <thead class="thead-dark">
-                    <th>Id Solicitud</th>
-                    <th>Tipo </th>
-                    <th>Fecha inicio</th>
-                    <th>Fecha Fin</th>
-                    <th>Estado</th>
-                    <th>Cenco</th>
-                    <th>Nombre</th>
-                    <th>CC/TI</th>    
-                    <th>Correo Electronico</th>
-                    <th>Telefono</th>
-                    <th>Fecha Solicitud</th>
-                    <th>Id Gestor</th>
-                    <th>Opciones</th>
+                    
+                        <th>Id Solicitud</th>
+                        <th>Fecha inicio</th>
+                        <th>Fecha Solicitud</th>
+                        <th>Tipo </th>   
+                        <th>Id Gestor</th>             
+                        <th>Estado</th>
+                        <th>Nombre</th>
+                        <th>CC/TI</th>    
+                        <th>Fecha Cierre</th>
+                        <th>Opciones</th>
+                    
                 </thead>
                 <body>
                     {% for petition in petitions %}
-                    <tr>
+                    
                         <td><a href="{% url 'showPetition' petition.id %}"><p>{{ petition.id }}</p> </a></td>
-                        <td>{{ petition.getPetitionType }}</td>
                         <td>{{ petition.startDate }}</td>
-                        <td>{{ petition.endDate }}</td>
-                        <td>{{ petition.getState }}</td>
-                        <td>{{ petition.cenco }}</td>
-                        <td>{{ petition.fullName }}</td>
-                        <td>{{ petition.identityDocument }}</td>
-                        <td>{{ petition.email }}</td>
-                        <td>{{ petition.phoneNumber }}</td>
                         <td>{{ petition.petitionDate }}</td>
-                        <td>{{ petition.user_id }}</td>   
+                        <td>{{ petition.getPetitionType }}</td>
+                        <td>{% if petition.user_id == None %}
+                            {{"Sin asignar"}}
+                            {% else %}
+                            {{ petition.user_id }}
+                            {% endif %}
+                        </td>  
+                        <td>{{ petition.getState }}</td>
+                        <td>{{ petition.fullName }}</td>
+                        <td>{{ petition.identityDocument }}</td> 
+                        <td>{{ petition.endDate }}</td>
                         <td>
                             <div class="buttons">
                                 <div class="divButton">
@@ -91,9 +92,7 @@ referrerpolicy="no-referrer"
                                             <button type="button" class="delete-icon" data-petition-id="{{ petition.id }}" onclick="confirmDelete({{ petition.id }})"><i class="fas fa-trash-alt"></i></button>
                                         {% endif %}
                                     </form>
-                                </div>  
-                                
-                                          
+                                </div>     
                             </div> 
                         </td>    
                     </tr>
@@ -158,7 +157,6 @@ referrerpolicy="no-referrer"
 <!-- JsScripts-->
 <script src="{% static 'scripts/viewPetition.js' %}"></script>
 <script src="{% static 'scripts/deleteElement.js' %}"></script>
-<script src="{% static 'scripts/viewObservation.js' %}"></script>
 
 
 
