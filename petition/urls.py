@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, createMonitoring, selectTypePetition, createOther, viewPetition, rejectPetition, showPetition, deletePetition, createObservation, deleteObservation, editObservation, assignUserToPetition, viewPetitionWithoutUser, followUpPetition, viewTaskPrederminate, deleteTaskPredeterminate, createTaskPredeterminate, editTaskPredeterminate, viewTask, deleteTask, createTask, editTask, updateTasks
+from .views import index, createMonitoring, selectTypePetition, createOther, viewPetition, rejectPetition, showPetition, deletePetition, createObservation, deleteObservation, editObservation, assignUserToPetition, viewPetitionWithoutUser, viewTaskPrederminate, deleteTaskPredeterminate, createTaskPredeterminate, editTaskPredeterminate, viewTask, deleteTask, createTask, editTask, updateTasks
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -16,7 +16,6 @@ urlpatterns = [
     path('solicitud/observacion/eliminar/<int:observationId>', deleteObservation.deleteObservation, name="deleteObservation"),
     path('solicitud/observacion/editar/<int:petitionId>/<int:observationId>', editObservation.editObservation, name="editObservation"),
     path('solicitud/asignarUsuario/<int:petitionId>', assignUserToPetition.assignUserToPetition, name="assignPetition"),
-    path('solicitud/seguimiento/<int:petitionId>', followUpPetition.followUpPetition, name="followUpPetition"),
     path('solicitud/tareasPredeterminadas', viewTaskPrederminate.viewTaskPredeterminate, name="viewTaskPredeterminate"),
     path('solicitud/tareasPredeterminadas/crear', createTaskPredeterminate.createTaskPredeterminate, name="createTaskPredeterminate"),
     path('solicitud/tareasPredeterminadas/editar/<int:taskId>', editTaskPredeterminate.editTaskPredeterminate, name="editTaskPredeterminate"),

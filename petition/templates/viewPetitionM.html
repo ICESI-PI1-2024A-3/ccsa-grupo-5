@@ -13,11 +13,6 @@
 {% block content %}
 
 <h1>Detalles de la Solicitud</h1>
-{% if solicitud.state != 'rechazado' and solicitud.state != 'aprobado' and 'Gestor de Contratacion' in request.user.getGroup%}
-<p></p>
-<a href="{% url 'followUpPetition' petitionId %}"><button>Seguimiento</button></a>
-<p></p>
-{% endif %}
 
 
 <h3>Tipo de contrato: {{ solicitud.getPetitionType }}</h3>
@@ -44,7 +39,27 @@
 
 <div><p>Gestor encargado: <b>{{ solicitud.getUser }}</b></p></div>
 
+<hr>
+
 <h2>Tareas del Gestor</h2>
+
+{% if solicitud.state != 'rechazado' and solicitud.state != 'aprobado' and solicitud.user == request.user %}
+
+<form method="POST" action="{% url 'update_tasks' solicitud.id %}">
+    {% csrf_token %}
+    {% for task in solicitud.tasks.all %}
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="task{{ task.id }}" name="tasks" value="{{ task.id }}" {% if task.isComplete %}checked{% endif %}>
+        <label class="form-check-label" for="task{{ task.id }}">
+          {{ task.description }}
+        </label>
+      </div>
+    {% endfor %}
+    <p></p>
+    <button type="submit" class="btn btn-primary">Actualizar tareas</button>
+  </form>
+
+{% else %}
 
 {% for task in tasks %}
     <div class="">
@@ -53,6 +68,13 @@
     </div>
                 
 {% endfor %}
+
+{% endif %}
+
+
+<hr>
+
+
 
 <p></p>
 

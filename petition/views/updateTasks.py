@@ -20,4 +20,4 @@ def updateTasks(request, petition_id):
 
 
     # Redirigir de vuelta a la página de la petición después de actualizar las tareas
-    return redirect('followUpPetition', petitionId=petition_id)
+    return redirect('showPetition', petitionId=petition_id)

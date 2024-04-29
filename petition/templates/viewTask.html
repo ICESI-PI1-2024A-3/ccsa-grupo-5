@@ -16,6 +16,8 @@
     <a href="{% url 'createTask' petitionId%}"><button>Crear Nueva Tarea</button></a>
 <p></p>
 
+<hr>
+
 {% for task in tasks %}
     <div class="card">
         <p>Descripción: {{ task.description }}</p>
@@ -40,7 +42,7 @@
         
         </div>
     </div>
-                
+    <hr>
 {% endfor %}
 
 <p></p>
