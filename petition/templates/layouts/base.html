@@ -13,7 +13,7 @@
   <body>
     <nav class="navbarContainer">
       <img
-        style="width: 150px; height: 56.58px"
+        style="width: 160px; height: 57px"
         src="{% static 'images/icesiLogo.png' %}"
       />
       <ul>
@@ -66,8 +66,12 @@
       </ul>
     </nav>
 
-    <main class="container">{% block content %} {% endblock %}</main>
+    <!-- Top section -->
+    <div class="top-section">
+      <h1>Módulo de Contratación</h1>
+      <button id="notification-btn">Notificaciones</button>
+    </div>
 
-    <script src="{% static 'scripts/main.js' %}"></script>
+    <main class="container">{% block content %} {% endblock %}</main>
   </body>
 </html>

@@ -9,4 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
       this.classList.add("active");
     });
   });
+
+  var notificationBtn = document.getElementById("notification-btn");
+
+  notificationBtn.addEventListener("click", function () {
+    alert("Aquí se mostrarían las notificaciones");
+  });
 });

@@ -13,6 +13,10 @@ from django.views.decorators.http import require_http_methods
 from django.contrib.auth.decorators import login_required
 from login.permissions import groupRequired
 
+from django.db.models.signals import post_save
+from notify.signals import notify
+from notify.utils.models import notify_signals
+
 @login_required
 @groupRequired('Admin', 'Lider de Proceso')
 def assignUserToPetition(request, petitionId):
@@ -47,6 +51,8 @@ def assignUserToPetition(request, petitionId):
             petition.user = user
             petition.userAsigner = User.objects.get(pk=request.user.id)
             petition.save()
+            notify.send(petition, destiny=user, verb="ha sido asignado a la peticion "+petitionId, level="success")
+            post_save.connect(notify_signals, sender=petition)
             return redirect('showPetition', petitionId=petitionId)
         elif 'cancel' in request.POST:
             return redirect('showPetition', petitionId=petitionId)
