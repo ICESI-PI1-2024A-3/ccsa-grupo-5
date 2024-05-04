@@ -12,11 +12,9 @@ class CreateNewOtherPetition(forms.ModelForm):
     startDate = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label="Fecha de inicio")
     endDate = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label="Fecha de fin")
     
-    
-
     class Meta:
         model = Other
-        exclude = ["userAsigner", "percentage", "state", ]
+        exclude = ["userAsigner", "percentage", "state" ]
 
     def __init__(self, *args, **kwargs):
         """

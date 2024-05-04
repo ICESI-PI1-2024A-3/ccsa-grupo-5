@@ -48,6 +48,7 @@ class TestCreateOther(TestCase):
         response = self.client.post(
             reverse("createOther"),
             {
+                "petitionDate": timezone.now().date(),
                 "startDate": timezone.now().date(),
                 "endDate": timezone.now().date() + timezone.timedelta(days=30),
                 "state": "pendiente",
@@ -74,6 +75,7 @@ class TestCreateOther(TestCase):
         self.assertEqual(response.status_code, 200)
 
         Other.objects.filter(
+                petitionDate=timezone.now().date(),
                 startDate=timezone.now().date(),
                 endDate=timezone.now().date() + timezone.timedelta(days=30),
                 state="pendiente",
@@ -107,6 +109,7 @@ class TestCreateOther(TestCase):
         response = self.client.post(
             reverse("createOther"),
             {
+                "petitionDate": timezone.now().date(),
                 "startDate": timezone.now().date(),
                 "endDate": timezone.now().date() + timezone.timedelta(days=30),
                 "state": "pendiente",

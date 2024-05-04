@@ -25,6 +25,7 @@ class TestsViewWithoutUser(TestCase):
 
         # Create instances of Monitoring and Other for testing
         self.monitoringWithUser = Monitoring.objects.create(
+            petitionDate=timezone.now().date(),
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=30),
             state="pendiente",
@@ -47,6 +48,7 @@ class TestsViewWithoutUser(TestCase):
         )
 
         self.otherWithUser = Other.objects.create(
+            petitionDate=timezone.now().date(),
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=30),
             state="pendiente",
@@ -73,6 +75,7 @@ class TestsViewWithoutUser(TestCase):
 
         # Petition without user
         self.otherWithoutUser = Other.objects.create(
+            petitionDate=timezone.now().date(),
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=40),
             state="pendiente",
