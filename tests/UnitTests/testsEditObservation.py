@@ -26,6 +26,7 @@ class TestEditObservationView(TestCase):
 
         # Create instances of Monitoring and Other for use in tests
         self.monitoring_with_user = Monitoring.objects.create(
+            petitionDate=timezone.now().date(),
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=30),
             state="pendiente",

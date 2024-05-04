@@ -47,6 +47,7 @@ class testsCreateMonitoring(TestCase):
         response = self.client.post(
             reverse("createMonitoring"),
             {
+                "petitionDate": timezone.now().date(),
                 "startDate": timezone.now().date(),
                 "endDate": timezone.now().date() + timezone.timedelta(days=30),
                 "state": "pendiente",
@@ -73,6 +74,7 @@ class testsCreateMonitoring(TestCase):
         self.assertEqual(response.status_code, 200)
 
         Monitoring.objects.filter(
+            petitionDate=timezone.now().date(),
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=30),
             state="pendiente",
@@ -102,6 +104,7 @@ class testsCreateMonitoring(TestCase):
         response = self.client.post(
             reverse("createMonitoring"),
             {
+                "petitionDate": timezone.now().date(),
                 "startDate": timezone.now().date(),
                 "endDate": timezone.now().date() + timezone.timedelta(days=30),
                 "state": "pendiente",

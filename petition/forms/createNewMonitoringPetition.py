@@ -7,7 +7,11 @@ from django.contrib.auth.models import Group
 class CreateNewMonitoringPetition(forms.ModelForm):
     """
     Form for creating a new monitoring petition.
-    """
+    """ 
+    petitionDate = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label="Fecha de solicitud")
+    startDate = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label="Fecha de inicio")
+    endDate = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label="Fecha de fin")
+    
     class Meta:
         model = Monitoring
         exclude = ["userAsigner", "percentage", "state"]

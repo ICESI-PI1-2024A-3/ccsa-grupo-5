@@ -15,10 +15,8 @@ class AbstractPetition(models.Model):
         ("en_proceso", "En Proceso"),
         ("rechazado", "Rechazado"),
     ]
-    petitionDate = models.DateField(
-        default=timezone.now, verbose_name="Fecha de solicitud"
-    )
     percentage = models.IntegerField(default=0, verbose_name="Porcentaje")
+    petitionDate = models.DateField(verbose_name="Fecha de solicitud")
     startDate = models.DateField(verbose_name="Fecha de inicio")
     endDate = models.DateField(verbose_name="Fecha de fin")
     state = models.CharField(max_length=20, choices=states, verbose_name="Estado")

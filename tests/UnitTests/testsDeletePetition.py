@@ -26,6 +26,7 @@ class TestDeletePetition(TestCase):
 
         # Create instances of Monitoring and Other for use in tests
         self.monitoringWithUser = Monitoring.objects.create(
+            petitionDate=timezone.now().date(),
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=30),
             state="pendiente",
@@ -48,6 +49,7 @@ class TestDeletePetition(TestCase):
         )
 
         self.otherWithUser = Other.objects.create(
+            petitionDate=timezone.now().date(),
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=30),
             state="pendiente",
@@ -74,6 +76,7 @@ class TestDeletePetition(TestCase):
 
         # Petition without user
         self.otherWithoutUser = Other.objects.create(
+            petitionDate=timezone.now().date(),
             startDate=timezone.now().date(),
             endDate=timezone.now().date() + timezone.timedelta(days=40),
             state="pendiente",

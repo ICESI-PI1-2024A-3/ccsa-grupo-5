@@ -7,9 +7,14 @@ class CreateNewOtherPetition(forms.ModelForm):
     """
     Form for creating a new other petition.
     """
+    
+    petitionDate = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label="Fecha de solicitud")
+    startDate = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label="Fecha de inicio")
+    endDate = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}), label="Fecha de fin")
+    
     class Meta:
         model = Other
-        exclude = ["userAsigner", "percentage", "state"]
+        exclude = ["userAsigner", "percentage", "state" ]
 
     def __init__(self, *args, **kwargs):
         """
