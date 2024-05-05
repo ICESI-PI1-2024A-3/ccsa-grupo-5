@@ -22,8 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('login.urls')),
     path('', include('petition.urls')),
-    path('resetPassword/', authViews.PasswordResetView.as_view(template_name='registration/passwordResetForm.html'), name='password_reset'),
-    path('resetPassword/done/', authViews.PasswordResetDoneView.as_view(template_name='registration/passwordResetDone.html'), name='password_reset_done'),
-    path('resetPassword/confirm/<uidb64>/<token>/', authViews.PasswordResetConfirmView.as_view(template_name='registration/passwordResetConfirm.html'), name='password_reset_confirm'),
-    path('resetPassword/complete/', authViews.PasswordResetCompleteView.as_view(template_name='registration/passwordResetComplete.html'), name='password_reset_complete')
+    path('cambiarContraseña/', authViews.PasswordResetView.as_view(template_name='passwordResetForm.html'), name='password_reset'),
+    path('cambiarContraseña/listo/', authViews.PasswordResetDoneView.as_view(template_name='passwordResetDone.html'), name='password_reset_done'),
+    path('cambiarContraseña/confirmado/<uidb64>/<token>/', authViews.PasswordResetConfirmView.as_view(template_name='passwordResetConfirm.html'), name='password_reset_confirm'),
+    path('cambiarContraseña/completo/', authViews.PasswordResetCompleteView.as_view(template_name='passwordResetComplete.html'), name='password_reset_complete')
 ]
