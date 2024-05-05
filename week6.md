@@ -3,13 +3,13 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- Empece a investigar como desplegar especificamente en render
 
 ### ¿Qué voy a hacer?
-- 
+- Comenzar a desplegar
 
 ### ¿Qué impedimentos tengo?
-- 
+- Por ahora no saber manejar render
 
 ---
 
@@ -70,13 +70,13 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- Ya comence el proceso de desplegar en render
 
 ### ¿Qué voy a hacer?
-- 
+- Terminar de desplegar
 
 ### ¿Qué impedimentos tengo?
-- 
+- Me sale un error con los elementos estaticos de Django
 
 ---
 
@@ -150,13 +150,13 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- Solucionar el error de los elementos estaticos
 
 ### ¿Qué voy a hacer?
-- 
+- Ver si se deja una base de datos diferente para produccion y otra para desarrollo
 
 ### ¿Qué impedimentos tengo?
-- 
+- Por ahora ninguno
 
 ---
 
@@ -217,13 +217,13 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- Crear una base de datos para desarrollo
 
 ### ¿Qué voy a hacer?
-- 
+- Probar que todo el despliegue este bueno
 
 ### ¿Qué impedimentos tengo?
-- 
+- La carga academica esta muy elevada para la proxima semana
 
 ---
 
@@ -284,13 +284,13 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- Probe que el despliegue este bueno
 
 ### ¿Qué voy a hacer?
-- 
+- Trabajar en refactorizar codigo
 
 ### ¿Qué impedimentos tengo?
-- 
+- La carga academica esta muy elevada para la proxima semana
 
 ---
 
