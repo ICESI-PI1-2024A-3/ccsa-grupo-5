@@ -105,9 +105,22 @@ title {
     transition: all 330ms;
 }
 
+.activeline1__bars-menu{
+    transform: rotate(45deg) translate(-2px, -3px); 
+}
+
+.activeline2__bars-menu{
+    opacity: 0;
+    margin-left: -30px; 
+}
+
+.activeline3__bars-menu{
+    transform: rotate(-45deg) translate(-4px, 7px);
+}
+
 .top-section {
     display: flex;
-    padding: 40px;
+    padding: 12px;
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
