@@ -29,13 +29,13 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Nada
 
 ### ¿Qué voy a hacer?
-- 
+- Continuar con el trabajo del plan de pruebas
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -96,13 +96,13 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Desarrollé varios puntos estipulados en el plan de pruebas
 
 ### ¿Qué voy a hacer?
-- 
+- Ayudar en lo que falte
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -176,13 +176,13 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Ayudar a Nicolas con sus puntos del plan de Prueba
 
 ### ¿Qué voy a hacer?
-- 
+- Ayudar a Miguel con pruebas de Selenium
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -243,13 +243,13 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Recordé como trabajar con selenium desde la extension de chrome
 
 ### ¿Qué voy a hacer?
-- 
+- Empezar a realizar pruebas
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -311,13 +311,13 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Relizar Git actions para el proyecto ya que Miguel se encargó de las pruebas
 
 ### ¿Qué voy a hacer?
-- 
+- Tratar de agregar pruebas de la extension de Selenium al git actions
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
