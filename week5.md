@@ -297,7 +297,7 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- No logré avanzae
+- No logré avanzar
 
 ### ¿Qué voy a hacer?
 - Terminar el plan de pruebas
