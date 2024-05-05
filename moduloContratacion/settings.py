@@ -27,19 +27,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'cdabadc5caf8207c81af4cf9404b6b33'
-
+SECRET_KEY = "cdabadc5caf8207c81af4cf9404b6b33"
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if 'test' in sys.argv:
+if "test" in sys.argv:
     DEBUG = True
 else:
-    DEBUG = os.environ.get('DEBUG','False').lower() == 'true'
+    DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
 ALLOWED_HOSTS = ["*"]
-
-
 
 
 # Application definition
@@ -57,7 +54,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -65,7 +62,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    
 ]
 
 ROOT_URLCONF = "moduloContratacion.urls"
@@ -94,16 +90,22 @@ WSGI_APPLICATION = "moduloContratacion.wsgi.application"
 
 if DEBUG:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db_test.sqlite3',
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db_test.sqlite3",
         }
     }
 else:
-    DATABASES = { "default": { "ENGINE": "django.db.backends.sqlite3", "NAME": BASE_DIR / "db.sqlite3", } }
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
-    DATABASES["default"] = dj_database_url.parse("postgres://testsql_xenh_user:pJ8txJBGktb1f1eMPjQkVzC4nBwURNEY@dpg-coi4ej8l5elc73d1jcsg-a.oregon-postgres.render.com/testsql_xenh")
-
+    DATABASES["default"] = dj_database_url.parse(
+        "postgres://testsql_kn83_user:zhRlEEllAMkCANu6eW0PytjqdGu8xOsG@dpg-corrv121hbls73fagt4g-a.oregon-postgres.render.com/testsql_kn83"
+    )
 
 
 # Password validation
@@ -150,10 +152,10 @@ STATIC_URL = "/static/"
 # This production code might break development mode, so we check whether we're in DEBUG mode
 if not DEBUG:
     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
     # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
     # and renames the files with unique names for each version to support long-term caching
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
