@@ -42,13 +42,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Arreglar errores de los tests
 
 ### ¿Qué voy a hacer?
-- 
+- No mucho
 
 ### ¿Qué impedimentos tengo?
-- 
+- Carga académica
 
 ---
 
@@ -109,13 +109,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Nada
 
 ### ¿Qué voy a hacer?
-- 
+- Buscar como arreglar el recuperar contraseña porque django lo cambió
 
 ### ¿Qué impedimentos tengo?
-- 
+- falta de coumentación sobre como cambiar contraseña ahora
 
 ---
 
@@ -189,13 +189,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Ayudar a Flamini 
 
 ### ¿Qué voy a hacer?
-- 
+- Empezar con el plan de pruebas
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -256,13 +256,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Trabajar plan de pruebas
 
 ### ¿Qué voy a hacer?
-- 
+- Seguir con el plan de pruebas
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -323,13 +323,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Seguir con plan de pruebas
 
 ### ¿Qué voy a hacer?
-- 
+- Intentar terminarlo
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
