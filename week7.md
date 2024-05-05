@@ -42,13 +42,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Sin querer borras las pruebas que hice en selenium IDE
 
 ### ¿Qué voy a hacer?
-- 
+- Investigar como realizar las pruebas en selenium web driver
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -109,13 +109,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Nada
 
 ### ¿Qué voy a hacer?
-- 
+- Seguir con selenium web driver
 
 ### ¿Qué impedimentos tengo?
-- 
+- Carga académica
 
 ---
 
@@ -189,10 +189,10 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Implementar las pruebas en web driver
 
 ### ¿Qué voy a hacer?
-- 
+- Ninguno
 
 ### ¿Qué impedimentos tengo?
 - 
@@ -256,13 +256,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Terminar la mayoria de pruebas end to end
 
 ### ¿Qué voy a hacer?
-- 
+- Terminar las restantees
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno 
 
 ---
 
@@ -323,13 +323,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Terminar las pruebas end to end
 
 ### ¿Qué voy a hacer?
-- 
+- Arreglar pruebas
 
 ### ¿Qué impedimentos tengo?
-- 
+- Se están realizando cambios en el proyecto, lo que ocasiona que tenga que cambiar ciertas pruebas ya que se añadieron o borraron campos en formularios, entre otros cambios
 
 ---
 
