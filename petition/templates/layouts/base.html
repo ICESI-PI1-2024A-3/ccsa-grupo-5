@@ -6,6 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <script src="{% static 'scripts/main.js' %}"></script>
     {% block head %} {% endblock %}
   </head>
@@ -71,13 +72,6 @@
             >
           </li>
         {% endif %}
-        <li>
-          <a
-            href="{% url 'logoutSesion' %}"
-            class="nav-link {% if 'logoutSesion' in request.path %}active{% endif %}"
-            >Cerrar sesion</a
-          >
-        </li>
       </ul>
     </nav>
 
@@ -85,10 +79,14 @@
 
     <!-- Top section -->
     <div class="top-section">
-      <img
-        src="{% static 'images/icesiRuedaAzul.png' %}"
-      />
-      <h1>Módulo de Contratación</h1>
+      <div class="left-content">
+        <img src="{% static 'images/icesiRuedaAzul.png' %}" />
+        <h1>Módulo de Contratación</h1>
+      </div>
+      <div class="right-content">
+        <a href=""><button type="button" class="notification-icon"><i class="fas fa-bell"></i></button></a>
+        <a href="{% url 'logoutSesion'%}"><button type="button" class="log-out-icon"><i class="fas fa-sign-out-alt"></i></button></a>
+      </div>
     </div>
 
     <main class="container">{% block content %} {% endblock %}</main>
