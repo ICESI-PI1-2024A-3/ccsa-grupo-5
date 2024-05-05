@@ -14,16 +14,41 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as authViews
 
+from login.views.error404 import error404
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('login.urls')),
-    path('', include('petition.urls')),
-    path('cambiarContraseña/', authViews.PasswordResetView.as_view(template_name='passwordResetForm.html'), name='password_reset'),
-    path('cambiarContraseña/listo/', authViews.PasswordResetDoneView.as_view(template_name='passwordResetDone.html'), name='password_reset_done'),
-    path('cambiarContraseña/confirmado/<uidb64>/<token>/', authViews.PasswordResetConfirmView.as_view(template_name='passwordResetConfirm.html'), name='password_reset_confirm'),
-    path('cambiarContraseña/completo/', authViews.PasswordResetCompleteView.as_view(template_name='passwordResetComplete.html'), name='password_reset_complete')
+    path("admin/", admin.site.urls),
+    path("", include("login.urls")),
+    path("", include("petition.urls")),
+    path(
+        "cambiarContraseña/",
+        authViews.PasswordResetView.as_view(template_name="passwordResetForm.html"),
+        name="password_reset",
+    ),
+    path(
+        "cambiarContraseña/listo/",
+        authViews.PasswordResetDoneView.as_view(template_name="passwordResetDone.html"),
+        name="password_reset_done",
+    ),
+    path(
+        "cambiarContraseña/confirmado/<uidb64>/<token>/",
+        authViews.PasswordResetConfirmView.as_view(
+            template_name="passwordResetConfirm.html"
+        ),
+        name="password_reset_confirm",
+    ),
+    path(
+        "cambiarContraseña/completo/",
+        authViews.PasswordResetCompleteView.as_view(
+            template_name="passwordResetComplete.html"
+        ),
+        name="password_reset_complete",
+    ),
 ]
+
+handler404 = error404
