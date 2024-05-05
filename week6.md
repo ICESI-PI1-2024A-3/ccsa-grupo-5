@@ -42,13 +42,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Ayudar a Flamini a buscar como realizar el despliegue
 
 ### ¿Qué voy a hacer?
-- 
+- Seguir plan de pruebas
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -109,13 +109,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Plan de pruebas
 
 ### ¿Qué voy a hacer?
-- 
+- Seguir plan de pruebas
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -189,13 +189,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Nada
 
 ### ¿Qué voy a hacer?
-- 
+- Empezar con pruebas de selenium
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -256,13 +256,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Trabajar en selenium IDE
 
 ### ¿Qué voy a hacer?
-- 
+- Seguir con las pruebas end to end
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -324,13 +324,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Seguir con las pruebas
 
 ### ¿Qué voy a hacer?
-- 
+- Intentar arreglar errores con las pruebas
 
 ### ¿Qué impedimentos tengo?
-- 
+- Algunas pruebas no son viables realizarlas con el IDE
 
 ---
 
