@@ -3,13 +3,13 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- Por ahora nada
 
 ### ¿Qué voy a hacer?
-- 
+- Refactorizar codigo
 
 ### ¿Qué impedimentos tengo?
-- 
+- Carga academica muy elevada
 
 ---
 
@@ -70,13 +70,13 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- No pude avanzar
 
 ### ¿Qué voy a hacer?
-- 
+- Trabajar en refactorizar codigo
 
 ### ¿Qué impedimentos tengo?
-- 
+- Carga academica elevada
 
 ---
 
@@ -150,13 +150,13 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- Refactorice algunas cosas de codigo
 
 ### ¿Qué voy a hacer?
-- 
+- Seguir en esa tarea y ayudar con GitHub Actions que esta teniendo algunos errores
 
 ### ¿Qué impedimentos tengo?
-- 
+- Por ahora aprender a manejar GitHub Actions
 
 ---
 
@@ -217,13 +217,13 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- Ayude a mi compañero Cabezas con un error en GitHub Actions
 
 ### ¿Qué voy a hacer?
-- 
+- Trabajar en refactorizar codigo y en las notificaciones
 
 ### ¿Qué impedimentos tengo?
-- 
+- Por ahora ninguno
 
 ---
 
@@ -284,13 +284,13 @@
 ## Davide Flamini Cazaran
 
 ### ¿Qué hice?
-- 
+- Reunirme con Gabriela para aclarar unas ultimas dudas del proyecto
 
 ### ¿Qué voy a hacer?
-- 
+- Ir a otra reunion con Gabriela para ya mostrar un avance del proyecto
 
 ### ¿Qué impedimentos tengo?
-- 
+- Por ahora la carga academica
 
 ---
 
