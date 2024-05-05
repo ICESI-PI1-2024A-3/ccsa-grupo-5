@@ -3,20 +3,43 @@ body {
     font-family: Arial !important;
     background-color: #f0f3fc; /* Establecer el color de fondo */
 }
+
+button {
+    max-width: 25%;
+    min-width: max-content;
+    width: 50%;
+    padding: 10px;
+    color: #2000fb;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 nav img {
     display: block !important;
     margin: 0 auto !important;
     width: 80% !important;
     margin-bottom: 20px !important;
 }
+
+.top-section img{
+    height: 40px;
+    width: 40px;
+}
+
 .navbarContainer {
     height: 100%;
     width: 250px;
     position: fixed;
     top: 0;
-    left: 0;
+    left: -250px;
     padding-top: 20px;
     background-color: #ffffff;
+    transition: all 200ms linear;
+}
+
+.navbarContainer.active {
+    left: 0px;
 }
 
 .navbarContainer ul {
@@ -52,4 +75,44 @@ main {
 
 title {
     display: none !important;
+}
+
+#navbarContainer .bars__menu {
+    position: absolute;
+    left: 250px;
+    top: 20px;
+    cursor: pointer;
+  }
+  
+  #navbarContainer .bars__menu span {
+    display: block;
+    width: 40px;
+  }
+
+.bars__menu{
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.bars__menu span {
+    display: block;
+    height: 2px;
+    background: #2000fb;
+    margin-top: 6px;
+    transform-origin: 0px 100%;
+    transition: all 330ms;
+}
+
+.top-section {
+    display: flex;
+    padding: 40px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.top-section h1 {
+    font-size: 24px;
+    margin: 0;
 }

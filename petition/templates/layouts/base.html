@@ -11,7 +11,13 @@
   </head>
 
   <body>
-    <nav class="navbarContainer">
+    
+    <nav class="navbarContainer" id="navbarContainer">
+      <div class="bars__menu">
+        <span class="line1__bars-menu"></span>
+        <span class="line2__bars-menu"></span>
+        <span class="line3__bars-menu"></span>
+      </div>
       <img
         style="width: 150px; height: 56.58px"
         src="{% static 'images/icesiLogo.png' %}"
@@ -74,6 +80,16 @@
         </li>
       </ul>
     </nav>
+
+    
+
+    <!-- Top section -->
+    <div class="top-section">
+      <img
+        src="{% static 'images/icesiRuedaAzul.png' %}"
+      />
+      <h1>Módulo de Contratación</h1>
+    </div>
 
     <main class="container">{% block content %} {% endblock %}</main>
 
