@@ -29,13 +29,13 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Arreglar errores de los tests
 
 ### ¿Qué voy a hacer?
-- 
+- No creo que pueda
 
 ### ¿Qué impedimentos tengo?
-- 
+- Dificultad con la carga académica
 
 ---
 
@@ -96,13 +96,13 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Nada
 
 ### ¿Qué voy a hacer?
-- 
+- Mejorar front
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -176,13 +176,13 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Ayudar a flamini con el index
 
 ### ¿Qué voy a hacer?
-- 
+- Revisar archivos de plan de pruebas pasados
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -243,13 +243,13 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Revisé documentos de planes de pruebas pasados para usar como guias
 
 ### ¿Qué voy a hacer?
-- 
+- Empezar a trabajar en el plan de pruebas
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -310,13 +310,13 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Emepecé con la estructura del plan de pruebas
 
 ### ¿Qué voy a hacer?
-- 
+- Desarrollar algunos puntos del mismo
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
