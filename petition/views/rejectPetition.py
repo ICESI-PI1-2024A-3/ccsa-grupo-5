@@ -12,6 +12,11 @@ from ..models import *
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth.decorators import login_required
 
+from django.db.models.signals import post_save
+from notify.signals import notify
+from notify.utils.models import notify_signals
+from login.models import User
+
 @login_required
 def rejectPetition(request, petitionId):
     """
@@ -45,7 +50,12 @@ def rejectPetition(request, petitionId):
             # Update petition state to "rechazado" if "rechazar" button is clicked
             petition.state = "rechazado"
             petition.save()
-            return redirect('createObservation', petitionId=petitionId)
+            admin = User.objects.filter(groups__name='Admin')
+            leader = User.objects.get(pk=petition.userAsigner)
+            addressee = admin + leader
+            notify.send(petition, destiny=addressee, verb="La peticion "+petitionId+" ha sido rechazada.", level="success")
+            post_save.connect(notify_signals, sender=petition)
+            return redirect("showPetition", petitionId=petitionId)
         elif "cancelar" in request.POST:
             # Redirect to showPetition page if "cancelar" button is clicked
             return redirect("showPetition", petitionId=petitionId)
