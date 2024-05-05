@@ -31,9 +31,7 @@ SECRET_KEY = "cdabadc5caf8207c81af4cf9404b6b33"
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if "python manage.py test tests/UnitTests" in sys.argv:
-    DEBUG = True
-elif "python manage.py test tests/sel" in sys.argv:
+if "test" in sys.argv:
     DEBUG = True
 else:
     DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
@@ -90,25 +88,13 @@ WSGI_APPLICATION = "moduloContratacion.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-if "python manage.py test tests/UnitTests" in sys.argv:
+if DEBUG:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
             "NAME": BASE_DIR / "db_test.sqlite3",
         }
     }
-
-elif "python manage.py test tests/sel" in sys.argv:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        }
-    }
-
-    DATABASES["default"] = dj_database_url.parse(
-        "postgres://testsql_kn83_user:zhRlEEllAMkCANu6eW0PytjqdGu8xOsG@dpg-corrv121hbls73fagt4g-a.oregon-postgres.render.com/testsql_kn83"
-    )
 
 else:
     DATABASES = {
@@ -119,7 +105,7 @@ else:
     }
 
     DATABASES["default"] = dj_database_url.parse(
-        "postgres://productionsql_user:5pdx88bV7C59tWx17Ij9o94LPInKYk6S@dpg-corsmmi0si5c739lukd0-a.oregon-postgres.render.com/productionsql"
+        "postgres://testsql_kn83_user:zhRlEEllAMkCANu6eW0PytjqdGu8xOsG@dpg-corrv121hbls73fagt4g-a.oregon-postgres.render.com/testsql_kn83"
     )
 
 
