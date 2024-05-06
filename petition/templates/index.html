@@ -12,7 +12,7 @@
 <div class="backgroundImage"></div>
 
 <div class="cardContainer">
-  <h1>Bienvenido a Tu Aplicación</h1>
+  <h1>Bienvenido a tu Aplicación</h1>
   <p>Una aplicación para gestionar solicitudes de contrato de manera eficiente.</p>
 
   <h2>Funcionalidades Destacadas</h2>
@@ -49,6 +49,15 @@
             >Visualizar Solicitudes</a
           >
         </li>
+        {% if 'Admin' in request.user.getGroup %}
+          <li>
+            <a
+              href="{% url 'viewTaskPredeterminate' %}"
+              class="nav-link {% if 'signup' in request.path %}active{% endif %}"
+              >Crear Tareas de Solicitudes</a
+            >
+          </li>
+        {% endif %}
   </ul>
 
   <p>Si tiene alguna pregunta o necesita ayuda, no dude en contactarnos.</p>

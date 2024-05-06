@@ -20,9 +20,9 @@ body {
 
 nav img {
     display: block !important;
-    margin: 0 auto !important;
-    width: 80% !important;
-    margin-bottom: 20px !important;
+    margin: -4% auto 0 auto !important;
+    width: 130px !important;
+    height: 50px !important;
 }
 
 .navbarContainer {

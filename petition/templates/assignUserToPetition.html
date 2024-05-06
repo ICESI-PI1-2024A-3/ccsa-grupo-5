@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block head %}
-<title>Rechazar solicitud</title>
+<title>Rechazar Solicitud</title>
 <link rel="stylesheet" href="{% static 'styles/rejactPetition.css' %}">
 {% endblock %}
 
@@ -14,7 +14,7 @@
 <h1>Asignar Gestor a Solicitud</h1>
 <form method="POST">
     {% csrf_token %}
-    <label for="user">Seleccionar gestor que se encargará de administrar la solcitud:</label>
+    <label for="user">Seleccionar gestor que se encargará de administrar la solicitud:</label>
     <select name="user" id="user">
         {% for user in users %}
             {% for group in user.groups.all %}
