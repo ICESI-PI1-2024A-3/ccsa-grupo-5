@@ -4,7 +4,8 @@ body {
     background-color: #f0f3fc; /* Establecer el color de fondo */
 }
 
-button {
+.notification-icon,
+.log-out-icon {
     max-width: 50%;
     min-width: max-content;
     width: 50%;
@@ -19,18 +20,18 @@ button {
 
 nav img {
     display: block !important;
-    margin: 0 auto !important;
-    width: 80% !important;
-    margin-bottom: 20px !important;
+    margin: -4% auto 0 auto !important;
+    width: 130px !important;
+    height: 50px !important;
 }
 
 .navbarContainer {
     height: 100%;
     width: 250px;
-    position: fixed;
+    position:absolute;
     top: 0;
     left: -250px;
-    padding-top: 20px;
+    padding-top: 0px;
     background-color: #ffffff;
     transition: all 200ms linear;
 }
@@ -75,7 +76,7 @@ title {
 }
 
 #navbarContainer .bars__menu {
-    position: absolute;
+    position: relative;
     left: 250px;
     top: 20px;
     cursor: pointer;
@@ -140,7 +141,8 @@ title {
     margin-left: 50px;
 }
 
-.top-section h1 {
+.top-section-title {
+    color: #333 !important;
     font-size: 24px;
     margin: 0;
 }
