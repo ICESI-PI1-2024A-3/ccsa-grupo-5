@@ -38,18 +38,19 @@ nav img {
 .move-container {
     display: flex;
     align-items: center;
+    transition: transform 0.3s ease; /* Agregamos la transición aquí */
 }
 
 .move-container.move-right {
-    transform: translateX(65%);
+    transform: translateX(250px); /* Cambiamos el valor a 250px para desplazar los elementos correctamente */
     display: flex;
     align-items: center; 
-    transition: 330ms;
-  }
-  
+}
+
 .move-container .logo {
     margin-right: 10px; 
-  }
+}
+
 
 .navbarContainer.active {
     left: 0px;
