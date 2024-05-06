@@ -24,6 +24,7 @@ from .views import (
     createTask,
     editTask,
     updateTasks,
+    notifications,
 )
 from django.conf import settings
 from django.conf.urls.static import static
@@ -115,6 +116,11 @@ urlpatterns = [
         "solicitud/tareas/actualizar/<int:petition_id>/",
         updateTasks.updateTasks,
         name="update_tasks",
+    ),
+    path(
+        "notificaciones",
+        notifications.notifications,
+        name="notifications",
     ),
     path(
         "solicitud/tabla/sinAsignar",

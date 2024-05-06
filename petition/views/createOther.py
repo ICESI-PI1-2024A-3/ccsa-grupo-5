@@ -48,6 +48,14 @@ def createOther(request):
 
             for task in taskPredeterminate:
                 Task.objects.create(description=task.description, petition=petition)
+            
+            notification = Notification.objects.create(
+            description="Se creó una solicitud (Prestación/Practicante) " + str(petitionId),
+            date=timezone.now().date(),
+            time=timezone.localtime(),
+            author=request.user,  # Asignar el usuario como autor
+            petition=petition  # Asignar la petición asociada
+            )
 
             return redirect("viewTask", petitionId)
     else:

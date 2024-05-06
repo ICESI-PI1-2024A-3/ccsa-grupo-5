@@ -49,6 +49,16 @@ def assignUserToPetition(request, petitionId):
             petition.userAsigner = User.objects.get(pk=request.user.id)
             petition.state = "en_proceso"
             petition.save()
+
+            notification = Notification.objects.create(
+            description=str(petition.user) + " fue asignado como Gestor a la solicitud " + str(petitionId), # Utilizando la fecha y hora actual
+            date=timezone.now().date(),
+            time=timezone.localtime(),
+            author=request.user,  # Asignar el usuario como autor
+            petition=petition  # Asignar la petición asociada
+            )
+
+
             return redirect('showPetition', petitionId=petitionId)            
                                     
         elif 'cancel' in request.POST:

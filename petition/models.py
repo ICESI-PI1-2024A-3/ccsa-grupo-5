@@ -56,6 +56,8 @@ class AbstractPetition(models.Model):
             completion_percentage = round((completed_tasks_count / tasks_count) * 100)
         else:
             completion_percentage = 0
+
+        self.percentage = completion_percentage
         return completion_percentage
 
     def getState(self):
@@ -306,3 +308,42 @@ class Other(Petition):
     class Meta:
         verbose_name = "Otro tipo"
         verbose_name_plural = "Otros tipos"
+    
+    
+class Notification(models.Model):
+    """
+    Model representing a notification.
+    """
+
+    description = models.CharField(max_length=255, verbose_name="Descripción")
+    date = models.DateField(default=timezone.now, verbose_name="Fecha", null=True)
+    time = models.TimeField(verbose_name="Hora", null=True)
+
+    author = models.ForeignKey(
+        User,
+        related_name="notificationUser",
+        on_delete=models.CASCADE,
+        null=True,
+        verbose_name="Remitente",
+    )
+
+    def getAuthor(self):
+        """
+        Method to get the user associated with the petition.
+        """
+        if self.author is None:
+            return "Sin Asignar"
+        else:
+            return self.author.first_name + " " + self.author.last_name
+
+    petition = models.ForeignKey(
+        Petition,
+        related_name="notifications",
+        on_delete=models.SET_NULL,
+        null=True,
+        verbose_name="Petición",
+    )
+
+    class Meta:
+        verbose_name = "Notificación"
+        verbose_name_plural = "Notificaciones"
