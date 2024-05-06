@@ -9,6 +9,7 @@ class AbstractPetition(models.Model):
     """
     Abstract model representing a petition.
     """
+
     states = [
         ("pendiente", "Pendiente"),
         ("aprobado", "Aprobado"),
@@ -27,7 +28,7 @@ class AbstractPetition(models.Model):
     )
     email = models.EmailField(verbose_name="Correo electrónico")
     phoneNumber = models.CharField(max_length=15, verbose_name="Número de teléfono")
-    
+
     userAsigner = models.ForeignKey(
         User,
         related_name="userAsigner",
@@ -35,7 +36,7 @@ class AbstractPetition(models.Model):
         null=True,
         verbose_name="Usuario Asignador",
     )
-    
+
     user = models.ForeignKey(
         User,
         related_name="petitionUser",
@@ -43,7 +44,7 @@ class AbstractPetition(models.Model):
         null=True,
         verbose_name="Usuario",
     )
-    
+
     def getPercentage(self):
         petition = Petition.objects.get(pk=self.id)
         tasks = Task.objects.filter(petition=petition)
@@ -110,10 +111,11 @@ class Observation(models.Model):
     """
     Model representing an observation.
     """
+
     description = models.TextField(verbose_name="Descripción")
     date = models.DateField(verbose_name="Fecha")
     time = models.TimeField(verbose_name="Hora")
-    
+
     author = models.ForeignKey(
         User,
         related_name="observationUser",
@@ -121,7 +123,7 @@ class Observation(models.Model):
         null=True,
         verbose_name="Usuario",
     )
-    
+
     def getAuthor(self):
         """
         Method to get the user associated with the petition.
@@ -130,13 +132,14 @@ class Observation(models.Model):
             return "Sin Asignar"
         else:
             return self.author.first_name + " " + self.author.last_name
-    
+
     petition = models.ForeignKey(
         Petition,
         related_name="observations",
         on_delete=models.CASCADE,
         verbose_name="Petición",
     )
+
     class Meta:
         verbose_name = "Observación"
         verbose_name_plural = "Observaciones"
@@ -144,21 +147,24 @@ class Observation(models.Model):
 
 class TaskPredeterminate(models.Model):
     description = models.TextField(verbose_name="Descripción")
-    isComplete = models.BooleanField(
-        default=False, verbose_name=""
-    )
+    isComplete = models.BooleanField(default=False, verbose_name="")
     admin = models.ForeignKey(User, related_name="taskAdmin", on_delete=models.CASCADE)
+
     class Meta:
         verbose_name = "Tarea Predeterminada"
         verbose_name_plural = "Tareas Predeterminadas"
 
+
 class Task(models.Model):
     description = models.TextField(verbose_name="Descripción")
-    isComplete = models.BooleanField(
-        default=False, verbose_name=""
+    isComplete = models.BooleanField(default=False, verbose_name="")
+    petition = models.ForeignKey(
+        Petition,
+        related_name="tasks",
+        on_delete=models.CASCADE,
+        verbose_name="Petición",
     )
-    petition = models.ForeignKey(Petition, related_name="tasks", on_delete=models.CASCADE, verbose_name="Petición")
-    
+
     def yesOrNoComplete(self):
         """
         Method to return Yes or No based on isComplete field.
@@ -167,17 +173,17 @@ class Task(models.Model):
             return "✔️"
         else:
             return "❌"
-        
+
     class Meta:
         verbose_name = "Tarea"
         verbose_name_plural = "Tareas"
-
 
 
 class Monitoring(Petition):
     """
     Model representing a monitoring petition.
     """
+
     monitoringTypeChoices = [
         ("academica", "Académica"),
         ("oficina", "Oficina"),
@@ -244,6 +250,7 @@ class Other(Petition):
     """
     Model representing other types of petitions.
     """
+
     petitionType = [
         ("serviceProvision", "Prestación de Servicios"),
         ("practicing", "Practicante"),
@@ -294,7 +301,7 @@ class Other(Petition):
         """
         String representation of the Other petition.
         """
-        return f"Requester Name: {self.requesterName}\nRequester Faculty: {self.requesterFaculty}\nContractor Full Name: {self.fullName}\nContractor Identity Number: {self.identityDocument}\nContractor Phone Number: {self.phoneNumber}\nContractor Email: {self.email}\nCENCO: {self.cenco}\nMotive: {self.motive}\nStart Date: {self.startDate}\nEnd Date: {self.endDate}\nBank Entity: {self.bankEntity}\nBank Account Type: {self.bankAccountType}\nBank Account Number: {self.bankAccountNumber}\nEPS: {self.eps}\nPension Fund: {self.pensionFund}\nARL: {self.arl}\nRUT Attachment: {self.rutAttachment}\nContract Value: {self.contractValue}\nPayment Info: {self.paymentInfo}"
+        return f"Nombre del solicitante: {self.requesterName}\nFacultad del solicitante: {self.requesterFaculty}\nNombre completo del contratista: {self.fullName}\nNúmero de identificación del contratista: {self.identityDocument}\nNúmero de teléfono del contratista: {self.phoneNumber}\nCorreo electrónico del contratista: {self.email}\nCENCO: {self.cenco}\nMotivo: {self.motive}\nFecha de inicio: {self.startDate}\nFecha de finalización: {self.endDate}\nEntidad bancaria: {self.bankEntity}\nTipo de cuenta bancaria: {self.bankAccountType}\nNúmero de cuenta bancaria: {self.bankAccountNumber}\nEPS: {self.eps}\nFondo de pensión: {self.pensionFund}\nARL: {self.arl}\nAnexo RUT: {self.rutAttachment}\nValor del contrato: {self.contractValue}\nInformación de pago: {self.paymentInfo}"
 
     class Meta:
         verbose_name = "Otro tipo"

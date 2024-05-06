@@ -1,6 +1,7 @@
 from ..models import *
 from django import forms
 
+
 class CreateNewObservation(forms.ModelForm):
     """
     Form for creating a new observation.
@@ -17,7 +18,7 @@ class CreateNewObservation(forms.ModelForm):
         Save the form instance.
         """
         observation = super(CreateNewObservation, self).save(commit=False)
-        observation.author =  user # Set the name of the current User
+        observation.author = user  # Set the name of the current User
         observation.date = timezone.now().date()  # Set the current date
         observation.time = timezone.localtime()  # Set the current time
         observation.petition_id = self.petitionId  # Assign the ID of the petition
