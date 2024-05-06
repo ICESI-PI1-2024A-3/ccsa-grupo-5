@@ -30,11 +30,16 @@ jobs:
         pip install dj_database_url 
         pip install psycopg2-binary
         pip install whitenoise
+        pip install sel
 
     - name: Set up sqlite3
       run: |
         python manage.py migrate
 
-    - name: Run tests
+    - name: Run Unit Tests
       run: |
         python manage.py test tests/UnitTests
+
+    - name: Run End to End Tests
+      run: |
+        python manage.py test tests/sel

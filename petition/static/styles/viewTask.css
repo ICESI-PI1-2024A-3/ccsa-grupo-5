@@ -1,0 +1,32 @@
+.buttons{
+    padding: 10px;
+    display: flex;
+    justify-content: left; /* Distribuye el espacio entre los elementos */
+    text-decoration: none;
+    gap: 3%;
+}
+
+.divButton {
+    width: max-content;
+    min-width: max-content;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+h1{
+    text-align: center;
+}
+
+a{
+    width: 100%;
+}
+
+.outButton{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
