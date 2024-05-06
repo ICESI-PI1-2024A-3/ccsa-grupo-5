@@ -17,13 +17,13 @@ class NotificationQuerySet(models.QuerySet):
             return self.filter(read=True)
     
     def unread (self, include_deleted=False):
-        if include_deleted==True:
+        if include_deleted:
             return self.filter(read=False)
     
     def all_as_read (self, destiny):
         qs = self.read(False)
         if destiny:
-            qs = qs.filter(destiny)
+            qs = qs.filter(destiny=destiny)
         return qs.update(read=True)
     
     def all_as_unread (self, destiny=None):
@@ -32,27 +32,22 @@ class NotificationQuerySet(models.QuerySet):
             qs = qs.filter(destiny=destiny)
         return qs.update(read=False) 
 
-class AbstractNotificationManager (models.Manager):
+class AbstractNotificationManager(models.Manager):
     def get_queryset(self):
-        return self.NoticationQuerySet(self.Model, using=self._db)
-    
+        return NotificationQuerySet(self.model, using=self._db)
 
 class AbstractNotification(models.Model):
     
-    #Dijo que esto era el objetivo de la notificación 
-    class levels(models.TextChoices):
-        success = 'Success', 'success',
-        info = 'Info', 'info',
-        wrong = 'Wrong', 'wrong',
+    class Levels(models.TextChoices):
+        success = 'Success', 'success'
+        info = 'Info', 'info'
+        wrong = 'Wrong', 'wrong'
     
-    levels = models.CharField(choices=levels.choices, max_length=20, default=levels.info)
+    levels = models.CharField(choices=Levels.choices, max_length=20, default=Levels.info)
     
-    #Destinatario 
-    destinity = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notifications', blank=True, null=True)
+    destiny = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notifications', blank=True, null=True)
     
-    actor_content_type = models.ForeignKey(ContentType, related_name='notify_actor', on_delete=models.CASCADE )
-    obj_id_actor = models.PositiveIntegerField()
-    actor = GenericForeignKey('actor_content_type', 'obj_id_actor')
+    actor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='actor_notifications', default=1)
     
     verb = models.CharField(max_length=220)
     
@@ -60,7 +55,8 @@ class AbstractNotification(models.Model):
     
     read = models.BooleanField(default=False)  
     
-    objects = NotificationQuerySet.as_manager()
+    objects = AbstractNotificationManager()
+
     public = models.BooleanField(default=True)
     deleted = models.BooleanField(default=False)
     
@@ -78,7 +74,7 @@ def notify_signals(verb, **kwargs):
     
     if isinstance(destiny, Group):
         destinies = destiny.user_set.all()
-    elif isinstance(destiny,(QuerySet, list)):
+    elif isinstance(destiny, (QuerySet, list)):
         destinies = destiny
     else:
         destinies = [destiny]
@@ -86,16 +82,15 @@ def notify_signals(verb, **kwargs):
     new_notify = []
     for destiny in destinies:
         notification = Notify(
-                destiny = destiny,
-                actor_content_type=ContentType.objects.get_for_model('actor'),
-                object_id_actor = actor.pk,
-                verb = str(verb),
-                public = public,
-                timestamp = timestamp,
-                levels = levels
+            destiny=destiny,
+            actor=actor,
+            verb=str(verb),
+            public=public,
+            timestamp=timestamp,
+            levels=levels
         )
         notification.save()
         new_notify.append(notification)
-        return new_notify
+    return new_notify
             
 notify.connect(notify_signals, dispatch_uid='notify.models.Notification')

@@ -12,6 +12,7 @@ from ..models import *
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth.decorators import login_required
 from login.permissions import groupRequired
+from notify import models as nm
 
 @login_required
 def createObservation(request, petitionId):

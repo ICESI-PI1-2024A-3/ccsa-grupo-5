@@ -11,6 +11,7 @@ from django.db import transaction
 from ..models import *
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group
 
 from django.db.models.signals import post_save
 from notify.signals import notify
@@ -50,11 +51,57 @@ def rejectPetition(request, petitionId):
             # Update petition state to "rechazado" if "rechazar" button is clicked
             petition.state = "rechazado"
             petition.save()
-            admin = User.objects.filter(groups__name='Admin')
-            leader = User.objects.get(pk=petition.userAsigner)
-            addressee = admin + leader
-            notify.send(petition, destiny=addressee, verb="La peticion "+petitionId+" ha sido rechazada.", level="success")
-            post_save.connect(notify_signals, sender=petition)
+            
+            if 'Admin' in request.user.getGroup():
+                # Notify to Manager
+                notifyOne = petition.user
+                
+                #Notify to leader
+                notifyTwo = petition.userAsigner
+                
+                if request.user in notifyTwo:
+                    notifyTwo=notifyOne
+                
+            elif 'Lider de Proceso' in request.user.getGroup():
+                # Notify to Manager
+                notifyOne = petition.user
+                
+                #Notify to Admin
+                notifyTwo = User.objects.filter(groups__name='Admin')
+            else: # Is a Manager
+                
+                # Notify to Leader
+                notifyOne = petition.userAsigner
+                
+                #Notify to Admin
+                notifyTwo = User.objects.filter(groups__name='Admin')
+                
+                if notifyOne in notifyTwo:
+                    notifyTwo=notifyOne
+                
+            if notifyOne == notifyTwo:
+                # Notify to Manager
+                notify.send(actor=request.user, destiny=notifyOne, verb="La solicitud "+str(petitionId)+" ha sido rechazada por "+str(request.user), level="success", sender=request.user)
+                post_save.connect(notify_signals, sender=request.user)
+            else:
+                    
+                # Notify to One
+                notify.send(actor=request.user, destiny=notifyOne, verb="La solicitud "+str(petitionId)+" ha sido rechazada por "+str(request.user), level="success", sender=request.user)
+                post_save.connect(notify_signals, sender=request.user)
+                
+                if isinstance(notifyTwo,list):
+                    
+                    for t in notifyTwo:
+                        
+                        #Notify to leader
+                        notify.send(actor=request.user, destiny=t, verb="La solicitud "+str(petitionId)+" ha sido rechazada por "+str(request.user), level="success", sender=request.user)
+                        post_save.connect(notify_signals, sender=request.user)
+                else:
+                    #Notify to leader
+                        notify.send(actor=request.user, destiny=notifyTwo, verb="La solicitud "+str(petitionId)+" ha sido rechazada por "+str(request.user), level="success", sender=request.user)
+                        post_save.connect(notify_signals, sender=request.user)
+        
+            
             return redirect("showPetition", petitionId=petitionId)
         elif "cancelar" in request.POST:
             # Redirect to showPetition page if "cancelar" button is clicked

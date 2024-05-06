@@ -11,12 +11,15 @@ from django.db import transaction
 from ..models import *
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth.decorators import login_required
+from notify import models as nm
+
 
 @login_required
 def viewTaskPredeterminate(request):
     try:
+        notifications = nm.Notification.objects.filter(destiny=request.user)
         tasks = TaskPredeterminate.objects.all()
-        return render(request, 'viewTaskPredeterminate.html', {'tasks': tasks})
+        return render(request, 'viewTaskPredeterminate.html', {'tasks': tasks, 'notifications': notifications})
     except TaskPredeterminate.DoesNotExist:
         pass
     

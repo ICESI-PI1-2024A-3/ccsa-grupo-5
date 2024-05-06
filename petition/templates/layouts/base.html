@@ -78,9 +78,25 @@
     <!-- Top section -->
     <div class="top-section">
       <h1>Módulo de Contratación</h1>
-      <button id="notification-btn">Notificaciones</button>
+      
     </div>
 
-    <main class="container">{% block content %} {% endblock %}</main>
+
+    <main class="container">
+      
+      <button id="notification-btn">Notificaciones</button>
+    <dialog id="modal">
+      <h2>Sikas..................................................................................................................</h2>
+      <div id="notifications">
+        <ul>
+            {% for notification in notifications %}
+                <li>{{ notification.verb }}</li>
+                <!-- Puedes agregar más detalles de la notificación aquí -->
+            {% endfor %}
+        </ul>
+    </div>
+      <button id="btn-cerrar-modal">Cerrar</button>
+    </dialog>
+    {% block content %} {% endblock %}</main>
   </body>
 </html>

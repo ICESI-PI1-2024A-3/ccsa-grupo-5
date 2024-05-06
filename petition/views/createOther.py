@@ -12,6 +12,12 @@ from ..models import *
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth.decorators import login_required
 from login.permissions import groupRequired
+from notify import models as nm
+
+from django.db.models.signals import post_save
+from notify.signals import notify
+from notify.utils.models import notify_signals
+
 
 @login_required
 @groupRequired('Admin', 'Lider de Proceso')
@@ -42,6 +48,10 @@ def createOther(request):
             taskPredeterminate = TaskPredeterminate.objects.all()
             
             petition = Petition.objects.get(pk=petitionId)
+            
+            if tes is None:
+                notify.send(actor=petition.userAsigner, destiny=petition.user, verb="Usted ha sido asignado a la peticion "+str(petitionId), level="success", sender=petition.userAsigner)
+                post_save.connect(notify_signals, sender=petition.userAsigner)
             
             for task in taskPredeterminate:
                 Task.objects.create(description=task.description, petition=petition)

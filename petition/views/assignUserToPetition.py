@@ -18,6 +18,8 @@ from django.db.models.signals import post_save
 from notify.signals import notify
 from notify.utils.models import notify_signals
 
+
+
 @login_required
 @groupRequired('Admin', 'Lider de Proceso')
 def assignUserToPetition(request, petitionId):
@@ -53,8 +55,10 @@ def assignUserToPetition(request, petitionId):
             petition.userAsigner = User.objects.get(pk=request.user.id)
             petition.state = "en_proceso"
             petition.save()
-            notify.send(petition, destiny=user, verb="ha sido asignado a la peticion "+petitionId, level="success")
-            post_save.connect(notify_signals, sender=petition)
+            
+            notify.send(actor=petition.userAsigner, destiny=petition.user, verb="Usted ha sido asignado a la peticion "+str(petitionId), level="success", sender=petition.userAsigner)
+            post_save.connect(notify_signals, sender=petition.userAsigner)
+            
             return redirect('showPetition', petitionId=petitionId)
         elif 'cancel' in request.POST:
             return redirect('showPetition', petitionId=petitionId)

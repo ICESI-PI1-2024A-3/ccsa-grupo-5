@@ -36,7 +36,8 @@ if "python manage.py test tests/UnitTests" in sys.argv:
 elif "python manage.py test tests/sel" in sys.argv:
     DEBUG = True
 else:
-    DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+    #DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+    DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -80,6 +81,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "petition.getNotify.notifications_context"
             ],
         },
     },

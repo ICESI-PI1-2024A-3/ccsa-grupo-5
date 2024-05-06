@@ -1,6 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-  var links = document.querySelectorAll(".nav-link");
+  const btnAbrirModal = document.querySelector("#notification-btn");
+  const btnCerrarModal = document.querySelector("#btn-cerrar-modal");
+  const modal = document.querySelector("#modal");
 
+  btnAbrirModal.addEventListener("click", () => { modal.showModal(); });
+  btnCerrarModal.addEventListener("click", () => { modal.close(); });
+
+  var links = document.querySelectorAll(".nav-link");
   links.forEach(function (link) {
     link.addEventListener("click", function () {
       links.forEach(function (otherLink) {
@@ -8,11 +14,5 @@ document.addEventListener("DOMContentLoaded", function () {
       });
       this.classList.add("active");
     });
-  });
-
-  var notificationBtn = document.getElementById("notification-btn");
-
-  notificationBtn.addEventListener("click", function () {
-    alert("Aquí se mostrarían las notificaciones");
   });
 });

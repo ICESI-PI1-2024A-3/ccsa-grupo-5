@@ -90,3 +90,13 @@ main {
 title {
     display: none !important;
 }
+
+/* Modal */
+
+#modal::backdrop {
+    background-color: rgba(0, 0, 0, .55);
+}
+
+#modal {
+    max-width: 50c;
+}
