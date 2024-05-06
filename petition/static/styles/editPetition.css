@@ -1,11 +1,14 @@
 .cardContainer {
-    max-width: 60%; 
+    max-width: 60%;
     width: 80%;
-    margin: 20px auto; /* Auto para centrar horizontalmente */
+    margin: 20px auto;
     padding: 20px;
     background-color: rgba(255, 255, 255, 1);
     border-radius: 6px;
-   
+}
+
+.card {
+    margin-bottom: 20px; /* Agregamos un margen entre los cards */
 }
 
 button {
@@ -20,14 +23,10 @@ button {
     cursor: pointer;
 }
 
-
-
-
-
 .buttons {
     padding: 10px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between; /* Distribuye el espacio entre los elementos */
     text-decoration: none;
 }
 
@@ -40,7 +39,6 @@ button {
 .cancel {
     background-color: red;
 }
-
 
 .custom-progress {
     height: 20px;
