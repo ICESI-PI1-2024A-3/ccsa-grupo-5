@@ -35,6 +35,21 @@ nav img {
     background-color: #ffffff;
     transition: all 200ms linear;
 }
+.move-container {
+    display: flex;
+    align-items: center;
+}
+
+.move-container.move-right {
+    transform: translateX(65%);
+    display: flex;
+    align-items: center; 
+    transition: 330ms;
+  }
+  
+.move-container .logo {
+    margin-right: 10px; 
+  }
 
 .navbarContainer.active {
     left: 0px;

@@ -6,45 +6,41 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 {% endblock %}
 {% block content %}
-<h1>Solicitudes sin asignar</h1>
+<div class="cardContainer">
+    <h1>Solicitudes sin asignar</h1>
 
-{% if petitions|length == 0 %}
-    <p></p>
-    <p></p>
-    <h3>No hay solicitudes sin asignar</h3>
-{% else %}
-
-
-
-
-<table class="table table-bordered table-striped">
-  <thead class="thead-dark">
-      <tr>
-          <th scope="col">Tipo de contrato</th>
-          <th scope="col">Fecha de Solicitud</th>
-          <th scope="col">Fecha de Inicio</th>
-          <th scope="col">Estado</th>
-          <th scope="col">Acciones</th> 
-       
-      </tr>
-  </thead>
-  <tbody>
-      {% for petition in petitions %}
-          {% if petition.getUser == 'Sin Asignar' %}
-              <tr>
-                  <td>{{ petition.getPetitionType }}</td>
-                  <td>{{ petition.petitionDate }}</td>
-                  <td>{{ petition.startDate }}</td>
-                  <td>{{ petition.state }}</td>
-                  
-                  <td>
-                    <a href="{% url 'assignPetition' petition.id %}"><p>Asignar Gestor</p></a>
-                  </td>
-
-              </tr>
-          {% endif %}
-      {% endfor %}
-  </tbody>
-</table>
-{% endif %}
+    {% if petitions|length == 0 %}
+        <p></p>
+        <p></p>
+        <h3>No hay solicitudes sin asignar</h3>
+    {% else %}
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Tipo de contrato</th>
+                    <th scope="col">Fecha de Solicitud</th>
+                    <th scope="col">Fecha de Inicio</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Acciones</th> 
+                </tr>
+            </thead>
+            <tbody>
+                {% for petition in petitions %}
+                    {% if petition.getUser == 'Sin Asignar' %}
+                        <tr>
+                            <td>{{ petition.getPetitionType }}</td>
+                            <td>{{ petition.petitionDate }}</td>
+                            <td>{{ petition.startDate }}</td>
+                            <td>{{ petition.state }}</td>
+                            
+                            <td>
+                                <a href="{% url 'assignPetition' petition.id %}"><p>Asignar Gestor</p></a>
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
 {% endblock %}

@@ -7,23 +7,24 @@
 <link rel="stylesheet" href="{% static 'styles/editPetition.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
-<h1>Tareas predeterminadas de nuevas solicitudes </h1>
+<div class="cardContainer">
+    <h1>Tareas predeterminadas de nuevas solicitudes </h1>
 
 <li><small>Unicamente serán afectadas las solicitudes creadas luego de los cambios</small></li>
 <li><small>Cuando se crea una nueva solicitud, tambien tienes la posibilidad de agregar tareas específicas</small></li>
 
-<p></p>
+    <p></p>
     <a href="{% url 'createTaskPredeterminate' %}"><button>Crear Nueva Tarea Predeterminada</button></a>
-<p></p>
+    <p></p>
 
-<hr>
+    <hr>
 
-{% for task in tasks %}
-    <div class="card">
-        <p>Descripción: {{ task.description }}</p>
-        <p></p>
-    
-        <div class="buttons" >
+    {% for task in tasks %}
+        <div class="card">
+            <p>Descripción: {{ task.description }}</p>
+            <p></p>
+        
+            <div class="buttons" >
                 <div class="divButton">
                     <form id="deleteForm{{ task.id }}" action="{% url "deleteTaskPredeterminate" task.id%}" method="POST">
                     {% csrf_token %}
@@ -32,19 +33,21 @@
                         </button>
                     </form>
                 </div>
-        <div class="divButton">
-            {% csrf_token %}
-            <a href="{% url 'editTaskPredeterminate' task.id %}" id="editForm{{ task.id}}"><button type="button" class="edit-icon" onclick="editTaskPredeterminate( {{task.id}} )">
-                <i class="fas fa-edit"></i> Editar
-            </button>
-            </a>
+                <div class="divButton">
+                    {% csrf_token %}
+                    <a href="{% url 'editTaskPredeterminate' task.id %}" id="editForm{{ task.id}}">
+                        <button type="button" class="edit-icon" onclick="editTaskPredeterminate( {{task.id}} )">
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                    </a>
+                </div>
+            </div>
         </div>
-        </div>
-    </div>
-    <hr>
-{% endfor %}
+        <hr>
+    {% endfor %}
 
-<a href="{% url 'viewPetition' %}"><button>Finalizar</button></a>
+    <a href="{% url 'viewPetition' %}"><button>Finalizar</button></a>
+</div>
 
 <script src="{% static 'scripts/deleteElement.js' %}"></script>
 {% endblock  %}

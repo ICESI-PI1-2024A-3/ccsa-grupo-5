@@ -1,3 +1,13 @@
+.cardContainer {
+    max-width: 60%; 
+    width: 80%;
+    margin: 20px auto; /* Auto para centrar horizontalmente */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 6px;
+   
+}
+
 button {
     max-width: 25%;
     min-width: max-content;
@@ -11,14 +21,8 @@ button {
 }
 
 
-.container {
-    
-    max-width: 400px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+
+
 
 .buttons {
     padding: 10px;
