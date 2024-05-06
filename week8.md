@@ -29,13 +29,13 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Agregar barra de progreso a la tabla de solicitudes
 
 ### ¿Qué voy a hacer?
-- 
+- Cambiar formulario de selección de fechas
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -96,13 +96,13 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Corregir test en base a cambios de formularios de peticiones y las fechas
 
 ### ¿Qué voy a hacer?
-- 
+- Realizar animación de menú hamburguesa
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -165,10 +165,10 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- Continuar con la implementación de las notificaciones 
+- Corregir mensajes de la aplicación, corregir menu hamburguesa y agregar iconos al menú
 
 ### ¿Qué voy a hacer?
-- Investigar sobre como usar swapper
+- Terminar de corregir aspectos de front
 
 ### ¿Qué impedimentos tengo?
 - Ninguno
@@ -232,13 +232,13 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Refactorizar código de front y ayudar en lo que se pudo
 
 ### ¿Qué voy a hacer?
-- 
+- Continuar con la refactorización del front
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -300,13 +300,13 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- Empezar a corregir errores con el swapper en la implementación 
+- Agregar git actions de selenium y ayudar a miguel con pruebas
 
 ### ¿Qué voy a hacer?
-- Terminar de corregir errores en el codigo de las notificaciones 
+- Terminar de refinar front 
 
 ### ¿Qué impedimentos tengo?
-- Ninguno 
+- TIEMPO
 
 ---
 
