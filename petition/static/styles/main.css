@@ -21,19 +21,12 @@ body {
 
 .navbarContainer i {
      /* Ajusta el color, tamaño, margen y cualquier otro estilo que desees para los íconos */
-     color: #333; /* Color del ícono */
+     color: black; /* Color del ícono */
      font-size: 20px; /* Tamaño del ícono */
      margin-right: 5px; /* Espacio a la derecha del ícono */
 }
 
 
-
-.file-pen {
-    color: black;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 15px;
-}
 
 nav img {
     display: block !important;
@@ -97,6 +90,7 @@ main {
     padding: 16px !important;
     flex-grow: 1 !important;
 }
+
 
 .nav-link:hover,
 .nav-link:focus,
