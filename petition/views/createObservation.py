@@ -38,6 +38,17 @@ def createObservation(request, petitionId):
         if form.is_valid():
             form.petitionId = petitionId 
             form.save(user=request.user)
+
+            petition = Petition.objects.get(pk=petitionId)
+            notification = Notification.objects.create(
+            description="Se creó una observación en la solicitud " + str(petitionId),
+            date=timezone.now().date(),
+            time=timezone.localtime(),
+            author=request.user,  # Asignar el usuario como autor
+            petition=petition  # Asignar la petición asociada
+            )
+            
+
             return redirect('showPetition', petitionId=petitionId)
     else:
         form = createNewObservation.CreateNewObservation()

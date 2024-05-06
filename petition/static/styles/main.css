@@ -3,20 +3,56 @@ body {
     font-family: Arial !important;
     background-color: #f0f3fc; /* Establecer el color de fondo */
 }
+
+.notification-icon,
+.log-out-icon {
+    max-width: 50%;
+    min-width: max-content;
+    width: 50%;
+    padding: 10px;
+    background-color: #ffffff;
+    color: #2000fb;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
 nav img {
     display: block !important;
-    margin: 0 auto !important;
-    width: 80% !important;
-    margin-bottom: 20px !important;
+    margin: -4% auto 0 auto !important;
+    width: 130px !important;
+    height: 50px !important;
 }
+
 .navbarContainer {
     height: 100%;
     width: 250px;
-    position: fixed;
+    position:absolute;
     top: 0;
-    left: 0;
-    padding-top: 20px;
+    left: -250px;
+    padding-top: 0px;
     background-color: #ffffff;
+    transition: all 200ms linear;
+}
+.left-content {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.left-content.move-right {
+    transform: translateX(250px);
+    transition: transform 0.3s ease; /* Agregamos la transición aquí */
+}
+
+/*.move-container .logo {
+    margin-right: 10px; 
+}*/
+
+
+.navbarContainer.active {
+    left: 0px;
 }
 
 .navbarContainer ul {
@@ -52,4 +88,76 @@ main {
 
 title {
     display: none !important;
+}
+
+#navbarContainer .bars__menu {
+    position: relative;
+    left: 250px;
+    top: 20px;
+    cursor: pointer;
+  }
+  
+  #navbarContainer .bars__menu span {
+    display: block;
+    width: 40px;
+  }
+
+.bars__menu{
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.bars__menu span {
+    display: block;
+    height: 2px;
+    background: #2000fb;
+    margin-top: 6px;
+    transform-origin: 0px 100%;
+    transition: all 330ms;
+}
+
+.activeline1__bars-menu{
+    transform: rotate(45deg) translate(-2px, -3px); 
+}
+
+.activeline2__bars-menu{
+    opacity: 0;
+    margin-left: -30px; 
+}
+
+.activeline3__bars-menu{
+    transform: rotate(-45deg) translate(-4px, 7px);
+}
+
+.top-section {
+    display: flex;
+    padding: 12px;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.left-content {
+    display: flex;
+    align-items: center;
+  }
+  
+.right-content {
+    display: flex;
+    margin-left: auto; /* Esto empujará los elementos a la derecha */
+}
+
+.top-section img{
+    height: 40px;
+    width: 40px;
+    margin-right: 15px;
+    margin-left: 50px;
+}
+
+.top-section-title {
+    color: #333 !important;
+    font-size: 24px;
+    margin: 0;
 }

@@ -6,14 +6,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <script src="{% static 'scripts/main.js' %}"></script>
     {% block head %} {% endblock %}
   </head>
 
   <body>
-    <nav class="navbarContainer">
+    
+    <nav class="navbarContainer" id="navbarContainer">
+      <div class="bars__menu">
+        <span class="line1__bars-menu"></span>
+        <span class="line2__bars-menu"></span>
+        <span class="line3__bars-menu"></span>
+      </div>
       <img
-        style="width: 150px; height: 56.58px"
         src="{% static 'images/icesiLogo.png' %}"
       />
       <ul>
@@ -29,7 +35,7 @@
             <a
               href="{% url 'signup' %}"
               class="nav-link {% if 'signup' in request.path %}active{% endif %}"
-              >Crear usuario</a
+              >Crear Usuario</a
             >
           </li>
         {% endif %}
@@ -45,7 +51,7 @@
           <a
             href="{% url 'viewPetitionWithoutUser' %}"
             class="nav-link {% if 'viewPetitionWithoutUser' in request.path %}active{% endif %}"
-            >Solicitudes sin asignar</a
+            >Solicitudes sin Asignar</a
           >
         </li>
         {% endif %}
@@ -65,15 +71,24 @@
             >
           </li>
         {% endif %}
-        <li>
-          <a
-            href="{% url 'logoutSesion' %}"
-            class="nav-link {% if 'logoutSesion' in request.path %}active{% endif %}"
-            >Cerrar sesion</a
-          >
-        </li>
       </ul>
     </nav>
+
+    
+
+    <!-- Top section -->
+    <div class="top-section">
+      <div class="left-content">
+        <img src="{% static 'images/icesiRuedaAzul.png' %}" class="logo" />
+        <h1 class="top-section-title">Módulo de Contratación</h1>
+      </div>
+      
+      
+      <div class="right-content">
+        <a href="{% url 'notifications'%}"><button type="button" class="notification-icon"><i class="fas fa-bell"></i></button></a>
+        <a href="{% url 'logoutSesion'%}"><button type="button" class="log-out-icon"><i class="fas fa-sign-out-alt"></i></button></a>
+      </div>
+    </div>
 
     <main class="container">{% block content %} {% endblock %}</main>
 

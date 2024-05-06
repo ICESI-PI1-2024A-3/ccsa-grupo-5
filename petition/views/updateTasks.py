@@ -18,6 +18,21 @@ def updateTasks(request, petition_id):
         # Actualizar el estado de las tareas que deben cambiar su estado de completo a incompleto
         Task.objects.exclude(id__in=selected_task_ids).filter(petition_id=petition_id, isComplete=True).update(isComplete=False)
 
+        petition = Petition.objects.get(pk=petition_id)
+
+        if petition.getPercentage() == 100:
+            petition.state = "aprobado"
+            petition.save()
+
+            
+            notification = Notification.objects.create(
+            description="Se aprobó la solicitud " + str(petition_id),
+            date=timezone.now().date(),
+            time=timezone.localtime(),
+            author=request.user,  # Asignar el usuario como autor
+            petition=petition  # Asignar la petición asociada
+            )
+
 
     # Redirigir de vuelta a la página de la petición después de actualizar las tareas
     return redirect('showPetition', petitionId=petition_id)

@@ -1,0 +1,51 @@
+{% extends "layouts/base.html" %}
+
+{% load static %}
+
+{% block head %}
+<title>Notificaciones</title>
+
+<link rel="stylesheet" href="{% static 'styles/tablePetitionWithoutUser.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+<div class="cardContainer">
+    <h1>Notificaciones</h1>
+
+    {% if notifications|length == 0 %}
+        <p></p>
+        <p></p>
+        <h3>No hay notificaciones por ahora</h3>
+    {% else %}
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Fecha de Notificación</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Solicitud</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for notification in notifications %}
+                    <tr>
+                        <td>{{ notification.description }}</td>
+                        <td>{{ notification.date }} {{notification.time}}</td>
+                        <td>{{ notification.author }}</td>
+                        
+                        <td>
+                            {% if notification.petition is None %}
+                                <p>Solicitud eliminada</p>
+                            {% else %}
+                                <p>Id: {{notification.petition.id}}</p>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+
+{% endblock %}

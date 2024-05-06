@@ -45,6 +45,13 @@ def rejectPetition(request, petitionId):
             # Update petition state to "rechazado" if "rechazar" button is clicked
             petition.state = "rechazado"
             petition.save()
+            notification = Notification.objects.create(
+            description= "Se rechazó la solicitud " + str(petitionId),
+            date=timezone.now().date(),
+            time=timezone.localtime(),
+            author=request.user,  # Asignar el usuario como autor
+            petition=petition  # Asignar la petición asociada
+            )
             return redirect('createObservation', petitionId=petitionId)
         elif "cancelar" in request.POST:
             # Redirect to showPetition page if "cancelar" button is clicked
