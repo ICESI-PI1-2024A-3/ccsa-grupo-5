@@ -147,7 +147,7 @@ class TestsSelectTypePetition(TestCase):
         response = self.client.get(reverse("selectTypePetition"))
 
         # Check if the response content contains a specific text
-        self.assertContains(response, "seleccione el tipo de monitoria")
+        self.assertContains(response, "seleccione el tipo de solicitud")
 
     def testSelectTypePetitionContent1(self):
         """

@@ -37,12 +37,14 @@
 
             <a href="{% url 'password_reset' %}" class="forgot-password">¿Olvidó su nombre de usuario o contraseña?</a>
             {% if messages %}
-            <div class="error-message" style="margin-top: 10px; margin-bottom: 5px;">
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
-            </div>
-            {% endif %}
+<div class="error-message" style="margin-top: 10px; margin-bottom: 5px;">
+    {% for message in messages %}
+
+            {{ message }}
+
+    {% endfor %}
+</div>
+{% endif %}
             <button type="submit">Ingresar</button>
         </form>
     {% endif %}

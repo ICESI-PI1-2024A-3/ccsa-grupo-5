@@ -3,43 +3,39 @@
 {% load static %}
 
 {% block head %}
-<title>Rechazar solicitud</title>
+<title>Rechazar Solicitud</title>
 <link rel="stylesheet" href="{% static 'styles/rejactPetition.css' %}">
 {% endblock %}
 
-
-
 {% block content %}
-
-<h1>Asignar Gestor a Solicitud</h1>
-<form method="POST">
-    {% csrf_token %}
-    <label for="user">Seleccionar gestor que se encargará de administrar la solcitud:</label>
-    <select name="user" id="user">
-        {% for user in users %}
-            {% for group in user.groups.all %}
-                {% if group.name == "Gestor de Contratacion" %}
-                    <option value="{{ user.id }}">{{user.username}} {{"-"}} {{ user.first_name }} {{ user.last_name }}</option>
-                {% endif %}
+<div class="cardContainer">
+    <h1>Asignar Gestor a Solicitud</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="user">Seleccionar gestor que se encargará de administrar la solicitud:</label>
+        <select name="user" id="user">
+            {% for user in users %}
+                {% for group in user.groups.all %}
+                    {% if group.name == "Gestor de Contratacion" %}
+                        <option value="{{ user.id }}">{{user.username}} {{"-"}} {{ user.first_name }} {{ user.last_name }}</option>
+                    {% endif %}
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
-    </select>
-    <p></p>
-    
-    <div>
-        <button type="submit" name="cancel" class="rejact">Cancelar</button>
-        <button type="submit" name="assign" id="assign-button" class="cancel">Asignar Gestor</button>
-        <div class="info-box">
-            <ul>
-                <li><small>Solo se puede asignar un gestor a una solicitud</small></li>
-                <li><small>El gestor asignado será el único encargado de completar la solicitud</small></li>
-            </ul>
-            
+        </select>
+        <p></p>
+        
+        <div>
+            <button type="submit" name="cancel" class="rejact">Cancelar</button>
+            <button type="submit" name="assign" id="assign-button" class="cancel">Asignar Gestor</button>
+            <div class="info-box">
+                <ul>
+                    <li><small>Solo se puede asignar un gestor a una solicitud</small></li>
+                    <li><small>El gestor asignado será el único encargado de completar la solicitud</small></li>
+                </ul>
+            </div>
         </div>
-    </div>
-
-
-</form>
+    </form>
+</div>
 
 <script src="{% static 'scripts/assignUserToPetition.js' %}"></script>
 

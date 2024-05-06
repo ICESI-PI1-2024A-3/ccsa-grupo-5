@@ -4,101 +4,98 @@
 
 {% block head %}
 <title>Detalles de solicitud</title>
-
 <link rel="stylesheet" href="{% static 'styles/editPetition.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-
 {% endblock %}
 
 {% block content %}
 
-<h1>Detalles de la Solicitud</h1>
+<div class="cardContainer">
 
+    <div class="card">
+        <h1>Detalles de la Solicitud</h1>
 
-<h3>Tipo de contrato: {{ solicitud.getPetitionType }}</h3>
-<p>Fecha de Solicitud: {{ solicitud.petitionDate }}</p>
-<p>Fecha de Inicio: {{ solicitud.startDate }}</p>
-<p>Fecha de Fin: {{ solicitud.endDate }}</p>
-<p>Estado: {{ solicitud.getState }}</p>
-<p>Cenco: {{ solicitud.cenco }}</p>
-<p>Nombre Completo: {{ solicitud.fullName }}</p>
-<p>Documento de Identidad: {{ solicitud.identityDocument }}</p>
-<p>Correo Electrónico: {{ solicitud.email }}</p>
-<p>Número de Teléfono: {{ solicitud.phoneNumber }}</p>
-<!-- Monitoring Specific Details -->
-<p>Tipo de Monitoreo: {{ solicitud.monitoringType }}</p>
-<p>¿Hay Dinero en Cenco?: {{ solicitud.yesOrNoCenco }}</p>
-<p>Responsable del Cenco: {{ solicitud.cencoResponsible }}</p>
-<p>Código del Estudiante: {{ solicitud.studentCode }}</p>
-<p>DaviPlata: {{ solicitud.daviPlata }}</p>
-<p>Proyecto o Curso: {{ solicitud.projectOrCourse }}</p>
-<p>Descripción del Monitoreo: {{ solicitud.monitoringDescription }}</p>
-<p>Horas por Semana: {{ solicitud.hoursPerWeek }}</p>
-<p>Monto Total del Pago: {{ solicitud.totalPaymentAmount }}</p>
-<p>¿Es un Pago Único?: {{ solicitud.yesOrNoPayment }}</p>
-
-<div><p>Gestor encargado: <b>{{ solicitud.getUser }}</b></p></div>
-
-<hr>
-
-<h2>Tareas del Gestor</h2>
-
-{% if solicitud.state != 'rechazado' and solicitud.state != 'aprobado' and solicitud.user == request.user %}
-
-<form method="POST" action="{% url 'update_tasks' solicitud.id %}">
-    {% csrf_token %}
-    {% for task in solicitud.tasks.all %}
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="task{{ task.id }}" name="tasks" value="{{ task.id }}" {% if task.isComplete %}checked{% endif %}>
-        <label class="form-check-label" for="task{{ task.id }}">
-          {{ task.description }}
-        </label>
-      </div>
-    {% endfor %}
-    <p></p>
-    <button type="submit" class="btn btn-primary">Actualizar tareas</button>
-  </form>
-
-{% else %}
-
-{% for task in tasks %}
-    <div class="">
-        <p>{{task.yesOrNoComplete}} {{ task.description }}</p>
-        <p></p> 
+        <h3>Tipo de contrato: {{ solicitud.getPetitionType }}</h3>
+        <p>Fecha de Solicitud: {{ solicitud.petitionDate }}</p>
+        <p>Fecha de Inicio: {{ solicitud.startDate }}</p>
+        <p>Fecha de Fin: {{ solicitud.endDate }}</p>
+        <p>Estado: {{ solicitud.getState }}</p>
+        <p>Cenco: {{ solicitud.cenco }}</p>
+        <p>Nombre Completo: {{ solicitud.fullName }}</p>
+        <p>Documento de Identidad: {{ solicitud.identityDocument }}</p>
+        <p>Correo Electrónico: {{ solicitud.email }}</p>
+        <p>Número de Teléfono: {{ solicitud.phoneNumber }}</p>
     </div>
-                
-{% endfor %}
 
-{% endif %}
+    <!-- Other Specific Details -->
+    <div class="card">
+        <p>Tipo de Monitoreo: {{ solicitud.monitoringType }}</p>
+        <p>¿Hay Dinero en Cenco?: {{ solicitud.yesOrNoCenco }}</p>
+        <p>Responsable del Cenco: {{ solicitud.cencoResponsible }}</p>
+        <p>Código del Estudiante: {{ solicitud.studentCode }}</p>
+        <p>DaviPlata: {{ solicitud.daviPlata }}</p>
+        <p>Proyecto o Curso: {{ solicitud.projectOrCourse }}</p>
+        <p>Descripción del Monitoreo: {{ solicitud.monitoringDescription }}</p>
+        <p>Horas por Semana: {{ solicitud.hoursPerWeek }}</p>
+        <p>Monto Total del Pago: {{ solicitud.totalPaymentAmount }}</p>
+        <p>¿Es un Pago Único?: {{ solicitud.yesOrNoPayment }}</p>
+    </div>
 
+    <div class="card">
+        <p>Gestor encargado: <b>{{ solicitud.getUser }}</b></p>
+    </div>
 
-<hr>
+    <hr>
 
+    <h2>Tareas del Gestor</h2>
 
+    {% if solicitud.state != 'rechazado' and solicitud.state != 'aprobado' and solicitud.user == request.user %}
 
-<p></p>
+    <form method="POST" action="{% url 'update_tasks' solicitud.id %}">
+        {% csrf_token %}
+        {% for task in solicitud.tasks.all %}
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="task{{ task.id }}" name="tasks" value="{{ task.id }}" {% if task.isComplete %}checked{% endif %}>
+                <label class="form-check-label" for="task{{ task.id }}">{{ task.description }}</label>
+            </div>
+        {% endfor %}
+        <p></p>
+        <button type="submit" class="btn btn-primary">Actualizar tareas</button>
+    </form>
 
+    {% else %}
 
-    {% if solicitud.state != 'rechazado' and solicitud.state != 'aprobado' %}
-    <a href="{% url 'rejectPetition' solicitud.id %}"><button>Rechazar Solicitud</button></a>
+    {% for task in tasks %}
+        <div class="">
+            <p>{{task.yesOrNoComplete}} {{ task.description }}</p>
+            <p></p> 
+        </div>
+    {% endfor %}
+
     {% endif %}
-    <p></p>
-    {% if solicitud.getUser == 'Sin Asignar' %}
-    <a href="{% url 'assignPetition' solicitud.id %}"><button>Asignar a un Gestor de Procesos</button></a>
-    {% endif %}
 
-    
-    <p></p>
-    <a href="{% url 'createObservation' petitionId %}"><button>Crear Observacion</button></a>
-    <p></p>
-    <button id="toggleObservationsBtn">Mostrar Observaciones</button>
+    <hr>
 
-    <div class="divButton">
+    <div class="card">
+        {% if solicitud.state != 'rechazado' and solicitud.state != 'aprobado' %}
+        <a href="{% url 'rejectPetition' solicitud.id %}"><button>Rechazar Solicitud</button></a>
+        {% endif %}
+        <p></p>
+        {% if solicitud.getUser == 'Sin Asignar' %}
+        <a href="{% url 'assignPetition' solicitud.id %}"><button>Asignar a un Gestor de Procesos</button></a>
+        {% endif %}
+    </div>
 
-        <div id="observationsContainer" style="display: none;">
-            <div class="dropdown">
-                <div id="observationsDropdown" class="dropdown-content">
-                    {% for observation in observations %}
+    <div class="card">
+        <a href="{% url 'createObservation' petitionId %}"><button>Crear Observación</button></a>
+        <p></p>
+        <button id="toggleObservationsBtn">Mostrar Observaciones</button>
+
+        <div class="divButton">
+            <div id="observationsContainer" style="display: none;">
+                <div class="dropdown">
+                    <div id="observationsDropdown" class="dropdown-content">
+                        {% for observation in observations %}
                         <div class="card">
                             <p>Descripción: {{ observation.description }}</p>
                             <p>Fecha: {{ observation.date }}</p>
@@ -107,31 +104,33 @@
                             <p></p>
                         </div>
                         {% if observation.author.username == request.user.username %}
-                            <div class="buttons" >
-                                <div class="divButton">
-                                    <form id="deleteForm{{ observation.id }}" action="{% url "deleteObservation" observation.id%}" method="POST">
-                                        {% csrf_token %}
-                                        <button type="button" class="delete-icon" data-observation-id="{{ observation.id }}" onclick="confirmDelete({{ observation.id }})">
-                                            <i class="fas fa-trash-alt"></i> Eliminar
-                                        </button> 
-                                    </form>
-                                </div>
-                                <div class="divButton">
+                        <div class="buttons">
+                            <div class="divButton">
+                                <form id="deleteForm{{ observation.id }}" action="{% url "deleteObservation" observation.id %}" method="POST">
                                     {% csrf_token %}
-                                    <a href="{% url 'editObservation' petitionId observation.id %}" id="editForm{{ observation.id}}"><button type="button" class="edit-icon" onclick="editObservation( {{petition.id}} {{ observation.id }})">
+                                    <button type="button" class="delete-icon" data-observation-id="{{ observation.id }}" onclick="confirmDelete({{ observation.id }})">
+                                        <i class="fas fa-trash-alt"></i> Eliminar
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="divButton">
+                                <a href="{% url 'editObservation' petitionId observation.id %}" id="editForm{{ observation.id }}">
+                                    <button type="button" class="edit-icon" onclick="editObservation({{ petition.id }}, {{ observation.id }})">
                                         <i class="fas fa-edit"></i> Editar
                                     </button>
-                                    </a>
-                                </div>
+                                </a>
                             </div>
+                        </div>
                         {% endif %}
-                
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
+</div>
+
 <script src="{% static 'scripts/deleteElement.js' %}"></script>
 <script src="{% static 'scripts/viewObservation.js' %}"></script>
 {% endblock %}

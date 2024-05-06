@@ -1,3 +1,16 @@
+.cardContainer {
+    max-width: 60%;
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 6px;
+}
+
+.card {
+    margin-bottom: 20px; /* Agregamos un margen entre los cards */
+}
+
 button {
     max-width: 25%;
     min-width: max-content;
@@ -10,28 +23,10 @@ button {
     cursor: pointer;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: top;
-    justify-content: center;
-    background-color: #f4f4f4;
-    min-height: 100vh;
-}
-
-.container {
-    max-width: 400px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
 .buttons {
     padding: 10px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between; /* Distribuye el espacio entre los elementos */
     text-decoration: none;
 }
 
@@ -44,7 +39,6 @@ body {
 .cancel {
     background-color: red;
 }
-
 
 .custom-progress {
     height: 20px;
