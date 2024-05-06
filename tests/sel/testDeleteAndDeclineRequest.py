@@ -18,7 +18,7 @@ class testDeleteAndDelclineRequest(unittest.TestCase):
         self.driver.quit()
         
     def testCreateAndDeleteRequestCorrect(self):
-        self.driver.get("http://127.0.0.1:8000/")
+        self.driver.get("https://ccsa-grupo-5.onrender.com")
         user = self.driver.find_element(By.NAME,"username")
         user.send_keys("4")
         password = self.driver.find_element(By.NAME,"password")
@@ -88,7 +88,7 @@ class testDeleteAndDelclineRequest(unittest.TestCase):
         #2lasts+
         
     def testCreateAndDeclineRequestCorrect(self):
-        self.driver.get("http://127.0.0.1:8000/")
+        self.driver.get("https://ccsa-grupo-5.onrender.com")
         user = self.driver.find_element(By.NAME,"username")
         user.send_keys("4")
         password = self.driver.find_element(By.NAME,"password")

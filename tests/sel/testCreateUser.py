@@ -33,7 +33,7 @@ class testCreateUser(unittest.TestCase):
         return random_string + domain
     
     def testCreateLeaderUserCorrect(self):
-        self.driver.get("http://127.0.0.1:8000/")
+        self.driver.get("https://ccsa-grupo-5.onrender.com")
         user = self.driver.find_element(By.NAME,"username")
         user.send_keys("4")
         password = self.driver.find_element(By.NAME,"password")
@@ -92,7 +92,7 @@ class testCreateUser(unittest.TestCase):
 
 
     def testDuplicateUser(self):
-        self.driver.get("http://127.0.0.1:8000/")
+        self.driver.get("https://ccsa-grupo-5.onrender.com")
         user = self.driver.find_element(By.NAME,"username")
         user.send_keys("4")
         password = self.driver.find_element(By.NAME,"password")
