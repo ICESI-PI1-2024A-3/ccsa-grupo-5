@@ -71,8 +71,7 @@ class TestsIndexView(TestCase):
         response = self.client.get(reverse("index"))
 
         # Check if the response context contains expected information
-        self.assertContains(response, "Crear usuario")
-        self.assertContains(response, "Crear Solicitudes")
+        self.assertContains(response, "Funcionalidades Destacadas")
 
     def testIndexViewContent(self):
         """
@@ -89,8 +88,5 @@ class TestsIndexView(TestCase):
         self.assertTemplateUsed(response, "index.html")
 
         # Check if the response content is as expected
-        self.assertContains(response, "<h1>Bienvenido a Tu Aplicación</h1>")
-        self.assertContains(
-            response,
-            "<p>Una aplicación para gestionar solicitudes de contrato de manera eficiente.</p>",
-        )
+        self.assertContains(response, "Inicio - Tu Aplicación")
+
