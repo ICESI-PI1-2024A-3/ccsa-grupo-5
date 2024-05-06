@@ -35,21 +35,20 @@ nav img {
     background-color: #ffffff;
     transition: all 200ms linear;
 }
-.move-container {
+.left-content {
     display: flex;
     align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.left-content.move-right {
+    transform: translateX(250px);
     transition: transform 0.3s ease; /* Agregamos la transición aquí */
 }
 
-.move-container.move-right {
-    transform: translateX(250px); /* Cambiamos el valor a 250px para desplazar los elementos correctamente */
-    display: flex;
-    align-items: center; 
-}
-
-.move-container .logo {
+/*.move-container .logo {
     margin-right: 10px; 
-}
+}*/
 
 
 .navbarContainer.active {

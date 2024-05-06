@@ -30,13 +30,6 @@ function toggleNavbar() {
   var navbarContainer = document.getElementById("navbarContainer");
   navbarContainer.classList.toggle("active");
 
-  // Mueve los elementos específicos hacia la derecha cuando se abre el menú
-  var moveContainer = document.querySelector(".move-container");
-
-  if (navbarContainer.classList.contains("active")) {
-    moveContainer.classList.add("move-right");
-  } else {
-    // Restaura la posición original de los elementos cuando se cierra el menú
-    moveContainer.classList.remove("move-right");
-  }
+  var leftContent = document.querySelector(".left-content");
+  leftContent.classList.toggle("move-right");
 }
