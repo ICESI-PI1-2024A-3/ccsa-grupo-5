@@ -55,13 +55,13 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Finalizar con el plan de pruebas
 
 ### ¿Qué voy a hacer?
-- 
+- Emppezar a investigar sobre la barra de progreso 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno 
 
 ---
 
@@ -122,28 +122,17 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Empezar a investigar sobre como hacer la barra de tareas
 
 ### ¿Qué voy a hacer?
-- 
+- Terminar mi investigación 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno 
 
 ---
 
-## Alejandro Torres Soto
 
-### ¿Qué hice?
-- 
-
-### ¿Qué voy a hacer?
-- 
-
-### ¿Qué impedimentos tengo?
-- 
-
----
 
 # Daily Report - Semana 6 - 17/04/2024
 
@@ -202,13 +191,13 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Terminar investigación sobre la barra de progreso
 
 ### ¿Qué voy a hacer?
-- 
+- Empezar con laimplementación 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Todavi se me complican algunas cosas del front 
 
 ---
 
@@ -269,13 +258,13 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Empezar con la implementación de la barra de tareas 
 
 ### ¿Qué voy a hacer?
-- 
+- Intentar terminarla
 
 ### ¿Qué impedimentos tengo?
-- 
+- Se me complican algunos aspectos del front
 
 ---
 
@@ -337,10 +326,10 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- No pude hacer la barra de tareas 
 
 ### ¿Qué voy a hacer?
-- 
+- Compartir mi investigación sobre como hacerla a mis compañeros 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno 

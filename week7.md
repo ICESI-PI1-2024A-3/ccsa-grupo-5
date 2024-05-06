@@ -55,13 +55,13 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Compartir investigación sobre como hacer la barra de tareas 
 
 ### ¿Qué voy a hacer?
-- 
+- Investigar sobre como abordar las ultimas funcionalidades que faltan 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Carga academica 
 
 ---
 
@@ -122,26 +122,26 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Investigar sobre como abordar funcionalidades faltantes 
 
 ### ¿Qué voy a hacer?
-- 
+- Continuar con mi investigación 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Carga academica 
 
 ---
 
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Continuar con la investigación sobre como abordar las funcionalidades faltantes 
 
 ### ¿Qué voy a hacer?
-- 
+- Empezar a trabajar en alguna de ellas 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno 
 
 ---
 
@@ -202,13 +202,13 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Decidí hacer la funcionalidad de las notificaicones 
 
 ### ¿Qué voy a hacer?
-- 
+- Empezar con la implementación 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno 
 
 ---
 
@@ -269,13 +269,13 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Empecé con la implementación de las notificaciones 
 
 ### ¿Qué voy a hacer?
-- 
+- Decidí cambiar de tarea y empece a completar una caracteristica de front que hacia falta 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Hay algunos aspectos del front que todavia se me complican
 
 ---
 
@@ -336,10 +336,10 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Ajuste un elemento del front que hacia falta 
 
 ### ¿Qué voy a hacer?
-- 
+- Agregar algunos elementos de front necesarios para poder usar las notificaciones 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Niguno 

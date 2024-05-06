@@ -55,13 +55,13 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Realizar las subtareas para el segundo sprint 
 
 ### ¿Qué voy a hacer?
-- 
+- Empezar con el plan de pruebas 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno 
 
 ---
 
@@ -122,13 +122,13 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Empezar con el plan de pruebas 
 
 ### ¿Qué voy a hacer?
-- 
+- Continuar con el plan de pruebas 
 
 ### ¿Qué impedimentos tengo?
-- 
+- No recuerdo bien como hacer la matriz de descomposición funcional 
 
 ---
 
@@ -202,13 +202,13 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Continuar con el plan de pruebas 
 
 ### ¿Qué voy a hacer?
-- 
+- Asistir a una tutoria con la profesora Rocio para revisar temas sobre la matriz de descomposición funcional
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno 
 
 ---
 
@@ -269,13 +269,13 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Asistir a una tutoria con la profesora Rocio para revisar temas sobre la matriz de descomposición funcional
 
 ### ¿Qué voy a hacer?
-- 
+- Continuar con el plan de pruebas 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno 
 
 ---
 
@@ -336,10 +336,10 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Continuar con el plan de pruebas 
 
 ### ¿Qué voy a hacer?
-- 
+- Finalizar el plan de pruebas 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno 

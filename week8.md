@@ -55,13 +55,13 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Agregar algunos elementos de front necesarios para poder usar las notificaciones
 
 ### ¿Qué voy a hacer?
-- 
+- Continuar con la implentación de las notificaciones 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno 
 
 ---
 
@@ -123,26 +123,14 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Continuar con la implementación de las notificaciones 
 
 ### ¿Qué voy a hacer?
-- 
+- Continuar con la implementacion de las notificaciones 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Creo que necesito usar swapper, y no se nada al respecto
 
----
-
-## Alejandro Torres Soto
-
-### ¿Qué hice?
-- 
-
-### ¿Qué voy a hacer?
-- 
-
-### ¿Qué impedimentos tengo?
-- 
 
 ---
 
@@ -177,13 +165,13 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Continuar con la implementación de las notificaciones 
 
 ### ¿Qué voy a hacer?
-- 
+- Investigar sobre como usar swapper
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -203,13 +191,13 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Investigar sobre como usar swapper 
 
 ### ¿Qué voy a hacer?
-- 
+- Implemetarlo en la funcionalidad de notificaciones 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -270,13 +258,13 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Aplicar swapper a las notificaiones 
 
 ### ¿Qué voy a hacer?
-- 
+- Corregir algunos errores que hay en el codigo
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -312,13 +300,13 @@
 ## Andrés Felipe Cabezas Guerrero
 
 ### ¿Qué hice?
-- 
+- Empezar a corregir errores con el swapper en la implementación 
 
 ### ¿Qué voy a hacer?
-- 
+- Terminar de corregir errores en el codigo de las notificaciones 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno 
 
 ---
 
@@ -338,10 +326,10 @@
 ## Alejandro Torres Soto
 
 ### ¿Qué hice?
-- 
+- Terminar de corregir errores en la implementacion del swapper
 
 ### ¿Qué voy a hacer?
-- 
+- Como el codigo todavia tiene problemas, voy a pedir ayuda al grupo 
 
 ### ¿Qué impedimentos tengo?
-- 
+- Erroes con el swapper 
