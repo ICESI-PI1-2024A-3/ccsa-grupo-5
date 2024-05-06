@@ -34,8 +34,7 @@ SECRET_KEY = "cdabadc5caf8207c81af4cf9404b6b33"
 if "test" in sys.argv:
     DEBUG = True
 else:
-    # DEBUG = os.environ.get('DEBUG','False').lower() == 'true'
-    DEBUG = True
+    DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
 ALLOWED_HOSTS = ["*"]
 
@@ -96,6 +95,7 @@ if DEBUG:
             "NAME": BASE_DIR / "db_test.sqlite3",
         }
     }
+
 else:
     DATABASES = {
         "default": {
@@ -105,7 +105,7 @@ else:
     }
 
     DATABASES["default"] = dj_database_url.parse(
-        "postgres://testsql_xenh_user:pJ8txJBGktb1f1eMPjQkVzC4nBwURNEY@dpg-coi4ej8l5elc73d1jcsg-a.oregon-postgres.render.com/testsql_xenh"
+        "postgres://testsql_kn83_user:zhRlEEllAMkCANu6eW0PytjqdGu8xOsG@dpg-corrv121hbls73fagt4g-a.oregon-postgres.render.com/testsql_kn83"
     )
 
 
