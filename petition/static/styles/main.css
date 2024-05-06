@@ -96,7 +96,14 @@ main {
 .nav-link:focus,
 .nav-link.active {
     color: #2000fb !important; 
-    text-decoration: none; 
+    text-decoration: none !important; 
+}
+
+.nav-link:hover i,
+.nav-link:focus i,
+.nav-link.active i {
+    color: #2000fb !important; 
+    text-decoration: none !important; 
 }
 
 title {
