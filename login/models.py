@@ -15,6 +15,7 @@ class User(AbstractUser, PermissionsMixin):
     Attributes:
         username (str): The unique identifier for the user. Max length is 15 characters.
     """
+
     username = models.CharField(
         max_length=15, unique=True, verbose_name="identificador"
     )
