@@ -19,13 +19,21 @@ let dataTableOptions = {
         "sProcessing": "Procesando...",
     },
     responsive: 'true',
-    dom: 'Bfrtilp',
+    dom: '<"top"Bfrtilp<"clear">>',
     buttons: [
         {
             extend: 'excelHtml5',
-            text: '<i class="fas fa-file-excel"></i> ',
+            text: '<i class="fas fa-file-excel"></i> Exportar ',
             titleAttr: 'Exportar a Excel',
             className: 'btn btn-success'
+        },
+        {
+            text: '<i class="fas fa-plus"></i> Nuevo',
+            action: function () {
+                
+                window.location.href = '/solicitud/seleccionarTipo';
+            },
+            className: 'btn btn-primary'
         },
 
     ],

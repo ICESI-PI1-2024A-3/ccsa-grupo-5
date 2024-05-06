@@ -10,6 +10,10 @@ button {
     cursor: pointer;
 }
 
+.button-add{
+    background-color: #2000fb!important;
+}
+
 
 .tableContainer {
     max-width: 100%;
