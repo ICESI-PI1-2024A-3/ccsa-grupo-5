@@ -83,13 +83,13 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- No logré reunirme con Gabriela por motivos de tiempo por parte de ella
 
 ### ¿Qué voy a hacer?
-- 
+- Corregir front y esperar la realización de notificaciones por parte de mi compañero
 
 ### ¿Qué impedimentos tengo?
-- 
+- No tener las notificaciones
 
 ---
 
@@ -164,13 +164,13 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- Corregí front de las pantallas de crear Tareas y Observaciones
 
 ### ¿Qué voy a hacer?
-- 
+- Empezar a implementar notificaciones
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -231,13 +231,13 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- Investigar e implementar en una primera instancia usando las notificaciones predeeterminadas de Django
 
 ### ¿Qué voy a hacer?
-- 
+- Corregir la eficiencia de la página
 
 ### ¿Qué impedimentos tengo?
-- 
+- El proyecto se relentizó de manera preocupante
 
 ---
 
@@ -298,13 +298,14 @@
 ## Nicolas Cuellar Molina
 
 ### ¿Qué hice?
-- 
+- Implementar de forma igual que un clase cualquiera en nuestro proyecto para mejorar eficiencia
+- Presentó cambios significativos en la eficiencia 
 
 ### ¿Qué voy a hacer?
-- 
+- Mejorar front para la entrega parcial
 
 ### ¿Qué impedimentos tengo?
-- 
+- Falta de tiempo por carga académica
 
 ---
 
