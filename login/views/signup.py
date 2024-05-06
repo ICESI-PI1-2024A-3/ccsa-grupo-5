@@ -31,8 +31,7 @@ def signup(request):
             # Display success message
             messages.success(
                 request,
-                "Usuario creado satisfactoriamente",
-                extra_tags="signup_success",
+                "Usuario creado satisfactoriamente"
             )
 
             if roles:
@@ -71,7 +70,6 @@ def signup(request):
                 for error in errors:
                     messages.error(
                         request,
-                        f"Error en {field}: {error}",
-                        extra_tags="signup_error",
+                        f"Error en {field}: {error}"
                     )
             return render(request, "signup.html", {"form": form})
