@@ -9,7 +9,8 @@ from django.contrib import messages
 from django.views.decorators.cache import never_cache
 from ..permissions import groupRequired
 
-@groupRequired('Admin')
+
+@groupRequired("Admin")
 def signup(request):
     """
     View for signing up new users with different roles.
@@ -28,7 +29,11 @@ def signup(request):
             user = form.save()
             roles = form.cleaned_data.get("roles")
             # Display success message
-            messages.success(request, "Usuario creado satisfactoriamente")
+            messages.success(
+                request,
+                "Usuario creado satisfactoriamente",
+                extra_tags="signup_success",
+            )
 
             if roles:
                 # Assign roles and permissions based on form selection
@@ -64,5 +69,9 @@ def signup(request):
                 elif field == "password2":
                     field = "Confirmar contraseña"
                 for error in errors:
-                    messages.error(request, f"Error en {field}: {error}")
+                    messages.error(
+                        request,
+                        f"Error en {field}: {error}",
+                        extra_tags="signup_error",
+                    )
             return render(request, "signup.html", {"form": form})

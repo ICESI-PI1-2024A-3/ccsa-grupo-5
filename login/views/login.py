@@ -11,6 +11,7 @@ from django.contrib.auth import logout
 from django.views.decorators.cache import never_cache
 from django.contrib.auth.models import User, Group
 
+
 @never_cache
 def login(request):
     """
@@ -28,7 +29,11 @@ def login(request):
             auth_login(request, user)
             return redirect("index")
         else:
-            messages.error(request, "Acceso inválido. Por favor, inténtelo otra vez.")
+            messages.error(
+                request,
+                "Acceso inválido. Por favor, inténtelo otra vez.",
+                extra_tags="login_error",
+            )
     else:
         form = loginForm.LoginForm()
 
