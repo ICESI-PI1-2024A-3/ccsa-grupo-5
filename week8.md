@@ -42,13 +42,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Intentar implementar las pruebas end to end en git actions
 
 ### ¿Qué voy a hacer?
-- 
+- Reunirme con Gabriela para mostrar avances
 
 ### ¿Qué impedimentos tengo?
-- 
+- Poca información sobre como agregar selenium a git actions
 
 ---
 
@@ -109,13 +109,14 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Seguir con selenium
+
 
 ### ¿Qué voy a hacer?
-- 
+- Investigar sobre git actions y pruebas end to end
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -189,13 +190,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Deje de lado lo de slenium de momento y trabajé en front
 
 ### ¿Qué voy a hacer?
-- 
+- Trabajar en el front
 
 ### ¿Qué impedimentos tengo?
-- 
+- Ninguno
 
 ---
 
@@ -256,13 +257,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Trabajar en front 
 
 ### ¿Qué voy a hacer?
-- 
+- Seguir con front y retomar selenium
 
 ### ¿Qué impedimentos tengo?
-- 
+- Problemas con selenium
 
 ---
 
@@ -323,13 +324,13 @@
 ## Miguel Ángel Martínez Vidal
 
 ### ¿Qué hice?
-- 
+- Trabajar en selenium y fri¿ont
 
 ### ¿Qué voy a hacer?
-- 
+- Seguir con lo mismo
 
 ### ¿Qué impedimentos tengo?
-- 
+- Sigo teniendo problemas con selenium
 
 ---
 
