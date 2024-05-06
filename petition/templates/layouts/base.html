@@ -80,9 +80,13 @@
     <!-- Top section -->
     <div class="top-section">
       <div class="left-content">
-        <img src="{% static 'images/icesiRuedaAzul.png' %}" />
-        <h1 class="top-section-title">Módulo de Contratación</h1>
+        <div class="move-container">
+          <img src="{% static 'images/icesiRuedaAzul.png' %}" class="logo" />
+          <h1 class="top-section-title">Módulo de Contratación</h1>
+        </div>
       </div>
+      
+      
       <div class="right-content">
         <a href=""><button type="button" class="notification-icon"><i class="fas fa-bell"></i></button></a>
         <a href="{% url 'logoutSesion'%}"><button type="button" class="log-out-icon"><i class="fas fa-sign-out-alt"></i></button></a>
