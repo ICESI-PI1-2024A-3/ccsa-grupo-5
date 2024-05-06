@@ -5,6 +5,7 @@
 {% block head %}
 <title>Detalles de solicitud</title>
 <link rel="stylesheet" href="{% static 'styles/editPetition.css' %}">
+<link rel="stylesheet" href="{% static 'styles/showPetition.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 {% endblock %}
 
@@ -13,7 +14,7 @@
 <div class="cardContainer">
 
     <div class="card">
-        <h1>Detalles de la Solicitud</h1>
+        <h1 class="title-main">Detalles de la Solicitud</h1>
 
         <h3>Tipo de contrato: {{ solicitud.getPetitionType }}</h3>
         <p>Fecha de Solicitud: {{ solicitud.petitionDate }}</p>
@@ -76,22 +77,23 @@
 
     <hr>
 
-    <div class="card">
+    <div class="button-petition">
         {% if solicitud.state != 'rechazado' and solicitud.state != 'aprobado' %}
         <a href="{% url 'rejectPetition' solicitud.id %}"><button>Rechazar Solicitud</button></a>
         {% endif %}
-        <p></p>
         {% if solicitud.getUser == 'Sin Asignar' %}
         <a href="{% url 'assignPetition' solicitud.id %}"><button>Asignar a un Gestor de Procesos</button></a>
         {% endif %}
     </div>
-
+    <hr>
     <div class="card">
+        <div class="button-petition">
         <a href="{% url 'createObservation' petitionId %}"><button>Crear Observación</button></a>
         <p></p>
         <button id="toggleObservationsBtn">Mostrar Observaciones</button>
-
-        <div class="divButton">
+    </div>
+    <hr>
+        <div id="observations" class="divButton">
             <div id="observationsContainer" style="display: none;">
                 <div class="dropdown">
                     <div id="observationsDropdown" class="dropdown-content">
@@ -104,8 +106,8 @@
                             <p></p>
                         </div>
                         {% if observation.author.username == request.user.username %}
-                        <div class="buttons">
-                            <div class="divButton">
+                        <div id="buttons" class="buttons">
+                            <div id="left" class="divButton">
                                 <form id="deleteForm{{ observation.id }}" action="{% url "deleteObservation" observation.id %}" method="POST">
                                     {% csrf_token %}
                                     <button type="button" class="delete-icon" data-observation-id="{{ observation.id }}" onclick="confirmDelete({{ observation.id }})">
@@ -113,7 +115,7 @@
                                     </button>
                                 </form>
                             </div>
-                            <div class="divButton">
+                            <div id="rigth" class="divButton">
                                 <a href="{% url 'editObservation' petitionId observation.id %}" id="editForm{{ observation.id }}">
                                     <button type="button" class="edit-icon" onclick="editObservation({{ petition.id }}, {{ observation.id }})">
                                         <i class="fas fa-edit"></i> Editar
@@ -122,6 +124,7 @@
                             </div>
                         </div>
                         {% endif %}
+                        <hr>
                         {% endfor %}
                     </div>
                 </div>
