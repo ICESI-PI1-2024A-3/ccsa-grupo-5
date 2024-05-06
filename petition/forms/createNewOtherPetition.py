@@ -53,21 +53,19 @@ class CreateNewOtherPetition(forms.ModelForm):
         # Validate start and end date
         if startDate and endDate and startDate > endDate:
             self.add_error(
-                "startDate",
+                "petitionDate",
                 "La fecha de inicio no puede ser posterior a la fecha de fin.",
             )
 
         # Validate petition date
-        if startDate and petitionDate and petitionDate > startDate:
+        if (
+            startDate
+            and petitionDate
+            and (petitionDate > startDate or petitionDate > endDate)
+        ):
             self.add_error(
                 "petitionDate",
-                "La fecha de la petición no puede ser posterior a la fecha de inicio.",
-            )
-
-        if endDate and petitionDate and petitionDate > endDate:
-            self.add_error(
-                "petitionDate",
-                "La fecha de la petición no puede ser posterior a la fecha de fin.",
+                "La fecha de la petición no puede ser posterior al inicio o fin.",
             )
 
         return cleaned_data

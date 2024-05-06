@@ -54,13 +54,6 @@ def createMonitoring(request):
 
             return redirect("viewTask", petitionId)
 
-        else:
-            for field, errors in form.errors.items():
-                for error in errors:
-                    messages.error(request, f"Error en {field}: {error}")
-
-        return render(request, "createMonitoring.html", {"form": form})
-
     else:
         form = createNewMonitoringPetition.CreateNewMonitoringPetition()
     return render(request, "createMonitoring.html", {"form": form})
