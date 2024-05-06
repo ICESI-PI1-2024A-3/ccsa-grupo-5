@@ -3,9 +3,10 @@
 {% load static %}
 
 {% block content %}
+<div class="cardContainer">
 
 <link rel="stylesheet" href="{% static 'styles/editPetition.css' %}">
-<link rel="stylesheet" href="{% static 'styles/petitionStyle.css' %}">
+<link rel="stylesheet" href="{% static 'styles/viewTask.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
 <h1>Tareas de las Nueva Solicitud </h1>
@@ -14,7 +15,9 @@
 <li><small>Puedes editar o eliminar las tareas predeterminadas</small></li>
 
 <p></p>
-    <a href="{% url 'createTask' petitionId%}"><button>Crear Nueva Tarea</button></a>
+<div class="center-content">
+    <a class="outButton" href="{% url 'createTask' petitionId%}"><button class="outButton">Crear Nueva Tarea</button></a>
+</div>
 <p></p>
 
 <hr>
@@ -47,8 +50,12 @@
 {% endfor %}
 
 <p></p>
-    <a href="{% url 'viewPetition' %}"><button>Finalizar</button></a>
+<div class="center-content">
+    <a class="outButton" href="{% url 'viewPetition' %}"><button class="outButton">Finalizar</button></a>
+</div>
+    
 <p></p>
 
 <script src="{% static 'scripts/deleteElement.js' %}"></script>
-{% endblock  %}
+</div>
+{% endblock %}

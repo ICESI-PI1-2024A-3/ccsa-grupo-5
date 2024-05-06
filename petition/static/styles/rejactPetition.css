@@ -1,4 +1,5 @@
 .cardContainer {
+    min-width: 80%;
     max-width: 60% !important;
     width: 80% !important;
     margin: 20px auto !important;
@@ -30,4 +31,16 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.buttons-rejact{
+    padding: 10px;
+    display: flex;
+    justify-content: center; /* Distribuye el espacio entre los elementos */
+    text-decoration: none;
+    gap: 3%;
+}
+
+h1{
+    text-align: center;
 }

@@ -35,6 +35,7 @@ jobs:
       run: |
         python manage.py migrate
 
-    - name: Run tests
+    - name: Run Unit Tests
       run: |
         python manage.py test tests/UnitTests
+
