@@ -1,0 +1,32 @@
+{% extends "layouts/base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'styles/petitionStyle.css' %}">
+<link rel="stylesheet" href="{% static 'styles/editPetition.css' %}">
+
+<div class="cardContainer">
+
+<h1>Editar Tarea</h1>
+<p></p>
+<li style="text-align: center;"><small>Escribe la nueva descripción de la tarea que el gestor encargado pordrá visualizar</small></li>
+
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="buttons" >
+        <div class="divButton">
+            <button name="cancelar" class="cancel">Cancelar</button>
+        </div>
+        <div class="divButton">
+            <button type="submit">Guardar Cambios</button>
+        </div>
+    </div>
+
+</form>
+</div>
+
+{% endblock  %}

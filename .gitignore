@@ -1,25 +1,25 @@
-# Ignore automatically generated files
+# Ignorar archivos generados automáticamente
 *.pyc
 *.pyo
 *.pyd
 
-# Ignore local configuration files
-settings.py
-
-# Ignore database migration files
+# Ignorar archivos de migraciones de la base de datos
 /migrations/
 
-# Ignore virtual environment files (if using one)
+# Ignorar archivos de entorno virtual (si usas uno)
 venv/
 env/
 
-# Ignore log and cache files
+# Ignorar archivos de logs y cache
 /logs/
 /cache/
 
-# Ignore Python dependencies files
+# Ignorar archivos de dependencias de Python
 /.venv/
 /.vscode/
 
-# Ignore test and compilation cache files
+# Ignorar archivos de caché de prueba y compilación
 /__pycache__/
+
+#Ignorar la base de datos
+*.sqlite3

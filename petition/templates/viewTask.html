@@ -1,0 +1,61 @@
+{% extends "layouts/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="cardContainer">
+
+<link rel="stylesheet" href="{% static 'styles/editPetition.css' %}">
+<link rel="stylesheet" href="{% static 'styles/viewTask.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+<h1>Tareas de las Nueva Solicitud </h1>
+
+<li><small>Puedes agregar nuevas tareas para esta nueva solicitud</small></li>
+<li><small>Puedes editar o eliminar las tareas predeterminadas</small></li>
+
+<p></p>
+<div class="center-content">
+    <a class="outButton" href="{% url 'createTask' petitionId%}"><button class="outButton">Crear Nueva Tarea</button></a>
+</div>
+<p></p>
+
+<hr>
+
+{% for task in tasks %}
+    <div class="card">
+        <p>Descripción: {{ task.description }}</p>
+        <p></p>
+    
+        <div class="buttons" >
+                <div class="divButton">
+                    <form id="deleteForm{{ task.id }}" action="{% url "deleteTask" task.id%}" method="POST">
+                    {% csrf_token %}
+                        <button type="button" class="delete-icon" data-observation-id="{{ task.id }}" onclick="confirmDelete({{ task.id }})">
+                            <i class="fas fa-trash-alt"></i> Eliminar
+                        </button>
+                    </form>
+                </div>
+                <div class="divButton">
+                    {% csrf_token %}
+                    <a href="{% url 'editTask' petitionId task.id %}" id="editForm{{ task.id}}"><button type="button" class="edit-icon" onclick="editTask( {{petitionId}} {{task.id}} )">
+                        <i class="fas fa-edit"></i> Editar
+                    </button>
+                    </a>
+                </div>
+        
+        </div>
+    </div>
+    <hr>
+{% endfor %}
+
+<p></p>
+<div class="center-content">
+    <a class="outButton" href="{% url 'viewPetition' %}"><button class="outButton">Finalizar</button></a>
+</div>
+    
+<p></p>
+
+<script src="{% static 'scripts/deleteElement.js' %}"></script>
+</div>
+{% endblock %}

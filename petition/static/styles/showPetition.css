@@ -1,0 +1,38 @@
+.title-main{
+    text-align: center;
+}
+
+.button-petition {
+    padding: 10px;
+    display: flex;
+    justify-content: center; /* Distribuye el espacio entre los elementos */
+    text-decoration: none;
+    gap: 3%;
+}
+
+.cardContainer {
+    min-width: max-content;
+}
+
+.card{
+    width: 100%;
+}
+
+#observations{
+    width: 100%;
+}
+
+#buttons{
+    display: flex;
+    justify-content: left;
+    gap: 3%;
+}
+
+#left {
+    max-width: max-content;
+    min-width: max-content;
+}
+#right {
+    max-width: max-content;
+    min-width: max-content;
+}

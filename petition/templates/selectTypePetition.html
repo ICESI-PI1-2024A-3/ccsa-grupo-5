@@ -1,0 +1,31 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'styles/selectTypePetition.css' %}">
+
+<div class="cardContainer">
+   
+    <div class="title-container">
+        <div class="icon-text-container">
+            <h1 class="logo-text">Crear solicitud, seleccione el tipo de solicitud que desea crear</h1>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <div class="divButton">
+            <a href="{% url 'createMonitoring' %}">
+                <button>Monitoria</button>
+            </a>
+        </div>
+        <div class="divButton">
+            <a href="{% url 'createOther' %}">
+                <button>Prestación de Servicios o Practicantes</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

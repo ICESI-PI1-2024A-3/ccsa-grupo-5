@@ -1,0 +1,19 @@
+{% extends "layouts/base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="cardContainer">
+    <link rel="stylesheet" href="{% static 'styles/petitionStyle.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/editPetition.css' %}">
+
+    <h1>Crear Nueva Observación</h1>
+    <p></p>
+    <li style="text-align: center;"><small>Escribe la descripción de la observación que podrás visualizar junto al líder y al gestor encargado</small></li>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+</div>
+{% endblock %}

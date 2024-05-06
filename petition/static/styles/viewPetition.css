@@ -1,0 +1,43 @@
+button {
+    max-width: 25%;
+    min-width: max-content;
+    width: 50%;
+    padding: 10px;
+    background-color: #2000fb;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-add{
+    background-color: #2000fb!important;
+}
+
+
+.tableContainer {
+    min-width: max-content;
+    max-width: 100%;
+    max-height: 100%;
+    padding: 20px;
+    background-color: #f0f3fc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.buttons {
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    text-decoration: none;
+}
+
+.divButton {
+    width: 30%;
+    min-width: max-content;
+}
+
+.delete-icon,
+.cancel {
+    background-color: red;
+}
