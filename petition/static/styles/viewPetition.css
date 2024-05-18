@@ -24,6 +24,12 @@ button {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+a[data-dt-idx="0"] {
+    /* Estilos CSS aquí */
+    background-color: #2000fb !important;
+}
+
+
 .buttons {
     padding: 10px;
     display: flex;

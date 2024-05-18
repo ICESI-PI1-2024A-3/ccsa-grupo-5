@@ -7,8 +7,28 @@
     border-radius: 6px;
 }
 
+#titleCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title-and-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centra verticalmente los elementos */
+}
+
 .card {
     margin-bottom: 20px; /* Agregamos un margen entre los cards */
+    text-align: left;    
+}
+
+.cardGroup {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 button {
@@ -28,6 +48,7 @@ button {
     display: flex;
     justify-content: space-between; /* Distribuye el espacio entre los elementos */
     text-decoration: none;
+    gap: 10px;
 }
 
 .divButton {
@@ -52,4 +73,48 @@ button {
     width: 0;
     height: 100%;
     background-color: #007bff;
+}
+
+#generalData,
+#specificData {
+    background: white;
+    margin-bottom: 20px;
+    text-align: left;
+    padding: 20px;
+    width: 48%; /* Ajustamos el ancho para que quepan dos tarjetas lado a lado */
+}
+
+h1 {
+    text-align: left;
+    color: #333;
+}
+h3 {
+    color: #333;
+    font-weight: bold;
+}
+
+h3 b{
+    color: #2000fb;
+    font-weight: bold;
+}
+p {
+    line-height: 1.6;
+    color: #555;
+}
+.card p {
+    margin: 10px 0;
+}
+.card:last-child {
+    text-align: center;
+}
+.card b {
+    color: #2000fb;
+}
+
+.label {
+    font-weight: bold;
+    color: #333;
+}
+.value {
+    color: #555;
 }
