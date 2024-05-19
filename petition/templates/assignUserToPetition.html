@@ -12,6 +12,7 @@
     <h1>Asignar Gestor a Solicitud</h1>
     <form method="POST">
         {% csrf_token %}
+        <div class="labelContainer">
         <label for="user">Seleccionar gestor que se encargará de administrar la solicitud:</label>
         <select name="user" id="user">
             {% for user in users %}
@@ -23,14 +24,15 @@
             {% endfor %}
         </select>
         <p></p>
+        </div>
         
         <div>
             <button type="submit" name="cancel" class="rejact">Cancelar</button>
             <button type="submit" name="assign" id="assign-button" class="cancel">Asignar Gestor</button>
-            <div class="info-box">
+            <div class="textContainer">
                 <ul>
-                    <li><small>Solo se puede asignar un gestor a una solicitud</small></li>
-                    <li><small>El gestor asignado será el único encargado de completar la solicitud</small></li>
+                    <p>Solo se puede asignar un gestor a una solicitud</p>
+                    <p>El gestor asignado será el único encargado de completar la solicitud</p>
                 </ul>
             </div>
         </div>

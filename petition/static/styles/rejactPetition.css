@@ -1,4 +1,5 @@
 .cardContainer {
+    min-width: 80%;
     max-width: 60% !important;
     width: 80% !important;
     margin: 20px auto !important;
@@ -6,9 +7,11 @@
     background-color: rgba(255, 255, 255, 1) !important;
     border-radius: 6px !important;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
+    text-align: center !important;
+    /* Añade esta línea */
 }
 
-.rejact{
+.rejact {
     max-width: 30%;
     min-width: max-content;
     width: 30%;
@@ -20,7 +23,7 @@
     cursor: pointer;
 }
 
-.cancel{
+.cancel {
     max-width: 30%;
     min-width: max-content;
     width: 30%;
@@ -32,14 +35,39 @@
     cursor: pointer;
 }
 
-.buttons-rejact{
+.buttons-rejact {
     padding: 10px;
     display: flex;
-    justify-content: center; /* Distribuye el espacio entre los elementos */
+    justify-content: center;
+    /* Distribuye el espacio entre los elementos */
     text-decoration: none;
     gap: 3%;
 }
 
-h1{
-    text-align: center;
+h1 {
+    margin: 0 !important;
+    color: #2000fb !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    margin-bottom: 5% !important;
+
+}
+
+.h1Black {
+    margin: 0 !important;
+    color: #000000 !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    margin-bottom: 5% !important;
+}
+
+.textContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+}
+
+.labelContainer {
+    margin-bottom: 5%;
 }

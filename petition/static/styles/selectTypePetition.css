@@ -1,5 +1,7 @@
 .cardContainer {
-    max-width: 90%; /* Cambiar el ancho máximo para dispositivos móviles */
+    min-width: max-content;
+    max-width: 90%;
+    /* Cambiar el ancho máximo para dispositivos móviles */
     width: 100%;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.8);
@@ -10,6 +12,16 @@
     flex-direction: column;
     align-items: center;
 }
+
+h1 {
+    margin: 0 !important;
+    color: #2000fb !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    margin-bottom: 5% !important;
+}
+
+
 
 .logo-container {
     width: 100%;
@@ -36,7 +48,8 @@
 }
 
 .add-icon {
-    max-width: 20px; /* Tamaño máximo del ícono */
+    max-width: 20px;
+    /* Tamaño máximo del ícono */
     margin-right: 10px;
 }
 
@@ -69,10 +82,12 @@ button {
 
 @media screen and (min-width: 768px) {
     .cardContainer {
-        max-width: 500px; /* Cambiar el ancho máximo para dispositivos de escritorio */
+        max-width: 500px;
+        /* Cambiar el ancho máximo para dispositivos de escritorio */
     }
 
     .add-icon {
-        max-width: 30px; /* Ajustar el tamaño del ícono en dispositivos de escritorio */
+        max-width: 30px;
+        /* Ajustar el tamaño del ícono en dispositivos de escritorio */
     }
 }

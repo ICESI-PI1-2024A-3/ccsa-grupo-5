@@ -1,8 +1,10 @@
 body {
     margin: 0 !important;
-    font-family: Arial !important;
-    background-color: #f0f3fc; /* Establecer el color de fondo */
+    font-family: 'Roboto', sans-serif !important;
+    background-color: #f0f3fc;
+    /* Establecer el color de fondo */
 }
+
 
 
 .notification-icon,
@@ -20,10 +22,15 @@ body {
 }
 
 .navbarContainer i {
-     /* Ajusta el color, tamaño, margen y cualquier otro estilo que desees para los íconos */
-     color: black; /* Color del ícono */
-     font-size: 20px; /* Tamaño del ícono */
-     margin-right: 5px; /* Espacio a la derecha del ícono */
+    /* Ajusta el color, tamaño, margen y cualquier otro estilo que desees para los íconos */
+    color: black;
+    /* Color del ícono */
+    font-size: 20px;
+    /* Tamaño del ícono */
+    margin-right: 5px;
+    /* Espacio a la derecha del ícono */
+
+    margin-top: 5%;
 }
 
 
@@ -36,9 +43,10 @@ nav img {
 }
 
 .navbarContainer {
-    min-height: 100vh;;
+    min-height: 100vh;
+    ;
     width: 250px;
-    position:absolute;
+    position: absolute;
     top: 0;
     left: -250px;
     padding-top: 0px;
@@ -54,7 +62,8 @@ nav img {
 
 .left-content.move-right {
     transform: translateX(111%);
-    transition: all 330ms; /* Agregamos la transición aquí */
+    transition: all 330ms;
+    /* Agregamos la transición aquí */
 }
 
 /*.move-container .logo {
@@ -95,15 +104,15 @@ main {
 .nav-link:hover,
 .nav-link:focus,
 .nav-link.active {
-    color: #2000fb !important; 
-    text-decoration: none !important; 
+    color: #2000fb !important;
+    text-decoration: none !important;
 }
 
 .nav-link:hover i,
 .nav-link:focus i,
 .nav-link.active i {
-    color: #2000fb !important; 
-    text-decoration: none !important; 
+    color: #2000fb !important;
+    text-decoration: none !important;
 }
 
 title {
@@ -116,13 +125,13 @@ title {
     top: 20px;
     cursor: pointer;
 }
-  
+
 #navbarContainer .bars__menu span {
     display: block;
     width: 40px;
 }
 
-.bars__menu{
+.bars__menu {
     padding: 5px;
     width: 30px;
     height: 30px;
@@ -138,50 +147,56 @@ title {
     transition: all 330ms;
 }
 
-.activeline1__bars-menu{
-    transform: rotate(45deg) translate(-2px, -3px); 
+.activeline1__bars-menu {
+    transform: rotate(45deg) translate(-2px, -3px);
 }
 
-.activeline2__bars-menu{
+.activeline2__bars-menu {
     opacity: 0;
-    margin-left: -30px; 
+    margin-left: -30px;
 }
 
-.activeline3__bars-menu{
+.activeline3__bars-menu {
     transform: rotate(-45deg) translate(-4px, 7px);
 }
 
 .buttonX {
-    position: absolute; /* Posiciona el botón de manera absoluta en relación con su contenedor */
-    top: 0; /* Coloca el botón en la parte superior */
+    position: absolute;
+    /* Posiciona el botón de manera absoluta en relación con su contenedor */
+    top: 0;
+    /* Coloca el botón en la parte superior */
     right: 0;
-    width: 100%; /* Haz que el botón ocupe todo el ancho del contenedor */
-    height: 50px; /* Haz que el botón ocupe todo el alto del contenedor */
-    opacity: 0; /* Establece la opacidad del botón en cero */
+    width: 100%;
+    /* Haz que el botón ocupe todo el ancho del contenedor */
+    height: 50px;
+    /* Haz que el botón ocupe todo el alto del contenedor */
+    opacity: 0;
+    /* Establece la opacidad del botón en cero */
     /* Agrega otros estilos según sea necesario, como tamaño de fuente, color, etc. */
 }
 
 
 .top-section {
-    display: flex;
-    padding: 12px;
-    align-items: center;
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex !important;
+    padding: 12px !important;
+    align-items: center !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
 }
 
 .left-content {
     display: flex;
     align-items: center;
-  }
-  
+}
+
 .right-content {
     display: flex;
-    margin-left: auto; /* Esto empujará los elementos a la derecha */
+    margin-left: auto;
+    /* Esto empujará los elementos a la derecha */
 }
 
 
-.top-section img{
+.top-section img {
     height: 40px;
     width: 40px;
     margin-right: 15px;
@@ -190,6 +205,11 @@ title {
 
 .top-section-title {
     color: #333 !important;
-    font-size: 24px;
-    margin: 0;
+    font-size: 24px !important;
+    margin: 0 !important;
+    font-weight: bold !important;
+}
+
+.imgContainer {
+    margin-bottom: 10%;
 }

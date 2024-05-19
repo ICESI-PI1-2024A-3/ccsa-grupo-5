@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="{% static 'styles/editPetition.css' %}">
     <h1>Crear Nueva Tarea Predeterminada</h1>
     <p></p>
-    <li style="text-align: center;"><small>Escribe la descripción de la tarea que el gestor encargado podrá visualizar</small></li>
-
+    <div class="textContainer">
+        <p class="p1" >Escribe la descripción de la tarea que el gestor encargado podrá visualizar</p>
+    </div>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
