@@ -34,8 +34,7 @@ SECRET_KEY = "cdabadc5caf8207c81af4cf9404b6b33"
 if "test" in sys.argv:
     DEBUG = True
 else:
-    #DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
-    DEBUG = True
+    DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
 ALLOWED_HOSTS = ["*"]
 
@@ -106,7 +105,7 @@ else:
     }
 
     DATABASES["default"] = dj_database_url.parse(
-        "postgres://testsql_kn83_user:zhRlEEllAMkCANu6eW0PytjqdGu8xOsG@dpg-corrv121hbls73fagt4g-a.oregon-postgres.render.com/testsql_kn83"
+        "postgres://contratacion_database_user:lHsSTV2rM6NOcW1GJaOEJJoYwTZspjsv@dpg-cp5amsn79t8c73ercbc0-a.oregon-postgres.render.com/contratacion_database"
     )
 
 
