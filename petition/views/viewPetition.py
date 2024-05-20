@@ -44,7 +44,8 @@ def viewPetition(request):
 
     # Calculate the overall progress percentage
     total_percentage = sum(petition.getPercentage() for petition in petitions) if petitions else 0
-    average_percentage = total_percentage / len(petitions) if petitions else 1
+    average_percentage = total_percentage / len(petitions) if petitions else 0
+    
 
     # Count the number of pending, approved, rejected, and in-process petitions
     pending_count = sum(1 for petition in petitions if petition.state.lower() == "pendiente")
