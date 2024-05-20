@@ -34,8 +34,8 @@ SECRET_KEY = "cdabadc5caf8207c81af4cf9404b6b33"
 if "test" in sys.argv:
     DEBUG = True
 else:
-    #DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
-    DEBUG = True
+    DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+    #DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -90,7 +90,14 @@ WSGI_APPLICATION = "moduloContratacion.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 if DEBUG:
-    
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db_test.sqlite3",
+        }
+    }
+
+else:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
@@ -145,7 +152,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 # This production code might break development mode, so we check whether we're in DEBUG mode
-if DEBUG:
+if not DEBUG:
     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
     STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
     # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
