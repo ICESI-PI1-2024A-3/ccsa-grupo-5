@@ -68,6 +68,10 @@
             <p><span class="label">ARL:</span><span class="value"> {{ solicitud.arl }}</span></p>
             <p><span class="label">Valor del Contrato:</span> <span class="value"> {{ solicitud.contractValue }}</span></p>
             <p><span class="label">Información de Pago:</span> <span class="value"> {{ solicitud.paymentInfo }}</span></p>
+
+            <p><span class="label"></span> <span class="value"> <a href="{{ solicitud.rutAttachment.url }}" download><button>Descargar archivo RUT</button></a></span></p>
+
+            
         </div>
     </div>
 
