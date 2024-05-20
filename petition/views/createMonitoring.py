@@ -54,7 +54,7 @@ def createMonitoring(request):
                 
 
             notification = Notification.objects.create(
-            description="Se creo una solicitud de monitoria " + str(petitionId),
+            description="Se creó una solicitud de monitoria " + str(petitionId),
             date=timezone.now().date(),
             time=timezone.localtime(),
             author=request.user,  # Asignar el usuario como autor

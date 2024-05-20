@@ -37,11 +37,28 @@ def viewPetition(request):
         monitorings = Monitoring.objects.filter(user=request.user)
         others = Other.objects.filter(user=request.user)  
 
-    petitions = None
+    petitions = list(chain(monitorings, others)) if (monitorings.exists() or others.exists()) else []
 
     if monitorings.exists() or others.exists():
         petitions = list(chain(monitorings, others))
 
+    # Calculate the overall progress percentage
+    total_percentage = sum(petition.getPercentage() for petition in petitions) if petitions else 0
+    average_percentage = total_percentage / len(petitions) if petitions else 1
+
+    # Count the number of pending, approved, rejected, and in-process petitions
+    pending_count = sum(1 for petition in petitions if petition.state.lower() == "pendiente")
+    approved_count = sum(1 for petition in petitions if petition.state.lower() == "aprobado")
+    rejected_count = sum(1 for petition in petitions if petition.state.lower() == "rechazado")
+    in_process_count = sum(1 for petition in petitions if petition.state.lower() == "en_proceso")
+    total_count = len(petitions) if petitions else 0
+
     return render(request, 'viewPetition.html', {
-        'petitions': petitions
+        'petitions': petitions,
+        'average_percentage': average_percentage,
+        'pending_count': pending_count,
+        'approved_count': approved_count,
+        'rejected_count': rejected_count,
+        'in_process_count': in_process_count,
+        'totalCount': total_count
     })

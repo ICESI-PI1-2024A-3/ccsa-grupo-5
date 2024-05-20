@@ -49,14 +49,13 @@ button {
 .buttons {
     padding: 10px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     /* Distribuye el espacio entre los elementos */
     text-decoration: none;
     gap: 10px;
 }
 
 .divButton {
-    width: 30%;
     min-width: max-content;
 }
 
@@ -132,4 +131,12 @@ p {
 
 .value {
     color: #555;
+}
+
+.carda{
+    padding-left: 2%;
+    margin-bottom: 2%;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

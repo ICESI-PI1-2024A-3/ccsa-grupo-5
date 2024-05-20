@@ -102,17 +102,17 @@
         <p></p>
         {% if observations|length != 0 %}
         <button id="toggleObservationsBtn">Mostrar Observaciones</button>
-
+    </div>
         <div id="observationsContainer" style="display: none;">
             <div class="dropdown">
                 <div id="observationsDropdown" class="dropdown-content">
                     {% for observation in observations %}
-                    <div class="card">
+                    <div class="carda">
                         <p><span class="label">Descripción:</span> <span class="value">{{ observation.description }}</span></p>
                         <p><span class="label">Fecha:</span> <span class="value">{{ observation.date }}</span></p>
                         <p><span class="label">Hora:</span> <span class="value">{{ observation.time }}</span></p>
                         <p><span class="label">Autor:</span> <span class="value">{{ observation.getAuthor }}</span></p>
-                    </div>
+                    
                     {% if observation.author.username == request.user.username %}
                     <div class="buttons">
                         <div class="divButton">
@@ -132,13 +132,14 @@
                             </a>
                         </div>
                     </div>
+                </div>
                     {% endif %}
                     {% endfor %}
                 </div>
             </div>
         </div>
         {% endif %}
-    </div>
+    
 
 </div>
 

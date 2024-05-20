@@ -42,7 +42,7 @@ class AbstractPetition(models.Model):
         related_name="petitionUser",
         on_delete=models.CASCADE,
         null=True,
-        verbose_name="Usuario",
+        verbose_name="Asignar a gestor",
     )
 
     def getPercentage(self):

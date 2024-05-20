@@ -35,6 +35,7 @@ if "test" in sys.argv:
     DEBUG = True
 else:
     DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+    #DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
