@@ -18,5 +18,11 @@ def deleteTask(request, taskId):
     task = get_object_or_404(Task, pk=taskId)
     id = task.petition_id
     if request.method == 'POST':
-        task.delete()
-        return redirect('viewTask', id)
+        
+        if "eliminar" in request.POST:
+            task.delete()
+            return redirect("viewTask", id)
+        elif "cancelar" in request.POST:
+            return redirect("viewTask", id)
+        
+    return render(request, "deleteTask.html", {"task": task})

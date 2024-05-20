@@ -31,12 +31,17 @@ def deletePetition(request, petitionId):
     petition = get_object_or_404(Petition, pk=petitionId)
     
     if request.method == 'POST':
-        petition.delete()
-        notification = Notification.objects.create(
+        if "eliminar" in request.POST:
+            petition.delete()
+            notification = Notification.objects.create(
             description= "Se eliminó la solicitud " + str(petitionId),
             date=timezone.now().date(),
             time=timezone.localtime(),
             author=request.user,  # Asignar el usuario como autor
             petition= None  # Asignar la petición asociada
             )
-        return redirect('viewPetition')
+            return redirect('viewPetition')
+        elif "cancelar" in request.POST:
+            return redirect('viewPetition')
+        
+    return render(request, "deletePetition.html")

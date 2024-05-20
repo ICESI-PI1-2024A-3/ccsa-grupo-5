@@ -62,7 +62,7 @@ urlpatterns = [
         name="createObservation",
     ),
     path(
-        "solicitud/observacion/eliminar/<int:observationId>",
+        "solicitud/observacion/eliminar/<int:observationId>/<int:petitionId>",
         deleteObservation.deleteObservation,
         name="deleteObservation",
     ),

@@ -3,19 +3,19 @@
 {% load static %}
 
 {% block head %}
-<title>Rechazar Solicitud</title>
+<title>Eliminar Observación</title>
 <link rel="stylesheet" href="{% static 'styles/editPetition.css' %}">
 <link rel="stylesheet" href="{% static 'styles/rejactPetition.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="cardContainer">
-    <h1 class = "h1Black">¿Estás seguro de rechazar la Solicitud?</h1>
+    <h1 class = "h1Black">¿Estás seguro de eliminar la Observación?</h1>
     <form method="post">
         {% csrf_token %}
         <div class="buttons-rejact">
             <button name="cancelar" class="cancel">Cancelar</button>
-        <button type="submit" name="rechazar" class="rejact">Rechazar</button>
+        <button type="submit" name="eliminar" class="rejact">Eliminar</button>
         </div>
     </form>
 </div>
