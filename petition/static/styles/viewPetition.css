@@ -15,6 +15,7 @@ h1 {
     color: #2000fb !important;
     font-weight: bold !important;
     text-align: center !important;
+    margin-bottom: 40px;
 }
 
 .button-add {
@@ -53,4 +54,39 @@ a[data-dt-idx="0"] {
 .delete-icon,
 .cancel {
     background-color: red;
+}
+
+h4 {
+    font-weight: bold;
+}
+
+.generalContainer {
+    display: flex;
+    margin-bottom: 20px; /* Ajustar según sea necesario */
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+    background-color: #f0f3fc;
+    padding: 10px; /* Ajustar según sea necesario */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#circle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#container2 {
+    width: 80px; /* Ajustar según sea necesario */
+    height: 80px;
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
