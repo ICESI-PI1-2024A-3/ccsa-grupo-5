@@ -144,12 +144,13 @@ referrerpolicy="no-referrer"
                                     {% endif %}
                                 </div>
                                 <div class="divButton">
-                                    <form id="deleteForm{{ petition.id }}" action="{% url "deletePetition" petition.id%}" method="POST">
-                                        {% csrf_token %}
-                                        {% if petition.getState == "Pendiente" or petition.getState == "En Proceso" %}
-                                            <button type="button" class="delete-icon" data-petition-id="{{ petition.id }}" onclick="confirmDelete({{ petition.id }})"><i class="fas fa-trash-alt"></i></button>
-                                        {% endif %}
-                                    </form>
+                                    {% csrf_token %}
+                                    {% if petition.getState == "Pendiente" or petition.getState == "En Proceso" %}
+                                    <a href="{% url 'deletePetition' petition.id %}" ><button type="button" class="delete-icon" onclick="deletePetition( {{petition.id}})">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                    </a>
+                                    {% endif %}
                                 </div>     
                             </div> 
                         </td>    

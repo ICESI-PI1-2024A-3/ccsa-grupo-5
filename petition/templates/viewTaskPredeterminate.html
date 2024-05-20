@@ -30,12 +30,11 @@
         
             <div class="buttons" >
                 <div class="divButton">
-                    <form id="deleteForm{{ task.id }}" action="{% url "deleteTaskPredeterminate" task.id%}" method="POST">
-                    {% csrf_token %}
-                        <button type="button" class="delete-icon" data-observation-id="{{ task.id }}" onclick="confirmDelete({{ task.id }})">
-                            <i class="fas fa-trash-alt"></i> Eliminar
-                        </button>
-                    </form>
+                    {% csrf_token %}  
+                    <a href="{% url 'deleteTaskPredeterminate' task.id %}" ><button type="button" class="delete-icon" onclick="deleteTask({{task.id}})">
+                        <i class="fas fa-trash-alt"></i> Eliminar
+                    </button>
+                    </a>
                 </div>
                 <div class="divButton">
                     {% csrf_token %}

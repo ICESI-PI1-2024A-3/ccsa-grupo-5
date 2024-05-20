@@ -14,7 +14,7 @@ from django.contrib.auth.decorators import login_required
 from login.permissions import groupRequired
 
 @login_required
-def deleteObservation(request, observationId):
+def deleteObservation(request, observationId, petitionId):
     """
     Delete an observation.
 
@@ -32,5 +32,11 @@ def deleteObservation(request, observationId):
     observation = get_object_or_404(Observation, pk=observationId)
     
     if request.method == 'POST':
-        observation.delete()
-        return redirect('viewPetition')
+        if "eliminar" in request.POST:
+            observation.delete()
+            return redirect("showPetition", petitionId=petitionId)
+        elif "cancelar" in request.POST:
+            return redirect("showPetition", petitionId=petitionId)
+        
+    return render(request, "deleteObservation.html")
+    
