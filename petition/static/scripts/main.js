@@ -15,12 +15,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function setNavbarContainerHeight() {
   var bodyHeight = document.body.scrollHeight; // Altura total del contenido de la página
-  var navbarContainer = document.querySelector('.navbarContainer');
-  navbarContainer.style.height = bodyHeight + 'px'; // Establece la altura del contenedor navbarContainer igual a la altura total del contenido de la página
+  var navbarContainer = document.querySelector(".navbarContainer");
+  navbarContainer.style.height = bodyHeight + "px"; // Establece la altura del contenedor navbarContainer igual a la altura total del contenido de la página
 }
 
 // Llama a la función setNavbarContainerHeight() cuando el DOM esté completamente cargado y también cuando se cambie el tamaño de la ventana
-window.addEventListener('resize', setNavbarContainerHeight);
+window.addEventListener("resize", setNavbarContainerHeight);
 
 document.querySelector(".bars__menu").addEventListener("click", function () {
   animateBars();
@@ -57,4 +57,3 @@ function toggleNavbar() {
   var leftContent = document.querySelector(".left-content");
   leftContent.classList.toggle("move-right");
 }
-

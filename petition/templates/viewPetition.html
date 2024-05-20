@@ -45,34 +45,37 @@ referrerpolicy="no-referrer"
 
 <!-- Mostrar porcentaje promedio de progreso -->
 <div class="generalContainer">
-    <div class="column">
-        <h4>Total de Peticiones:</h4>
-        <h4>{{ totalCount }}</h4>
-    </div>
-    <div class="column">
-        <h4>Peticiones Pendientes:</h4>
-        <h4>{{ pending_count }}</h4>
-    </div>
-    <div class="column">
-        <h4>Peticiones Aprobadas:</h4>
-        <h4>{{ approved_count }}</h4>
-    </div>
-    <div class="column">
-        <h4>Peticiones Rechazadas:</h4>
-        <h4>{{ rejected_count }}</h4>
-    </div>
-    <div class="column">
-        <h4>Peticiones En Proceso:</h4>
-        <h4>{{ in_process_count }}</h4>
-    </div>
-    <div class="column">
-        <h4>Promedio Solicitudes Aceptadas</h4>
-        <h4 style="display:None" id="average_percentage">{{ average_percentage }}</h4>
-        <div id="circle">
-            <div id="container2"></div>
+    <div class="subContainer">
+        <div class="column">
+            <h4>Total de Peticiones:</h4>
+            <h4>{{ totalCount }}</h4>
+        </div>
+        <div class="column">
+            <h4>Peticiones Pendientes:</h4>
+            <h4>{{ pending_count }}</h4>
+        </div>
+        <div class="column">
+            <h4>Peticiones Aprobadas:</h4>
+            <h4>{{ approved_count }}</h4>
+        </div>
+        <div class="column">
+            <h4>Peticiones Rechazadas:</h4>
+            <h4>{{ rejected_count }}</h4>
+        </div>
+        <div class="column">
+            <h4>Peticiones En Proceso:</h4>
+            <h4>{{ in_process_count }}</h4>
+        </div>
+        <div class="column">
+            <h4>Promedio Solicitudes Aceptadas</h4>
+            <h4 style="display:none" id="average_percentage">{{ average_percentage }}</h4>
+            <div id="circle">
+                <div id="container2"></div>
+            </div>
         </div>
     </div>
 </div>
+
 
 <div class="tableContainer">
     <div class="row">

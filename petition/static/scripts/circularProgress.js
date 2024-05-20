@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     color: "#2000fb",
     strokeWidth: 4,
     trailWidth: 6,
-    trailColor: "#fff",
+    trailColor: "#f8f4f4",
     easing: "easeInOut",
     duration: 1400,
     text: {
