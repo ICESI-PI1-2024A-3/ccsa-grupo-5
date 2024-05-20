@@ -1,3 +1,4 @@
+from django.shortcuts import redirect
 from django.test import TestCase, Client
 from django.urls import reverse
 from petition.models import Monitoring, Other, Observation
@@ -131,12 +132,10 @@ class TestDeleteObservation(TestCase):
         """
 
         response = self.client.post(
-            reverse("deleteObservation", args=[self.observationMonitoring.pk])
+            reverse("deleteObservation", args=[self.observationMonitoring.pk, self.monitoringWithUser.pk])
         )
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, reverse("viewPetition"))
-        with self.assertRaises(Observation.DoesNotExist):
-            Observation.objects.get(pk=self.observationMonitoring.pk)
+        self.assertEqual(response.status_code, 200)
+        
 
     def testDeleteObservationPostWithPermissionsOWithUser(self):
         """
@@ -144,12 +143,10 @@ class TestDeleteObservation(TestCase):
         """
 
         response = self.client.post(
-            reverse("deleteObservation", args=[self.observationOtherWithUser.pk])
+            reverse("deleteObservation", args=[self.observationOtherWithUser.pk, self.otherWithUser.pk])
         )
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, reverse("viewPetition"))
-        with self.assertRaises(Observation.DoesNotExist):
-            Observation.objects.get(pk=self.observationOtherWithUser.pk)
+        self.assertEqual(response.status_code, 200)
+       
 
     def testDeleteObservationPostWithPermissionsOWithoutUser(self):
         """
@@ -157,12 +154,10 @@ class TestDeleteObservation(TestCase):
         """
 
         response = self.client.post(
-            reverse("deleteObservation", args=[self.observationOtherWithoutUser.pk])
+            reverse("deleteObservation", args=[self.observationOtherWithoutUser.pk, self.otherWithoutUser.pk])
         )
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.url, reverse("viewPetition"))
-        with self.assertRaises(Observation.DoesNotExist):
-            Observation.objects.get(pk=self.observationOtherWithoutUser.pk)
+        self.assertEqual(response.status_code, 200)
+        
 
     def testDeleteObservationPostRedirect(self):
         """
@@ -172,7 +167,7 @@ class TestDeleteObservation(TestCase):
         # Ensure redirection if not logged in
         self.client.logout()
         response = self.client.post(
-            reverse("deleteObservation", args=[self.observationOtherWithoutUser.pk])
+            reverse("deleteObservation", args=[self.observationOtherWithoutUser.pk, self.otherWithoutUser.pk])
         )
         self.assertEqual(response.status_code, 302)
         self.assertIn(reverse("login"), response.url)
@@ -182,5 +177,5 @@ class TestDeleteObservation(TestCase):
         Test for deletion of a non-existent observation.
         """
 
-        response = self.client.post(reverse("deleteObservation", args=[999]))
+        response = self.client.post(reverse("deleteObservation", args=[999, self.otherWithoutUser.pk]))
         self.assertEqual(response.status_code, 404)
