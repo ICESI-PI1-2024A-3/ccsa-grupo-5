@@ -5,9 +5,10 @@
 {% block content %}
 
 <link rel="stylesheet" href="{% static 'styles/createTask.css' %}">
+<link rel="stylesheet" href="{% static 'styles/viewTask.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
-<div class="cardContainer">
+<div class="cardContainer ">
     <h1>Tareas predeterminadas</h1>
     <div class="textContainer">
         <p class = "p1"> Unicamente serán afectadas las solicitudes creadas luego de los cambios</p>
@@ -15,8 +16,8 @@
     </div>
 
     <p></p>
-    <div class="divCenter">
-    <a href="{% url 'createTaskPredeterminate' %}"><button>Crear Tarea</button></a>
+    <div class="center-content">
+    <a class="outButton" href="{% url 'createTaskPredeterminate' %}"><button>Crear Tarea</button></a>
     </div>
     <p></p>
 
@@ -50,7 +51,7 @@
     {% endfor %}
 
     <div class="divCenter">
-    <a href="{% url 'viewPetition' %}"><button>Finalizar
+    <a class="outButton" href="{% url 'viewPetition' %}"><button>Finalizar
     </button></a>
     </div>
 </div>

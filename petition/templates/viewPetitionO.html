@@ -5,7 +5,9 @@
 {% block head %}
 <title>Detalles de solicitud</title>
 <link rel="stylesheet" href="{% static 'styles/editPetition.css' %}">
+<link rel="stylesheet" href="{% static 'styles/showPetition.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 {% endblock %}
 
 {% block content %}
@@ -99,24 +101,25 @@
 
         {% endif %}
     </div>
-
+    <hr>
     <div class="card">
+        <div class="button-petition">
         <!-- Observations -->
         <a href="{% url 'createObservation' petitionId %}"><button>Crear Observación</button></a>
         <p></p>
         {% if observations|length != 0 %}
         <button id="toggleObservationsBtn">Mostrar Observaciones</button>
-
+    </div>
         <div id="observationsContainer" style="display: none;">
             <div class="dropdown">
                 <div id="observationsDropdown" class="dropdown-content">
                     {% for observation in observations %}
-                    <div class="card">
+                    <div class="carda">
                         <p><span class="label">Descripción:</span> <span class="value">{{ observation.description }}</span></p>
                         <p><span class="label">Fecha:</span> <span class="value">{{ observation.date }}</span></p>
                         <p><span class="label">Hora:</span> <span class="value">{{ observation.time }}</span></p>
                         <p><span class="label">Autor:</span> <span class="value">{{ observation.getAuthor }}</span></p>
-                    </div>
+                    
                     {% if observation.author.username == request.user.username %}
                     <div class="buttons">
                         <div class="divButton">
@@ -136,13 +139,14 @@
                             </a>
                         </div>
                     </div>
+                </div>
                     {% endif %}
                     {% endfor %}
                 </div>
             </div>
         </div>
         {% endif %}
-       
+    
     </div>
 
 </div>

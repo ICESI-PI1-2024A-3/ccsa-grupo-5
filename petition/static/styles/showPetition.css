@@ -36,3 +36,13 @@
     max-width: max-content;
     min-width: max-content;
 }
+
+.card:last-child {
+    text-align: left;
+}
+
+.buttons {
+    display: flex;
+    justify-content: left !important;
+    gap: 3%;
+}
