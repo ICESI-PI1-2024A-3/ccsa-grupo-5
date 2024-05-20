@@ -1,7 +1,6 @@
 let dataTable;
 let dataTableIsInitialized = false;
 
-
 let dataTableOptions = {
     language: {
         "lengthMenu": "Mostrar _MENU_ registros",
@@ -27,14 +26,6 @@ let dataTableOptions = {
             titleAttr: 'Exportar a Excel',
             className: 'btn btn-success'
         },
-        {
-            text: '<i class="fas fa-plus"></i> Nuevo',
-            action: function () {
-                
-                window.location.href = '/solicitud/seleccionarTipo';
-            },
-            className: 'btn btn-primary'
-        },
 
     ],
     columnDefs: [
@@ -45,6 +36,8 @@ let dataTableOptions = {
     pageLength: 10,
     destroy: true
 };
+
+
 
 const initDataTable = async () => {
     if (dataTableIsInitialized) {

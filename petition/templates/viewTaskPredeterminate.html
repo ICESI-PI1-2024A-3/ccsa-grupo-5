@@ -4,17 +4,20 @@
 
 {% block content %}
 
-<link rel="stylesheet" href="{% static 'styles/editPetition.css' %}">
+<link rel="stylesheet" href="{% static 'styles/createTask.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
 <div class="cardContainer">
-    <h1>Tareas predeterminadas de nuevas solicitudes </h1>
-
-<li><small>Unicamente serán afectadas las solicitudes creadas luego de los cambios</small></li>
-<li><small>Cuando se crea una nueva solicitud, tambien tienes la posibilidad de agregar tareas específicas</small></li>
+    <h1>Tareas predeterminadas</h1>
+    <div class="textContainer">
+        <p class = "p1"> Unicamente serán afectadas las solicitudes creadas luego de los cambios</p>
+        <p class = "p1">Cuando se crea una nueva solicitud, tambien tienes la posibilidad de agregar tareas específicas</p>
+    </div>
 
     <p></p>
-    <a href="{% url 'createTaskPredeterminate' %}"><button>Crear Nueva Tarea Predeterminada</button></a>
+    <div class="divCenter">
+    <a href="{% url 'createTaskPredeterminate' %}"><button>Crear Tarea</button></a>
+    </div>
     <p></p>
 
     <hr>
@@ -46,7 +49,10 @@
         <hr>
     {% endfor %}
 
-    <a href="{% url 'viewPetition' %}"><button>Finalizar</button></a>
+    <div class="divCenter">
+    <a href="{% url 'viewPetition' %}"><button>Finalizar
+    </button></a>
+    </div>
 </div>
 
 <script src="{% static 'scripts/deleteElement.js' %}"></script>

@@ -12,7 +12,7 @@
 
 .cardContainer {
     min-width: max-content;
-    max-width: 60%; 
+    max-width: 60%;
     width: 80%;
     margin: 20px auto;
     padding: 20px;
@@ -21,9 +21,22 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.cardContainer i {
+    /* Ajusta el color, tamaño, margen y cualquier otro estilo que desees para los íconos */
+    color: rgb(0, 0, 0);
+    /* Color del ícono */
+    font-size: 20px;
+    /* Tamaño del ícono */
+    margin-right: 5px;
+    /* Espacio a la derecha del ícono */
+
+    margin-top: 5%;
+}
+
 
 h1 {
-    color: #333;
+    color: #2000fb;
+    font-weight: bold !important;
 }
 
 h2 {

@@ -10,8 +10,15 @@ button {
     cursor: pointer;
 }
 
-.button-add{
-    background-color: #2000fb!important;
+h1 {
+    margin: 0 !important;
+    color: #2000fb !important;
+    font-weight: bold !important;
+    text-align: center !important;
+}
+
+.button-add {
+    background-color: #2000fb !important;
 }
 
 
@@ -24,6 +31,12 @@ button {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+a[data-dt-idx="0"] {
+    /* Estilos CSS aquí */
+    background-color: #2000fb !important;
+}
+
 
 .buttons {
     padding: 10px;

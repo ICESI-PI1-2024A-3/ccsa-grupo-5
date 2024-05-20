@@ -9,7 +9,9 @@
 
     <h1>Crear Nueva Observación</h1>
     <p></p>
-    <li style="text-align: center;"><small>Escribe la descripción de la observación que podrás visualizar junto al líder y al gestor encargado</small></li>
+    <div class="textContainer">
+    <p class="p1" >Escribe la descripción de la observación que podrás visualizar junto al líder y al gestor encargado</p>
+    </div>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
