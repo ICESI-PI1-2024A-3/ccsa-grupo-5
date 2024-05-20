@@ -6,7 +6,6 @@
 
 <title>Solicitudes</title>
 
-<link rel="stylesheet" href="{% static 'styles/viewPetition.css' %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
 <!-- DataTable -->
@@ -37,6 +36,8 @@ integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcn
 crossorigin="anonymous"
 referrerpolicy="no-referrer"
 />
+
+<link rel="stylesheet" href="{% static 'styles/viewPetition.css' %}">
 
 {% csrf_token %}
 <h1>Solicitudes</h1>
@@ -77,19 +78,22 @@ referrerpolicy="no-referrer"
                         </td>  
                         <td>{{ petition.getState }}</td>
                         <td>
-                            <div style="max-width: 70%; margin: 0 auto; text-align: center;">
-                            <div class="progress" role="progressbar" aria-valuenow="{{ petition.getPercentage }}" aria-valuemin="0" aria-valuemax="100">
-                                {% if petition.getPercentage == 0 %}
-                                    <div class="progress-bar bg-danger" style="width: 100%">
-                                        {{ petition.getPercentage }}%
-                                    </div>
-                                {% else %}
-                                    <div class="progress-bar {% if petition.getPercentage == 100 %}bg-success{% elif petition.getPercentage >= 75 %}bg-info{% elif petition.getPercentage >= 50 %}bg-warning{% else %}bg-danger{% endif %}" style="width: {{ petition.getPercentage }}%">
-                                        {{ petition.getPercentage }}%
-                                    </div>
-                                {% endif %}
+                            <div style="max-width: 70%; margin: 0 auto; position: relative; height: 20px;">
+                                <div class="progress" role="progressbar" aria-valuenow="{{ petition.getPercentage }}" aria-valuemin="0" aria-valuemax="100" style="height: 100%;">
+                                    {% if petition.getPercentage == 0 %}
+                                        <div class="progress-bar bg-danger" style="width: 100%; position: relative; z-index: 1;">
+                                        </div>
+                                    {% else %}
+                                        <div class="progress-bar {% if petition.getPercentage == 100 %}bg-success{% elif petition.getPercentage >= 75 %}bg-warning{% elif petition.getPercentage >= 50 %}bg-warning{% else %}bg-danger{% endif %}" style="width: {{ petition.getPercentage }}%; position: relative; z-index: 1;">
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div style="position: absolute; width: 100%; top: 0; left: 0; height: 100%; display: flex; align-items: center; justify-content: center; z-index: 2; color: black; font-size: 12px;">
+                                    {{ petition.getPercentage }}%
+                                </div>
                             </div>
                         </td>
+                        
                         <td>{{ petition.fullName }}</td>
                         <td>{{ petition.identityDocument }}</td> 
                         <td>{{ petition.endDate }}</td>

@@ -11,7 +11,9 @@
 
 <h1>Editar Tarea Predeterminada</h1>
 <p></p>
-<li style="text-align: center;"><small>Escribe la nueva descripción de la tarea que el gestor encargado pordrá visualizar</small></li>
+<div class="textContainer">
+    <p class="p1" > Escribe la nueva descripción de la tarea que el gestor encargado pordrá visualizar</p>
+    </div>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

@@ -28,10 +28,11 @@
 }
 
 h1 {
-    text-align: center;
-    margin: 0;
-    color: #2000fb;
-    font-weight: bold;
+    margin: 0 !important;
+    color: #2000fb !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    margin-bottom: 5% !important;
 }
 
 form {
@@ -76,4 +77,9 @@ button {
         max-width: 500px;
         /* Restaura el ancho máximo para dispositivos de escritorio */
     }
+}
+
+.textContainer {
+    margin-top: -3%;
+    margin-bottom: 3%;
 }

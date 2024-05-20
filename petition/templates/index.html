@@ -12,7 +12,7 @@
 <div class="backgroundImage"></div>
 
 <div class="cardContainer">
-  <h1>Bienvenido a tu Aplicación</h1>
+  <h1>Modulo Contratación</h1>
   <p>Una aplicación para gestionar solicitudes de contrato de manera eficiente.</p>
 
   <h2>Funcionalidades Destacadas</h2>
@@ -38,7 +38,7 @@
     <a
       href="{% url 'viewPetitionWithoutUser' %}"
       class="nav-link {% if 'viewPetitionWithoutUser' in request.path %}active{% endif %}"
-      ><i class="fa-solid fa-file-pen"></i> Solicitudes sin Asignar</a
+      ><i class="fa-solid fa-file-circle-exclamation"></i> Solicitudes sin Asignar</a
     >
   </li>
   {% endif %}

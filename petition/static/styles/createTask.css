@@ -1,5 +1,4 @@
 .cardContainer {
-    min-width: max-content;
     max-width: 60%;
     width: 80%;
     margin: 20px auto;
@@ -47,7 +46,8 @@ button {
 }
 
 .buttons {
-    padding: 10px;
+    padding: 5%;
+    padding-left: 10%;
     display: flex;
     justify-content: space-between;
     /* Distribuye el espacio entre los elementos */
@@ -58,11 +58,20 @@ button {
 .divButton {
     width: 30%;
     min-width: max-content;
+
 }
 
 .delete-icon,
 .cancel {
     background-color: red;
+}
+
+.divCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+    margin-bottom: 3%;
 }
 
 .custom-progress {
@@ -90,8 +99,11 @@ button {
 }
 
 h1 {
-    text-align: left;
-    color: #333;
+    margin: 0 !important;
+    color: #2000fb !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    margin-bottom: 5% !important;
 }
 
 h3 {
