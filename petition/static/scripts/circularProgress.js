@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     color: "#2000fb",
     strokeWidth: 4,
     trailWidth: 6,
-    trailColor: "#fff",
+    trailColor: "#f8f4f4",
     easing: "easeInOut",
     duration: 1400,
     text: {
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       var value = Math.round(circle.value() * 100);
       if (value === 0) {
-        circle.setText("");
+        circle.setText("0%");
       } else {
         circle.setText(value + "%");
       }

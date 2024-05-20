@@ -34,7 +34,7 @@
                     <tr>
                         <td>{{ notification.description }}</td>
                         <td>{{ notification.date }} {{notification.time}}</td>
-                        <td>{{ notification.author }}</td>
+                        <td>{{ notification.getAuthor }}</td>
                         
                         <td>
                             {% if notification.petition is None %}

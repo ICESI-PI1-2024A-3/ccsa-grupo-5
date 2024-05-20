@@ -33,7 +33,7 @@
                             <td>{{ petition.getPetitionType }}</td>
                             <td>{{ petition.petitionDate }}</td>
                             <td>{{ petition.startDate }}</td>
-                            <td>{{ petition.state }}</td>
+                            <td>{{ petition.getState }}</td>
                             
                             <td>
                                 <a href="{% url 'assignPetition' petition.id %}"><p>Asignar Gestor</p></a>

@@ -16,7 +16,11 @@ from login.permissions import groupRequired
 @login_required
 def deleteTaskPredeterminate(request, taskId):
     task = get_object_or_404(TaskPredeterminate, pk=taskId)
-    
     if request.method == 'POST':
-        task.delete()
-        return redirect('viewTaskPredeterminate')
+        if "eliminar" in request.POST:
+            task.delete()
+            return redirect("viewTaskPredeterminate")
+        elif "cancelar" in request.POST:
+            return redirect("viewTaskPredeterminate")
+        
+    return render(request, "deleteTask.html", {"task": task})

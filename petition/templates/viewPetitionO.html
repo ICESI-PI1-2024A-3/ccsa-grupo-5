@@ -68,6 +68,10 @@
             <p><span class="label">ARL:</span><span class="value"> {{ solicitud.arl }}</span></p>
             <p><span class="label">Valor del Contrato:</span> <span class="value"> {{ solicitud.contractValue }}</span></p>
             <p><span class="label">Información de Pago:</span> <span class="value"> {{ solicitud.paymentInfo }}</span></p>
+
+            <p><span class="label"></span> <span class="value"> <a href="{{ solicitud.rutAttachment.url }}" download><button>Descargar archivo RUT</button></a></span></p>
+
+            
         </div>
     </div>
 
@@ -123,12 +127,11 @@
                     {% if observation.author.username == request.user.username %}
                     <div class="buttons">
                         <div class="divButton">
-                            <form id="deleteForm{{ observation.id }}" action="{% url "deleteObservation" observation.id %}" method="POST">
-                                {% csrf_token %}
-                                <button type="button" class="delete-icon" data-observation-id="{{ observation.id }}" onclick="confirmDelete({{ observation.id }})">
-                                    <i class="fas fa-trash-alt"></i> Eliminar
-                                </button>
-                            </form>
+                            {% csrf_token %}  
+                            <a href="{% url 'deleteObservation' observation.id petitionId %}" ><button type="button" class="delete-icon" onclick="deleteObservation({{observation.id}}, {{petition.id}})">
+                                <i class="fas fa-trash-alt"></i> Eliminar
+                            </button>
+                            </a>
                         </div>
                         <div class="divButton">
                             {% csrf_token %}
@@ -151,6 +154,5 @@
 
 </div>
 
-<script src="{% static 'scripts/deleteElement.js' %}"></script>
 <script src="{% static 'scripts/viewObservation.js' %}"></script>
 {% endblock %}
